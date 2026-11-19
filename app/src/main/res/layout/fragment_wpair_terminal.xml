@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0E1117"
+    android:background="@color/ch_ink_0"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#1A1F29"
+        android:background="@color/ch_ink_1"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="6dp"
@@ -27,7 +27,7 @@
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconSize="22dp"
-            app:iconTint="#E6EDF3" />
+            app:iconTint="@color/ch_bone" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/wpair_terminal_title"
-                android:textColor="#E6EDF3"
+                android:textColor="@color/ch_bone"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -52,7 +52,7 @@
                 android:fontFamily="monospace"
                 android:singleLine="true"
                 android:text="wpair.log"
-                android:textColor="#8B949E"
+                android:textColor="@color/ch_bone_dim"
                 android:textSize="11sp" />
         </LinearLayout>
 
@@ -61,7 +61,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginEnd="10dp"
-            android:indeterminateTint="#3FB950"
+            android:indeterminateTint="@color/ch_live"
             android:visibility="gone" />
 
         <com.google.android.material.button.MaterialButton
@@ -88,7 +88,7 @@
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconSize="18dp"
-            app:iconTint="#E6EDF3" />
+            app:iconTint="@color/ch_bone" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/wpair_terminal_share"
@@ -101,18 +101,18 @@
             app:iconGravity="textStart"
             app:iconPadding="0dp"
             app:iconSize="18dp"
-            app:iconTint="#E6EDF3" />
+            app:iconTint="@color/ch_bone" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#2D333B" />
+        android:background="@color/ch_line" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0E1117"
+        android:background="@color/ch_ink_0"
         android:paddingStart="10dp"
         android:paddingTop="8dp"
         android:paddingEnd="10dp"
@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:text="filter:"
-                android:textColor="#8B949E"
+                android:textColor="@color/ch_bone_dim"
                 android:textSize="11sp" />
 
             <EditText
@@ -138,7 +138,7 @@
                 android:layout_width="220dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="6dp"
-                android:background="#1A1F29"
+                android:background="@color/ch_ink_1"
                 android:fontFamily="monospace"
                 android:hint="host or text…"
                 android:imeOptions="actionSearch"
@@ -146,8 +146,8 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:singleLine="true"
-                android:textColor="#E6EDF3"
-                android:textColorHint="#6E7681"
+                android:textColor="@color/ch_bone"
+                android:textColorHint="@color/ch_bone_faint"
                 android:textSize="11sp" />
         </LinearLayout>
     </HorizontalScrollView>
@@ -155,7 +155,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#2D333B" />
+        android:background="@color/ch_line" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/wpair_terminal_recycler"
@@ -181,7 +181,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:src="@drawable/terminal"
-            app:tint="#3D444D" />
+            app:tint="@color/ch_line_strong" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="monospace"
             android:text="@string/wpair_terminal_empty"
-            android:textColor="#8B949E"
+            android:textColor="@color/ch_bone_dim"
             android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>

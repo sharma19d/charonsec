@@ -400,7 +400,7 @@ public class MACChangerFragment extends Fragment {
         if (uiReady()) activity.runOnUiThread(() -> {
             if (!uiReady()) return;
             statusPill.setText(R.string.mac_pill_waiting_net);
-            statusPill.setTextColor(0xFFEF6C00);
+            statusPill.setTextColor(0xFF9E94C6);
             ifaceSub.setText(R.string.mac_waiting_net);
         });
         new Thread(() -> {
@@ -447,14 +447,14 @@ public class MACChangerFragment extends Fragment {
     private void finishApply(boolean ok) {
         core.putBoolean(KEY_BUSY, false);
         setBusy(false, ok ? R.string.mac_pill_changed : R.string.mac_pill_error);
-        statusPill.setTextColor(ok ? 0xFF2E7D32 : 0xFFC62828);
+        statusPill.setTextColor(ok ? 0xFF6CC79E : 0xFFE07A7A);
         core.toaster(activity, getString(ok ? R.string.mac_success : R.string.mac_failed));
         refreshAddresses();
     }
 
     private void setBusy(boolean busy, int pillRes) {
         statusPill.setText(pillRes);
-        statusPill.setTextColor(busy ? 0xFFEF6C00 : 0xFF757575);
+        statusPill.setTextColor(busy ? 0xFF9E94C6 : 0xFFA5A1B4);
         ifaceLayout.setEnabled(!busy);
         macLayout.setEnabled(!busy);
         changeMac.setEnabled(!busy);

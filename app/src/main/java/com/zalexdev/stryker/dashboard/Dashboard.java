@@ -116,6 +116,8 @@ public class Dashboard extends Fragment {
         renderCounts();
         buildTools();
 
+        com.zalexdev.stryker.ui.GridOverlayDrawable.apply(view.findViewById(R.id.dash_hero),
+                androidx.core.content.ContextCompat.getColor(requireContext(), R.color.stryker_accent));
         view.findViewById(R.id.dash_hero).setOnClickListener(
                 v -> receiver.changeFragment(R.id.wifi_item));
         view.findViewById(R.id.terminal).setOnClickListener(v -> openTerminal());
@@ -202,7 +204,10 @@ public class Dashboard extends Fragment {
             vmRing.setRingEnabled(false);
         }
 
-        vmAurora = view.findViewById(R.id.vm_aurora);
+        // CharonSec: no animated gradient behind the engine card (flat instrument panel, saves GPU).
+        View aurora = view.findViewById(R.id.vm_aurora);
+        if (aurora != null) aurora.setVisibility(View.GONE);
+        vmAurora = null;
         if (vmAurora != null) {
             vmAurora.setGlow(0.0032f);
             vmAurora.setPillarWidth(10f);
@@ -893,55 +898,55 @@ public class Dashboard extends Fragment {
                 R.drawable.dashboard_tile_bg_blue, accent, true,
                 () -> receiver.changeFragment(R.id.wifi_item)));
         t.add(new Tool("lan", R.string.local_network, R.drawable.lan,
-                R.drawable.dashboard_tile_bg_purple, 0xFFAB47BC, true,
+                R.drawable.dashboard_tile_bg_purple, 0xFF9E94C6, true,
                 () -> receiver.changeFragment(R.id.lan_item)));
         t.add(new Tool("handshakes", R.string.dashboard_tile_handshakes, R.drawable.file,
-                R.drawable.dashboard_tile_bg_teal, 0xFF00897B, true,
+                R.drawable.dashboard_tile_bg_teal, 0xFF9E94C6, true,
                 () -> receiver.changeFragment(R.id.hs_item)));
         t.add(new Tool("exploits", R.string.dashboard_tile_exploits, R.drawable.motion_blur,
-                R.drawable.dashboard_tile_bg_orange, 0xFFEF6C00, true,
+                R.drawable.dashboard_tile_bg_orange, 0xFF9E94C6, true,
                 () -> receiver.changeFragment(R.id.arsenal_item,
                         ArsenalFragment.forTab(ArsenalFragment.TAB_HUB))));
         t.add(new Tool("searchsploit", R.string.dashboard_tile_searchsploit, R.drawable.database,
-                R.drawable.dashboard_tile_bg_pink, 0xFFD81B60, true,
+                R.drawable.dashboard_tile_bg_pink, 0xFF9E94C6, true,
                 () -> receiver.changeFragment(R.id.arsenal_item,
                         ArsenalFragment.forTab(ArsenalFragment.TAB_DB))));
         t.add(new Tool("nuclei", R.string.website, R.drawable.webscan,
-                R.drawable.dashboard_tile_bg_indigo, 0xFF3949AB, true,
+                R.drawable.dashboard_tile_bg_indigo, 0xFF9E94C6, true,
                 () -> receiver.changeFragment(R.id.nuclei_item)));
         t.add(new Tool("geomac", R.string.dashboard_tile_geomac, R.drawable.map,
-                R.drawable.dashboard_tile_bg_cyan, 0xFF00838F, true,
+                R.drawable.dashboard_tile_bg_cyan, 0xFF9E94C6, true,
                 () -> receiver.changeFragment(R.id.geomac_item)));
         t.add(new Tool("metasploit", R.string.dashboard_tile_metasploit, R.drawable.shield,
-                R.drawable.dashboard_tile_bg_red, 0xFFC62828, true,
+                R.drawable.dashboard_tile_bg_red, 0xFF9E94C6, true,
                 () -> receiver.changeFragment(R.id.metasploit_item)));
 
         t.add(new Tool("nmap", R.string.dashboard_tile_nmap, R.drawable.scanner,
-                R.drawable.dashboard_tile_bg_purple, 0xFFAB47BC, false,
+                R.drawable.dashboard_tile_bg_purple, 0xFF9E94C6, false,
                 () -> receiver.changeFragment(R.id.nmap_item)));
         t.add(new Tool("hid", R.string.dashboard_tile_hid, R.drawable.keyboard,
-                R.drawable.dashboard_tile_bg_red, 0xFFC62828, false,
+                R.drawable.dashboard_tile_bg_red, 0xFF9E94C6, false,
                 () -> receiver.changeFragment(R.id.hid_item)));
         t.add(new Tool("wordlists", R.string.dashboard_tile_wordlists, R.drawable.summarize,
-                R.drawable.dashboard_tile_bg_indigo, 0xFF5E35B1, false,
+                R.drawable.dashboard_tile_bg_indigo, 0xFF9E94C6, false,
                 () -> receiver.changeFragment(R.id.wordlists_item)));
         t.add(new Tool("macchanger", R.string.dashboard_tile_macchanger, R.drawable.password,
                 R.drawable.dashboard_tile_bg_blue, accent, false,
                 () -> receiver.changeFragment(R.id.macchanger_item)));
         t.add(new Tool("wpair", R.string.dashboard_tile_wpair, R.drawable.wpair,
-                R.drawable.dashboard_tile_bg_indigo, 0xFF3949AB, false,
+                R.drawable.dashboard_tile_bg_indigo, 0xFF9E94C6, false,
                 () -> receiver.changeFragment(R.id.wpair_item)));
         t.add(new Tool("vnc", R.string.dashboard_tile_vnc, R.drawable.vnc,
-                R.drawable.dashboard_tile_bg_purple, 0xFF5E35B1, false,
+                R.drawable.dashboard_tile_bg_purple, 0xFF9E94C6, false,
                 () -> receiver.changeFragment(R.id.vnc_item)));
         t.add(new Tool("usb", R.string.dashboard_tile_usb, R.drawable.usb,
                 R.drawable.dashboard_tile_bg_blue, accent, false,
                 () -> receiver.changeFragment(R.id.usb_arsenal_item)));
         t.add(new Tool("manager", R.string.dashboard_tile_manager, R.drawable.tune,
-                R.drawable.dashboard_tile_bg_teal, 0xFF00897B, false,
+                R.drawable.dashboard_tile_bg_teal, 0xFF9E94C6, false,
                 () -> receiver.changeFragment(R.id.manager_item)));
         t.add(new Tool("logs", R.string.dashboard_tile_logs, R.drawable.bug_report,
-                R.drawable.dashboard_tile_bg_orange, 0xFFEF6C00, false,
+                R.drawable.dashboard_tile_bg_orange, 0xFF9E94C6, false,
                 () -> receiver.changeFragment(R.id.logs_item)));
         return t;
     }

@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
     app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="22dp"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
     app:strokeWidth="1dp">
@@ -33,7 +32,7 @@
                     android:layout_height="22dp"
                     android:layout_gravity="center"
                     android:src="@drawable/webscan"
-                    app:tint="#3949AB" />
+                    app:tint="@color/ch_signal" />
             </FrameLayout>
 
             <com.google.android.material.textview.MaterialTextView
@@ -138,10 +137,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:backgroundTint="#3949AB"
+                android:backgroundTint="@color/ch_signal"
                 android:text="@string/nuclei_dialog_start"
                 android:textColor="@color/light_contrast"
-                app:cornerRadius="14dp"
+                app:cornerRadius="2dp"
                 app:icon="@drawable/scanner"
                 app:iconTint="@color/light_contrast" />
         </LinearLayout>

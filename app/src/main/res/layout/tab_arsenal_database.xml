@@ -15,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -97,7 +96,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:cardBackgroundColor="@color/light_contrast"
-                        app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
                         app:strokeColor="@color/light_lite_contrast"
                         app:strokeWidth="1dp">
@@ -194,7 +192,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
                         app:cardBackgroundColor="@color/light_contrast"
-                        app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
                         app:strokeColor="@color/light_lite_contrast"
                         app:strokeWidth="1dp">
@@ -256,7 +253,6 @@
                         android:layout_marginTop="14dp"
                         android:visibility="gone"
                         app:cardBackgroundColor="@color/light_contrast"
-                        app:cardCornerRadius="16dp"
                         app:cardElevation="0dp"
                         app:strokeColor="#FFB300"
                         app:strokeWidth="1dp">
@@ -272,7 +268,7 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:src="@drawable/error"
-                                app:tint="#F57C00" />
+                                app:tint="@color/ch_signal" />
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/db_empty_text"
@@ -305,7 +301,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -431,7 +426,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
                         android:text="@string/arsenal_db_install_button"
-                        app:cornerRadius="14dp"
+                        app:cornerRadius="2dp"
                         app:icon="@drawable/download" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

@@ -187,16 +187,16 @@ public class LocalAdapter extends RecyclerView.Adapter<LocalAdapter.ViewHolder> 
             return ContextCompat.getColor(context, R.color.red);
         }
         if (device.getIp().equals(gateway)) {
-            return Color.parseColor("#AB47BC");
+            return Color.parseColor("#9E94C6");
         }
         String os = device.getOs() == null ? "" : device.getOs().toLowerCase(Locale.ROOT);
-        if (os.contains("windows")) return Color.parseColor("#1565C0");
-        if (os.contains("linux")) return Color.parseColor("#EF6C00");
+        if (os.contains("windows")) return Color.parseColor("#9E94C6");
+        if (os.contains("linux")) return Color.parseColor("#9E94C6");
         if (os.contains("mac") || os.contains("ios") || os.contains("apple"))
-            return Color.parseColor("#5E35B1");
-        if (os.contains("android")) return Color.parseColor("#2E7D32");
-        if (os.contains("camera")) return Color.parseColor("#00897B");
-        if (os.contains("printer")) return Color.parseColor("#3949AB");
+            return Color.parseColor("#9E94C6");
+        if (os.contains("android")) return Color.parseColor("#6CC79E");
+        if (os.contains("camera")) return Color.parseColor("#9E94C6");
+        if (os.contains("printer")) return Color.parseColor("#9E94C6");
         return ContextCompat.getColor(context, R.color.grey);
     }
 

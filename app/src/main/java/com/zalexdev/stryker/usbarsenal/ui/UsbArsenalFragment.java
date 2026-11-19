@@ -92,7 +92,7 @@ public class UsbArsenalFragment extends Fragment implements GadgetProfileAdapter
     private void refreshState() {
         statePill.setText("PROBING");
         statePill.setBackgroundResource(R.drawable.chip_pill_warn);
-        statePill.setTextColor(0xFFEF6C00);
+        statePill.setTextColor(0xFF9E94C6);
         new Thread(() -> {
             HidCapabilities caps = new HidCapabilityProbe(requireContext()).probe();
             GadgetState state = controller.readState();
@@ -106,22 +106,22 @@ public class UsbArsenalFragment extends Fragment implements GadgetProfileAdapter
             stateText.setText(R.string.arsenal_no_capability);
             statePill.setText("BLOCK");
             statePill.setBackgroundResource(R.drawable.chip_pill_err);
-            statePill.setTextColor(0xFFC62828);
+            statePill.setTextColor(0xFFE07A7A);
         } else if (state.strykerGadgetBound) {
             stateText.setText(getString(R.string.arsenal_state_bound, state.boundUdc));
             statePill.setText("BOUND");
             statePill.setBackgroundResource(R.drawable.chip_pill_ok);
-            statePill.setTextColor(0xFF2E7D32);
+            statePill.setTextColor(0xFF6CC79E);
         } else if (caps.udcName == null) {
             stateText.setText(R.string.arsenal_state_detached);
             statePill.setText("DETACH");
             statePill.setBackgroundResource(R.drawable.chip_pill_err);
-            statePill.setTextColor(0xFFC62828);
+            statePill.setTextColor(0xFFE07A7A);
         } else {
             stateText.setText(R.string.arsenal_state_idle);
             statePill.setText("IDLE");
             statePill.setBackgroundResource(R.drawable.chip_pill_warn);
-            statePill.setTextColor(0xFFEF6C00);
+            statePill.setTextColor(0xFF9E94C6);
         }
         StringBuilder detail = new StringBuilder();
         detail.append("udc=").append(caps.udcName == null ? "—" : caps.udcName)
@@ -145,16 +145,25 @@ public class UsbArsenalFragment extends Fragment implements GadgetProfileAdapter
     public void onApply(@NonNull GadgetProfile profile) {
         statePill.setText("APPLY");
         statePill.setBackgroundResource(R.drawable.chip_pill_warn);
-        statePill.setTextColor(0xFFEF6C00);
+        statePill.setTextColor(0xFF9E94C6);
         new Thread(() -> {
             boolean teardownOk = controller.teardown();
             boolean ok = controller.apply(profile);
+            String error = controller.lastError();
+            java.util.List<String> substitutions = controller.lastWarnings();
             GadgetState state = controller.readState();
             HidCapabilities caps = new HidCapabilityProbe(requireContext()).probe();
             requireActivity().runOnUiThread(() -> {
                 bindState(caps, state);
                 if (ok && state.boundUdc != null) {
-                    core.toaster(getString(R.string.arsenal_apply_ok, state.boundUdc));
+                    String msg = getString(R.string.arsenal_apply_ok, state.boundUdc);
+                    if (!substitutions.isEmpty()) {
+                        msg += "\n" + getString(R.string.arsenal_apply_substituted,
+                                android.text.TextUtils.join(", ", substitutions));
+                    }
+                    core.toaster(msg);
+                } else if (error != null) {
+                    core.toaster(getString(R.string.arsenal_apply_failed_reason, error));
                 } else {
                     core.toaster(getString(R.string.arsenal_apply_failed));
                 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="ch_inset_pad" type="id" />
+    <item name="ch_inset_clip" type="id" />
+    <item name="ch_inset_margin" type="id" />
+    <item name="ch_inset_lifted" type="id" />
+</resources>

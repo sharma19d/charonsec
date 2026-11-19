@@ -10,8 +10,11 @@ import com.zalexdev.stryker.hid.capability.HidCapabilityProbe;
 import com.zalexdev.stryker.utils.Core;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public final class UsbGadgetController {
@@ -26,8 +29,15 @@ public final class UsbGadgetController {
     private static final String MOUSE_DESC_HEX =
             "05010902a1010901a10005091901290315002501950375018102950175058103050109300931093815018127950375088106c0c0";
 
+    private static final String OK_MARK = "__STRYKER_OK__";
+    private static final String ERR_MARK = "__STRYKER_ERR__";
+    private static final String FN_MARK = "__STRYKER_FN__";
+
     private final Core core;
     private final HidCapabilityProbe probe;
+
+    @Nullable private volatile String lastError;
+    private final List<String> lastWarnings = Collections.synchronizedList(new ArrayList<>());
 
     public UsbGadgetController(Context context) {
         this.core = new Core(context);
@@ -38,6 +48,20 @@ public final class UsbGadgetController {
         return probe.probe();
     }
 
+    /** Human-readable reason the last {@link #prepare}/{@link #apply} failed, if known. */
+    @Nullable
+    public String lastError() {
+        return lastError;
+    }
+
+    /** Substitutions made by the last {@link #prepare}, e.g. "acm → gser.0". */
+    @NonNull
+    public List<String> lastWarnings() {
+        synchronized (lastWarnings) {
+            return new ArrayList<>(lastWarnings);
+        }
+    }
+
     @NonNull
     public GadgetState readState() {
         boolean exists = pathExists(GADGET_BASE);
@@ -46,8 +70,11 @@ public final class UsbGadgetController {
         Set<GadgetFunction> linked = EnumSet.noneOf(GadgetFunction.class);
         if (exists) {
             for (GadgetFunction f : GadgetFunction.values()) {
-                if (pathExists(GADGET_BASE + "/configs/c.1/" + f.functionDir)) {
-                    linked.add(f);
+                for (String dir : f.candidateDirs()) {
+                    if (pathExists(GADGET_BASE + "/configs/c.1/" + dir)) {
+                        linked.add(f);
+                        break;
+                    }
                 }
             }
         }
@@ -58,51 +85,85 @@ public final class UsbGadgetController {
     }
 
     public boolean prepare(@NonNull GadgetProfile profile) {
-        if (!core.checkRoot()) return false;
-        List<String> script = new ArrayList<>();
-        script.add("set -e");
-        script.add("mkdir -p " + sq(GADGET_BASE));
-        script.add("mkdir -p " + sq(GADGET_BASE + "/configs/c.1"));
-        script.add("mkdir -p " + sq(GADGET_BASE + "/configs/c.1/strings/0x409"));
-        script.add("mkdir -p " + sq(GADGET_BASE + "/strings/0x409"));
-        script.add("echo " + sq(profile.idVendor) + " > " + sq(GADGET_BASE + "/idVendor"));
-        script.add("echo " + sq(profile.idProduct) + " > " + sq(GADGET_BASE + "/idProduct"));
-        script.add("echo 0x0200 > " + sq(GADGET_BASE + "/bcdUSB"));
-        script.add("echo " + sq(profile.manufacturer) + " > " + sq(GADGET_BASE + "/strings/0x409/manufacturer"));
-        script.add("echo " + sq(profile.productName) + " > " + sq(GADGET_BASE + "/strings/0x409/product"));
-        script.add("echo " + sq(profile.serialNumber) + " > " + sq(GADGET_BASE + "/strings/0x409/serialnumber"));
-        script.add("echo " + sq(profile.configurationLabel) + " > "
+        lastError = null;
+        lastWarnings.clear();
+        if (!core.checkRoot()) {
+            lastError = "root access denied";
+            return false;
+        }
+        List<String> base = new ArrayList<>();
+        base.add("mkdir -p " + sq(GADGET_BASE));
+        base.add("mkdir -p " + sq(GADGET_BASE + "/configs/c.1"));
+        base.add("mkdir -p " + sq(GADGET_BASE + "/configs/c.1/strings/0x409"));
+        base.add("mkdir -p " + sq(GADGET_BASE + "/strings/0x409"));
+        base.add("echo " + sq(profile.idVendor) + " > " + sq(GADGET_BASE + "/idVendor"));
+        base.add("echo " + sq(profile.idProduct) + " > " + sq(GADGET_BASE + "/idProduct"));
+        base.add("echo 0x0200 > " + sq(GADGET_BASE + "/bcdUSB"));
+        base.add("echo " + sq(profile.manufacturer) + " > " + sq(GADGET_BASE + "/strings/0x409/manufacturer"));
+        base.add("echo " + sq(profile.productName) + " > " + sq(GADGET_BASE + "/strings/0x409/product"));
+        base.add("echo " + sq(profile.serialNumber) + " > " + sq(GADGET_BASE + "/strings/0x409/serialnumber"));
+        base.add("echo " + sq(profile.configurationLabel) + " > "
                 + sq(GADGET_BASE + "/configs/c.1/strings/0x409/configuration"));
-        script.add("echo 120 > " + sq(GADGET_BASE + "/configs/c.1/MaxPower"));
+        base.add("echo 120 > " + sq(GADGET_BASE + "/configs/c.1/MaxPower"));
+        if (!runChecked(base)) return false;
 
-        if (profile.functions.contains(GadgetFunction.HID_KEYBOARD)) {
-            script.addAll(prepareHidKeyboard());
-        }
-        if (profile.functions.contains(GadgetFunction.HID_MOUSE)) {
-            script.addAll(prepareHidMouse());
-        }
-        if (profile.functions.contains(GadgetFunction.MASS_STORAGE)) {
-            script.addAll(prepareMassStorage(profile.massStorageImage,
-                    profile.massStorageReadOnly, profile.massStorageCdrom,
-                    profile.inquiryString));
-        }
-        if (profile.functions.contains(GadgetFunction.RNDIS)) {
-            script.addAll(prepareRndis());
-        }
-        if (profile.functions.contains(GadgetFunction.ACM)) {
-            script.addAll(prepareAcm());
-        }
-        if (profile.functions.contains(GadgetFunction.ECM)) {
-            script.addAll(prepareEcm());
-        }
-
+        // Function types depend on the kernel config, so create each one up
+        // front and fall back to an equivalent type when it is not built in.
+        Map<GadgetFunction, String> dirs = new EnumMap<>(GadgetFunction.class);
         for (GadgetFunction f : profile.functions) {
-            String link = GADGET_BASE + "/configs/c.1/" + f.functionDir;
-            script.add("[ -e " + sq(link) + " ] || ln -s "
-                    + sq(GADGET_BASE + "/functions/" + f.functionDir) + " " + sq(link));
+            String dir = createFunction(f);
+            if (dir == null) {
+                lastError = "kernel has no USB gadget function for " + f.key
+                        + " (tried " + String.join(", ", f.candidateDirs()) + ")";
+                return false;
+            }
+            if (!dir.equals(f.functionDir)) {
+                lastWarnings.add(f.key + " → " + dir);
+            }
+            dirs.put(f, dir);
         }
 
-        return run(script);
+        List<String> script = new ArrayList<>();
+        if (dirs.containsKey(GadgetFunction.HID_KEYBOARD)) {
+            script.addAll(prepareHidKeyboard(dirs.get(GadgetFunction.HID_KEYBOARD)));
+        }
+        if (dirs.containsKey(GadgetFunction.HID_MOUSE)) {
+            script.addAll(prepareHidMouse(dirs.get(GadgetFunction.HID_MOUSE)));
+        }
+        if (dirs.containsKey(GadgetFunction.MASS_STORAGE)) {
+            script.addAll(prepareMassStorage(dirs.get(GadgetFunction.MASS_STORAGE),
+                    profile.massStorageImage, profile.massStorageReadOnly,
+                    profile.massStorageCdrom, profile.inquiryString));
+        }
+        if ("rndis.usb0".equals(dirs.get(GadgetFunction.RNDIS))) {
+            script.addAll(prepareRndis(dirs.get(GadgetFunction.RNDIS)));
+        }
+
+        for (String dir : dirs.values()) {
+            String link = GADGET_BASE + "/configs/c.1/" + dir;
+            script.add("[ -e " + sq(link) + " ] || ln -s "
+                    + sq(GADGET_BASE + "/functions/" + dir) + " " + sq(link));
+        }
+
+        return runChecked(script);
+    }
+
+    /** Creates the first supported function dir for {@code f}; returns its name or null. */
+    @Nullable
+    private String createFunction(@NonNull GadgetFunction f) {
+        StringBuilder sb = new StringBuilder("for d in");
+        for (String d : f.candidateDirs()) sb.append(' ').append(sq(d));
+        sb.append("; do mkdir -p ").append(sq(GADGET_BASE + "/functions")).append("/\"$d\" 2>/dev/null")
+                .append(" && { echo ").append(FN_MARK).append("\"$d\"; break; }; done");
+        for (String line : core.customCommand(sb.toString(), true)) {
+            if (line == null) continue;
+            int i = line.indexOf(FN_MARK);
+            if (i >= 0) {
+                String dir = line.substring(i + FN_MARK.length()).trim();
+                if (!dir.isEmpty()) return dir;
+            }
+        }
+        return null;
     }
 
     @Nullable
@@ -110,10 +171,16 @@ public final class UsbGadgetController {
         String udc = capabilities().udcName;
         if (udc == null) return null;
         List<String> script = new ArrayList<>();
-        script.add("if [ -s " + sq(VENDOR_GADGET + "/UDC") + " ]; then "
-                + "echo > " + sq(VENDOR_GADGET + "/UDC") + " || true; fi");
-        script.add("echo " + sq(udc) + " > " + sq(GADGET_BASE + "/UDC"));
+        // Vendor init keeps retrying to rebind its own gadget, so it can grab
+        // the controller between our unbind of g1 and our bind; retry.
+        script.add("for i in 1 2 3 4 5; do");
+        script.add("  if [ -s " + sq(VENDOR_GADGET + "/UDC") + " ]; then "
+                + "echo > " + sq(VENDOR_GADGET + "/UDC") + " 2>/dev/null || true; fi");
+        script.add("  echo " + sq(udc) + " > " + sq(GADGET_BASE + "/UDC") + " 2>/dev/null && break");
+        script.add("  sleep 0.3");
+        script.add("done");
         script.add("sleep 1");
+        script.add("[ \"$(cat " + sq(GADGET_BASE + "/UDC") + ")\" = " + sq(udc) + " ] || exit 1");
         if (run(script)) {
             chmodHidNodes();
             return udc;
@@ -154,6 +221,7 @@ public final class UsbGadgetController {
         }
         String udc = bind();
         if (udc == null) {
+            if (lastError == null) lastError = "could not bind gadget to the USB controller";
             unbind();
             return false;
         }
@@ -178,10 +246,9 @@ public final class UsbGadgetController {
         core.customCommand("chmod 0666 /dev/hidg0 /dev/hidg1 2>/dev/null", true);
     }
 
-    private List<String> prepareHidKeyboard() {
+    private List<String> prepareHidKeyboard(String fnDir) {
         List<String> s = new ArrayList<>();
-        String dir = GADGET_BASE + "/functions/hid.keyboard";
-        s.add("mkdir -p " + sq(dir));
+        String dir = GADGET_BASE + "/functions/" + fnDir;
         s.add("echo 1 > " + sq(dir + "/protocol"));
         s.add("echo 1 > " + sq(dir + "/subclass"));
         s.add("echo 8 > " + sq(dir + "/report_length"));
@@ -189,10 +256,9 @@ public final class UsbGadgetController {
         return s;
     }
 
-    private List<String> prepareHidMouse() {
+    private List<String> prepareHidMouse(String fnDir) {
         List<String> s = new ArrayList<>();
-        String dir = GADGET_BASE + "/functions/hid.mouse";
-        s.add("mkdir -p " + sq(dir));
+        String dir = GADGET_BASE + "/functions/" + fnDir;
         s.add("echo 2 > " + sq(dir + "/protocol"));
         s.add("echo 1 > " + sq(dir + "/subclass"));
         s.add("echo 4 > " + sq(dir + "/report_length"));
@@ -200,44 +266,67 @@ public final class UsbGadgetController {
         return s;
     }
 
-    private List<String> prepareMassStorage(@Nullable String image,
+    private List<String> prepareMassStorage(String fnDir,
+                                            @Nullable String image,
                                             boolean readOnly,
                                             boolean cdrom,
                                             @Nullable String inquiry) {
         List<String> s = new ArrayList<>();
-        String dir = GADGET_BASE + "/functions/mass_storage.0";
-        s.add("mkdir -p " + sq(dir));
-        s.add("echo 1 > " + sq(dir + "/stall"));
+        String dir = GADGET_BASE + "/functions/" + fnDir;
+        s.add(optional("echo 1 > " + sq(dir + "/stall")));
         s.add("echo " + (cdrom ? "1" : "0") + " > " + sq(dir + "/lun.0/cdrom"));
         s.add("echo " + (readOnly ? "1" : "0") + " > " + sq(dir + "/lun.0/ro"));
-        s.add("echo 0 > " + sq(dir + "/lun.0/nofua"));
-        s.add("echo 0 > " + sq(dir + "/lun.0/removable"));
+        s.add(optional("echo 0 > " + sq(dir + "/lun.0/nofua")));
+        s.add(optional("echo 0 > " + sq(dir + "/lun.0/removable")));
         if (image != null && !image.isEmpty()) {
             s.add("echo " + sq(image) + " > " + sq(dir + "/lun.0/file"));
         }
         if (inquiry != null && !inquiry.isEmpty()) {
-            s.add("echo " + sq(inquiry) + " > " + sq(dir + "/lun.0/inquiry_string"));
+            // inquiry_string only exists on kernels >= 4.13.
+            s.add(optional("echo " + sq(inquiry) + " > " + sq(dir + "/lun.0/inquiry_string")));
         }
         return s;
     }
 
-    private List<String> prepareRndis() {
+    /** Wraps an attribute write that older kernels may not expose. */
+    private static String optional(String cmd) {
+        return "{ " + cmd + "; } 2>/dev/null || true";
+    }
+
+    private List<String> prepareRndis(String fnDir) {
         List<String> s = new ArrayList<>();
-        String dir = GADGET_BASE + "/functions/rndis.usb0";
-        s.add("mkdir -p " + sq(dir));
+        String dir = GADGET_BASE + "/functions/" + fnDir;
         s.add("echo RNDIS > " + sq(dir + "/os_desc/interface.rndis/compatible_id") + " 2>/dev/null || true");
         s.add("echo 5162001 > " + sq(dir + "/os_desc/interface.rndis/sub_compatible_id") + " 2>/dev/null || true");
         return s;
     }
 
-    private List<String> prepareAcm() {
-        return java.util.Collections.singletonList(
-                "mkdir -p " + sq(GADGET_BASE + "/functions/acm.0"));
-    }
-
-    private List<String> prepareEcm() {
-        return java.util.Collections.singletonList(
-                "mkdir -p " + sq(GADGET_BASE + "/functions/ecm.usb0"));
+    /**
+     * Runs each command in order, stopping at the first failure and recording
+     * its shell error in {@link #lastError}.
+     */
+    private boolean runChecked(List<String> commands) {
+        StringBuilder sb = new StringBuilder();
+        for (String c : commands) {
+            sb.append("{ ").append(c).append("\n} 2>&1 || { echo ").append(ERR_MARK)
+                    .append(' ').append(sq(c)).append("; exit 1; }\n");
+        }
+        sb.append("echo ").append(OK_MARK).append('\n');
+        List<String> out = core.customCommand(sb.toString(), true);
+        String prev = null;
+        for (String line : out) {
+            if (line == null) continue;
+            if (line.contains(OK_MARK)) return true;
+            int i = line.indexOf(ERR_MARK);
+            if (i >= 0) {
+                String cmd = line.substring(i + ERR_MARK.length()).trim();
+                lastError = prev != null && !prev.trim().isEmpty() ? prev.trim() : "failed: " + cmd;
+                return false;
+            }
+            prev = line;
+        }
+        if (lastError == null) lastError = "root shell returned no result";
+        return false;
     }
 
     private boolean run(List<String> commands) {
@@ -245,10 +334,10 @@ public final class UsbGadgetController {
         for (String c : commands) {
             sb.append(c).append('\n');
         }
-        sb.append("echo __STRYKER_OK__\n");
+        sb.append("echo ").append(OK_MARK).append('\n');
         List<String> out = core.customCommand(sb.toString(), true);
         for (String line : out) {
-            if (line != null && line.contains("__STRYKER_OK__")) return true;
+            if (line != null && line.contains(OK_MARK)) return true;
         }
         return false;
     }

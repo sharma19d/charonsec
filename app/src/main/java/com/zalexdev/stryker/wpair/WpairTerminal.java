@@ -363,8 +363,8 @@ public class WpairTerminal extends Fragment {
                     h.body.setTextColor(0xFFFFA198);
                     break;
                 case "OUT":
-                    h.tag.setTextColor(0xFF7EE787);
-                    h.body.setTextColor(0xFFE6EDF3);
+                    h.tag.setTextColor(0xFF6CC79E);
+                    h.body.setTextColor(0xFFE7E4EF);
                     break;
                 case "INFO":
                 default:

@@ -87,7 +87,6 @@
             android:clickable="true"
             android:focusable="true"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="14dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -237,7 +236,7 @@
                 android:backgroundTint="@color/stryker_accent"
                 android:text="@string/save"
                 android:textColor="@android:color/white"
-                app:cornerRadius="14dp"
+                app:cornerRadius="2dp"
                 app:icon="@drawable/save"
                 app:iconTint="@android:color/white" />
         </LinearLayout>

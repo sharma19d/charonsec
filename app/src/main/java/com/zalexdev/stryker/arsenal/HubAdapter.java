@@ -54,7 +54,7 @@ public class HubAdapter extends RecyclerView.Adapter<HubAdapter.VH> {
             h.badge.setVisibility(View.VISIBLE);
             h.badge.setText(R.string.arsenal_hub_badge_system);
             h.badge.setBackgroundResource(R.drawable.arsenal_chip_blue);
-            h.badge.setTextColor(0xFF0D47A1);
+            h.badge.setTextColor(0xFF9E94C6);
         } else {
             h.badge.setVisibility(View.GONE);
         }
@@ -63,7 +63,7 @@ public class HubAdapter extends RecyclerView.Adapter<HubAdapter.VH> {
         if ("Python".equalsIgnoreCase(exploit.getLang())) {
             tint = ContextCompat.getColor(context, R.color.stryker_accent);
         } else {
-            tint = 0xFF6A1B9A;
+            tint = 0xFF9E94C6;
         }
         h.icon.setColorFilter(tint);
         h.action.setColorFilter(tint);

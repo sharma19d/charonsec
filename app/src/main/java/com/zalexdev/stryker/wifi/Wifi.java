@@ -119,6 +119,7 @@ public class Wifi extends Fragment {
         mRecyclerView = view.findViewById(R.id.wifilist);
         refresh = view.findViewById(R.id.refresh);
         img = view.findViewById(R.id.scan_img);
+        tintScanAnimation();
         text1 = view.findViewById(R.id.scan_text);
         textSub = view.findViewById(R.id.scan_subtext);
         tryagain = view.findViewById(R.id.try_again);
@@ -145,7 +146,7 @@ public class Wifi extends Fragment {
 
         refresh.setColorSchemeColors(
                 getResources().getColor(R.color.stryker_accent),
-                0xFFAB47BC);
+                0xFF9E94C6);
         refresh.setOnRefreshListener(this::scan);
 
         View statusRow = view.findViewById(R.id.wifi_status_row);
@@ -189,6 +190,15 @@ public class Wifi extends Fragment {
 
     private static final int IFACE_WAIT_TRIES = 60;
 
+    /** The scan animation is a single-colour icon: draw it in the accent colour. */
+    private void tintScanAnimation() {
+        if (img == null) return;
+        int color = androidx.core.content.ContextCompat.getColor(img.getContext(), R.color.ch_signal);
+        img.addValueCallback(new com.airbnb.lottie.model.KeyPath("**"),
+                com.airbnb.lottie.LottieProperty.COLOR_FILTER,
+                new com.airbnb.lottie.value.LottieValueCallback<>(new com.airbnb.lottie.SimpleColorFilter(color)));
+    }
+
     public void scan() {
         if (context == null) return;
         fab.hide();
@@ -196,6 +206,7 @@ public class Wifi extends Fragment {
         renderListState(false);
         if (img != null) {
             img.setAnimation(R.raw.wifi_scan);
+            tintScanAnimation();
             img.playAnimation();
         }
         text1.setText(R.string.scanning_wifi);

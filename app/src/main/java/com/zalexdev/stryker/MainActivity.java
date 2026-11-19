@@ -23,8 +23,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -75,18 +73,17 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_OPEN_UPDATE = "open_update";
 
     private static TextView logo;
+    private static com.zalexdev.stryker.ui.nav.CharonNav nav;
     private static ImageView menu;
     private static ImageView settings;
     private static int lastSelectedItemId = 0;
     private Core core;
     private static FragmentManager fragmentManager;
     private TempFragment tempFragment;
-    private static final HashMap<Integer, View> drawerRows = new HashMap<>();
     private static volatile boolean rootlessEngine;
     private static volatile boolean vmReady;
     private boolean engineWatchPending;
     private View engineStatusView;
-    private DrawerLayout engineStatusDrawer;
     private static final java.util.LinkedHashMap<Integer, DrawerSpec> DRAWER_SPECS = buildDrawerSpecs();
     private static final java.util.Set<Integer> ROOT_ONLY_IDS = new java.util.HashSet<>(java.util.Arrays.asList(
             R.id.hid_item, R.id.usb_arsenal_item, R.id.macchanger_item));
@@ -122,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         fragmentManager = getSupportFragmentManager();
+        com.zalexdev.stryker.ui.glass.GlassBarLayout glass = findViewById(R.id.nav_glass);
+        View contentHost = findViewById(R.id.flContent);
+        glass.setSource(contentHost);
+        new com.zalexdev.stryker.ui.glass.BottomInsetManager(contentHost, glass).attach(fragmentManager);
         fragmentManager.beginTransaction().replace(R.id.flContent, new Initializing()).commit();
         settings = findViewById(R.id.settings_icon);
         settings.setOnClickListener(view -> {
@@ -142,48 +143,26 @@ public class MainActivity extends AppCompatActivity {
 
         runLaunchFlow();
 
-        DrawerLayout drawer = findViewById(R.id.drawerLayout);
-
         logo = findViewById(R.id.stryker_main_logo);
         menu = findViewById(R.id.menu_img);
-        menu.setOnClickListener(view -> {
-            if (core != null) {
-                if (core.getBoolean("nav_type")) {
-                    drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-                } else {
-                    drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    if (drawer.isDrawerOpen(GravityCompat.START)) {
-                        drawer.closeDrawer(GravityCompat.START);
-                    } else {
-                        drawer.openDrawer(GravityCompat.START);
-                    }
-                }
-            }
+
+        View header = findViewById(R.id.main_header);
+        engineStatusView = header;
+        header.findViewById(R.id.engine_pill).setOnClickListener(v -> {
+            Fragment cur = getSupportFragmentManager().findFragmentById(R.id.flContent);
+            if (cur instanceof SettingsNew) settings.setImageDrawable(
+                    ContextCompat.getDrawable(this, R.drawable.settings));
+            receiver.changeFragment(R.id.dasboard_item);
         });
 
-        View navView = findViewById(R.id.nav_view);
-        wireDrawerRows(navView, drawer);
-
-        View menuCloseDrawer = navView.findViewById(R.id.menu_close_drawer);
-        menuCloseDrawer.setOnClickListener(v -> {
-            if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawers();
-        });
-
-        TextView arch = navView.findViewById(R.id.drawer_arch_badge);
-        if (arch != null) arch.setText("arm64");
-        engineStatusView = navView;
-        engineStatusDrawer = drawer;
-        drawer.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                refreshEngineStatus();
-                wireDrawerRows(navView, drawer);
-            }
-        });
+        nav = new com.zalexdev.stryker.ui.nav.CharonNav(this, navHost,
+                findViewById(R.id.nav_dial),
+                findViewById(R.id.nav_strip_scroll),
+                findViewById(R.id.nav_strip),
+                findViewById(R.id.nav_crumb));
+        applySystemInsets();
+        refreshNavLocks();
         refreshEngineStatus();
-
-        TextView versionTv = navView.findViewById(R.id.drawer_version);
-        if (versionTv != null) versionTv.setText("v" + BuildConfig.VERSION_NAME);
 
         if (lastSelectedItemId == 0) {
             receiver.changeFragmentQuiet(R.id.dasboard_item);
@@ -227,9 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 boolean changed = vmReady != es.ready;
                 vmReady = es.ready;
-                if (changed && engineStatusDrawer != null) {
-                    wireDrawerRows(navView, engineStatusDrawer);
-                }
+                if (changed) refreshNavLocks();
                 if (rootless && !es.ready && !engineWatchPending) {
                     engineWatchPending = true;
                     navView.postDelayed(() -> {
@@ -241,57 +218,69 @@ public class MainActivity extends AppCompatActivity {
         }, "drawer-engine-status").start();
     }
 
-    private void wireDrawerRows(View navView, DrawerLayout drawer) {
-        drawerRows.clear();
-        boolean rootless = core != null && core.isRootless();
-        rootlessEngine = rootless;
-
-        View rootNote = navView.findViewById(R.id.root_section_note);
-        if (rootNote != null) rootNote.setVisibility(rootless ? View.VISIBLE : View.GONE);
-
-        for (java.util.Map.Entry<Integer, DrawerSpec> e : DRAWER_SPECS.entrySet()) {
-            int rowId = e.getKey();
-            DrawerSpec spec = e.getValue();
-            View row = navView.findViewById(rowId);
-            if (row == null) continue;
-            TextView title = row.findViewById(R.id.row_title);
-            ImageView icon = row.findViewById(R.id.row_icon);
-            TextView badge = row.findViewById(R.id.row_badge);
-            if (title != null) title.setText(spec.title);
-            if (icon != null) {
-                icon.setImageResource(spec.iconRes);
-                icon.setColorFilter(ContextCompat.getColor(this, R.color.grey));
-            }
-            drawerRows.put(rowId, row);
-
-            boolean rootOnly = ROOT_ONLY_IDS.contains(rowId);
-            boolean needsVm = rootless && !vmReady && !VM_INDEPENDENT_IDS.contains(rowId);
-            boolean locked = rootless && (rootOnly || needsVm);
-
-            if (badge != null && rootOnly) {
-                badge.setText("ROOT");
-                badge.setTextColor(ContextCompat.getColor(this,
-                        locked ? R.color.grey : R.color.red));
-                badge.setVisibility(View.VISIBLE);
-            }
-
-            if (locked) {
-                final String why = rootOnly
-                        ? spec.title + " needs root hardware — unavailable on the rootless VM"
-                        : spec.title + " needs the VM — start it from the dashboard first";
-                row.setAlpha(0.45f);
-                row.setOnClickListener(v -> android.widget.Toast.makeText(this, why,
-                        android.widget.Toast.LENGTH_SHORT).show());
-            } else {
-                row.setAlpha(1f);
-                row.setOnClickListener(v -> {
-                    if (drawer.isDrawerOpen(GravityCompat.START)) drawer.closeDrawers();
-                    settings.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.settings));
-                    receiver.changeFragment(rowId);
-                });
-            }
-        }
+    private void refreshNavLocks() {
+        rootlessEngine = core != null && core.isRootless();
+        if (nav != null) nav.refreshLocks();
         if (lastSelectedItemId != 0) receiver.changeFragmentQuiet(lastSelectedItemId);
+    }
+
+    private static boolean isItemLocked(int itemId) {
+        if (!rootlessEngine) return false;
+        return ROOT_ONLY_IDS.contains(itemId)
+                || (!vmReady && !VM_INDEPENDENT_IDS.contains(itemId));
+    }
+
+    private static String lockReasonFor(int itemId) {
+        DrawerSpec spec = DRAWER_SPECS.get(itemId);
+        String name = spec == null ? "This tool" : spec.title;
+        return ROOT_ONLY_IDS.contains(itemId)
+                ? name + " needs root hardware — unavailable on the rootless VM"
+                : name + " needs the VM — start it from the dashboard first";
+    }
+
+    private final com.zalexdev.stryker.ui.nav.CharonNav.Host navHost =
+            new com.zalexdev.stryker.ui.nav.CharonNav.Host() {
+                @Override
+                public void open(int itemId, int direction) {
+                    Fragment cur = getSupportFragmentManager().findFragmentById(R.id.flContent);
+                    if (cur instanceof SettingsNew) settings.setImageDrawable(
+                            ContextCompat.getDrawable(MainActivity.this, R.drawable.settings));
+                    if (direction > 0) {
+                        receiver.changeFragment(itemId, R.anim.ch_in_right, R.anim.ch_out_left);
+                    } else if (direction < 0) {
+                        receiver.changeFragment(itemId, R.anim.ch_in_left, R.anim.ch_out_right);
+                    } else {
+                        receiver.changeFragment(itemId);
+                    }
+                }
+
+                @Override
+                public boolean isLocked(int itemId) {
+                    return isItemLocked(itemId);
+                }
+
+                @Override
+                public String lockReason(int itemId) {
+                    return lockReasonFor(itemId);
+                }
+
+                @Override
+                public String titleOf(int itemId) {
+                    DrawerSpec spec = DRAWER_SPECS.get(itemId);
+                    return spec == null ? getString(R.string.app_name) : spec.title;
+                }
+            };
+
+    /** Android 15+ draws edge-to-edge: keep the header below the status bar and the dial above the nav bar. */
+    private void applySystemInsets() {
+        View root = findViewById(R.id.main_root);
+        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            androidx.core.graphics.Insets bars = insets.getInsets(
+                    androidx.core.view.WindowInsetsCompat.Type.systemBars()
+                            | androidx.core.view.WindowInsetsCompat.Type.displayCutout());
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
+            return insets;
+        });
     }
 
     public MetasploitUtils getMetasploitUtils() {
@@ -668,7 +657,7 @@ public class MainActivity extends AppCompatActivity {
                 .setCustomAnimations(R.anim.settings_open_enter, R.anim.settings_open_exit)
                 .replace(R.id.flContent, new SettingsNew())
                 .commit();
-        receiver.changeFragmentQuiet(R.id.dasboard_item);
+        logo.setText(R.string.settings_title);
     }
 
     private void closeSettings() {
@@ -688,15 +677,8 @@ public class MainActivity extends AppCompatActivity {
         }
         if (fm.getBackStackEntryCount() > 0) {
             fm.popBackStack();
-        } else {
-            if (core != null && !core.getBoolean("nav_type")) {
-                DrawerLayout drawer = findViewById(R.id.drawerLayout);
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                } else {
-                    drawer.openDrawer(GravityCompat.START);
-                }
-            }
+        } else if (nav == null || !nav.onBack()) {
+            super.onBackPressed();
         }
     }
 
@@ -741,7 +723,8 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint("SetTextI18n")
         @Override
         public void restoreTitle() {
-            logo.setText("StrykerOSS");
+            logo.setText(nav != null ? nav.currentTitle()
+                    : logo.getContext().getString(R.string.app_name));
         }
 
         @Override
@@ -752,9 +735,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void setToolBarMenuEnabled(boolean bool) {
             menu.setEnabled(bool);
-            menu.setAlpha(bool ? 1f : .75f);
             settings.setEnabled(bool);
-            settings.setAlpha(bool ? 1f : .75f);
+            settings.setAlpha(bool ? 1f : .5f);
+            if (nav != null) nav.setEnabled(bool);
         }
 
         @Override
@@ -764,35 +747,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void changeFragmentQuiet(int itemId) {
-            View prev = drawerRows.get(lastSelectedItemId);
-            if (prev != null) styleDrawerRow(prev, false, lastSelectedItemId);
-            View next = drawerRows.get(itemId);
-            if (next != null) styleDrawerRow(next, true, itemId);
             lastSelectedItemId = itemId;
-        }
-
-        private void styleDrawerRow(View row, boolean active, int itemId) {
-            row.setActivated(active);
-            Context ctx = row.getContext();
-            TextView title = row.findViewById(R.id.row_title);
-            ImageView icon = row.findViewById(R.id.row_icon);
-            DrawerSpec spec = DRAWER_SPECS.get(itemId);
-            if (active) {
-                if (title != null) {
-                    title.setTextColor(ContextCompat.getColor(ctx, R.color.stryker_accent));
-                    title.setTypeface(null, android.graphics.Typeface.BOLD);
-                }
-                if (icon != null && spec != null) {
-                    icon.setColorFilter(spec.activeTint);
-                }
-            } else {
-                if (title != null) {
-                    title.setTextColor(ContextCompat.getColor(ctx, R.color.night_contrast));
-                    title.setTypeface(null, android.graphics.Typeface.NORMAL);
-                }
-                if (icon != null) {
-                    icon.setColorFilter(ContextCompat.getColor(ctx, R.color.grey));
-                }
+            if (nav != null) {
+                nav.reflect(itemId);
+                if (logo != null && itemId != R.id.terminal_item) logo.setText(nav.currentTitle());
             }
         }
 
@@ -897,25 +855,25 @@ public class MainActivity extends AppCompatActivity {
 
     private static java.util.LinkedHashMap<Integer, DrawerSpec> buildDrawerSpecs() {
         java.util.LinkedHashMap<Integer, DrawerSpec> m = new java.util.LinkedHashMap<>();
-        m.put(R.id.dasboard_item,     new DrawerSpec("Dashboard",        R.drawable.home,        0xFF1565C0));
-        m.put(R.id.terminal_item,     new DrawerSpec("Terminal",         R.drawable.terminal,    0xFF1565C0));
-        m.put(R.id.logs_item,         new DrawerSpec("Logs",             R.drawable.bug_report,  0xFF1565C0));
-        m.put(R.id.wifi_item,         new DrawerSpec("WiFi networks",    R.drawable.wifi,        0xFF1565C0));
-        m.put(R.id.hs_item,           new DrawerSpec("Handshakes",       R.drawable.storage,     0xFF00897B));
-        m.put(R.id.macchanger_item,   new DrawerSpec("MAC changer",      R.drawable.password,    0xFF1565C0));
-        m.put(R.id.wpair_item,        new DrawerSpec("WhisperPair (BLE)", R.drawable.wpair,      0xFF3949AB));
-        m.put(R.id.lan_item,          new DrawerSpec("Local network",    R.drawable.lan,         0xFFAB47BC));
-        m.put(R.id.nmap_item,         new DrawerSpec("Nmap",             R.drawable.scanner,     0xFFAB47BC));
-        m.put(R.id.nuclei_item,       new DrawerSpec("Web scanner",      R.drawable.webscan,     0xFF3949AB));
-        m.put(R.id.arsenal_item,      new DrawerSpec("Arsenal",          R.drawable.motion_blur, 0xFFEF6C00));
-        m.put(R.id.hid_item,          new DrawerSpec("HID Attacks",      R.drawable.keyboard,    0xFFC62828));
-        m.put(R.id.metasploit_item,   new DrawerSpec("Metasploit",       R.drawable.shield,      0xFFC62828));
-        m.put(R.id.wordlists_item,    new DrawerSpec("Wordlists",        R.drawable.summarize,   0xFF5E35B1));
-        m.put(R.id.geomac_item,       new DrawerSpec("GeoMac",           R.drawable.map,         0xFF00838F));
-        m.put(R.id.vnc_item,          new DrawerSpec("VNC desktop",      R.drawable.vnc,         0xFF5E35B1));
-        m.put(R.id.usb_arsenal_item,  new DrawerSpec("USB Arsenal",      R.drawable.usb,         0xFF1565C0));
-        m.put(R.id.manager_item,      new DrawerSpec("Core manager",     R.drawable.tune,        0xFF5E35B1));
-        m.put(R.id.about_item,        new DrawerSpec("About",            R.drawable.info_outlined, 0xFF1565C0));
+        m.put(R.id.dasboard_item,     new DrawerSpec("Dashboard",        R.drawable.home,        0xFF9E94C6));
+        m.put(R.id.terminal_item,     new DrawerSpec("Terminal",         R.drawable.terminal,    0xFF9E94C6));
+        m.put(R.id.logs_item,         new DrawerSpec("Logs",             R.drawable.bug_report,  0xFF9E94C6));
+        m.put(R.id.wifi_item,         new DrawerSpec("WiFi",             R.drawable.wifi,        0xFF9E94C6));
+        m.put(R.id.hs_item,           new DrawerSpec("Handshakes",       R.drawable.storage,     0xFF9E94C6));
+        m.put(R.id.macchanger_item,   new DrawerSpec("MAC changer",      R.drawable.password,    0xFF9E94C6));
+        m.put(R.id.wpair_item,        new DrawerSpec("WhisperPair", R.drawable.wpair,      0xFF9E94C6));
+        m.put(R.id.lan_item,          new DrawerSpec("Local network",    R.drawable.lan,         0xFF9E94C6));
+        m.put(R.id.nmap_item,         new DrawerSpec("Nmap",             R.drawable.scanner,     0xFF9E94C6));
+        m.put(R.id.nuclei_item,       new DrawerSpec("Web scanner",      R.drawable.webscan,     0xFF9E94C6));
+        m.put(R.id.arsenal_item,      new DrawerSpec("Arsenal",          R.drawable.motion_blur, 0xFF9E94C6));
+        m.put(R.id.hid_item,          new DrawerSpec("HID Attacks",      R.drawable.keyboard,    0xFF9E94C6));
+        m.put(R.id.metasploit_item,   new DrawerSpec("Metasploit",       R.drawable.shield,      0xFF9E94C6));
+        m.put(R.id.wordlists_item,    new DrawerSpec("Wordlists",        R.drawable.summarize,   0xFF9E94C6));
+        m.put(R.id.geomac_item,       new DrawerSpec("GeoMac",           R.drawable.map,         0xFF9E94C6));
+        m.put(R.id.vnc_item,          new DrawerSpec("VNC desktop",      R.drawable.vnc,         0xFF9E94C6));
+        m.put(R.id.usb_arsenal_item,  new DrawerSpec("USB Arsenal",      R.drawable.usb,         0xFF9E94C6));
+        m.put(R.id.manager_item,      new DrawerSpec("Core manager",     R.drawable.tune,        0xFF9E94C6));
+        m.put(R.id.about_item,        new DrawerSpec("About",            R.drawable.info_outlined, 0xFF9E94C6));
         return m;
     }
 }

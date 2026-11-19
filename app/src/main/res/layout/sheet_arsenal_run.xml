@@ -87,7 +87,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_lite_contrast"
-            app:cardCornerRadius="12dp"
             app:cardElevation="0dp">
 
             <com.google.android.material.textview.MaterialTextView
@@ -142,7 +141,7 @@
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
                 android:text="@string/arsenal_run_copy"
-                app:cornerRadius="14dp"
+                app:cornerRadius="2dp"
                 app:icon="@drawable/copy"
                 app:iconTint="@color/stryker_accent" />
 
@@ -155,7 +154,7 @@
                 android:backgroundTint="@color/stryker_accent"
                 android:text="@string/arsenal_run_launch"
                 android:textColor="@android:color/white"
-                app:cornerRadius="14dp"
+                app:cornerRadius="2dp"
                 app:icon="@drawable/rocket_launch"
                 app:iconTint="@android:color/white" />
         </LinearLayout>

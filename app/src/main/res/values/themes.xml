@@ -1,22 +1,83 @@
 <resources>
-    <style name="Theme.Stryker" parent="Theme.Material3.Light.NoActionBar">
-        <item name="colorPrimary">@color/stryker_accent</item>
-        <item name="colorPrimaryDark">?attr/colorSurface</item>
-        <item name="colorPrimaryVariant">@color/stryker_accent</item>
-        <item name="colorOnPrimary">@android:color/white</item>
-        <item name="colorSecondary">@color/stryker_accent</item>
-        <item name="colorSecondaryVariant">@color/stryker_accent_contrast</item>
-        <item name="colorOnSecondary">@color/stryker_accent_contrast</item>
-        <item name="android:navigationBarColor">@color/toolbar_color</item>
-        <item name="android:statusBarColor">@color/toolbar_color</item>
+    <!-- CharonSec: one dark "instrument" theme, independent of the system light/dark setting. -->
+    <style name="Theme.Stryker" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/ch_signal</item>
+        <item name="colorOnPrimary">@color/ch_on_signal</item>
+        <item name="colorPrimaryContainer">@color/ch_signal_soft</item>
+        <item name="colorOnPrimaryContainer">@color/ch_signal_hi</item>
+        <item name="colorPrimaryDark">@color/ch_ink_0</item>
+        <item name="colorPrimaryVariant">@color/ch_signal</item>
+        <item name="colorSecondary">@color/ch_signal</item>
+        <item name="colorOnSecondary">@color/ch_on_signal</item>
+        <item name="colorSecondaryContainer">@color/ch_ink_3</item>
+        <item name="colorOnSecondaryContainer">@color/ch_bone</item>
+        <item name="colorSecondaryVariant">@color/ch_signal_hi</item>
+        <item name="colorTertiary">@color/ch_live</item>
+        <item name="colorError">@color/ch_alert</item>
+        <item name="colorOnError">@color/ch_ink_0</item>
+
+        <item name="android:colorBackground">@color/ch_ink_0</item>
+        <item name="colorOnBackground">@color/ch_bone</item>
+        <item name="colorSurface">@color/ch_ink_1</item>
+        <item name="colorOnSurface">@color/ch_bone</item>
+        <item name="colorSurfaceVariant">@color/ch_ink_2</item>
+        <item name="colorOnSurfaceVariant">@color/ch_bone_dim</item>
+        <item name="colorSurfaceContainerLowest">@color/ch_ink_0</item>
+        <item name="colorSurfaceContainerLow">@color/ch_ink_1</item>
+        <item name="colorSurfaceContainer">@color/ch_ink_1</item>
+        <item name="colorSurfaceContainerHigh">@color/ch_ink_2</item>
+        <item name="colorSurfaceContainerHighest">@color/ch_ink_3</item>
+        <item name="colorSurfaceInverse">@color/ch_bone</item>
+        <item name="colorOnSurfaceInverse">@color/ch_ink_0</item>
+        <item name="colorOutline">@color/ch_line_strong</item>
+        <item name="colorOutlineVariant">@color/ch_line</item>
+
+        <item name="android:windowBackground">@color/ch_ink_0</item>
+        <item name="android:navigationBarColor">@color/ch_ink_0</item>
+        <item name="android:statusBarColor">@color/ch_ink_0</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:textColorPrimary">@color/ch_bone</item>
+        <item name="android:textColorSecondary">@color/ch_bone_dim</item>
+        <item name="android:textColorHint">@color/ch_bone_faint</item>
+        <item name="android:colorControlHighlight">#249E94C6</item>
+        <item name="colorControlActivated">@color/ch_signal</item>
+        <item name="android:fontFamily">@font/charon_body</item>
+        <item name="fontFamily">@font/charon_body</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Charon.Control</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Charon.Panel</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Charon.Dialog</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Charon.Control</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Charon.Control</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Charon.Panel</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Charon.Dialog</item>
+
         <item name="switchStyle">@style/Widget.Stryker.Switch</item>
         <item name="android:textViewStyle">@style/Widget.Stryker.TextView</item>
         <item name="android:buttonStyle">@style/Widget.Stryker.Button</item>
+        <item name="materialButtonStyle">@style/Widget.Stryker.Button</item>
         <item name="materialCardViewStyle">@style/Widget.Stryker.CardView</item>
         <item name="floatingActionButtonStyle">@style/Widget.Stryker.FAB</item>
+        <item name="extendedFloatingActionButtonStyle">@style/Widget.Charon.ExtendedFab</item>
         <item name="materialAlertDialogTheme">@style/Widget.Stryker.AlertDialog</item>
-        <item name="backgroundColor">#fff</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Stryker.BottomSheetDialog</item>
+        <item name="backgroundColor">@color/ch_ink_0</item>
+        <item name="viewInflaterClass">com.zalexdev.stryker.ui.CharonViewInflater</item>
     </style>
+
+    <style name="Widget.Charon.ExtendedFab" parent="Widget.Material3.ExtendedFloatingActionButton.Icon.Primary">
+        <item name="backgroundTint">@color/ch_signal</item>
+        <item name="android:textColor">@color/ch_on_signal</item>
+        <item name="iconTint">@color/ch_on_signal</item>
+        <item name="android:fontFamily">@font/charon_display</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Charon.Control</item>
+        <item name="elevation">0dp</item>
+    </style>
+
     <style name="Theme.StrykerFloatingDialog" parent="Theme.Stryker">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>

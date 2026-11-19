@@ -52,7 +52,7 @@
                 android:letterSpacing="0.08"
                 android:text="@string/tools_section_title"
                 android:textAllCaps="true"
-                android:textColor="#E53935"
+                android:textColor="@color/ch_signal"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -60,7 +60,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -89,7 +88,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -230,7 +228,7 @@
                 android:letterSpacing="0.08"
                 android:text="@string/core_mgr_section_search"
                 android:textAllCaps="true"
-                android:textColor="#AB47BC"
+                android:textColor="@color/ch_signal"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -238,7 +236,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -288,7 +285,6 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -337,7 +333,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">

@@ -212,7 +212,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_lite_contrast"
-            app:cardCornerRadius="10dp"
             app:cardElevation="0dp">
 
             <com.google.android.material.textview.MaterialTextView
@@ -241,7 +240,7 @@
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
                 android:text="@string/arsenal_db_view_source"
-                app:cornerRadius="14dp"
+                app:cornerRadius="2dp"
                 app:icon="@drawable/search"
                 app:iconTint="@color/stryker_accent" />
 
@@ -254,7 +253,7 @@
                 android:backgroundTint="@color/stryker_accent"
                 android:text="@string/arsenal_db_save_file"
                 android:textColor="@android:color/white"
-                app:cornerRadius="14dp"
+                app:cornerRadius="2dp"
                 app:icon="@drawable/save"
                 app:iconTint="@android:color/white" />
         </LinearLayout>
@@ -265,11 +264,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#FFF3E0"
+            android:backgroundTint="@color/ch_ink_2"
             android:text="@string/arsenal_db_add_to_hub"
-            android:textColor="#E65100"
-            app:cornerRadius="14dp"
+            android:textColor="@color/ch_signal"
+            app:cornerRadius="2dp"
             app:icon="@drawable/motion_blur"
-            app:iconTint="#E65100" />
+            app:iconTint="@color/ch_signal" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

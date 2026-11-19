@@ -71,7 +71,7 @@
                     android:paddingEnd="6dp"
                     android:paddingBottom="2dp"
                     android:text="@string/core_mgr_chip_apk"
-                    android:textColor="#1E88E5"
+                    android:textColor="@color/ch_signal"
                     android:textSize="9sp"
                     android:textStyle="bold" />
 
@@ -87,7 +87,7 @@
                     android:paddingEnd="6dp"
                     android:paddingBottom="2dp"
                     android:text="@string/core_mgr_chip_installed"
-                    android:textColor="#388E3C"
+                    android:textColor="@color/ch_live"
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:visibility="gone" />

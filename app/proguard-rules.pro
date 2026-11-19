@@ -96,3 +96,6 @@
 -keep class com.jcraft.jsch.** { *; }
 -keepclassmembers class com.jcraft.jsch.** { *; }
 -dontwarn com.jcraft.jsch.**
+
+# Instantiated by AppCompat from the theme attribute viewInflaterClass.
+-keep class com.zalexdev.stryker.ui.CharonViewInflater { <init>(); }

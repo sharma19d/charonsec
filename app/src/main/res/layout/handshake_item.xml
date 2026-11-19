@@ -31,7 +31,7 @@
                 android:layout_height="22dp"
                 android:layout_gravity="center"
                 android:src="@drawable/file"
-                app:tint="#FB8C00" />
+                app:tint="@color/ch_signal" />
         </FrameLayout>
 
         <LinearLayout
@@ -88,7 +88,7 @@
             android:paddingEnd="8dp"
             android:paddingBottom="3dp"
             android:text="@string/hs_state_idle"
-            android:textColor="#388E3C"
+            android:textColor="@color/ch_live"
             android:textSize="9sp"
             android:textStyle="bold"
             android:visibility="gone" />
@@ -116,7 +116,7 @@
             android:padding="9dp"
             android:src="@drawable/stop"
             android:visibility="gone"
-            app:tint="#D32F2F" />
+            app:tint="@color/ch_signal" />
 
         <ImageView
             android:id="@+id/hs_overflow"

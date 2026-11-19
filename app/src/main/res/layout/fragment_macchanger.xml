@@ -39,7 +39,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -66,7 +65,7 @@
                             android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/wifi"
-                            app:tint="#1565C0" />
+                            app:tint="@color/ch_signal" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -175,14 +174,14 @@
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:stateListAnimator="@null"
-                        app:cornerRadius="10dp"
+                        app:cornerRadius="2dp"
                         app:elevation="0dp"
                         app:icon="@drawable/copy"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
                         app:iconSize="18dp"
                         app:iconTint="@color/grey"
-                        app:rippleColor="#1A3949AB"
+                        app:rippleColor="#1A9E94C6"
                         app:strokeColor="@color/light_lite_contrast"
                         app:strokeWidth="1dp" />
                 </LinearLayout>
@@ -235,14 +234,14 @@
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:stateListAnimator="@null"
-                        app:cornerRadius="10dp"
+                        app:cornerRadius="2dp"
                         app:elevation="0dp"
                         app:icon="@drawable/copy"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
                         app:iconSize="18dp"
                         app:iconTint="@color/grey"
-                        app:rippleColor="#1A3949AB"
+                        app:rippleColor="#1A9E94C6"
                         app:strokeColor="@color/light_lite_contrast"
                         app:strokeWidth="1dp" />
                 </LinearLayout>
@@ -266,7 +265,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -401,7 +399,7 @@
             android:text="@string/mac_btn_change"
             android:textColor="@color/light_contrast"
             android:textSize="14sp"
-            app:cornerRadius="14dp"
+            app:cornerRadius="2dp"
             app:icon="@drawable/done"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
@@ -421,14 +419,14 @@
             android:text="@string/mac_btn_reset"
             android:textColor="@color/stryker_accent"
             android:textSize="14sp"
-            app:cornerRadius="14dp"
+            app:cornerRadius="2dp"
             app:elevation="0dp"
             app:icon="@drawable/ic_renew"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
             app:iconSize="18dp"
             app:iconTint="@color/stryker_accent"
-            app:rippleColor="#1A3949AB"
+            app:rippleColor="#1A9E94C6"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp" />
 
@@ -436,10 +434,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="#1A1565C0"
-            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="#1A9E94C6"
             app:cardElevation="0dp"
-            app:strokeColor="#331565C0"
+            app:strokeColor="#339E94C6"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -453,7 +450,7 @@
                     android:layout_height="20dp"
                     android:layout_marginTop="1dp"
                     android:src="@drawable/info_outlined"
-                    app:tint="#1565C0" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -471,10 +468,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:visibility="gone"
-            app:cardBackgroundColor="#1AEF6C00"
-            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="#1A9E94C6"
             app:cardElevation="0dp"
-            app:strokeColor="#33EF6C00"
+            app:strokeColor="#339E94C6"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -488,7 +484,7 @@
                     android:layout_height="20dp"
                     android:layout_marginTop="1dp"
                     android:src="@drawable/warning"
-                    app:tint="#EF6C00" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"

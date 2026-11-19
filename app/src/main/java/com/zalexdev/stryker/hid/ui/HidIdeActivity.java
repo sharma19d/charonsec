@@ -286,7 +286,7 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
         int n = program.steps.size();
         statusPill.setText(getString(R.string.hid_editor_status_ready, n, n == 1 ? "" : "s"));
         statusPill.setBackgroundResource(R.drawable.chip_pill_ok);
-        statusPill.setTextColor(0xFF2E7D32);
+        statusPill.setTextColor(0xFF6CC79E);
         editor.setErrorLine(-1);
         updateRunButtonAlpha();
     }
@@ -298,7 +298,7 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
         parseErrorMessage = null;
         statusPill.setText(R.string.hid_editor_status_empty);
         statusPill.setBackgroundResource(R.drawable.chip_pill_warn);
-        statusPill.setTextColor(0xFFEF6C00);
+        statusPill.setTextColor(0xFF9E94C6);
         editor.setErrorLine(-1);
         updateRunButtonAlpha();
     }
@@ -310,7 +310,7 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
         parseErrorMessage = message;
         statusPill.setText(getString(R.string.hid_editor_status_error, line));
         statusPill.setBackgroundResource(R.drawable.chip_pill_err);
-        statusPill.setTextColor(0xFFC62828);
+        statusPill.setTextColor(0xFFE07A7A);
         editor.setErrorLine(line);
         updateRunButtonAlpha();
     }
@@ -338,10 +338,10 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
     private void refreshCapability() {
         capsVerdict.setText("PROBING…");
         capsVerdict.setBackgroundResource(R.drawable.chip_pill_warn);
-        capsVerdict.setTextColor(0xFFEF6C00);
+        capsVerdict.setTextColor(0xFF9E94C6);
         capsPill.setText("…");
         capsPill.setBackgroundResource(R.drawable.chip_pill_warn);
-        capsPill.setTextColor(0xFFEF6C00);
+        capsPill.setTextColor(0xFF9E94C6);
         new Thread(() -> {
             HidCapabilities caps = new HidCapabilityProbe(this).probe();
             runOnUiThread(() -> bindCapability(caps));
@@ -357,14 +357,14 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
         int pillColor;
         boolean showArsenal = false;
         switch (caps.verdict) {
-            case READY:           fullText = "READY · KEYBOARD BOUND"; shortPill = "READY";   pillBg = R.drawable.chip_pill_ok;   pillColor = 0xFF2E7D32; break;
-            case ROOT_DENIED:     fullText = "NO ROOT";                shortPill = "NO ROOT"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case KERNEL_TOO_OLD:  fullText = "KERNEL TOO OLD";         shortPill = "KERNEL";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case CONFIGFS_MISSING:fullText = "CONFIGFS MISSING";       shortPill = "CFGFS";   pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case UDC_MISSING:     fullText = "NO UDC";                 shortPill = "NO UDC";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case HID_NODE_MISSING:fullText = "/dev/hidg0 MISSING";     shortPill = "ARSENAL"; pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFEF6C00; showArsenal = true; break;
-            case SELINUX_DENIES:  fullText = "SELINUX DENIES";         shortPill = "SELINUX"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            default:              fullText = "?";                      shortPill = "?";       pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFEF6C00;
+            case READY:           fullText = "READY · KEYBOARD BOUND"; shortPill = "READY";   pillBg = R.drawable.chip_pill_ok;   pillColor = 0xFF6CC79E; break;
+            case ROOT_DENIED:     fullText = "NO ROOT";                shortPill = "NO ROOT"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
+            case KERNEL_TOO_OLD:  fullText = "KERNEL TOO OLD";         shortPill = "KERNEL";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
+            case CONFIGFS_MISSING:fullText = "CONFIGFS MISSING";       shortPill = "CFGFS";   pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
+            case UDC_MISSING:     fullText = "NO UDC";                 shortPill = "NO UDC";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
+            case HID_NODE_MISSING:fullText = "/dev/hidg0 MISSING";     shortPill = "ARSENAL"; pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFD9B66A; showArsenal = true; break;
+            case SELINUX_DENIES:  fullText = "SELINUX DENIES";         shortPill = "SELINUX"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
+            default:              fullText = "?";                      shortPill = "?";       pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFD9B66A;
         }
         capsVerdict.setText(fullText);
         capsVerdict.setBackgroundResource(pillBg);
@@ -429,8 +429,8 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
         runBtn.setEnabled(false);
         runBtn.setAlpha(0.45f);
         new Thread(() -> {
-            GadgetProfile picked = findAutoProfile();
-            if (picked == null) {
+            java.util.List<GadgetProfile> candidates = findAutoProfiles();
+            if (candidates.isEmpty()) {
                 runOnUiThread(() -> {
                     appendConsole("⛔ No HID-capable profile in USB Arsenal — open it and create one");
                     toggleCapsSheet(true);
@@ -440,15 +440,29 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
                 return;
             }
             UsbGadgetController ctl = new UsbGadgetController(HidIdeActivity.this);
-            ctl.teardown();
-            boolean ok = ctl.apply(picked);
+            GadgetProfile bound = null;
+            for (GadgetProfile candidate : candidates) {
+                ctl.teardown();
+                if (ctl.apply(candidate)) {
+                    bound = candidate;
+                    break;
+                }
+                String why = ctl.lastError();
+                runOnUiThread(() -> appendConsole("⚠ '" + candidate.name + "' failed: "
+                        + (why != null ? why : "unknown error")));
+            }
+            final GadgetProfile picked = bound;
+            final java.util.List<String> substitutions = ctl.lastWarnings();
             runOnUiThread(() -> {
-                if (!ok) {
-                    appendConsole("⛔ Failed to apply '" + picked.name + "' — check root + Arsenal");
+                if (picked == null) {
+                    appendConsole("⛔ No HID profile could be applied — check root + Arsenal");
                     toggleCapsSheet(true);
                     runBtn.setEnabled(true);
                     runBtn.setAlpha(1f);
                     return;
+                }
+                if (!substitutions.isEmpty()) {
+                    appendConsole("ℹ Kernel substitutions: " + android.text.TextUtils.join(", ", substitutions));
                 }
                 appendConsole("✓ Bound '" + picked.name + "'. Re-probing...");
                 refreshCapability();
@@ -469,21 +483,23 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
         }, "ide-auto-apply").start();
     }
 
-    @Nullable
-    private GadgetProfile findAutoProfile() {
+    /** HID-capable profiles in preference order: HID-to-Go, then HID+ACM, then any keyboard. */
+    @NonNull
+    private java.util.List<GadgetProfile> findAutoProfiles() {
         GadgetProfileDb db = new GadgetProfileDb(this);
         java.util.List<GadgetProfile> all = db.listAll();
+        java.util.LinkedHashSet<GadgetProfile> ordered = new java.util.LinkedHashSet<>();
         for (GadgetProfile p : all) {
-            if (BackChannelMarker.HIDTOGO_PROFILE_NAME.equals(p.name)) return p;
+            if (BackChannelMarker.HIDTOGO_PROFILE_NAME.equals(p.name)) ordered.add(p);
         }
         for (GadgetProfile p : all) {
             if (p.functions.contains(GadgetFunction.HID_KEYBOARD)
-             && p.functions.contains(GadgetFunction.ACM)) return p;
+             && p.functions.contains(GadgetFunction.ACM)) ordered.add(p);
         }
         for (GadgetProfile p : all) {
-            if (p.functions.contains(GadgetFunction.HID_KEYBOARD)) return p;
+            if (p.functions.contains(GadgetFunction.HID_KEYBOARD)) ordered.add(p);
         }
-        return null;
+        return new java.util.ArrayList<>(ordered);
     }
 
     private void startRun(String body) {

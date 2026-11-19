@@ -87,7 +87,7 @@
                     android:paddingEnd="10dp"
                     android:paddingBottom="5dp"
                     android:text="EMPTY"
-                    android:textColor="#EF6C00"
+                    android:textColor="@color/ch_signal"
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
@@ -206,7 +206,7 @@
                 android:enabled="false"
                 android:minWidth="0dp"
                 android:text="@string/hid_stop"
-                android:textColor="#C62828"
+                android:textColor="@color/ch_alert"
                 android:textSize="12sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -214,16 +214,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:backgroundTint="#C62828"
+                android:backgroundTint="@color/ch_signal"
                 android:minWidth="0dp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:text="@string/hid_run"
-                android:textColor="@android:color/white"
-                app:cornerRadius="14dp"
+                android:textColor="@color/ch_on_signal"
+                app:cornerRadius="2dp"
                 app:icon="@drawable/play"
                 app:iconGravity="textStart"
-                app:iconTint="@android:color/white" />
+                app:iconTint="@color/ch_on_signal" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -236,8 +236,7 @@
             android:layout_marginBottom="56dp"
             android:visibility="gone"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
+            app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
 
@@ -289,7 +288,7 @@
                     android:layout_marginTop="6dp"
                     android:max="100"
                     android:progress="0"
-                    app:indicatorColor="#C62828"
+                    app:indicatorColor="@color/ch_signal"
                     app:trackColor="@color/light_lite_contrast"
                     app:trackCornerRadius="2dp" />
 
@@ -320,7 +319,7 @@
         android:visibility="gone"
         app:cardBackgroundColor="@color/light_contrast"
         app:cardCornerRadius="0dp"
-        app:cardElevation="12dp"
+        app:cardElevation="0dp"
         app:strokeColor="@color/light_lite_contrast"
         app:strokeWidth="1dp">
 
@@ -371,7 +370,7 @@
                     android:paddingEnd="12dp"
                     android:paddingBottom="6dp"
                     android:text="PROBING…"
-                    android:textColor="#EF6C00"
+                    android:textColor="@color/ch_signal"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -391,14 +390,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:backgroundTint="#1565C0"
+                    android:backgroundTint="@color/ch_signal"
                     android:text="@string/ide_caps_open_arsenal"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/ch_on_signal"
                     android:visibility="gone"
-                    app:cornerRadius="14dp"
+                    app:cornerRadius="2dp"
                     app:icon="@drawable/usb"
                     app:iconGravity="textStart"
-                    app:iconTint="@android:color/white" />
+                    app:iconTint="@color/ch_on_signal" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/ide_caps_refresh_btn"
@@ -407,7 +406,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/ide_caps_recheck"
-                    app:cornerRadius="14dp" />
+                    app:cornerRadius="2dp" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </com.google.android.material.card.MaterialCardView>

@@ -397,7 +397,7 @@ public class NmapScanner extends Fragment {
         startBtn.setVisibility(View.GONE);
         stopBtn.setVisibility(View.VISIBLE);
         metricStatus.setText(R.string.nmap_status_running);
-        metricStatus.setTextColor(Color.parseColor("#AB47BC"));
+        metricStatus.setTextColor(Color.parseColor("#9E94C6"));
         scanStartedAt = System.currentTimeMillis();
         startElapsedTicker();
 
@@ -422,11 +422,11 @@ public class NmapScanner extends Fragment {
                     if (ok) {
                         subtitle.setText(R.string.nmap_subtitle_done);
                         metricStatus.setText(R.string.nmap_status_done);
-                        metricStatus.setTextColor(Color.parseColor("#388E3C"));
+                        metricStatus.setTextColor(Color.parseColor("#6CC79E"));
                     } else {
                         subtitle.setText(R.string.nmap_status_stopped);
                         metricStatus.setText(R.string.nmap_status_stopped);
-                        metricStatus.setTextColor(Color.parseColor("#D32F2F"));
+                        metricStatus.setTextColor(Color.parseColor("#E07A7A"));
                     }
                     persistLastOutput();
                 });
@@ -535,7 +535,7 @@ public class NmapScanner extends Fragment {
         updateMetrics();
         metricTime.setText("0s");
         metricStatus.setText(R.string.nmap_status_idle);
-        metricStatus.setTextColor(Color.parseColor("#757575"));
+        metricStatus.setTextColor(Color.parseColor("#A5A1B4"));
         subtitle.setText(R.string.nmap_subtitle_idle);
         if (fullscreenOutput != null) {
             fullscreenOutput.setText("");
@@ -594,7 +594,7 @@ public class NmapScanner extends Fragment {
         fullscreenDialog.setContentView(R.layout.nmap_output_fullscreen);
         Window w = fullscreenDialog.getWindow();
         if (w != null) {
-            w.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0F0F0F")));
+            w.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0F0E13")));
             w.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         }
         fullscreenOutput = fullscreenDialog.findViewById(R.id.nmap_full_output);

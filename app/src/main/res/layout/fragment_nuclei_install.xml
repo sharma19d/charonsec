@@ -45,7 +45,7 @@
             android:letterSpacing="0.08"
             android:text="@string/nuclei_section_status"
             android:textAllCaps="true"
-            android:textColor="#3949AB"
+            android:textColor="@color/ch_signal"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -53,7 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -84,14 +83,14 @@
                             android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/webscan"
-                            app:tint="#3949AB" />
+                            app:tint="@color/ch_signal" />
 
                         <ProgressBar
                             android:id="@+id/nuclei_status_spinner"
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:layout_gravity="center"
-                            android:indeterminateTint="#3949AB"
+                            android:indeterminateTint="@color/ch_signal"
                             android:visibility="gone" />
                     </FrameLayout>
 
@@ -131,7 +130,7 @@
                     android:layout_marginBottom="14dp"
                     android:indeterminate="true"
                     android:visibility="gone"
-                    app:indicatorColor="#3949AB"
+                    app:indicatorColor="@color/ch_signal"
                     app:trackColor="@color/light_lite_contrast"
                     app:trackCornerRadius="2dp" />
             </LinearLayout>
@@ -147,7 +146,7 @@
             android:letterSpacing="0.08"
             android:text="@string/nuclei_section_stages"
             android:textAllCaps="true"
-            android:textColor="#5E35B1"
+            android:textColor="@color/ch_signal"
             android:textSize="12sp"
             android:textStyle="bold"
             android:visibility="gone" />
@@ -158,7 +157,6 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -184,7 +182,7 @@
             android:letterSpacing="0.08"
             android:text="@string/nuclei_section_log"
             android:textAllCaps="true"
-            android:textColor="#3949AB"
+            android:textColor="@color/ch_signal"
             android:textSize="12sp"
             android:textStyle="bold"
             android:visibility="gone" />
@@ -202,12 +200,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="#3949AB"
+            android:backgroundTint="@color/ch_signal"
             android:maxLines="1"
             android:text="@string/nuclei_btn_install"
             android:textColor="@color/light_contrast"
             android:visibility="gone"
-            app:cornerRadius="14dp"
+            app:cornerRadius="2dp"
             app:icon="@drawable/download"
             app:iconGravity="textStart"
             app:iconSize="18dp"
@@ -218,9 +216,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
-            app:strokeColor="#F9A825"
+            app:strokeColor="@color/ch_caution"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -236,7 +233,7 @@
                     android:background="@drawable/settings_icon_bg"
                     android:padding="7dp"
                     android:src="@drawable/warning"
-                    app:tint="#F57C00" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"

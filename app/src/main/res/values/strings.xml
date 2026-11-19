@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StrykerOSS</string>
+    <string name="app_name">CharonSec</string>
     <string name="install">Install</string>
     <string name="install2">Core loading</string>
     <string name="install3">Installing the Core</string>
@@ -1030,7 +1030,7 @@ manager</string>
     <string name="wpair_status_error">ERROR</string>
     <string name="wpair_status_paired">PAIRED</string>
 
-    <string name="about_title_label" translatable="false">StrykerOSS</string>
+    <string name="about_title_label" translatable="false">CharonSec</string>
     <string name="about_tagline">A free and open-source mobile pentest suite for authorized testing.</string>
     <string name="about_pill_oss">Open-Source</string>
     <string name="about_pill_root">Root Powered</string>
@@ -1061,7 +1061,7 @@ manager</string>
     <string name="about_link_chat_url" translatable="false">t.me/strykerchat</string>
     <string name="about_oss_licenses_label">Open-source licenses</string>
     <string name="license_subtitle">Built on these open-source projects. Tap any entry for its source.</string>
-    <string name="about_footer">StrykerOSS — free software (GNU GPL v3.0) — authorized testing only</string>
+    <string name="about_footer">CharonSec (based on StrykerOSS) — free software (GNU GPL v3.0) — authorized testing only</string>
 
     <string name="shortcut_terminal_short">Terminal</string>
     <string name="shortcut_terminal_long">Open Stryker terminal</string>
@@ -1231,6 +1231,8 @@ manager</string>
     <string name="arsenal_mass_inquiry">Inquiry string (28 ASCII)</string>
     <string name="arsenal_apply_ok">Profile applied — gadget bound to %s</string>
     <string name="arsenal_apply_failed">Failed to apply profile (check logcat)</string>
+    <string name="arsenal_apply_failed_reason">Failed to apply profile: %s</string>
+    <string name="arsenal_apply_substituted">Kernel lacks some functions, substituted: %s</string>
     <string name="arsenal_restore_ok">Vendor gadget restored</string>
     <string name="arsenal_save">Save</string>
     <string name="arsenal_cancel">Cancel</string>
@@ -1386,7 +1388,7 @@ manager</string>
     <string name="vm_stat_ram">Memory</string>
     <string name="vm_stat_placeholder">—</string>
 
-    <string name="welcome_title">StrykerOSS</string>
+    <string name="welcome_title">CharonSec</string>
     <string name="welcome_subtitle">Pentest from your phone.</string>
     <string name="welcome_cta">Get started</string>
     <string name="wl_title">Wordlists</string>
@@ -1561,4 +1563,6 @@ manager</string>
     <string name="engine_uml_note">Needs arm64.</string>
     <string name="settings_promo_title">Occasional prompts</string>
     <string name="settings_promo_subtitle">The one-off GitHub and blog notes. Off means never.</string>
+    <string name="init_title">Initializing</string>
+    <string name="init_subtitle">Waking the engine</string>
 </resources>

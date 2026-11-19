@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
     app:strokeWidth="1dp">
@@ -28,7 +27,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:src="@drawable/save_outlined"
-                app:tint="#3949AB" />
+                app:tint="@color/ch_signal" />
         </FrameLayout>
 
         <LinearLayout
@@ -88,7 +87,7 @@
             android:layout_height="36dp"
             app:icon="@drawable/delete"
             app:iconSize="16dp"
-            app:iconTint="#C62828"
+            app:iconTint="@color/ch_alert"
             app:strokeColor="@color/light_lite_contrast" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

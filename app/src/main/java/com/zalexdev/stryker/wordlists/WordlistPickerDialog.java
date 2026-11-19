@@ -103,7 +103,7 @@ public final class WordlistPickerDialog {
         }
         for (WordlistCategory c : WordlistCategory.values()) if (!ordered.contains(c)) ordered.add(c);
 
-        Chip allChip = buildChip(context, filters, context.getString(R.string.wl_cat_all), 0xFF757575);
+        Chip allChip = buildChip(context, filters, context.getString(R.string.wl_cat_all), 0xFFA5A1B4);
         allChip.setOnClickListener(v -> {
             filter[0] = null;
             apply.run();

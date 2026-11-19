@@ -253,28 +253,28 @@ public class WpairDeviceAdapter extends RecyclerView.Adapter<WpairDeviceAdapter.
         String label;
         switch (d.getStatus()) {
             case VULNERABLE:
-                color = 0xFFC62828;
+                color = 0xFFE07A7A;
                 label = context.getString(R.string.wpair_status_vulnerable);
                 break;
             case PATCHED:
-                color = 0xFF2E7D32;
+                color = 0xFF6CC79E;
                 label = context.getString(R.string.wpair_status_patched);
                 break;
             case TESTING:
-                color = 0xFFF9A825;
+                color = 0xFFD9B66A;
                 label = context.getString(R.string.wpair_status_testing);
                 break;
             case ERROR:
-                color = 0xFFEF6C00;
+                color = 0xFFE0956A;
                 label = context.getString(R.string.wpair_status_error);
                 break;
             case NOT_TESTED:
             default:
                 if (pairedAddresses.contains(d.getAddress())) {
-                    color = 0xFF2E7D32;
+                    color = 0xFF6CC79E;
                     label = context.getString(R.string.wpair_status_paired);
                 } else {
-                    color = 0xFF757575;
+                    color = 0xFFA5A1B4;
                     label = context.getString(R.string.wpair_status_not_tested);
                 }
         }

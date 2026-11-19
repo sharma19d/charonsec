@@ -60,7 +60,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -90,7 +89,7 @@
                                 android:layout_height="22dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/key"
-                                app:tint="#FB8C00" />
+                                app:tint="@color/ch_signal" />
                         </FrameLayout>
 
                         <LinearLayout
@@ -132,7 +131,7 @@
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
                             android:padding="0dp"
-                            app:cornerRadius="22dp"
+                            app:cornerRadius="2dp"
                             app:icon="@drawable/importer"
                             app:iconGravity="textStart"
                             app:iconPadding="0dp"
@@ -149,7 +148,7 @@
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
                             android:padding="0dp"
-                            app:cornerRadius="22dp"
+                            app:cornerRadius="2dp"
                             app:icon="@drawable/share"
                             app:iconGravity="textStart"
                             app:iconPadding="0dp"
@@ -164,7 +163,7 @@
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
                             android:padding="0dp"
-                            app:cornerRadius="22dp"
+                            app:cornerRadius="2dp"
                             app:icon="@drawable/ic_renew"
                             app:iconGravity="textStart"
                             app:iconPadding="0dp"
@@ -297,7 +296,7 @@
                 android:letterSpacing="0.08"
                 android:text="@string/hs_section_files"
                 android:textAllCaps="true"
-                android:textColor="#AB47BC"
+                android:textColor="@color/ch_signal"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -307,7 +306,6 @@
                 android:layout_height="wrap_content"
                 android:visibility="visible"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -358,7 +356,6 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">

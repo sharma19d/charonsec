@@ -48,7 +48,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -70,7 +69,7 @@
                             android:layout_height="22dp"
                             android:layout_gravity="center"
                             android:src="@drawable/rocket_launch"
-                            app:tint="#E53935" />
+                            app:tint="@color/ch_signal" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -147,7 +146,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -181,7 +179,7 @@
             android:layout_weight="0.5"
             android:text="@string/msf_values_back"
             android:textColor="@color/grey"
-            app:cornerRadius="14dp"
+            app:cornerRadius="2dp"
             app:icon="@drawable/arrow_back"
             app:iconGravity="textStart"
             app:iconSize="18dp"
@@ -193,10 +191,10 @@
             android:layout_height="52dp"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:backgroundTint="#E53935"
+            android:backgroundTint="@color/ch_signal"
             android:text="@string/msf_values_launch"
             android:textColor="@color/light_contrast"
-            app:cornerRadius="14dp"
+            app:cornerRadius="2dp"
             app:icon="@drawable/rocket_launch"
             app:iconGravity="textStart"
             app:iconSize="18dp"

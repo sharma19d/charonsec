@@ -20,11 +20,11 @@ import java.util.List;
 public class FindingsAdapter extends RecyclerView.Adapter<FindingsAdapter.VH> {
 
     private static final int[] SEVERITY_COLORS = {
-            0xFF1565C0,
-            0xFFF9A825,
-            0xFFEF6C00,
-            0xFFD32F2F,
-            0xFFB71C1C
+            0xFF9E94C6,
+            0xFFD9B66A,
+            0xFFE0956A,
+            0xFFE07A7A,
+            0xFFE07A7A
     };
 
     private static final String[] SEVERITY_LABELS = {

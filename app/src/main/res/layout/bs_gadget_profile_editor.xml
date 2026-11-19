@@ -291,7 +291,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/arsenal_mass_pick"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="2dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -335,10 +335,10 @@
                 android:id="@+id/bs_gp_save_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#1565C0"
+                android:backgroundTint="@color/ch_signal"
                 android:text="@string/arsenal_save"
-                android:textColor="@android:color/white"
-                app:cornerRadius="14dp" />
+                android:textColor="@color/ch_on_signal"
+                app:cornerRadius="2dp" />
         </LinearLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

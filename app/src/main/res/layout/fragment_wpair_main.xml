@@ -46,7 +46,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -99,7 +98,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-                            android:textColor="#C62828"
+                            android:textColor="@color/ch_alert"
                             android:textSize="22sp"
                             android:textStyle="bold" />
 
@@ -129,7 +128,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-                            android:textColor="#2E7D32"
+                            android:textColor="@color/ch_live"
                             android:textSize="22sp"
                             android:textStyle="bold" />
 
@@ -271,7 +270,7 @@
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:src="@drawable/wpair"
-                        app:tint="#3949AB" />
+                        app:tint="@color/ch_signal" />
                 </FrameLayout>
 
                 <com.google.android.material.textview.MaterialTextView
@@ -306,7 +305,7 @@
         android:contentDescription="@string/wpair_fab_scan"
         android:text="@string/wpair_fab_scan"
         android:textColor="@color/light_contrast"
-        app:backgroundTint="#3949AB"
+        app:backgroundTint="@color/ch_signal"
         app:icon="@drawable/scanner"
         app:iconTint="@color/light_contrast" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

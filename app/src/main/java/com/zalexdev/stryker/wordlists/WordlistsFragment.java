@@ -161,7 +161,7 @@ public class WordlistsFragment extends Fragment implements WordlistAdapter.Liste
         String saved = core.getString(PREF_LAST_FILTER);
         filters.removeAllViews();
 
-        Chip allChip = chip(getString(R.string.wl_cat_all), 0xFF757575);
+        Chip allChip = chip(getString(R.string.wl_cat_all), 0xFFA5A1B4);
         allChip.setChecked(saved == null || saved.isEmpty());
         allChip.setOnClickListener(v -> {
             filter = null;

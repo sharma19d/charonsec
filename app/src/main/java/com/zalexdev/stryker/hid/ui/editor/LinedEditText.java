@@ -19,10 +19,10 @@ public class LinedEditText extends AppCompatEditText {
     private static final int COLOR_GUTTER_BG     = 0xFFF4F6FA;
     private static final int COLOR_GUTTER_BORDER = 0xFFE3E7EE;
     private static final int COLOR_GUTTER_TEXT   = 0xFF94A3B8;
-    private static final int COLOR_GUTTER_ACTIVE = 0xFF1565C0;
-    private static final int COLOR_CURRENT_LINE  = 0x141565C0;
-    private static final int COLOR_ERROR_LINE    = 0x1FC62828;
-    private static final int COLOR_ERROR_STRIPE  = 0xFFC62828;
+    private static final int COLOR_GUTTER_ACTIVE = 0xFF9E94C6;
+    private static final int COLOR_CURRENT_LINE  = 0x149E94C6;
+    private static final int COLOR_ERROR_LINE    = 0x1FE07A7A;
+    private static final int COLOR_ERROR_STRIPE  = 0xFFE07A7A;
 
     private final Paint gutterBgPaint = new Paint();
     private final Paint gutterBorderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);

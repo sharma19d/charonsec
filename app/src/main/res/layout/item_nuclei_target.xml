@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="18dp"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
     app:strokeWidth="1dp">
@@ -41,7 +40,7 @@
                     android:layout_height="22dp"
                     android:layout_gravity="center"
                     android:src="@drawable/webscan"
-                    app:tint="#3949AB" />
+                    app:tint="@color/ch_signal" />
             </FrameLayout>
 
             <LinearLayout
@@ -96,7 +95,7 @@
             android:layout_marginTop="10dp"
             android:max="100"
             android:visibility="gone"
-            app:indicatorColor="#3949AB"
+            app:indicatorColor="@color/ch_signal"
             app:trackColor="@color/light_lite_contrast"
             app:trackCornerRadius="2dp" />
 

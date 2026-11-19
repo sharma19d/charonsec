@@ -1,27 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Widget.Stryker.CardView" parent="Widget.Material3.CardView.Filled">
-        <item name="android:backgroundTint">@color/dialog_background_color</item>
+    <!-- ===== CharonSec component styles ===== -->
+
+    <!-- Panels: hairline edge, no elevation, one chamfered corner. -->
+    <style name="Widget.Stryker.CardView" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@color/ch_ink_1</item>
+        <item name="strokeColor">@color/ch_line</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Charon.Panel</item>
     </style>
 
     <style name="Widget.Stryker.Button" parent="Widget.Material3.Button">
-        <item name="android:fontFamily">@font/lato</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/charon_display</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textSize">15sp</item>
+        <item name="backgroundTint">@color/ch_signal</item>
+        <item name="android:textColor">@color/ch_on_signal</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Charon.Control</item>
     </style>
 
     <style name="Widget.Stryker.TextView" parent="android:TextAppearance.Material.Widget.TextView">
-        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:fontFamily">@font/charon_body</item>
     </style>
 
     <style name="Widget.Stryker.CustomBottomSheetStyle" parent="Widget.Material3.BottomSheet.Modal">
-        <item name="backgroundTint">@color/light_contrast</item>
+        <item name="backgroundTint">@color/ch_ink_1</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Stryker.BottomSheet</item>
     </style>
 
     <style name="ShapeAppearance.Stryker.BottomSheet" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">22dp</item>
-        <item name="cornerSizeTopRight">22dp</item>
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">18dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
     </style>
@@ -30,26 +43,53 @@
         <item name="bottomSheetStyle">@style/Widget.Stryker.CustomBottomSheetStyle</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:backgroundDimAmount">0.55</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.7</item>
+        <item name="android:navigationBarColor">@color/ch_ink_1</item>
     </style>
 
     <style name="Widget.Stryker.FAB" parent="Base.Widget.Material3.FloatingActionButton">
-        <item name="shapeAppearance">@null</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Charon.Control</item>
         <item name="shapeAppearanceOverlay">@null</item>
-        <item name="backgroundTint">@color/night_contrast_2</item>
+        <item name="backgroundTint">@color/ch_signal</item>
+        <item name="tint">@color/ch_on_signal</item>
     </style>
 
     <style name="Widget.Stryker.NavigationView" parent="Widget.Material3.NavigationView">
         <item name="enforceMaterialTheme">false</item>
-        <item name="android:background">@color/toolbar_darkness_color</item>
+        <item name="android:background">@color/ch_ink_1</item>
         <item name="itemIconTint">@color/menu_item</item>
         <item name="itemTextColor">@color/menu_item</item>
         <item name="itemShapeFillColor">@color/menu_item_shape</item>
     </style>
 
     <style name="Widget.Stryker.AlertDialog" parent="@style/ThemeOverlay.Material3.MaterialAlertDialog">
-        <item name="android:background">@color/light_contrast</item>
+        <item name="colorSurface">@color/ch_ink_1</item>
+        <item name="colorSurfaceContainerHigh">@color/ch_ink_1</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Charon.Dialog</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Charon.DialogTitle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Charon.DialogButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Charon.DialogButton.Quiet</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Charon.DialogButton.Quiet</item>
+    </style>
+
+    <style name="Charon.DialogTitle" parent="MaterialAlertDialog.Material3.Title.Text">
+        <item name="android:fontFamily">@font/charon_display</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.06</item>
+        <item name="android:textColor">@color/ch_bone</item>
+    </style>
+
+    <style name="Charon.DialogButton" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:fontFamily">@font/charon_display</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textColor">@color/ch_signal</item>
+    </style>
+
+    <style name="Charon.DialogButton.Quiet">
+        <item name="android:textColor">@color/ch_bone_dim</item>
     </style>
 
     <style name="Widget.Stryker.Switch" parent="Widget.Material3.CompoundButton.Switch">
@@ -57,8 +97,31 @@
     </style>
 
     <style name="ThemeOverlay.App.Switch" parent="">
-        <item name="colorOnSurface">#B51565C0</item>
-        <item name="colorSecondary">@color/stryker_accent</item>
+        <item name="colorPrimary">@color/ch_signal</item>
+        <item name="colorOnPrimary">@color/ch_on_signal</item>
+        <item name="colorSecondary">@color/ch_signal</item>
+        <item name="colorOutline">@color/ch_line_strong</item>
+        <item name="colorSurfaceContainerHighest">@color/ch_ink_3</item>
+    </style>
+
+    <!-- Shapes: near-square controls, chamfered panels. -->
+    <style name="ShapeAppearance.Charon.Control" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">2dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Charon.Panel" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">2dp</item>
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSizeTopRight">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Charon.Dialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">2dp</item>
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerSizeTopRight">18dp</item>
     </style>
 
     <style name="ShapeAppearance.News.Image" parent="">
@@ -131,16 +194,19 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/charon_display</item>
+        <item name="android:letterSpacing">0.02</item>
     </style>
 
     <style name="VmRowSub">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">2dp</item>
-        <item name="android:textColor">@color/grey</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/ch_bone_faint</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/charon_mono</item>
     </style>
 
     <style name="VmValueChip">
@@ -153,27 +219,31 @@
         <item name="android:paddingTop">6dp</item>
         <item name="android:paddingEnd">12dp</item>
         <item name="android:paddingBottom">6dp</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/ch_bone</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/charon_mono</item>
     </style>
 
     <style name="VmDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:layout_marginStart">72dp</item>
-        <item name="android:background">@color/light_lite_contrast</item>
+        <item name="android:background">@color/ch_line</item>
     </style>
 
     <style name="DashboardSection">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">4dp</item>
-        <item name="android:layout_marginTop">26dp</item>
-        <item name="android:layout_marginBottom">12dp</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">28dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textColor">@color/ch_bone_faint</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/charon_mono</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.18</item>
     </style>
 
     <style name="DashboardRow">
@@ -183,7 +253,7 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:minHeight">68dp</item>
+        <item name="android:minHeight">60dp</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
@@ -203,8 +273,10 @@
         <item name="android:layout_marginStart">16dp</item>
         <item name="android:layout_marginEnd">12dp</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/charon_display</item>
+        <item name="android:letterSpacing">0.02</item>
     </style>
 
     <style name="DashboardRowCount">
@@ -217,9 +289,10 @@
         <item name="android:paddingTop">6dp</item>
         <item name="android:paddingEnd">12dp</item>
         <item name="android:paddingBottom">6dp</item>
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/ch_signal</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/charon_mono</item>
     </style>
 
     <style name="DashboardRowChevron">
@@ -252,7 +325,10 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">10dp</item>
         <item name="android:textColor">@color/dash_secondary</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/charon_mono</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.1</item>
     </style>
 </resources>

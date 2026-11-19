@@ -25,7 +25,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:padding="0dp"
-            app:cornerRadius="20dp"
+            app:cornerRadius="2dp"
             app:icon="@drawable/webscan"
             app:iconGravity="textStart"
             app:iconPadding="0dp"

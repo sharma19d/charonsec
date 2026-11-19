@@ -183,7 +183,7 @@ public final class WordlistGenerateSheet {
                         ? context.getString(R.string.wl_gen_estimate_unknown)
                         : context.getString(R.string.wl_gen_estimate, String.format(Locale.US, "%,d", n)));
                 boolean capped = n >= WordlistGenerator.DEFAULT_LIMIT;
-                estimate.setTextColor(capped ? 0xFFEF6C00 : 0xFF757575);
+                estimate.setTextColor(capped ? 0xFFD9B66A : 0xFFA5A1B4);
                 if (capped) {
                     estimate.setText(context.getString(R.string.wl_gen_estimate_capped,
                             String.format(Locale.US, "%,d", WordlistGenerator.DEFAULT_LIMIT)));
@@ -282,7 +282,7 @@ public final class WordlistGenerateSheet {
                             return;
                         }
                         action.setImageResource(R.drawable.done);
-                        action.setColorFilter(0xFF2E7D32);
+                        action.setColorFilter(0xFF6CC79E);
                         Toast.makeText(context,
                                 context.getString(R.string.wl_gen_written, made.getName()),
                                 Toast.LENGTH_SHORT).show();

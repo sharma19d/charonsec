@@ -21,10 +21,12 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">18dp</item>
-        <item name="android:fontFamily">sans-serif-light</item>
-        <item name="android:lineSpacingMultiplier">1.08</item>
+        <item name="android:fontFamily">@font/charon_display</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingMultiplier">0.95</item>
+        <item name="android:letterSpacing">0.01</item>
         <item name="android:textColor">@color/intro_text</item>
-        <item name="android:textSize">34sp</item>
+        <item name="android:textSize">44sp</item>
     </style>
 
     <style name="IntroSubtitle">
@@ -45,6 +47,7 @@
         <item name="android:paddingEnd">28dp</item>
         <item name="android:paddingBottom">104dp</item>
         <item name="android:clipToPadding">false</item>
+        <item name="android:clipChildren">false</item>
     </style>
 
     <style name="IntroGhostButton" parent="Widget.MaterialComponents.Button.TextButton">

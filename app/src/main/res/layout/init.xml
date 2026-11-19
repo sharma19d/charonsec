@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_contrast"
+    android:background="@color/ch_ink_0"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="96dp">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/nothing_img"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/hello" />
+    <com.zalexdev.stryker.ui.orb.OrbView
+        android:id="@+id/init_orb"
+        android:layout_width="260dp"
+        android:layout_height="260dp" />
 
     <TextView
         android:id="@+id/nothing_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:text="Initializing..."
-        android:textSize="30dp" />
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/charon_display"
+        android:letterSpacing="0.22"
+        android:text="@string/init_title"
+        android:textAllCaps="true"
+        android:textColor="@color/ch_bone"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:fontFamily="@font/charon_mono"
+        android:letterSpacing="0.12"
+        android:text="@string/init_subtitle"
+        android:textAllCaps="true"
+        android:textColor="@color/ch_bone_faint"
+        android:textSize="10sp" />
 </LinearLayout>

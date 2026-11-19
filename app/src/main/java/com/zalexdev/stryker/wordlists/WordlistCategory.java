@@ -6,12 +6,12 @@ import java.util.Locale;
 
 public enum WordlistCategory {
 
-    PASSWORD("password", "Passwords",  R.drawable.password,  0xFF1565C0),
-    WIFI    ("wifi",     "Wi-Fi PSK",  R.drawable.wifi,      0xFF00897B),
-    PIN     ("pin",      "PIN codes",  R.drawable.fiber_pin, 0xFFEF6C00),
-    USERNAME("username", "Usernames",  R.drawable.name,      0xFFAB47BC),
-    WEB     ("web",      "Web paths",  R.drawable.web,       0xFF3949AB),
-    OTHER   ("other",    "Other",      R.drawable.file,      0xFF757575);
+    PASSWORD("password", "Passwords",  R.drawable.password,  0xFF9E94C6),
+    WIFI    ("wifi",     "Wi-Fi PSK",  R.drawable.wifi,      0xFF9E94C6),
+    PIN     ("pin",      "PIN codes",  R.drawable.fiber_pin, 0xFF9E94C6),
+    USERNAME("username", "Usernames",  R.drawable.name,      0xFF9E94C6),
+    WEB     ("web",      "Web paths",  R.drawable.web,       0xFF9E94C6),
+    OTHER   ("other",    "Other",      R.drawable.file,      0xFFA5A1B4);
 
     public final String id;
     public final String title;

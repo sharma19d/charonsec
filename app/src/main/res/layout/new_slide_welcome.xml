@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/IntroContent">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/welcome_wave"
-        android:tag="intro_autoplay"
-        android:layout_width="84dp"
-        android:layout_height="84dp"
-        android:layout_marginBottom="4dp"
-        app:lottie_colorFilter="@color/intro_text"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/waving_hand" />
+    <FrameLayout
+        android:id="@+id/welcome_logo_box"
+        android:layout_width="132dp"
+        android:layout_height="132dp"
+        android:layout_marginBottom="20dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <View
+            android:id="@+id/welcome_logo_ring"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0"
+            android:background="@drawable/charonsec_logo_ring" />
+
+        <View
+            android:id="@+id/welcome_logo_ring2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0"
+            android:background="@drawable/charonsec_logo_ring" />
+
+        <ImageView
+            android:id="@+id/welcome_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/charonsec_logo" />
+    </FrameLayout>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/welcome_eyebrow"

@@ -213,10 +213,10 @@ public final class UsbDialogRenderer {
     private int colorFor(UsbChain.State s) {
         switch (s) {
             case DONE:    return ContextCompat.getColor(context, R.color.green);
-            case WARN:    return 0xFFEF6C00;
+            case WARN:    return 0xFFD9B66A;
             case FAIL:    return ContextCompat.getColor(context, R.color.red);
             case RUNNING: return ContextCompat.getColor(context, R.color.stryker_accent);
-            default:      return 0xFF9E9E9E;
+            default:      return 0xFFA5A1B4;
         }
     }
 

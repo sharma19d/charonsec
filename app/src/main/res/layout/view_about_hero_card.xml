@@ -5,8 +5,7 @@
     android:layout_height="330dp"
     android:layout_gravity="top"
     app:cardBackgroundColor="@android:color/transparent"
-    app:cardCornerRadius="22dp"
-    app:cardElevation="6dp"
+    app:cardElevation="0dp"
     app:cardPreventCornerOverlap="true"
     app:strokeColor="#33FFFFFF"
     app:strokeWidth="1dp">

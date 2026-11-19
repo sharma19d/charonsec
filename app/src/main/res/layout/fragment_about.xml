@@ -49,7 +49,6 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -71,7 +70,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/webscan"
-                        app:tint="#1565C0" />
+                        app:tint="@color/ch_signal" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -114,7 +113,6 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -136,7 +134,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/github"
-                        app:tint="#3949AB" />
+                        app:tint="@color/ch_signal" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -179,7 +177,6 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -201,7 +198,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/telegram"
-                        app:tint="#0288D1" />
+                        app:tint="@color/ch_signal" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -244,7 +241,6 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -266,7 +262,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/chat"
-                        app:tint="#00897B" />
+                        app:tint="@color/ch_signal" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -324,7 +320,6 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -346,7 +341,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/shield"
-                        app:tint="#00897B" />
+                        app:tint="@color/ch_signal" />
                 </FrameLayout>
 
                 <com.google.android.material.textview.MaterialTextView
@@ -375,7 +370,6 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -397,7 +391,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/bolt"
-                        app:tint="#5E35B1" />
+                        app:tint="@color/ch_signal" />
                 </FrameLayout>
 
                 <LinearLayout

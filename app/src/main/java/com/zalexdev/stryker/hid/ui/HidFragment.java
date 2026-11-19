@@ -255,7 +255,7 @@ public class HidFragment extends Fragment implements PayloadCardAdapter.OnPayloa
     private void refreshCapability() {
         statePill.setText("PROBING");
         statePill.setBackgroundResource(R.drawable.chip_pill_warn);
-        statePill.setTextColor(0xFFEF6C00);
+        statePill.setTextColor(0xFF9E94C6);
         stateText.setText(R.string.hid_state_unknown);
         capProbeAlive.set(true);
         new Thread(() -> {
@@ -278,14 +278,14 @@ public class HidFragment extends Fragment implements PayloadCardAdapter.OnPayloa
         int pillColor;
         boolean showArsenalCta = false;
         switch (caps.verdict) {
-            case READY:           textResource = R.string.hid_state_ready;        pill = "READY";   pillBg = R.drawable.chip_pill_ok;   pillColor = 0xFF2E7D32; break;
-            case ROOT_DENIED:     textResource = R.string.hid_state_root_denied;  pill = "NO ROOT"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case KERNEL_TOO_OLD:  textResource = R.string.hid_state_kernel_old;   pill = "KERNEL";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case CONFIGFS_MISSING:textResource = R.string.hid_state_no_configfs;  pill = "CFGFS";   pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case UDC_MISSING:     textResource = R.string.hid_state_no_udc;       pill = "NO UDC";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case HID_NODE_MISSING:textResource = R.string.hid_state_no_node;      pill = "ARSENAL"; pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFEF6C00; showArsenalCta = true; break;
-            case SELINUX_DENIES:  textResource = R.string.hid_state_selinux;      pill = "SELINUX"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            default:              textResource = R.string.hid_state_unknown;      pill = "?";       pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFEF6C00;
+            case READY:           textResource = R.string.hid_state_ready;        pill = "READY";   pillBg = R.drawable.chip_pill_ok;   pillColor = 0xFF6CC79E; break;
+            case ROOT_DENIED:     textResource = R.string.hid_state_root_denied;  pill = "NO ROOT"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
+            case KERNEL_TOO_OLD:  textResource = R.string.hid_state_kernel_old;   pill = "KERNEL";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
+            case CONFIGFS_MISSING:textResource = R.string.hid_state_no_configfs;  pill = "CFGFS";   pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
+            case UDC_MISSING:     textResource = R.string.hid_state_no_udc;       pill = "NO UDC";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
+            case HID_NODE_MISSING:textResource = R.string.hid_state_no_node;      pill = "ARSENAL"; pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFD9B66A; showArsenalCta = true; break;
+            case SELINUX_DENIES:  textResource = R.string.hid_state_selinux;      pill = "SELINUX"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
+            default:              textResource = R.string.hid_state_unknown;      pill = "?";       pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFD9B66A;
         }
         stateText.setText(textResource);
         statePill.setText(pill);

@@ -80,6 +80,6 @@
             android:text="@string/dashboard_customize_done"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:cornerRadius="28dp" />
+            app:cornerRadius="2dp" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

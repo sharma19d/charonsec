@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="14dp"
     app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="22dp"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
     app:strokeWidth="1dp">
@@ -70,8 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="14dp"
-            app:cardBackgroundColor="#0F0F0F"
-            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="@color/ch_ink_0"
             app:cardElevation="0dp">
 
             <ScrollView

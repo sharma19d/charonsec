@@ -19,6 +19,9 @@ public class StrykerApp extends com.stryker.terminal.App {
     @Override
     public void onCreate() {
         super.onCreate();
+        // CharonSec ships a single dark theme.
+        androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(
+                androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES);
         LogStore store = LogStore.init(this);
         store.add(LogEntry.INFO, "session", "==== Stryker " + BuildConfig.VERSION_NAME
                 + " session start ====");

@@ -175,12 +175,12 @@ public class HandshakesAdapter extends RecyclerView.Adapter<HandshakesAdapter.Vi
         if (cracked) {
             h.stateChip.setVisibility(View.VISIBLE);
             h.stateChip.setText(R.string.hs_state_cracked);
-            h.stateChip.setTextColor(Color.parseColor("#388E3C"));
+            h.stateChip.setTextColor(Color.parseColor("#6CC79E"));
             h.progress.setText(context.getResources().getString(R.string.pass_founded) + stored);
-            h.progress.setTextColor(Color.parseColor("#388E3C"));
+            h.progress.setTextColor(Color.parseColor("#6CC79E"));
             h.itemView.setOnClickListener(v -> copyPassword(stored));
         } else {
-            h.progress.setTextColor(Color.parseColor("#9E9E9E"));
+            h.progress.setTextColor(Color.parseColor("#A5A1B4"));
             File f = captureFile(path);
             StringBuilder line = new StringBuilder();
             if (f.exists()) line.append(humanSize(f.length()));
@@ -202,7 +202,7 @@ public class HandshakesAdapter extends RecyclerView.Adapter<HandshakesAdapter.Vi
         if (startProblem != null) {
             h.progress.setVisibility(View.VISIBLE);
             h.progress.setText(startProblem);
-            h.progress.setTextColor(Color.parseColor("#E53935"));
+            h.progress.setTextColor(Color.parseColor("#E07A7A"));
             h.timeLeft.setVisibility(View.GONE);
             h.stateChip.setVisibility(View.GONE);
             h.cancel.setVisibility(View.GONE);
@@ -230,10 +230,10 @@ public class HandshakesAdapter extends RecyclerView.Adapter<HandshakesAdapter.Vi
         switch (info.kind) {
             case HANDSHAKE:
                 h.icon.setImageResource(R.drawable.handshake_interface);
-                h.icon.setColorFilter(Color.parseColor("#2E7D32"));
+                h.icon.setColorFilter(Color.parseColor("#6CC79E"));
                 h.stateChip.setVisibility(View.VISIBLE);
                 h.stateChip.setText(R.string.hs_kind_handshake);
-                h.stateChip.setTextColor(Color.parseColor("#2E7D32"));
+                h.stateChip.setTextColor(Color.parseColor("#6CC79E"));
                 break;
             case PMKID:
                 h.icon.setImageResource(R.drawable.key);
@@ -244,14 +244,14 @@ public class HandshakesAdapter extends RecyclerView.Adapter<HandshakesAdapter.Vi
                 break;
             case EMPTY:
                 h.icon.setImageResource(R.drawable.close);
-                h.icon.setColorFilter(Color.parseColor("#C62828"));
+                h.icon.setColorFilter(Color.parseColor("#E07A7A"));
                 h.stateChip.setVisibility(View.VISIBLE);
                 h.stateChip.setText(R.string.hs_kind_empty);
-                h.stateChip.setTextColor(Color.parseColor("#C62828"));
+                h.stateChip.setTextColor(Color.parseColor("#E07A7A"));
                 break;
             default:
                 h.icon.setImageResource(R.drawable.file);
-                h.icon.setColorFilter(Color.parseColor("#FB8C00"));
+                h.icon.setColorFilter(Color.parseColor("#9E94C6"));
                 h.stateChip.setVisibility(View.GONE);
                 break;
         }
@@ -304,11 +304,11 @@ public class HandshakesAdapter extends RecyclerView.Adapter<HandshakesAdapter.Vi
     private void launchBrute(ViewHolder h, String path, String finalMac,
                              com.zalexdev.stryker.wordlists.Wordlist wordlist) {
         h.progress.setVisibility(View.VISIBLE);
-        h.progress.setTextColor(Color.parseColor("#9E9E9E"));
+        h.progress.setTextColor(Color.parseColor("#A5A1B4"));
         h.timeLeft.setVisibility(View.VISIBLE);
         h.stateChip.setVisibility(View.VISIBLE);
         h.stateChip.setText(R.string.hs_state_brute);
-        h.stateChip.setTextColor(Color.parseColor("#AB47BC"));
+        h.stateChip.setTextColor(Color.parseColor("#9E94C6"));
         h.brute.setVisibility(View.GONE);
         h.cancel.setVisibility(View.VISIBLE);
         h.progress.setText(R.string.hs_progress_starting);
@@ -389,9 +389,9 @@ public class HandshakesAdapter extends RecyclerView.Adapter<HandshakesAdapter.Vi
         h.cancel.setVisibility(View.VISIBLE);
         h.stateChip.setVisibility(View.VISIBLE);
         h.stateChip.setText(R.string.hs_state_brute);
-        h.stateChip.setTextColor(Color.parseColor("#AB47BC"));
+        h.stateChip.setTextColor(Color.parseColor("#9E94C6"));
         h.progress.setVisibility(View.VISIBLE);
-        h.progress.setTextColor(Color.parseColor("#9E9E9E"));
+        h.progress.setTextColor(Color.parseColor("#A5A1B4"));
         String line = job.progressText();
         h.progress.setText(line.isEmpty()
                 ? context.getString(R.string.hs_progress_starting) : line);
@@ -412,27 +412,27 @@ public class HandshakesAdapter extends RecyclerView.Adapter<HandshakesAdapter.Vi
             case FOUND:
                 h.progress.setVisibility(View.VISIBLE);
                 h.progress.setText(context.getString(R.string.pass_founded) + job.psk());
-                h.progress.setTextColor(Color.parseColor("#388E3C"));
+                h.progress.setTextColor(Color.parseColor("#6CC79E"));
                 h.stateChip.setVisibility(View.VISIBLE);
                 h.stateChip.setText(R.string.hs_state_cracked);
-                h.stateChip.setTextColor(Color.parseColor("#388E3C"));
+                h.stateChip.setTextColor(Color.parseColor("#6CC79E"));
                 return true;
             case FAILED:
                 h.progress.setVisibility(View.VISIBLE);
                 h.progress.setText(context.getString(R.string.hs_brute_failed, job.problem()));
-                h.progress.setTextColor(Color.parseColor("#D32F2F"));
+                h.progress.setTextColor(Color.parseColor("#E07A7A"));
                 h.stateChip.setVisibility(View.GONE);
                 return true;
             case MISSED:
                 h.progress.setVisibility(View.VISIBLE);
                 h.progress.setText(R.string.pass_not_found);
-                h.progress.setTextColor(Color.parseColor("#D32F2F"));
+                h.progress.setTextColor(Color.parseColor("#E07A7A"));
                 h.stateChip.setVisibility(View.GONE);
                 return true;
             case CANCELLED:
                 h.progress.setVisibility(View.VISIBLE);
                 h.progress.setText(R.string.hs_brute_cancelled);
-                h.progress.setTextColor(Color.parseColor("#9E9E9E"));
+                h.progress.setTextColor(Color.parseColor("#A5A1B4"));
                 h.stateChip.setVisibility(View.GONE);
                 return true;
             default:

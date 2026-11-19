@@ -220,7 +220,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#1E1E1E">
+        android:background="@color/ch_ink_1">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/logger_list"

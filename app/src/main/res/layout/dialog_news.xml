@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
     app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="22dp"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
     app:strokeWidth="1dp">
@@ -96,7 +95,7 @@
                         android:gravity="center"
                         android:text="Button 2"
                         android:visibility="gone"
-                        app:cornerRadius="14dp" />
+                        app:cornerRadius="2dp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/news_button1"
@@ -108,7 +107,7 @@
                         android:text="Button 1"
                         android:textColor="@color/light_contrast"
                         android:visibility="gone"
-                        app:cornerRadius="14dp" />
+                        app:cornerRadius="2dp" />
                 </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>

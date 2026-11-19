@@ -60,21 +60,21 @@ public class CoreAdapter extends RecyclerView.Adapter<CoreAdapter.ViewHolder> {
 
         if (temp.isPythonPackage()) {
             h.sourceChip.setText(R.string.core_mgr_chip_python);
-            h.sourceChip.setTextColor(android.graphics.Color.parseColor("#FB8C00"));
+            h.sourceChip.setTextColor(android.graphics.Color.parseColor("#9E94C6"));
         } else {
             h.sourceChip.setText(R.string.core_mgr_chip_apk);
-            h.sourceChip.setTextColor(android.graphics.Color.parseColor("#1E88E5"));
+            h.sourceChip.setTextColor(android.graphics.Color.parseColor("#9E94C6"));
         }
 
         if (temp.isInstalled()) {
             h.installedChip.setVisibility(View.VISIBLE);
             h.action.setImageResource(R.drawable.delete);
-            h.action.setColorFilter(android.graphics.Color.parseColor("#D32F2F"));
+            h.action.setColorFilter(android.graphics.Color.parseColor("#E07A7A"));
             h.action.setOnClickListener(v -> uninstall(h, temp));
         } else {
             h.installedChip.setVisibility(View.GONE);
             h.action.setImageResource(R.drawable.download);
-            h.action.setColorFilter(android.graphics.Color.parseColor("#AB47BC"));
+            h.action.setColorFilter(android.graphics.Color.parseColor("#9E94C6"));
             h.action.setOnClickListener(v -> install(h, temp));
         }
     }

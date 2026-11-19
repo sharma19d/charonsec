@@ -10,9 +10,8 @@
     android:clickable="true"
     android:focusable="true"
     app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
-    app:rippleColor="#1A1565C0"
+    app:rippleColor="#1A9E94C6"
     app:strokeColor="@color/light_lite_contrast"
     app:strokeWidth="1dp">
 
@@ -76,7 +75,7 @@
                     android:paddingEnd="8dp"
                     android:paddingBottom="2dp"
                     android:text="@string/arsenal_hub_badge_system"
-                    android:textColor="#0D47A1"
+                    android:textColor="@color/ch_signal"
                     android:textSize="10sp"
                     android:textStyle="bold"
                     android:visibility="gone" />

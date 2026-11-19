@@ -50,7 +50,6 @@
             android:clickable="true"
             android:focusable="true"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -67,7 +66,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_generate"
-                    app:tint="#1565C0" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -89,7 +88,6 @@
             android:clickable="true"
             android:focusable="true"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -106,7 +104,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/download"
-                    app:tint="#00897B" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -128,7 +126,6 @@
             android:clickable="true"
             android:focusable="true"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -145,7 +142,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/importer"
-                    app:tint="#AB47BC" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -167,7 +164,6 @@
             android:clickable="true"
             android:focusable="true"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -184,7 +180,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/key"
-                    app:tint="#C62828" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"

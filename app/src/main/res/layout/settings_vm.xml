@@ -39,7 +39,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -104,7 +103,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -210,7 +208,7 @@
             android:letterSpacing="0.08"
             android:text="@string/vm_section_autotune"
             android:textAllCaps="true"
-            android:textColor="#00897B"
+            android:textColor="@color/ch_signal"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -219,7 +217,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -236,7 +233,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/bolt"
-                        app:tint="#00897B" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -266,7 +263,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/rocket_launch"
-                        app:tint="#00897B" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -297,7 +294,7 @@
             android:letterSpacing="0.08"
             android:text="@string/vm_section_experiments"
             android:textAllCaps="true"
-            android:textColor="#E53935"
+            android:textColor="@color/ch_signal"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -315,7 +312,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -332,7 +328,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/bolt"
-                        app:tint="#E53935" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -360,7 +356,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/tune"
-                        app:tint="#E53935" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -388,7 +384,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/ic_cpu"
-                        app:tint="#5E35B1" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -419,7 +415,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/ic_cpu"
-                        app:tint="#E53935" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -449,7 +445,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/tune"
-                        app:tint="#E53935" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -479,7 +475,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/storage"
-                        app:tint="#E53935" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -509,7 +505,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/ic_cpu"
-                        app:tint="#E53935" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -537,7 +533,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/storage"
-                        app:tint="#E53935" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -567,7 +563,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/bolt"
-                        app:tint="#E53935" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -598,7 +594,7 @@
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
             android:text="@string/vm_apply_restart"
-            app:cornerRadius="16dp"
+            app:cornerRadius="2dp"
             app:icon="@drawable/restart_alt"
             app:iconGravity="textStart" />
 

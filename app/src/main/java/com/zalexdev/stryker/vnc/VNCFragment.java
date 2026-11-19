@@ -481,7 +481,7 @@ public class VNCFragment extends Fragment {
         textProgress.setVisibility(View.VISIBLE);
         progress.setVisibility(View.VISIBLE);
         progress.setIndeterminate(true);
-        setStatePill("INSTALL", 0xFF5E35B1, true);
+        setStatePill("INSTALL", 0xFF9E94C6, true);
     }
 
     private void runInstallProcess() {
@@ -666,7 +666,7 @@ public class VNCFragment extends Fragment {
         connectionCard.setVisibility(View.GONE);
         sectionSettings.setVisibility(View.GONE);
         installed.setText("Not installed — tap install to fetch ~600 MB.");
-        setStatePill("OFF", 0xFF757575, false);
+        setStatePill("OFF", 0xFFA5A1B4, false);
     }
 
     private void checkVNCInstalled() {
@@ -706,7 +706,7 @@ public class VNCFragment extends Fragment {
         uninstall.setEnabled(false);
         changePasswd.setEnabled(false);
         passwdLayout.setEnabled(false);
-        setStatePill("RUN", 0xFF2E7D32, false);
+        setStatePill("RUN", 0xFF6CC79E, false);
         installed.setText("Running · accept VNC connections on the port below");
     }
 
@@ -718,7 +718,7 @@ public class VNCFragment extends Fragment {
         uninstall.setEnabled(true);
         changePasswd.setEnabled(true);
         passwdLayout.setEnabled(true);
-        setStatePill("OFF", 0xFFF9A825, false);
+        setStatePill("OFF", 0xFFD9B66A, false);
         installed.setText("Stopped · tap Start to spin up xvfb + x11vnc");
     }
 

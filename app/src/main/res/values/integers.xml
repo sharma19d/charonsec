@@ -4,6 +4,6 @@
     <integer name="motion_long">400</integer>
     <integer name="motion_stagger">45</integer>
 
-    <integer name="welcome_effect_opacity_pct">45</integer>
-    <integer name="intro_effect_opacity_pct">20</integer>
+    <integer name="welcome_effect_opacity_pct">100</integer>
+    <integer name="intro_effect_opacity_pct">45</integer>
 </resources>

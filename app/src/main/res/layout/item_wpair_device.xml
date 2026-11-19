@@ -9,7 +9,6 @@
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
     app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="18dp"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
     app:strokeWidth="1dp">
@@ -40,7 +39,7 @@
                     android:layout_gravity="center"
                     android:scaleType="fitCenter"
                     android:src="@drawable/wpair"
-                    app:tint="#3949AB" />
+                    app:tint="@color/ch_signal" />
             </FrameLayout>
 
             <LinearLayout
@@ -176,7 +175,7 @@
                 android:text="@string/wpair_btn_test"
                 android:textColor="@color/stryker_accent"
                 android:textSize="12sp"
-                app:cornerRadius="12dp"
+                app:cornerRadius="2dp"
                 app:strokeColor="@color/light_lite_contrast" />
 
             <com.google.android.material.button.MaterialButton
@@ -185,7 +184,7 @@
                 android:layout_height="42dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="#3949AB"
+                android:backgroundTint="@color/ch_signal"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minHeight="0dp"
@@ -194,7 +193,7 @@
                 android:text="@string/wpair_btn_magic"
                 android:textColor="@color/light_contrast"
                 android:textSize="12sp"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="2dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wpair_btn_more"
@@ -206,7 +205,7 @@
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minHeight="0dp"
-                app:cornerRadius="12dp"
+                app:cornerRadius="2dp"
                 app:icon="@drawable/expand_icon"
                 app:iconSize="16dp"
                 app:iconTint="@color/grey"

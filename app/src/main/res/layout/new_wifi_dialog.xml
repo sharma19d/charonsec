@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
     app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="24dp"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
     app:strokeWidth="1dp">
@@ -77,7 +76,6 @@
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/itemcolor"
             android:checkable="true"
-            app:cardCornerRadius="14dp"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
 
@@ -148,11 +146,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:backgroundTint="#FFEBEE"
+            android:backgroundTint="@color/ch_ink_2"
             android:checkable="true"
-            app:cardCornerRadius="14dp"
             app:cardElevation="0dp"
-            app:strokeColor="#EF5350"
+            app:strokeColor="@color/ch_alert"
             app:strokeWidth="1dp">
 
             <LinearLayout
@@ -169,14 +166,14 @@
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:src="@drawable/warning"
-                    app:tint="#C62828" />
+                    app:tint="@color/ch_alert" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="WPS LOCKED"
-                    android:textColor="#B71C1C"
+                    android:textColor="@color/ch_alert"
                     android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -207,7 +204,6 @@
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
                         android:checkable="true"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -245,7 +241,6 @@
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -289,7 +284,6 @@
                         android:layout_marginEnd="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -327,7 +321,6 @@
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -365,7 +358,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/itemcolor"
-                    app:cardCornerRadius="14dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="0dp">
 
@@ -445,7 +437,6 @@
                         android:layout_marginEnd="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -483,7 +474,6 @@
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -528,7 +518,6 @@
                         android:layout_marginEnd="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -566,7 +555,6 @@
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -584,7 +572,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/deauth"
-                                app:tint="#C62828" />
+                                app:tint="@color/ch_alert" />
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"

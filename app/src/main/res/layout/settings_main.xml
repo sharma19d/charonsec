@@ -59,7 +59,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="18dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -126,7 +125,6 @@
                 android:layout_marginBottom="10dp"
                 android:visibility="gone"
                 app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="18dp"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
                 app:strokeWidth="1dp">
@@ -205,7 +203,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -583,7 +580,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/settings_section_local"
-            android:textColor="#AB47BC"
+            android:textColor="@color/ch_signal"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textAllCaps="true"
@@ -594,7 +591,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -625,7 +621,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/screen_search_desktop"
-                        app:tint="#AB47BC" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -686,7 +682,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/analytics"
-                        app:tint="#AB47BC" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -747,7 +743,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/devices"
-                        app:tint="#AB47BC" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -801,7 +797,7 @@
             android:letterSpacing="0.08"
             android:text="@string/settings_section_geo"
             android:textAllCaps="true"
-            android:textColor="#7E57C2"
+            android:textColor="@color/ch_signal"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -810,7 +806,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -841,7 +836,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/wifi"
-                        app:tint="#7E57C2" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -902,7 +897,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/expand_icon"
-                        app:tint="#7E57C2" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -947,7 +942,7 @@
             android:letterSpacing="0.08"
             android:text="@string/settings_section_msf"
             android:textAllCaps="true"
-            android:textColor="#E53935"
+            android:textColor="@color/ch_signal"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -956,7 +951,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -987,7 +981,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/shield"
-                        app:tint="#E53935" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -1048,7 +1042,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/restart_alt"
-                        app:tint="#E53935" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -1084,7 +1078,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/settings_section_privacy"
-            android:textColor="#00897B"
+            android:textColor="@color/ch_signal"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textAllCaps="true"
@@ -1095,7 +1089,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -1121,7 +1114,7 @@
                     android:background="@drawable/settings_icon_bg"
                     android:padding="10dp"
                     android:src="@drawable/visibility_off"
-                    app:tint="#00897B" />
+                    app:tint="@color/ch_signal" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -1163,7 +1156,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/settings_section_system"
-            android:textColor="#5E35B1"
+            android:textColor="@color/ch_signal"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textAllCaps="true"
@@ -1174,7 +1167,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -1266,7 +1258,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/bug_report"
-                        app:tint="#5E35B1" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -1326,7 +1318,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/logout"
-                        app:tint="#5E35B1" />
+                        app:tint="@color/ch_signal" />
 
                     <LinearLayout
                         android:layout_width="0dp"

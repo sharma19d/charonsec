@@ -128,11 +128,11 @@ public class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.VH> {
 
     private void bindSeverityPills(VH h, Site s) {
         int[] counts = s.vulnsCount != null && s.vulnsCount.length >= 4 ? s.vulnsCount : new int[]{0,0,0,0};
-        applyPill(h.sevCritical, "C", counts.length > 4 ? counts[4] : 0, 0xFFB71C1C);
-        applyPill(h.sevHigh,     "H", counts[3], 0xFFD32F2F);
-        applyPill(h.sevMedium,   "M", counts[2], 0xFFEF6C00);
-        applyPill(h.sevLow,      "L", counts[1], 0xFFF9A825);
-        applyPill(h.sevInfo,     "I", counts[0], 0xFF1565C0);
+        applyPill(h.sevCritical, "C", counts.length > 4 ? counts[4] : 0, 0xFFE07A7A);
+        applyPill(h.sevHigh,     "H", counts[3], 0xFFE07A7A);
+        applyPill(h.sevMedium,   "M", counts[2], 0xFFE0956A);
+        applyPill(h.sevLow,      "L", counts[1], 0xFFD9B66A);
+        applyPill(h.sevInfo,     "I", counts[0], 0xFF9E94C6);
     }
 
     private void applyPill(VH.Pill pill, String letter, int count, int color) {

@@ -1,317 +1,293 @@
 package com.zalexdev.stryker.appintro;
 
+import android.animation.TimeAnimator;
 import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.graphics.RadialGradient;
-import android.graphics.RuntimeShader;
 import android.graphics.Shader;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+
+import com.zalexdev.stryker.R;
+
+import java.util.Random;
+
+/**
+ * First-run backdrop: drifting pools of violet light, a faint grid that
+ * scrolls slowly, a scan sweep, rising motes, and a large tuning scale on the
+ * right that turns slowly and follows the page swipes.
+ */
 public class IntroBackgroundView extends View {
 
-    private static final int[] LIGHT_BG = {0xFFFDFEFF, 0xFFECF5FF};
-    private static final int[] DARK_BG = {0xFF060E21, 0xFF02050D};
-    private static final int[] LIGHT_BLOBS = {0xB866C2FF, 0x8C3894FF, 0xC794E0FF, 0x8052A8FF};
-    private static final int[] DARK_BLOBS = {0x991F6BFF, 0x804DB8FF, 0xA61A42D9, 0x805ABFFF};
+    private static final float TICK_DEG = 3f;
+    private static final float DEG_PER_PAGE = 24f;
+    private static final float IDLE_DEG_PER_S = 1.6f;
+    private static final int MOTES = 26;
 
-    private static final float[][] BASE = {{-0.20f, -0.30f}, {0.24f, -0.05f}, {-0.14f, 0.20f}, {0.16f, 0.34f}};
-    private static final float[] RADIUS = {0.22f, 0.19f, 0.21f, 0.16f};
-    private static final float[] SPIN = {0.55f, -0.75f, 0.95f, -0.40f};
-
-    private final Paint shaderPaint = new Paint();
-    private final Paint bgLight = new Paint(), bgDark = new Paint();
-    private final Paint blobPaint = new Paint();
-    private final PorterDuffXfermode add = new PorterDuffXfermode(PorterDuff.Mode.ADD);
+    private final Paint tick = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint ring = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint needle = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint gridPaint = new Paint();
+    private final Paint basePaint = new Paint();
+    private final Paint sweepPaint = new Paint();
+    private final Paint glowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint motePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint[] poolPaint = new Paint[3];
+    private final RadialGradient[] poolShader = new RadialGradient[3];
     private final Matrix matrix = new Matrix();
-    private final RadialGradient[] lightGlows = new RadialGradient[4];
-    private final RadialGradient[] darkGlows = new RadialGradient[4];
-    private final float[] center = new float[2];
-    private Object shader;
+    @Nullable private LinearGradient sweepShader;
+    private final int cMinor, cMajor, cSignal, cLine;
+    private final float dp;
 
-    private long lastNanos;
-    private float t, reveal;
-    private float pageTarget, page;
-    private Boolean forcedDark;
-    private boolean systemDark;
-    private float dark = -1f;
+    private final float[] moteX = new float[MOTES], moteY = new float[MOTES];
+    private final float[] moteSpeed = new float[MOTES], moteSize = new float[MOTES], motePhase = new float[MOTES];
 
-    public IntroBackgroundView(Context context) {
-        this(context, null);
-    }
+    private float pageOffset;
+    private float reveal = 1f;
+    private float t;
+    private float cx, cy, r;
+    private float gridStep;
+    @Nullable private ValueAnimator revealAnim;
+    @Nullable private TimeAnimator ticker;
 
-    public IntroBackgroundView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
+    public IntroBackgroundView(Context context) { this(context, null); }
+
+    public IntroBackgroundView(Context context, AttributeSet attrs) { this(context, attrs, 0); }
 
     public IntroBackgroundView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        systemDark = isNight(getResources().getConfiguration());
-        for (int i = 0; i < 4; i++) {
-            lightGlows[i] = glow(LIGHT_BLOBS[i]);
-            darkGlows[i] = glow(DARK_BLOBS[i]);
-        }
-        if (Build.VERSION.SDK_INT >= 33) shader = new IntroShader();
+        dp = getResources().getDisplayMetrics().density;
+        cMinor = ContextCompat.getColor(context, R.color.ch_line_strong);
+        cMajor = ContextCompat.getColor(context, R.color.ch_bone_dim);
+        cSignal = ContextCompat.getColor(context, R.color.ch_signal);
+        cLine = ContextCompat.getColor(context, R.color.ch_line_strong);
+        ring.setStyle(Paint.Style.STROKE);
+        ring.setStrokeWidth(1f * dp);
+        ring.setColor(cLine);
+        needle.setColor(cSignal);
+        needle.setStrokeWidth(2.5f * dp);
+        needle.setStrokeCap(Paint.Cap.ROUND);
+        gridPaint.setStrokeWidth(1f);
+        motePaint.setColor(0xFFC9C1E8);
+        gridStep = 28f * dp;
+        for (int i = 0; i < 3; i++) poolPaint[i] = new Paint(Paint.ANTI_ALIAS_FLAG);
+        replayReveal();
     }
 
     public void setPageOffset(float position) {
-        pageTarget = position;
+        if (pageOffset != position) {
+            pageOffset = position;
+            invalidate();
+        }
     }
 
-    public void setDarkTheme(Boolean dark) {
-        forcedDark = dark;
-        invalidate();
-    }
+    /** Kept for API compatibility: the intro is always dark. */
+    public void setDarkTheme(Boolean dark) { }
 
+    /** Everything fades and turns in once when the intro opens. */
     public void replayReveal() {
-        t = 0f;
-        invalidate();
-    }
-
-    @Override
-    protected void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        systemDark = isNight(newConfig);
-        invalidate();
+        if (revealAnim != null) revealAnim.cancel();
+        revealAnim = ValueAnimator.ofFloat(0f, 1f);
+        revealAnim.setDuration(1400);
+        revealAnim.setStartDelay(100);
+        revealAnim.setInterpolator(new DecelerateInterpolator(2f));
+        revealAnim.addUpdateListener(a -> {
+            reveal = (float) a.getAnimatedValue();
+            invalidate();
+        });
+        reveal = 0f;
+        revealAnim.start();
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        bgLight.setShader(new LinearGradient(0, 0, 0, h, LIGHT_BG[0], LIGHT_BG[1], Shader.TileMode.CLAMP));
-        bgDark.setShader(new LinearGradient(0, 0, 0, h, DARK_BG[0], DARK_BG[1], Shader.TileMode.CLAMP));
+        r = w * 0.92f;
+        cx = w * 1.10f;
+        cy = h * 0.26f;
+
+        basePaint.setShader(new LinearGradient(0, 0, 0, h,
+                new int[]{0xFF0F0E13, 0xFF131219, 0xFF1A1724}, new float[]{0f, 0.55f, 1f},
+                Shader.TileMode.CLAMP));
+        // Grid is invisible at the top and strongest near the bottom.
+        gridPaint.setShader(new LinearGradient(0, 0, 0, h,
+                new int[]{0x00E7E4EF, 0x0AE7E4EF, 0x1CE7E4EF}, new float[]{0.15f, 0.55f, 1f},
+                Shader.TileMode.CLAMP));
+        sweepShader = new LinearGradient(0, -1f, 0, 1f,
+                new int[]{0x009E94C6, 0x169E94C6, 0x009E94C6}, null, Shader.TileMode.CLAMP);
+        sweepPaint.setShader(sweepShader);
+        glowPaint.setShader(new RadialGradient(cx - r, cy, 90f * dp,
+                new int[]{(cSignal & 0x00FFFFFF) | 0x50000000, cSignal & 0x00FFFFFF},
+                null, Shader.TileMode.CLAMP));
+
+        int[] pool = {0x9E94C6, 0x5B4E9C, 0x4E6C92};
+        int[] poolA = {0x3A, 0x48, 0x34};
+        for (int i = 0; i < 3; i++) {
+            poolShader[i] = new RadialGradient(0, 0, 1f,
+                    new int[]{(poolA[i] << 24) | pool[i], ((poolA[i] / 3) << 24) | pool[i], pool[i]},
+                    new float[]{0f, 0.5f, 1f}, Shader.TileMode.CLAMP);
+            poolPaint[i].setShader(poolShader[i]);
+        }
+
+        Random rnd = new Random(11);
+        for (int i = 0; i < MOTES; i++) {
+            moteX[i] = rnd.nextFloat() * w;
+            moteY[i] = rnd.nextFloat() * h;
+            moteSpeed[i] = (6f + rnd.nextFloat() * 14f) * dp;
+            moteSize[i] = (0.8f + rnd.nextFloat() * 1.4f) * dp;
+            motePhase[i] = rnd.nextFloat() * 6.28f;
+        }
     }
 
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        lastNanos = 0;
-        invalidate();
+        startTicker();
     }
 
     @Override
-    protected void onVisibilityChanged(View changedView, int visibility) {
-        super.onVisibilityChanged(changedView, visibility);
-        if (visibility == VISIBLE) {
-            lastNanos = 0;
+    protected void onDetachedFromWindow() {
+        if (revealAnim != null) revealAnim.cancel();
+        stopTicker();
+        super.onDetachedFromWindow();
+    }
+
+    @Override
+    protected void onVisibilityChanged(@NonNull View changed, int visibility) {
+        super.onVisibilityChanged(changed, visibility);
+        if (visibility == VISIBLE && isAttachedToWindow()) startTicker();
+        else stopTicker();
+    }
+
+    private void startTicker() {
+        if (ticker != null) return;
+        ticker = new TimeAnimator();
+        ticker.setTimeListener((a, total, delta) -> {
+            float dt = Math.min(delta, 50) / 1000f;
+            t += dt;
+            int h = getHeight(), w = getWidth();
+            for (int i = 0; i < MOTES; i++) {
+                moteY[i] -= moteSpeed[i] * dt;
+                if (moteY[i] < -10f * dp) {
+                    moteY[i] = h + 10f * dp;
+                    moteX[i] = (moteX[i] * 7.31f + 97f * dp) % Math.max(1, w);
+                }
+            }
             invalidate();
+        });
+        ticker.start();
+    }
+
+    private void stopTicker() {
+        if (ticker != null) {
+            ticker.cancel();
+            ticker = null;
         }
     }
 
     @Override
-    protected void onWindowVisibilityChanged(int visibility) {
-        super.onWindowVisibilityChanged(visibility);
-        if (visibility == VISIBLE) {
-            lastNanos = 0;
-            invalidate();
-        }
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        long now = System.nanoTime();
-        float dt = lastNanos == 0 ? 1f / 60f : Math.min(0.05f, (now - lastNanos) / 1e9f);
-        lastNanos = now;
-        float pace = animationsEnabled() ? 1f : 0.3f;
-        t += dt * pace;
-
-        float targetDark = (forcedDark != null ? forcedDark : systemDark) ? 1f : 0f;
-        if (dark < 0f) dark = targetDark;
-        dark += (targetDark - dark) * (1f - (float) Math.exp(-dt * 4f));
-        page += (pageTarget - page) * (1f - (float) Math.exp(-dt * 14f));
-        reveal = ease(clamp(t / 1.8f, 0f, 1f));
-
+    protected void onDraw(Canvas c) {
         int w = getWidth(), h = getHeight();
         if (w == 0 || h == 0) return;
+        c.drawRect(0, 0, w, h, basePaint);
 
-        if (Build.VERSION.SDK_INT >= 33 && shader != null) {
-            ((IntroShader) shader).draw(canvas, shaderPaint, w, h, t, dark, page, reveal);
-        } else {
-            drawFallback(canvas, w, h);
+        // Drifting pools of light (slow Lissajous paths).
+        drawPool(c, 0, w * (0.25f + 0.12f * (float) Math.sin(t * 0.11)),
+                h * (0.30f + 0.08f * (float) Math.sin(t * 0.07 + 1f)), w * 0.75f);
+        drawPool(c, 1, w * (0.70f + 0.15f * (float) Math.sin(t * 0.09 + 2f)),
+                h * (0.68f + 0.10f * (float) Math.cos(t * 0.06)), w * 0.95f);
+        drawPool(c, 2, w * (0.15f + 0.10f * (float) Math.cos(t * 0.08 + 0.5f)),
+                h * (0.88f + 0.05f * (float) Math.sin(t * 0.1)), w * 0.7f);
+
+        // Faint grid, scrolling down slowly.
+        gridPaint.setAlpha((int) (255 * reveal));
+        float scroll = (t * 6f * dp) % gridStep;
+        for (float x = (w % gridStep) / 2f; x < w; x += gridStep) c.drawLine(x, 0, x, h, gridPaint);
+        for (float y = scroll - gridStep; y < h; y += gridStep) c.drawLine(0, y, w, y, gridPaint);
+
+        // Scan sweep, top to bottom every 7 s.
+        if (sweepShader == null) return;
+        float band = 140f * dp;
+        float sy = ((t % 7f) / 7f) * (h + band * 2) - band;
+        matrix.setScale(1f, band);
+        matrix.postTranslate(0, sy);
+        sweepShader.setLocalMatrix(matrix);
+        sweepPaint.setAlpha((int) (255 * reveal));
+        c.drawRect(0, sy - band, w, sy + band, sweepPaint);
+
+        // Rising motes that twinkle.
+        for (int i = 0; i < MOTES; i++) {
+            float tw = 0.5f + 0.5f * (float) Math.sin(t * 1.6f + motePhase[i]);
+            motePaint.setAlpha((int) (reveal * (40 + 110 * tw)));
+            c.drawCircle(moteX[i], moteY[i], moteSize[i], motePaint);
         }
 
-        boolean settledTheme = Math.abs(targetDark - dark) < 0.001f;
-        if (getWindowVisibility() == VISIBLE && isShown()) scheduleNextFrame(settledTheme);
-        else if (!settledTheme) invalidate();
+        drawScale(c);
     }
 
-    private static final long IDLE_FRAME_MS = 33;
-
-    private void scheduleNextFrame(boolean settledTheme) {
-        boolean moving = !settledTheme
-                || reveal < 1f
-                || Math.abs(pageTarget - page) > 0.002f;
-        if (moving) postInvalidateOnAnimation();
-        else postInvalidateDelayed(IDLE_FRAME_MS);
+    private void drawPool(Canvas c, int i, float x, float y, float radius) {
+        matrix.setScale(radius, radius);
+        matrix.postTranslate(x, y);
+        poolShader[i].setLocalMatrix(matrix);
+        poolPaint[i].setAlpha((int) (255 * reveal));
+        c.drawCircle(x, y, radius, poolPaint[i]);
     }
 
-    private void drawFallback(Canvas canvas, int w, int h) {
-        int darkAlpha = (int) (dark * 255);
-        if (darkAlpha < 255) canvas.drawRect(0, 0, w, h, bgLight);
-        if (darkAlpha > 0) {
-            bgDark.setAlpha(darkAlpha);
-            canvas.drawRect(0, 0, w, h, bgDark);
+    private void drawScale(Canvas c) {
+        if (r <= 0) return;
+        float rotation = pageOffset * DEG_PER_PAGE + t * IDLE_DEG_PER_S + (1f - reveal) * 40f;
+        int alpha = (int) (255 * reveal);
+
+        ring.setAlpha((int) (alpha * 0.9f));
+        c.drawCircle(cx, cy, r, ring);
+        ring.setAlpha((int) (alpha * 0.55f));
+        c.drawCircle(cx, cy, r - 26f * dp, ring);
+        ring.setAlpha((int) (alpha * 0.3f));
+        c.drawCircle(cx, cy, r - 56f * dp, ring);
+        ring.setAlpha((int) (alpha * 0.16f));
+        c.drawCircle(cx, cy, r * 0.45f, ring);
+
+        for (float a = 80f; a <= 280f; a += TICK_DEG) {
+            double rad = Math.toRadians(a + rotation);
+            int k = Math.round(a / TICK_DEG);
+            boolean major = k % 5 == 0;
+            float len = (major ? 22f : 9f) * dp;
+            tick.setColor(major ? cMajor : cMinor);
+            tick.setAlpha((int) (alpha * (major ? 0.75f : 0.9f)));
+            tick.setStrokeWidth((major ? 1.5f : 1f) * dp);
+            float sin = (float) Math.sin(rad), cos = (float) Math.cos(rad);
+            float r0 = r - 3f * dp;
+            c.drawLine(cx + r0 * cos, cy + r0 * sin,
+                    cx + (r0 - len) * cos, cy + (r0 - len) * sin, tick);
         }
-        float rv = 0.15f + 0.85f * reveal;
-        float sx = clamp((float) w / h * 1.2f, 0.55f, 1.8f);
-        for (int pass = 0; pass < 2; pass++) {
-            float a = pass == 0 ? 1f - dark : dark;
-            if (a < 0.001f) continue;
-            blobPaint.setXfermode(pass == 0 ? null : add);
-            for (int i = 0; i < 4; i++) {
-                blobCenter(i, sx);
-                float cx = center[0] * h + w * 0.5f, cy = center[1] * h + h * 0.5f;
-                float r = RADIUS[i] * rv * h * 1.9f;
-                RadialGradient g = pass == 0 ? lightGlows[i] : darkGlows[i];
-                matrix.setScale(r, r);
-                matrix.postTranslate(cx, cy);
-                g.setLocalMatrix(matrix);
-                blobPaint.setShader(g);
-                blobPaint.setAlpha((int) (a * 255));
-                canvas.drawCircle(cx, cy, r, blobPaint);
-            }
+
+        // Inner ring turns slower for a parallax feel.
+        float innerR = r - 30f * dp;
+        tick.setColor(cMinor);
+        tick.setStrokeWidth(1f * dp);
+        tick.setAlpha((int) (alpha * 0.6f));
+        for (float a = 100f; a <= 260f; a += TICK_DEG * 2) {
+            double rad = Math.toRadians(a + rotation * 0.6f);
+            float sin = (float) Math.sin(rad), cos = (float) Math.cos(rad);
+            float len = 5f * dp;
+            c.drawLine(cx + innerR * cos, cy + innerR * sin,
+                    cx + (innerR - len) * cos, cy + (innerR - len) * sin, tick);
         }
-        blobPaint.setShader(null);
-    }
 
-    private void blobCenter(int i, float sx) {
-        float ang = page * SPIN[i];
-        float c = (float) Math.cos(ang), s = (float) Math.sin(ang);
-        float bx = BASE[i][0], by = BASE[i][1];
-        float x = c * bx - s * by, y = s * bx + c * by;
-        switch (i) {
-            case 0: x += 0.10f * sin(t * 0.21f);        y += 0.10f * cos(t * 0.17f); break;
-            case 1: x += 0.09f * cos(t * 0.19f + 1f);   y += 0.09f * sin(t * 0.23f); break;
-            case 2: x += 0.11f * sin(t * 0.16f + 2f);   y += 0.11f * cos(t * 0.20f + 0.5f); break;
-            default: x += 0.08f * cos(t * 0.27f + 3f);  y += 0.08f * sin(t * 0.18f + 1.5f); break;
-        }
-        center[0] = x * sx;
-        center[1] = y;
-    }
-
-    private static RadialGradient glow(int color) {
-        int a = color >>> 24, rgb = color & 0x00FFFFFF;
-        return new RadialGradient(0f, 0f, 1f,
-                new int[]{(a << 24) | rgb, ((int) (a * 0.55f) << 24) | rgb, ((int) (a * 0.15f) << 24) | rgb, rgb},
-                new float[]{0f, 0.3f, 0.62f, 1f}, Shader.TileMode.CLAMP);
-    }
-
-    @TargetApi(33)
-    private static final class IntroShader {
-        private static final String SRC =
-                "uniform float2 uRes;\n" +
-                "uniform float uTime;\n" +
-                "uniform float uDark;\n" +
-                "uniform float uPage;\n" +
-                "uniform float uReveal;\n" +
-                "\n" +
-                "float2 rot(float2 v, float a) { float c = cos(a); float s = sin(a); return float2(c * v.x - s * v.y, s * v.x + c * v.y); }\n" +
-                "float gauss(float2 p, float2 c, float r) { float2 d = p - c; return exp(-dot(d, d) / (r * r)); }\n" +
-                "\n" +
-                "float height(float2 p, float2 c0, float2 c1, float2 c2, float2 c3, float rv, float t) {\n" +
-                "  float h = gauss(p, c0, 0.22 * rv) + 0.8 * gauss(p, c1, 0.19 * rv) + 0.9 * gauss(p, c2, 0.21 * rv) + 0.6 * gauss(p, c3, 0.16 * rv);\n" +
-                "  h += 0.10 * sin(p.x * 3.1 + t * 0.23 + uPage * 0.8) * cos(p.y * 2.7 - t * 0.19);\n" +
-                "  h += 0.05 * sin((p.x + p.y) * 5.3 - t * 0.31);\n" +
-                "  return h;\n" +
-                "}\n" +
-                "\n" +
-                "half4 main(float2 fc) {\n" +
-                "  float2 p = (fc - 0.5 * uRes) / uRes.y;\n" +
-                "  float t = uTime;\n" +
-                "  float pg = uPage;\n" +
-                "  float asp = uRes.x / uRes.y;\n" +
-                "  float sx = clamp(asp * 1.2, 0.55, 1.8);\n" +
-                "  float rv = 0.15 + 0.85 * uReveal;\n" +
-                "\n" +
-                "  float2 c0 = rot(float2(-0.20, -0.30), pg * 0.55) + 0.10 * float2(sin(t * 0.21), cos(t * 0.17));\n" +
-                "  float2 c1 = rot(float2(0.24, -0.05), -pg * 0.75) + 0.09 * float2(cos(t * 0.19 + 1.0), sin(t * 0.23));\n" +
-                "  float2 c2 = rot(float2(-0.14, 0.20), pg * 0.95) + 0.11 * float2(sin(t * 0.16 + 2.0), cos(t * 0.20 + 0.5));\n" +
-                "  float2 c3 = rot(float2(0.16, 0.34), -pg * 0.40) + 0.08 * float2(cos(t * 0.27 + 3.0), sin(t * 0.18 + 1.5));\n" +
-                "  c0.x *= sx; c1.x *= sx; c2.x *= sx; c3.x *= sx;\n" +
-                "\n" +
-                "  float g0 = gauss(p, c0, 0.22 * rv);\n" +
-                "  float g1 = gauss(p, c1, 0.19 * rv);\n" +
-                "  float g2 = gauss(p, c2, 0.21 * rv);\n" +
-                "  float g3 = gauss(p, c3, 0.16 * rv);\n" +
-                "  float vy = fc.y / uRes.y;\n" +
-                "\n" +
-                "  float3 L = mix(float3(0.992, 0.996, 1.0), float3(0.925, 0.962, 1.0), vy);\n" +
-                "  L = mix(L, float3(0.40, 0.76, 1.0), g0 * 0.72);\n" +
-                "  L = mix(L, float3(0.22, 0.58, 1.0), g1 * 0.55);\n" +
-                "  L = mix(L, float3(0.58, 0.88, 1.0), g2 * 0.78);\n" +
-                "  L = mix(L, float3(0.32, 0.66, 1.0), g3 * 0.50);\n" +
-                "  float pool = clamp(g0 + g1 + g2 + g3, 0.0, 1.0);\n" +
-                "\n" +
-                "  float3 D = mix(float3(0.024, 0.055, 0.13), float3(0.008, 0.018, 0.05), vy);\n" +
-                "  D += float3(0.12, 0.42, 1.0) * g0 * 0.6 + float3(0.30, 0.72, 1.0) * g1 * 0.5;\n" +
-                "  D += float3(0.10, 0.26, 0.85) * g2 * 0.65 + float3(0.35, 0.75, 1.0) * g3 * 0.5;\n" +
-                "\n" +
-                "  float eps = 1.0 / uRes.y;\n" +
-                "  float h = height(p, c0, c1, c2, c3, rv, t);\n" +
-                "  float hx = height(p + float2(eps, 0.0), c0, c1, c2, c3, rv, t);\n" +
-                "  float hy = height(p + float2(0.0, eps), c0, c1, c2, c3, rv, t);\n" +
-                "  float grad = length(float2(hx - h, hy - h));\n" +
-                "  float K = 9.0;\n" +
-                "  float v = h * K - t * 0.08;\n" +
-                "  float dist = abs(fract(v + 0.5) - 0.5) / max(grad * K, 1e-5);\n" +
-                "  float line = 1.0 - smoothstep(0.35, 1.35, dist);\n" +
-                "  float major = 1.0 - step(0.01, fract(floor(v + 0.5) * 0.25));\n" +
-                "  float la = line * (0.5 + 0.5 * major) * smoothstep(0.35, 1.0, uReveal);\n" +
-                "\n" +
-                "  L = mix(L, float3(1.0, 1.0, 1.0), la * 0.55 * pool);\n" +
-                "  L = mix(L, float3(0.30, 0.58, 1.0), la * 0.13 * (1.0 - pool));\n" +
-                "  D += float3(0.50, 0.82, 1.0) * la * 0.22;\n" +
-                "\n" +
-                "  float2 q = fc / uRes - 0.5;\n" +
-                "  D *= 1.0 - dot(q, q) * 0.7;\n" +
-                "  float3 col = mix(L, D, uDark);\n" +
-                "  col += (fract(sin(dot(fc + fract(t) * 37.0, float2(12.9898, 78.233))) * 43758.5453) - 0.5) / 255.0;\n" +
-                "  return half4(half3(col), 1.0);\n" +
-                "}\n";
-
-        private final RuntimeShader shader = new RuntimeShader(SRC);
-
-        void draw(Canvas canvas, Paint paint, int w, int h, float time, float dark, float page, float reveal) {
-            shader.setFloatUniform("uRes", w, h);
-            shader.setFloatUniform("uTime", time);
-            shader.setFloatUniform("uDark", dark);
-            shader.setFloatUniform("uPage", page);
-            shader.setFloatUniform("uReveal", reveal);
-            paint.setShader(shader);
-            canvas.drawRect(0, 0, w, h, paint);
-        }
-    }
-
-    private static boolean isNight(Configuration c) {
-        return (c.uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
-    }
-
-    private static boolean animationsEnabled() {
-        return Build.VERSION.SDK_INT < Build.VERSION_CODES.O || ValueAnimator.areAnimatorsEnabled();
-    }
-
-    private static float sin(float v) {
-        return (float) Math.sin(v);
-    }
-
-    private static float cos(float v) {
-        return (float) Math.cos(v);
-    }
-
-    private static float ease(float x) {
-        return x < .5f ? 4f * x * x * x : 1f - (float) Math.pow(-2f * x + 2f, 3) / 2f;
-    }
-
-    private static float clamp(float v, float lo, float hi) {
-        return v < lo ? lo : (v > hi ? hi : v);
+        float pulse = 0.75f + 0.25f * (float) Math.sin(t * 2.2f);
+        glowPaint.setAlpha((int) (alpha * pulse));
+        c.drawCircle(cx - r, cy, 90f * dp, glowPaint);
+        needle.setAlpha(alpha);
+        float nx = cx - r;
+        c.drawLine(nx - 12f * dp, cy, nx + 26f * dp, cy, needle);
     }
 }

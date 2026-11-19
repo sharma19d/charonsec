@@ -11,7 +11,6 @@
     android:clickable="true"
     android:focusable="true"
     app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="14dp"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
     app:strokeWidth="1dp">

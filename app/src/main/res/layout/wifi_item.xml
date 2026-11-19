@@ -91,7 +91,7 @@
                     android:paddingEnd="5dp"
                     android:paddingBottom="1dp"
                     android:text="@string/wifi_chip_lock"
-                    android:textColor="#B71C1C"
+                    android:textColor="@color/ch_alert"
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:visibility="gone" />
@@ -109,7 +109,7 @@
                     android:paddingEnd="5dp"
                     android:paddingBottom="1dp"
                     android:text="@string/wifi_chip_pixie"
-                    android:textColor="#E65100"
+                    android:textColor="@color/ch_signal"
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:visibility="gone" />

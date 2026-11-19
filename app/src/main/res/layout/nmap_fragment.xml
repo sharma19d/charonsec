@@ -56,7 +56,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -86,7 +85,7 @@
                             android:layout_height="22dp"
                             android:layout_gravity="center"
                             android:src="@drawable/scanner"
-                            app:tint="#AB47BC" />
+                            app:tint="@color/ch_signal" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -122,7 +121,7 @@
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
                         android:padding="0dp"
-                        app:cornerRadius="22dp"
+                        app:cornerRadius="2dp"
                         app:icon="@drawable/folder"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
@@ -315,7 +314,7 @@
                     android:layout_marginBottom="12dp"
                     android:indeterminate="true"
                     android:visibility="invisible"
-                    app:indicatorColor="#AB47BC"
+                    app:indicatorColor="@color/ch_signal"
                     app:trackColor="@color/light_lite_contrast"
                     app:trackCornerRadius="2dp" />
             </LinearLayout>
@@ -330,7 +329,7 @@
             android:letterSpacing="0.08"
             android:text="@string/nmap_section_profile"
             android:textAllCaps="true"
-            android:textColor="#AB47BC"
+            android:textColor="@color/ch_signal"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -338,7 +337,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -486,11 +484,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:backgroundTint="#AB47BC"
+                    android:backgroundTint="@color/ch_signal"
                     android:maxLines="1"
                     android:text="@string/nmap_btn_start"
                     android:textColor="@color/light_contrast"
-                    app:cornerRadius="14dp"
+                    app:cornerRadius="2dp"
                     app:icon="@drawable/scanner"
                     app:iconGravity="textStart"
                     app:iconSize="18dp"
@@ -504,13 +502,13 @@
                     android:layout_marginTop="6dp"
                     android:maxLines="1"
                     android:text="@string/nmap_btn_stop"
-                    android:textColor="#D32F2F"
+                    android:textColor="@color/ch_alert"
                     android:visibility="gone"
-                    app:cornerRadius="14dp"
+                    app:cornerRadius="2dp"
                     app:icon="@drawable/stop"
                     app:iconGravity="textStart"
                     app:iconSize="18dp"
-                    app:iconTint="#D32F2F" />
+                    app:iconTint="@color/ch_alert" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -531,7 +529,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp">
@@ -586,7 +583,7 @@
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
                         android:padding="0dp"
-                        app:cornerRadius="10dp"
+                        app:cornerRadius="2dp"
                         app:icon="@drawable/expand_icon"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
@@ -615,7 +612,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="monospace"
                             android:text="@string/nmap_output_placeholder"
-                            android:textColor="#D4D4D4"
+                            android:textColor="@color/ch_bone"
                             android:textIsSelectable="true"
                             android:textSize="11sp" />
                     </com.zalexdev.stryker.utils.NoNestedScrollView>
@@ -636,7 +633,7 @@
                         android:layout_weight="1"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        app:cornerRadius="14dp"
+                        app:cornerRadius="2dp"
                         app:icon="@drawable/copy"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
@@ -652,7 +649,7 @@
                         android:layout_weight="1"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        app:cornerRadius="14dp"
+                        app:cornerRadius="2dp"
                         app:icon="@drawable/save_outlined"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
@@ -668,7 +665,7 @@
                         android:layout_weight="1"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        app:cornerRadius="14dp"
+                        app:cornerRadius="2dp"
                         app:icon="@drawable/share"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
@@ -684,7 +681,7 @@
                         android:layout_weight="1"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        app:cornerRadius="14dp"
+                        app:cornerRadius="2dp"
                         app:icon="@drawable/delete"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"

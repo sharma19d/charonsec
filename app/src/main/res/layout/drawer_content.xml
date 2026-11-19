@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato"
-                    android:text="StrykerOSS"
+                    android:text="@string/app_name"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -78,8 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="#1A2E7D32"
-            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#1A6CC79E"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
 
@@ -162,7 +161,7 @@
             android:letterSpacing="0.08"
             android:text="WIRELESS"
             android:textAllCaps="true"
-            android:textColor="#3949AB"
+            android:textColor="@color/ch_signal"
             android:textSize="11sp"
             android:textStyle="bold" />
 
@@ -187,7 +186,7 @@
             android:letterSpacing="0.08"
             android:text="NETWORK"
             android:textAllCaps="true"
-            android:textColor="#AB47BC"
+            android:textColor="@color/ch_signal"
             android:textSize="11sp"
             android:textStyle="bold" />
 
@@ -208,7 +207,7 @@
             android:letterSpacing="0.08"
             android:text="OFFENSIVE"
             android:textAllCaps="true"
-            android:textColor="#C62828"
+            android:textColor="@color/ch_signal"
             android:textSize="11sp"
             android:textStyle="bold" />
 
@@ -233,7 +232,7 @@
             android:letterSpacing="0.08"
             android:text="TOOLS"
             android:textAllCaps="true"
-            android:textColor="#5E35B1"
+            android:textColor="@color/ch_signal"
             android:textSize="11sp"
             android:textStyle="bold" />
 
