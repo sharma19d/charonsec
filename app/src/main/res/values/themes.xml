@@ -1,20 +1,20 @@
 <resources>
-    <!-- CharonSec: one dark "instrument" theme, independent of the system light/dark setting. -->
-    <style name="Theme.Stryker" parent="Theme.Material3.Dark.NoActionBar">
+    <!-- CharonSec: iOS look, light and dark following the system setting. -->
+    <style name="Base.Theme.Stryker" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/ch_signal</item>
         <item name="colorOnPrimary">@color/ch_on_signal</item>
         <item name="colorPrimaryContainer">@color/ch_signal_soft</item>
-        <item name="colorOnPrimaryContainer">@color/ch_signal_hi</item>
+        <item name="colorOnPrimaryContainer">@color/ch_signal</item>
         <item name="colorPrimaryDark">@color/ch_ink_0</item>
         <item name="colorPrimaryVariant">@color/ch_signal</item>
         <item name="colorSecondary">@color/ch_signal</item>
         <item name="colorOnSecondary">@color/ch_on_signal</item>
-        <item name="colorSecondaryContainer">@color/ch_ink_3</item>
+        <item name="colorSecondaryContainer">@color/ch_field</item>
         <item name="colorOnSecondaryContainer">@color/ch_bone</item>
         <item name="colorSecondaryVariant">@color/ch_signal_hi</item>
         <item name="colorTertiary">@color/ch_live</item>
         <item name="colorError">@color/ch_alert</item>
-        <item name="colorOnError">@color/ch_ink_0</item>
+        <item name="colorOnError">#FFFFFF</item>
 
         <item name="android:colorBackground">@color/ch_ink_0</item>
         <item name="colorOnBackground">@color/ch_bone</item>
@@ -22,60 +22,111 @@
         <item name="colorOnSurface">@color/ch_bone</item>
         <item name="colorSurfaceVariant">@color/ch_ink_2</item>
         <item name="colorOnSurfaceVariant">@color/ch_bone_dim</item>
-        <item name="colorSurfaceContainerLowest">@color/ch_ink_0</item>
+        <item name="colorSurfaceContainerLowest">@color/ch_ink_1</item>
         <item name="colorSurfaceContainerLow">@color/ch_ink_1</item>
         <item name="colorSurfaceContainer">@color/ch_ink_1</item>
-        <item name="colorSurfaceContainerHigh">@color/ch_ink_2</item>
-        <item name="colorSurfaceContainerHighest">@color/ch_ink_3</item>
+        <item name="colorSurfaceContainerHigh">@color/ch_ink_1</item>
+        <item name="colorSurfaceContainerHighest">@color/ch_ink_2</item>
         <item name="colorSurfaceInverse">@color/ch_bone</item>
-        <item name="colorOnSurfaceInverse">@color/ch_ink_0</item>
-        <item name="colorOutline">@color/ch_line_strong</item>
+        <item name="colorOnSurfaceInverse">@color/ch_ink_1</item>
+        <item name="colorOutline">@color/ch_line</item>
         <item name="colorOutlineVariant">@color/ch_line</item>
+        <item name="elevationOverlayEnabled">false</item>
 
         <item name="android:windowBackground">@color/ch_ink_0</item>
-        <item name="android:navigationBarColor">@color/ch_ink_0</item>
+        <item name="android:navigationBarColor">@color/ch_glass</item>
         <item name="android:statusBarColor">@color/ch_ink_0</item>
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowLightNavigationBar">false</item>
         <item name="android:textColorPrimary">@color/ch_bone</item>
         <item name="android:textColorSecondary">@color/ch_bone_dim</item>
+        <item name="android:textColorTertiary">@color/ch_bone_faint</item>
         <item name="android:textColorHint">@color/ch_bone_faint</item>
-        <item name="android:colorControlHighlight">#249E94C6</item>
+        <item name="android:textColorLink">@color/ch_signal</item>
+        <item name="android:textColorHighlight">@color/ch_signal_soft</item>
+        <item name="android:colorControlHighlight">@color/ch_highlight</item>
+        <item name="colorControlHighlight">@color/ch_highlight</item>
         <item name="colorControlActivated">@color/ch_signal</item>
+        <item name="colorControlNormal">@color/ch_bone_dim</item>
+        <item name="colorAccent">@color/ch_signal</item>
         <item name="android:fontFamily">@font/charon_body</item>
         <item name="fontFamily">@font/charon_body</item>
+        <item name="android:windowAnimationStyle">@style/Ios.WindowAnimations</item>
 
-        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Charon.Control</item>
-        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Charon.Panel</item>
-        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Charon.Dialog</item>
-        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Charon.Control</item>
-        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Charon.Control</item>
-        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Charon.Panel</item>
-        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Charon.Dialog</item>
+        <!-- Press feedback: grey highlight that fades out, no ripples. -->
+        <item name="selectableItemBackground">@drawable/ios_cell_highlight</item>
+        <item name="android:selectableItemBackground">@drawable/ios_cell_highlight</item>
+        <item name="selectableItemBackgroundBorderless">@drawable/ios_icon_highlight</item>
+        <item name="android:selectableItemBackgroundBorderless">@drawable/ios_icon_highlight</item>
 
-        <item name="switchStyle">@style/Widget.Stryker.Switch</item>
+        <!-- Type ramp. -->
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.Ios.LargeTitle</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.Ios.Title1</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.Ios.Title2</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.Ios.Title1</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Ios.Title2</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Ios.Title3</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Ios.Title3</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.Ios.Headline</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.Ios.Subhead.Semibold</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.Ios.Body</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.Ios.Subhead</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.Ios.Footnote</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.Ios.Button</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.Ios.Footnote</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.Ios.Caption2</item>
+
+        <!-- Shapes. -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.Ios.Field</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Ios.Card</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Ios.Card</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.Ios.Field</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.Ios.Card</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.Ios.Card</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.Ios.Alert</item>
+
+        <!-- Components. -->
+        <item name="switchStyle">@style/Ios.Switch</item>
+        <item name="materialSwitchStyle">@style/Ios.MaterialSwitch</item>
+        <item name="checkboxStyle">@style/Ios.CheckBox</item>
+        <item name="radioButtonStyle">@style/Ios.Radio</item>
         <item name="android:textViewStyle">@style/Widget.Stryker.TextView</item>
-        <item name="android:buttonStyle">@style/Widget.Stryker.Button</item>
-        <item name="materialButtonStyle">@style/Widget.Stryker.Button</item>
-        <item name="materialCardViewStyle">@style/Widget.Stryker.CardView</item>
-        <item name="floatingActionButtonStyle">@style/Widget.Stryker.FAB</item>
-        <item name="extendedFloatingActionButtonStyle">@style/Widget.Charon.ExtendedFab</item>
-        <item name="materialAlertDialogTheme">@style/Widget.Stryker.AlertDialog</item>
-        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Stryker.BottomSheetDialog</item>
+        <item name="android:buttonStyle">@style/Ios.Button</item>
+        <item name="materialButtonStyle">@style/Ios.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Ios.Button.Tinted</item>
+        <item name="borderlessButtonStyle">@style/Ios.Button.Plain</item>
+        <item name="materialCardViewStyle">@style/Ios.Card</item>
+        <item name="floatingActionButtonStyle">@style/Ios.Fab</item>
+        <item name="extendedFloatingActionButtonStyle">@style/Ios.ExtendedFab</item>
+        <item name="chipStyle">@style/Ios.Chip</item>
+        <item name="textInputStyle">@style/Ios.TextField</item>
+        <item name="linearProgressIndicatorStyle">@style/Ios.LinearProgress</item>
+        <item name="circularProgressIndicatorStyle">@style/Ios.CircularProgress</item>
+        <item name="android:progressBarStyle">@style/Ios.Spinner</item>
+        <item name="sliderStyle">@style/Ios.Slider</item>
+        <item name="toolbarStyle">@style/Ios.Toolbar</item>
+        <item name="materialAlertDialogTheme">@style/Ios.AlertDialog</item>
+        <item name="alertDialogTheme">@style/Ios.AlertDialog</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.Ios.BottomSheetDialog</item>
+        <item name="materialDividerStyle">@style/Ios.Divider</item>
         <item name="backgroundColor">@color/ch_ink_0</item>
-        <item name="viewInflaterClass">com.zalexdev.stryker.ui.CharonViewInflater</item>
+        <item name="android:textCursorDrawable">@drawable/ios_cursor</item>
     </style>
 
-    <style name="Widget.Charon.ExtendedFab" parent="Widget.Material3.ExtendedFloatingActionButton.Icon.Primary">
-        <item name="backgroundTint">@color/ch_signal</item>
-        <item name="android:textColor">@color/ch_on_signal</item>
-        <item name="iconTint">@color/ch_on_signal</item>
-        <item name="android:fontFamily">@font/charon_display</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:letterSpacing">0.08</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Charon.Control</item>
-        <item name="elevation">0dp</item>
+    <style name="Theme.Stryker" parent="Base.Theme.Stryker">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <style name="Ios.Divider" parent="Widget.Material3.MaterialDivider">
+        <item name="dividerColor">@color/ch_line</item>
+        <item name="dividerThickness">@dimen/ios_hairline</item>
+    </style>
+
+    <!-- Activities slide in from the right like a navigation push. -->
+    <style name="Ios.WindowAnimations" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/ios_push_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/ios_push_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/ios_pop_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/ios_pop_exit</item>
     </style>
 
     <style name="Theme.StrykerFloatingDialog" parent="Theme.Stryker">

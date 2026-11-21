@@ -35,7 +35,7 @@ public class NewsFragment extends Fragment {
         Context context = getContext();
         RecyclerView list = view.findViewById(R.id.news_list);
         list.setLayoutManager(new LinearLayoutManager(context));
-        list.setItemViewCacheSize(255);
+        list.setItemViewCacheSize(12);
         adapter = new NewsAdapter(context, activity, NewsRepository.defaults());
         list.setAdapter(adapter);
         NewsRepository.load(context, news -> {

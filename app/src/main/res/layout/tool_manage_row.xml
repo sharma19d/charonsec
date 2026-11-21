@@ -27,7 +27,7 @@
                 android:layout_height="22dp"
                 android:layout_gravity="center"
                 android:src="@drawable/shield"
-                app:tint="@color/stryker_accent" />
+                app:tint="@android:color/white" />
         </FrameLayout>
 
         <LinearLayout
@@ -63,7 +63,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/tool_delete"
-            style="@style/Widget.Material3.Button.OutlinedButton"
+            style="@style/Ios.Button.Tinted.Destructive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="0dp"
@@ -77,7 +77,7 @@
     <View
         android:id="@+id/tool_divider"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/ios_hairline"
         android:layout_marginStart="72dp"
-        android:background="@color/light_lite_contrast" />
+        android:background="@color/ch_line" />
 </LinearLayout>

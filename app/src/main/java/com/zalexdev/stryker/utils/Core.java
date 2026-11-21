@@ -125,33 +125,49 @@ public class Core {
         return engineOverride;
     }
 
-    public Core(Context context) {
+    /** Opening the encrypted store costs ~150 ms (keystore + Tink), so it is opened once per process. */
+    private static volatile SharedPreferences sharedPreferences;
 
-        SharedPreferences preferences1;
-        this.context = context;
-        try {
-            String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
-                    preferences1 =  EncryptedSharedPreferences.create(
-                    "touchMeAndGetPhoneReset",
-                    masterKeyAlias,
-                    context,
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            );
-        } catch (GeneralSecurityException | IOException e) {
-            e.printStackTrace();
+    /** Opens (and decrypts) the preferences off the main thread at app start. */
+    public static void warmUp(Context context) {
+        Thread t = new Thread(() -> openPreferences(context), "prefs-warmup");
+        t.setDaemon(true);
+        t.start();
+    }
+
+    private static SharedPreferences openPreferences(Context context) {
+        SharedPreferences p = sharedPreferences;
+        if (p != null) return p;
+        synchronized (Core.class) {
+            if (sharedPreferences != null) return sharedPreferences;
+            Context app = context.getApplicationContext() != null ? context.getApplicationContext() : context;
+            for (int attempt = 0; attempt < 2 && p == null; attempt++) {
+                try {
+                    String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
+                    p = EncryptedSharedPreferences.create(
+                            "touchMeAndGetPhoneReset",
+                            masterKeyAlias,
+                            app,
+                            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM);
+                } catch (GeneralSecurityException | IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (p == null) p = PreferenceManager.getDefaultSharedPreferences(app);
             try {
-                String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
-                    preferences1 =  EncryptedSharedPreferences.create(
-                    "touchMeAndGetPhoneReset",
-                    masterKeyAlias,
-                    context,
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            ); } catch (GeneralSecurityException | IOException ex) {
-            ex.printStackTrace();
-            preferences1 = PreferenceManager.getDefaultSharedPreferences(context);
-        }}
+                p = new CachedPreferences(p);
+            } catch (RuntimeException undecryptable) {
+                // Fall back to direct (slower) reads if an entry cannot be decrypted.
+            }
+            sharedPreferences = p;
+            return p;
+        }
+    }
+
+    public Core(Context context) {
+        this.context = context;
+        SharedPreferences preferences1 = openPreferences(context);
         preferences = preferences1;
         logger = new Logger();
         monitorManager = new MonitorManager(this);

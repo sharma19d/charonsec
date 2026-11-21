@@ -18,17 +18,16 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/wpair_rec_back"
-            style="@style/Widget.Material3.Button.TextButton"
+            style="@style/Ios.Button.Plain"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:minWidth="0dp"
             android:padding="0dp"
-            android:rotation="180"
-            app:icon="@drawable/arrow_right"
+            app:icon="@drawable/ios_chevron_back"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
-            app:iconSize="22dp"
-            app:iconTint="?android:attr/textColorPrimary" />
+            app:iconSize="21dp"
+            app:iconTint="@color/ch_signal" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="0dp"
@@ -42,7 +41,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/wpair_rec_refresh"
-            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            style="@style/Ios.IconButton.Tinted"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:contentDescription="@string/wpair_recordings_refresh"
@@ -54,8 +53,8 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/light_lite_contrast" />
+        android:layout_height="@dimen/ios_hairline"
+        android:background="@color/ch_line" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -91,7 +90,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:src="@drawable/save_outlined"
-                    app:tint="@color/ch_signal" />
+                    app:tint="@android:color/white" />
             </FrameLayout>
 
             <com.google.android.material.textview.MaterialTextView

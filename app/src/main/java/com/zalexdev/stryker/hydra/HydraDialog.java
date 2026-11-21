@@ -320,7 +320,7 @@ public final class HydraDialog {
         fs.setContentView(R.layout.hydra_output_fullscreen);
         Window w = fs.getWindow();
         if (w != null) {
-            w.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0F0E13")));
+            w.setBackgroundDrawable(new ColorDrawable(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_ink_0)));
             w.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         }
         TextView output = fs.findViewById(R.id.hydra_full_output);

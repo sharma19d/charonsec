@@ -27,7 +27,7 @@ public final class SparklineView extends View {
     private final Path linePath = new Path();
     private final Path fillPath = new Path();
 
-    private int accent = 0xFF9E94C6;
+    private int accent = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal);
     private boolean gradientReady;
 
     public SparklineView(Context context) {

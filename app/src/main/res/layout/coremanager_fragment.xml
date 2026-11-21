@@ -9,6 +9,7 @@
     tools:context=".coremanger.CoreManager">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/cm_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -46,23 +47,21 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="10dp"
-                android:letterSpacing="0.08"
                 android:text="@string/tools_section_title"
-                android:textAllCaps="true"
-                android:textColor="@color/ch_signal"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textColor="@color/ch_bone_dim"
+                android:textSize="13sp" 
+                android:textAllCaps="true"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:id="@+id/cm_tools_container"
@@ -74,23 +73,21 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="22dp"
                 android:layout_marginBottom="10dp"
-                android:letterSpacing="0.08"
                 android:text="@string/core_mgr_section_source"
-                android:textAllCaps="true"
-                android:textColor="@color/stryker_accent"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textColor="@color/ch_bone_dim"
+                android:textSize="13sp" 
+                android:textAllCaps="true"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -117,7 +114,7 @@
                                 android:layout_height="22dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/storage"
-                                app:tint="@color/stryker_accent" />
+                                app:tint="@android:color/white" />
                         </FrameLayout>
 
                         <LinearLayout
@@ -176,11 +173,11 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/ios_hairline"
                         android:layout_marginStart="14dp"
                         android:layout_marginTop="14dp"
                         android:layout_marginEnd="14dp"
-                        android:background="@color/light_lite_contrast" />
+                        android:background="@color/ch_line" />
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/cm_source_group"
@@ -196,7 +193,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/apktoogle"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/Ios.Chip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
@@ -204,14 +201,14 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/piptoggle"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/Ios.Chip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/core_mgr_source_pip" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/cm_filter_installed"
-                            style="@style/Widget.Material3.Chip.Filter"
+                            style="@style/Ios.Chip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/core_mgr_filter_installed" />
@@ -222,27 +219,25 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="22dp"
                 android:layout_marginBottom="10dp"
-                android:letterSpacing="0.08"
                 android:text="@string/core_mgr_section_search"
-                android:textAllCaps="true"
-                android:textColor="@color/ch_signal"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textColor="@color/ch_bone_dim"
+                android:textSize="13sp" 
+                android:textAllCaps="true"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/search_layout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Ios.TextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="14dp"
@@ -259,7 +254,6 @@
                         android:id="@+id/search"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:importantForAutofill="no"
                         android:inputType="textNoSuggestions"
                         android:maxLines="1" />
@@ -269,25 +263,23 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="22dp"
                 android:layout_marginBottom="10dp"
-                android:letterSpacing="0.08"
                 android:text="@string/core_mgr_section_packages"
-                android:textAllCaps="true"
-                android:textColor="@color/stryker_accent"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textColor="@color/ch_bone_dim"
+                android:textSize="13sp" 
+                android:textAllCaps="true"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cm_empty_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -332,10 +324,10 @@
                 android:id="@+id/cm_list_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/package_list"

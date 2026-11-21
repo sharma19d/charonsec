@@ -400,7 +400,7 @@ public class MACChangerFragment extends Fragment {
         if (uiReady()) activity.runOnUiThread(() -> {
             if (!uiReady()) return;
             statusPill.setText(R.string.mac_pill_waiting_net);
-            statusPill.setTextColor(0xFF9E94C6);
+            statusPill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
             ifaceSub.setText(R.string.mac_waiting_net);
         });
         new Thread(() -> {
@@ -447,14 +447,14 @@ public class MACChangerFragment extends Fragment {
     private void finishApply(boolean ok) {
         core.putBoolean(KEY_BUSY, false);
         setBusy(false, ok ? R.string.mac_pill_changed : R.string.mac_pill_error);
-        statusPill.setTextColor(ok ? 0xFF6CC79E : 0xFFE07A7A);
+        statusPill.setTextColor(ok ? com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live) : com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
         core.toaster(activity, getString(ok ? R.string.mac_success : R.string.mac_failed));
         refreshAddresses();
     }
 
     private void setBusy(boolean busy, int pillRes) {
         statusPill.setText(pillRes);
-        statusPill.setTextColor(busy ? 0xFF9E94C6 : 0xFFA5A1B4);
+        statusPill.setTextColor(busy ? com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal) : com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim));
         ifaceLayout.setEnabled(!busy);
         macLayout.setEnabled(!busy);
         changeMac.setEnabled(!busy);

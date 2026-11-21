@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- iOS buttons dim while held and fade back on release. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_pressed="true">
+        <objectAnimator android:duration="60" android:propertyName="alpha" android:valueTo="0.55" android:valueType="floatType" />
+    </item>
+    <item>
+        <objectAnimator android:duration="240" android:propertyName="alpha" android:valueTo="1" android:valueType="floatType"
+            android:interpolator="@android:interpolator/decelerate_quad" />
+    </item>
+</selector>

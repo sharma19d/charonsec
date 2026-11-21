@@ -42,7 +42,7 @@
                         android:layout_height="34dp"
                         android:layout_gravity="center"
                         android:src="@drawable/devices"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/port_count"
@@ -85,7 +85,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:ellipsize="end"
-                        android:fontFamily="monospace"
                         android:singleLine="true"
                         android:text="00:00:00:00:00:00"
                         android:textColor="@color/grey"
@@ -120,7 +119,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/image_dialog_1"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                style="@style/Ios.IconButton.Tinted"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_marginStart="6dp"
@@ -128,7 +127,7 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:visibility="gone"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/web"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
@@ -137,7 +136,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/image_dialog_2"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                style="@style/Ios.IconButton.Tinted"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_marginStart="6dp"
@@ -145,7 +144,7 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:visibility="gone"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/folder"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
@@ -154,7 +153,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/image_dialog_3"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                style="@style/Ios.IconButton.Tinted"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_marginStart="6dp"
@@ -162,7 +161,7 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:visibility="gone"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/terminal"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
@@ -171,7 +170,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/image_dialog_4"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                style="@style/Ios.IconButton.Tinted"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_marginStart="6dp"
@@ -179,7 +178,7 @@
                 android:insetBottom="0dp"
                 android:padding="0dp"
                 android:visibility="gone"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
                 app:iconSize="20dp"
@@ -192,9 +191,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.08"
             android:text="@string/local_section_attacks"
-            android:textAllCaps="true"
             android:textColor="@color/red"
             android:textSize="12sp"
             android:textStyle="bold" />
@@ -202,10 +199,10 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -233,7 +230,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="9dp"
                         android:src="@drawable/screen_search_desktop"
-                        app:tint="@color/red" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -268,9 +265,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="68dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/netcut"
@@ -293,7 +290,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="9dp"
                         android:src="@drawable/cut"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -328,9 +325,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="68dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/launch_hydra"
@@ -353,7 +350,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="9dp"
                         android:src="@drawable/key"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -388,9 +385,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="68dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/camera_check"
@@ -413,7 +410,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="9dp"
                         android:src="@drawable/nest_cam_indoor"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -448,9 +445,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="68dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
 </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -458,23 +455,21 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.08"
             android:text="@string/local_section_actions"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -502,7 +497,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="9dp"
                         android:src="@drawable/summarize"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -537,9 +532,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="68dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/generate_payload"
@@ -562,7 +557,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="9dp"
                         android:src="@drawable/attachment"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -597,9 +592,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="68dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/launch_msf"
@@ -622,7 +617,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="9dp"
                         android:src="@drawable/shield"
-                        app:tint="@color/red" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -657,9 +652,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="68dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/wake_on_lan"
@@ -682,7 +677,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="9dp"
                         android:src="@drawable/send"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -717,9 +712,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="68dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/run_exploit"
@@ -742,7 +737,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="9dp"
                         android:src="@drawable/rocket_launch"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"

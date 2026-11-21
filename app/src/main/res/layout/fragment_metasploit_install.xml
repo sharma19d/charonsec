@@ -41,23 +41,21 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="10dp"
-            android:letterSpacing="0.08"
             android:text="@string/msf_section_status"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,7 +83,7 @@
                             android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/download"
-                            app:tint="@color/ch_signal" />
+                            app:tint="@android:color/white" />
 
                         <ProgressBar
                             android:id="@+id/msf_status_spinner"
@@ -142,26 +140,24 @@
             android:id="@+id/msf_install_stages_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
             android:layout_marginBottom="10dp"
-            android:letterSpacing="0.08"
             android:text="@string/msf_install_stages_header"
-            android:textAllCaps="true"
-            android:textColor="@color/ch_signal"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp"
+            android:visibility="gone" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/msf_install_stages_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:id="@+id/msf_install_stages_container"
@@ -178,16 +174,14 @@
             android:id="@+id/msf_install_log_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
             android:layout_marginBottom="10dp"
-            android:letterSpacing="0.08"
             android:text="@string/msf_install_log_header"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:visibility="gone" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp"
+            android:visibility="gone" 
+            android:textAllCaps="true"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/msf_install_log_recycler"
@@ -205,9 +199,8 @@
             android:backgroundTint="@color/ch_signal"
             android:maxLines="1"
             android:text="@string/msf_install_btn_start"
-            android:textColor="@color/light_contrast"
             android:visibility="gone"
-            app:cornerRadius="2dp"
+            app:cornerRadius="@dimen/ios_corner_button"
             app:icon="@drawable/download"
             app:iconGravity="textStart"
             app:iconSize="18dp"
@@ -217,10 +210,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/ch_caution"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -235,7 +228,7 @@
                     android:background="@drawable/settings_icon_bg"
                     android:padding="7dp"
                     android:src="@drawable/warning"
-                    app:tint="@color/ch_signal" />
+                    app:tint="@android:color/white" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"

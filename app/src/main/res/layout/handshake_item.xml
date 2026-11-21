@@ -31,7 +31,7 @@
                 android:layout_height="22dp"
                 android:layout_gravity="center"
                 android:src="@drawable/file"
-                app:tint="@color/ch_signal" />
+                app:tint="@android:color/white" />
         </FrameLayout>
 
         <LinearLayout
@@ -68,7 +68,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:fontFamily="monospace"
                 android:singleLine="true"
                 android:text=""
                 android:textColor="@color/grey"
@@ -134,7 +133,7 @@
     <View
         android:id="@+id/hs_item_divider"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/ios_hairline"
         android:layout_marginStart="72dp"
-        android:background="@color/light_lite_contrast" />
+        android:background="@color/ch_line" />
 </LinearLayout>

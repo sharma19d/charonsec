@@ -49,10 +49,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="14dp"
                 android:visibility="gone"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/ch_caution"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -70,7 +70,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="7dp"
                         android:src="@drawable/firewall"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="0dp"
@@ -86,24 +86,22 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="10dp"
-                android:letterSpacing="0.08"
                 android:text="@string/local_section_network"
-                android:textAllCaps="true"
-                android:textColor="@color/ch_signal"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textColor="@color/ch_bone_dim"
+                android:textSize="13sp" 
+                android:textAllCaps="true"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/network_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -134,7 +132,7 @@
                                 android:layout_height="22dp"
                                 android:layout_gravity="center"
                                 android:src="@drawable/lan"
-                                app:tint="@color/ch_signal" />
+                                app:tint="@android:color/white" />
                         </FrameLayout>
 
                         <LinearLayout
@@ -181,13 +179,13 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/network_rescan"
-                            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                            style="@style/Ios.IconButton.Tinted"
                             android:layout_width="44dp"
                             android:layout_height="44dp"
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
                             android:padding="0dp"
-                            app:cornerRadius="2dp"
+                            app:cornerRadius="@dimen/ios_corner_button"
                             app:icon="@drawable/ic_renew"
                             app:iconGravity="textStart"
                             app:iconPadding="0dp"
@@ -209,11 +207,11 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/ios_hairline"
                         android:layout_marginStart="14dp"
                         android:layout_marginTop="14dp"
                         android:layout_marginEnd="14dp"
-                        android:background="@color/light_lite_contrast" />
+                        android:background="@color/ch_line" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -247,9 +245,7 @@
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:letterSpacing="0.06"
                                     android:text="@string/local_gateway_label"
-                                    android:textAllCaps="true"
                                     android:textColor="@color/grey"
                                     android:textSize="10sp"
                                     android:textStyle="bold" />
@@ -267,7 +263,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:fontFamily="monospace"
                                 android:text="—"
                                 android:textColor="?android:attr/textColorPrimary"
                                 android:textSize="14sp" />
@@ -301,9 +296,7 @@
                                 <com.google.android.material.textview.MaterialTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:letterSpacing="0.06"
                                     android:text="@string/local_mask_label"
-                                    android:textAllCaps="true"
                                     android:textColor="@color/grey"
                                     android:textSize="10sp"
                                     android:textStyle="bold" />
@@ -321,7 +314,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:fontFamily="monospace"
                                 android:text="—"
                                 android:textColor="?android:attr/textColorPrimary"
                                 android:textSize="14sp" />
@@ -343,9 +335,7 @@
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:letterSpacing="0.06"
                                 android:text="@string/local_section_devices"
-                                android:textAllCaps="true"
                                 android:textColor="@color/grey"
                                 android:textSize="10sp"
                                 android:gravity="center"
@@ -356,7 +346,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
-                                android:fontFamily="monospace"
                                 android:text="0"
                                 android:textColor="?android:attr/textColorPrimary"
                                 android:textSize="14sp" />
@@ -368,25 +357,23 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="22dp"
                 android:layout_marginBottom="10dp"
-                android:letterSpacing="0.08"
                 android:text="@string/local_section_devices"
-                android:textAllCaps="true"
-                android:textColor="@color/stryker_accent"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textColor="@color/ch_bone_dim"
+                android:textSize="13sp" 
+                android:textAllCaps="true"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/local_empty_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -435,10 +422,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/local_list"

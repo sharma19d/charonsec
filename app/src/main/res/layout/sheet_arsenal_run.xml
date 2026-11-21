@@ -76,17 +76,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="6dp"
-            android:letterSpacing="0.08"
             android:text="@string/arsenal_run_command"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_lite_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp">
 
             <com.google.android.material.textview.MaterialTextView
@@ -113,12 +111,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="6dp"
-                android:letterSpacing="0.08"
                 android:text="@string/arsenal_run_variables"
-                android:textAllCaps="true"
-                android:textColor="@color/stryker_accent"
-                android:textSize="11sp"
-                android:textStyle="bold" />
+                android:textColor="@color/ch_bone_dim"
+                android:textSize="13sp" 
+                android:textAllCaps="true"/>
 
             <LinearLayout
                 android:id="@+id/run_sheet_vars_container"
@@ -135,13 +131,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/run_sheet_copy"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Ios.Button.Tinted"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
                 android:text="@string/arsenal_run_copy"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/copy"
                 app:iconTint="@color/stryker_accent" />
 
@@ -154,14 +150,14 @@
                 android:backgroundTint="@color/stryker_accent"
                 android:text="@string/arsenal_run_launch"
                 android:textColor="@android:color/white"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/rocket_launch"
                 app:iconTint="@android:color/white" />
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/run_sheet_delete"
-            style="@style/Widget.Material3.Button.TextButton"
+            style="@style/Ios.Button.Plain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

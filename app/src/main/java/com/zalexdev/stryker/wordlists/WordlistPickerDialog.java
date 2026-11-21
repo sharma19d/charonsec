@@ -103,7 +103,7 @@ public final class WordlistPickerDialog {
         }
         for (WordlistCategory c : WordlistCategory.values()) if (!ordered.contains(c)) ordered.add(c);
 
-        Chip allChip = buildChip(context, filters, context.getString(R.string.wl_cat_all), 0xFFA5A1B4);
+        Chip allChip = buildChip(context, filters, context.getString(R.string.wl_cat_all), com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim));
         allChip.setOnClickListener(v -> {
             filter[0] = null;
             apply.run();
@@ -189,10 +189,6 @@ public final class WordlistPickerDialog {
         chip.setText(text);
         chip.setCheckable(true);
         chip.setTextSize(11f);
-        chip.setChipBackgroundColorResource(R.color.light_contrast);
-        chip.setChipStrokeWidth(1f);
-        chip.setChipStrokeColor(android.content.res.ColorStateList.valueOf(color));
-        chip.setTextColor(color);
         group.addView(chip);
         return chip;
     }

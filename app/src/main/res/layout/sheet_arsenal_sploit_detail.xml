@@ -63,7 +63,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:fontFamily="monospace"
                     android:text="EDB-ID: 0000"
                     android:textColor="@color/grey"
                     android:textSize="11sp" />
@@ -90,9 +89,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:letterSpacing="0.08"
                         android:text="@string/arsenal_db_field_platform"
-                        android:textAllCaps="true"
                         android:textColor="@color/grey"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -117,9 +114,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:letterSpacing="0.08"
                         android:text="@string/arsenal_db_field_type"
-                        android:textAllCaps="true"
                         android:textColor="@color/grey"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -151,9 +146,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:letterSpacing="0.08"
                         android:text="@string/arsenal_db_field_author"
-                        android:textAllCaps="true"
                         android:textColor="@color/grey"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -177,9 +170,7 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:letterSpacing="0.08"
                         android:text="@string/arsenal_db_field_date"
-                        android:textAllCaps="true"
                         android:textColor="@color/grey"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -201,9 +192,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="6dp"
-            android:letterSpacing="0.08"
             android:text="@string/arsenal_db_field_path"
-            android:textAllCaps="true"
             android:textColor="@color/grey"
             android:textSize="10sp"
             android:textStyle="bold" />
@@ -211,7 +200,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_lite_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp">
 
             <com.google.android.material.textview.MaterialTextView
@@ -234,13 +223,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/sd_view"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Ios.Button.Tinted"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
                 android:layout_weight="1"
                 android:text="@string/arsenal_db_view_source"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/search"
                 app:iconTint="@color/stryker_accent" />
 
@@ -253,21 +242,21 @@
                 android:backgroundTint="@color/stryker_accent"
                 android:text="@string/arsenal_db_save_file"
                 android:textColor="@android:color/white"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/save"
                 app:iconTint="@android:color/white" />
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sd_add_hub"
-            style="@style/Widget.Material3.Button.TonalButton"
+            style="@style/Ios.Button.Tinted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/ch_ink_2"
             android:text="@string/arsenal_db_add_to_hub"
             android:textColor="@color/ch_signal"
-            app:cornerRadius="2dp"
+            app:cornerRadius="@dimen/ios_corner_button"
             app:icon="@drawable/motion_blur"
             app:iconTint="@color/ch_signal" />
     </LinearLayout>

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="@color/light_contrast"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:src="@drawable/save_outlined"
-                app:tint="@color/ch_signal" />
+                app:tint="@android:color/white" />
         </FrameLayout>
 
         <LinearLayout
@@ -42,7 +42,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="middle"
-                android:fontFamily="monospace"
                 android:singleLine="true"
                 android:text="whisper_xxx.m4a"
                 android:textColor="?android:attr/textColorPrimary"
@@ -60,7 +59,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/wpair_rec_play"
-            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            style="@style/Ios.IconButton.Tinted"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_marginEnd="4dp"
@@ -71,7 +70,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/wpair_rec_share"
-            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            style="@style/Ios.IconButton.Tinted"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_marginEnd="4dp"
@@ -82,7 +81,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/wpair_rec_delete"
-            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            style="@style/Ios.IconButton.Tinted"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             app:icon="@drawable/delete"

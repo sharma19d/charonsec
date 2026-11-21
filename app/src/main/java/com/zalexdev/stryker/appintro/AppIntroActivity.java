@@ -349,8 +349,9 @@ public class AppIntroActivity extends FragmentActivity {
         for (int i = 0; i < pages.size(); i++) {
             View dot = new View(this);
             LinearLayout.LayoutParams lp =
-                    new LinearLayout.LayoutParams((int) (6 * d), (int) (6 * d));
-            lp.setMarginEnd((int) (6 * d));
+                    new LinearLayout.LayoutParams((int) (7 * d), (int) (7 * d));
+            lp.setMarginStart((int) (4.5f * d));
+            lp.setMarginEnd((int) (4.5f * d));
             dot.setLayoutParams(lp);
             dot.setBackgroundResource(R.drawable.intro_dot);
             dots.addView(dot);
@@ -365,7 +366,7 @@ public class AppIntroActivity extends FragmentActivity {
             View dot = dots.getChildAt(i);
             boolean active = i == position;
             ViewGroup.LayoutParams lp = dot.getLayoutParams();
-            lp.width = (int) ((active ? 20 : 6) * d);
+            lp.width = (int) (7 * d);
             dot.setLayoutParams(lp);
             dot.setBackgroundResource(active ? R.drawable.intro_dot_active : R.drawable.intro_dot);
         }

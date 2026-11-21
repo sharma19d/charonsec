@@ -15,11 +15,11 @@ import com.zalexdev.stryker.geomac.model.GeoPin;
 
 public final class GeoMarkers {
 
-    public static final int COLOR_LOOKUP = Color.parseColor("#9E94C6");
-    public static final int COLOR_SCAN = Color.parseColor("#9E94C6");
-    public static final int COLOR_CRACKED_HS = Color.parseColor("#9E94C6");
-    public static final int COLOR_CRACKED_PIXIE = Color.parseColor("#6CC79E");
-    public static final int COLOR_MANUAL = Color.parseColor("#9E94C6");
+    public static final int COLOR_LOOKUP = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal);
+    public static final int COLOR_SCAN = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal);
+    public static final int COLOR_CRACKED_HS = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal);
+    public static final int COLOR_CRACKED_PIXIE = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live);
+    public static final int COLOR_MANUAL = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal);
 
     private static final int W_DP = 32;
     private static final int H_DP = 42;

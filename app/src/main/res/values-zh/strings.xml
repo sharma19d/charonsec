@@ -1433,6 +1433,6 @@
     <string name="wl_title">字典</string>
     <string name="settings_promo_title">偶尔的提示</string>
     <string name="settings_promo_subtitle">关于 GitHub 和博客的一次性提示。关闭后不再出现。</string>
-    <string name="init_title">正在初始化</string>
+    <string name="init_title">正在启动 CharonSec…</string>
     <string name="init_subtitle">正在唤醒引擎</string>
 </resources>

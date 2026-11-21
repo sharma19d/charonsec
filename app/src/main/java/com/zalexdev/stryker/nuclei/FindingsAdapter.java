@@ -20,11 +20,11 @@ import java.util.List;
 public class FindingsAdapter extends RecyclerView.Adapter<FindingsAdapter.VH> {
 
     private static final int[] SEVERITY_COLORS = {
-            0xFF9E94C6,
-            0xFFD9B66A,
-            0xFFE0956A,
-            0xFFE07A7A,
-            0xFFE07A7A
+            com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal),
+            com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution),
+            com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_orange),
+            com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert),
+            com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert)
     };
 
     private static final String[] SEVERITY_LABELS = {

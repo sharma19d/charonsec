@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="14dp"
-    app:cardBackgroundColor="@color/light_contrast"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <com.zalexdev.stryker.utils.NoNestedScrollView
         android:layout_width="match_parent"
@@ -90,10 +90,10 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/ios_hairline"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="@color/light_lite_contrast" />
+                android:background="@color/ch_line" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
@@ -101,9 +101,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="6dp"
-                android:letterSpacing="0.06"
                 android:text="@string/hydra_section_service"
-                android:textAllCaps="true"
                 android:textColor="@color/grey"
                 android:textSize="10sp"
                 android:textStyle="bold" />
@@ -126,7 +124,7 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hydra_chip_ssh"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
@@ -134,56 +132,56 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hydra_chip_ftp"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hydra_svc_ftp" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hydra_chip_smb"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hydra_svc_smb" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hydra_chip_rdp"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hydra_svc_rdp" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hydra_chip_mysql"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hydra_svc_mysql" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hydra_chip_postgres"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hydra_svc_postgres" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hydra_chip_telnet"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hydra_svc_telnet" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hydra_chip_vnc"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hydra_svc_vnc" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/hydra_chip_custom"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hydra_svc_custom" />
@@ -192,7 +190,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/hydra_service_custom_layout"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Ios.TextField.Dropdown"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -209,7 +207,6 @@
                     android:id="@+id/hydra_service_custom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="monospace"
                     android:inputType="textNoSuggestions" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -219,9 +216,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="6dp"
-                android:letterSpacing="0.06"
                 android:text="@string/hydra_section_target"
-                android:textAllCaps="true"
                 android:textColor="@color/grey"
                 android:textSize="10sp"
                 android:textStyle="bold" />
@@ -234,7 +229,7 @@
                 android:paddingEnd="16dp">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Ios.TextField"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
@@ -248,14 +243,13 @@
                         android:id="@+id/hydra_host"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:importantForAutofill="no"
                         android:inputType="text"
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Ios.TextField"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -270,7 +264,6 @@
                         android:id="@+id/hydra_port"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:importantForAutofill="no"
                         android:inputType="number"
                         android:maxLength="5"
@@ -284,9 +277,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="6dp"
-                android:letterSpacing="0.06"
                 android:text="@string/hydra_section_credentials"
-                android:textAllCaps="true"
                 android:textColor="@color/grey"
                 android:textSize="10sp"
                 android:textStyle="bold" />
@@ -303,7 +294,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/hydra_mode_wordlists"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -311,7 +302,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/hydra_mode_single"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hydra_mode_single" />
@@ -328,7 +319,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/hydra_login_wl_layout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    style="@style/Ios.TextField.Dropdown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hydra_hint_login_wordlist"
@@ -342,12 +333,11 @@
                         android:id="@+id/hydra_login_wl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:inputType="textNoSuggestions" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    style="@style/Ios.TextField.Dropdown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -362,7 +352,6 @@
                         android:id="@+id/hydra_password_wl"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:inputType="textNoSuggestions" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -378,7 +367,7 @@
                 android:visibility="gone">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Ios.TextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hydra_hint_single_login"
@@ -392,14 +381,13 @@
                         android:id="@+id/hydra_single_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:importantForAutofill="no"
                         android:inputType="text"
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Ios.TextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -414,7 +402,6 @@
                         android:id="@+id/hydra_single_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:importantForAutofill="no"
                         android:inputType="text"
                         android:maxLines="1" />
@@ -427,9 +414,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="6dp"
-                android:letterSpacing="0.06"
                 android:text="@string/hydra_section_tuning"
-                android:textAllCaps="true"
                 android:textColor="@color/grey"
                 android:textSize="10sp"
                 android:textStyle="bold" />
@@ -461,11 +446,10 @@
                     android:id="@+id/hydra_threads_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="monospace"
                     android:text="16"
-                    android:textColor="@color/ch_signal"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/ch_bone_dim"
+                    android:textSize="13sp" 
+                    android:textAllCaps="true"/>
             </LinearLayout>
 
             <com.google.android.material.slider.Slider
@@ -494,14 +478,14 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/hydra_chip_verbose"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hydra_chip_verbose" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/hydra_chip_first"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -529,10 +513,10 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="16dp"
                 android:visibility="gone"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_2"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/ch_live"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -547,7 +531,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="6dp"
                         android:src="@drawable/unlock"
-                        app:tint="@color/ch_live" />
+                        app:tint="@android:color/white" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/hydra_found_text"
@@ -594,7 +578,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="monospace"
-                        android:textColor="@color/ch_bone"
+                        android:textColor="@color/ch_console_text"
                         android:textIsSelectable="true"
                         android:textSize="10sp" />
                 </com.zalexdev.stryker.utils.NoNestedScrollView>
@@ -616,8 +600,7 @@
                     android:backgroundTint="@color/ch_signal"
                     android:maxLines="1"
                     android:text="@string/hydra_btn_launch"
-                    android:textColor="@color/light_contrast"
-                    app:cornerRadius="2dp"
+                    app:cornerRadius="@dimen/ios_corner_button"
                     app:icon="@drawable/rocket_launch"
                     app:iconGravity="textStart"
                     app:iconSize="18dp"
@@ -625,14 +608,14 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/hydra_btn_stop"
-                    style="@style/Widget.Material3.Button.TonalButton"
+                    style="@style/Ios.Button.Tinted"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:maxLines="1"
                     android:text="@string/hydra_btn_stop"
                     android:visibility="gone"
-                    app:cornerRadius="2dp"
+                    app:cornerRadius="@dimen/ios_corner_button"
                     app:icon="@drawable/stop"
                     app:iconGravity="textStart"
                     app:iconSize="18dp" />
@@ -640,7 +623,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/hydra_btn_close"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"

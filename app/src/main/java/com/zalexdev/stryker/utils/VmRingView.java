@@ -92,8 +92,8 @@ public final class VmRingView extends View {
         tilePaint.setStyle(Paint.Style.FILL);
         tilePaint.setColor(color(R.color.light_lite_contrast, 0xFFEDECEC));
 
-        bootColor = color(R.color.stryker_accent, 0xFF9E94C6);
-        stopColor = color(R.color.red, 0xFFE07A7A);
+        bootColor = color(R.color.stryker_accent, com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
+        stopColor = color(R.color.red, com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
 
         ringPaint.setStyle(Paint.Style.STROKE);
         ringPaint.setStrokeWidth(strokePx);
@@ -108,7 +108,7 @@ public final class VmRingView extends View {
         glyph = AppCompatResources.getDrawable(getContext(), R.drawable.debian);
         if (glyph != null) {
             glyph = glyph.mutate();
-            glyph.setTint(color(R.color.grey, 0xFFA5A1B4));
+            glyph.setTint(color(R.color.grey, com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim)));
         }
     }
 

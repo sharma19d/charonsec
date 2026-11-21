@@ -90,9 +90,9 @@ public class UsbArsenalFragment extends Fragment implements GadgetProfileAdapter
     }
 
     private void refreshState() {
-        statePill.setText("PROBING");
+        statePill.setText("Probing");
         statePill.setBackgroundResource(R.drawable.chip_pill_warn);
-        statePill.setTextColor(0xFF9E94C6);
+        statePill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
         new Thread(() -> {
             HidCapabilities caps = new HidCapabilityProbe(requireContext()).probe();
             GadgetState state = controller.readState();
@@ -104,24 +104,24 @@ public class UsbArsenalFragment extends Fragment implements GadgetProfileAdapter
         if (!isAdded()) return;
         if (!caps.canManageGadget()) {
             stateText.setText(R.string.arsenal_no_capability);
-            statePill.setText("BLOCK");
+            statePill.setText("Blocked");
             statePill.setBackgroundResource(R.drawable.chip_pill_err);
-            statePill.setTextColor(0xFFE07A7A);
+            statePill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
         } else if (state.strykerGadgetBound) {
             stateText.setText(getString(R.string.arsenal_state_bound, state.boundUdc));
-            statePill.setText("BOUND");
+            statePill.setText("Bound");
             statePill.setBackgroundResource(R.drawable.chip_pill_ok);
-            statePill.setTextColor(0xFF6CC79E);
+            statePill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live));
         } else if (caps.udcName == null) {
             stateText.setText(R.string.arsenal_state_detached);
-            statePill.setText("DETACH");
+            statePill.setText("Detached");
             statePill.setBackgroundResource(R.drawable.chip_pill_err);
-            statePill.setTextColor(0xFFE07A7A);
+            statePill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
         } else {
             stateText.setText(R.string.arsenal_state_idle);
-            statePill.setText("IDLE");
+            statePill.setText("Idle");
             statePill.setBackgroundResource(R.drawable.chip_pill_warn);
-            statePill.setTextColor(0xFF9E94C6);
+            statePill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
         }
         StringBuilder detail = new StringBuilder();
         detail.append("udc=").append(caps.udcName == null ? "—" : caps.udcName)
@@ -143,9 +143,9 @@ public class UsbArsenalFragment extends Fragment implements GadgetProfileAdapter
 
     @Override
     public void onApply(@NonNull GadgetProfile profile) {
-        statePill.setText("APPLY");
+        statePill.setText("Applying");
         statePill.setBackgroundResource(R.drawable.chip_pill_warn);
-        statePill.setTextColor(0xFF9E94C6);
+        statePill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
         new Thread(() -> {
             boolean teardownOk = controller.teardown();
             boolean ok = controller.apply(profile);

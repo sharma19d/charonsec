@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- iOS system colours, dark appearance. -->
+<resources>
+    <color name="ch_ink_0">#000000</color>
+    <color name="ch_ink_1">#1C1C1E</color>
+    <color name="ch_ink_2">#2C2C2E</color>
+    <color name="ch_ink_3">#3A3A3C</color>
+    <color name="ch_line">#38383A</color>
+    <color name="ch_line_strong">#545458</color>
+
+    <color name="ch_bone">#FFFFFF</color>
+    <color name="ch_bone_dim">#98989F</color>
+    <color name="ch_bone_faint">#5A5A5F</color>
+    <color name="ch_label_85">#D9FFFFFF</color>
+
+    <color name="ch_signal">#0A84FF</color>
+    <color name="ch_signal_hi">#409CFF</color>
+    <color name="ch_signal_soft">#330A84FF</color>
+    <color name="ch_on_signal">#FFFFFF</color>
+
+    <color name="ch_live">#30D158</color>
+    <color name="ch_caution">#FF9F0A</color>
+    <color name="ch_alert">#FF453A</color>
+
+    <color name="ch_glass">#161618</color>
+    <color name="ch_bar_line">#26FFFFFF</color>
+    <color name="ch_highlight">#3A3A3C</color>
+    <color name="ch_fill">#3D767680</color>
+    <color name="ch_fill_strong">#5C787880</color>
+    <color name="ch_scrim">#99000000</color>
+    <color name="ch_surface_95">#F21C1C1E</color>
+    <color name="ch_row_locked">#6198989F</color>
+    <color name="ch_grid">#00000000</color>
+
+    <color name="ch_field">#3D767680</color>
+    <color name="ch_alert_bg">#2A2A2C</color>
+    <color name="ch_segment_thumb">#636366</color>
+    <color name="ch_shadow">#66000000</color>
+
+    <color name="ios_blue">#0A84FF</color>
+    <color name="ios_green">#30D158</color>
+    <color name="ios_indigo">#5E5CE6</color>
+    <color name="ios_orange">#FF9F0A</color>
+    <color name="ios_pink">#FF375F</color>
+    <color name="ios_purple">#BF5AF2</color>
+    <color name="ios_red">#FF453A</color>
+    <color name="ios_teal">#40C8E0</color>
+    <color name="ios_yellow">#FFD60A</color>
+    <color name="ios_cyan">#64D2FF</color>
+    <color name="ios_mint">#63E6E2</color>
+    <color name="ios_gray">#8E8E93</color>
+    <color name="ios_switch_off">#39393D</color>
+    <color name="ios_tab_inactive">#757575</color>
+
+    <!-- Keyboard keys (HID). -->
+    <color name="ios_key">#6B6B6E</color>
+    <color name="ios_key_mod">#46464A</color>
+    <color name="ios_key_board">#2B2B2D</color>
+    <color name="ch_system_bg">#000000</color>
+    <!-- Consoles stay dark in both appearances. -->
+    <color name="ch_console_bg">#141416</color>
+    <color name="ch_console_text">#E5E5EA</color>
+    <color name="ch_console_dim">#8E8E93</color>
+    <color name="ch_alert_soft">#33FF453A</color>
+</resources>

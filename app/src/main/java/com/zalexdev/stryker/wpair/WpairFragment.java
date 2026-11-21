@@ -509,6 +509,8 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
     private void openTerminal(String hostFilter) {
         WpairTerminal t = hostFilter == null ? WpairTerminal.newInstance() : WpairTerminal.forHost(hostFilter);
         requireActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.ios_push_enter, R.anim.ios_push_exit,
+                        R.anim.ios_pop_enter, R.anim.ios_pop_exit)
                 .replace(R.id.flContent, t)
                 .addToBackStack("wpair_terminal")
                 .commit();
@@ -516,6 +518,8 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
 
     private void openRecordings() {
         requireActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.ios_push_enter, R.anim.ios_push_exit,
+                        R.anim.ios_pop_enter, R.anim.ios_pop_exit)
                 .replace(R.id.flContent, new WpairRecordingsFragment())
                 .addToBackStack("wpair_recordings")
                 .commit();

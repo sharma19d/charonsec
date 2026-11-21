@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:text="00:00:00.000"
-        android:textColor="@color/ch_bone_faint"
+        android:textColor="@color/ch_console_dim"
         android:textSize="11sp" />
 
     <TextView
@@ -34,7 +34,7 @@
         android:layout_weight="1"
         android:fontFamily="monospace"
         android:text="..."
-        android:textColor="@color/ch_bone"
+        android:textColor="@color/ch_console_text"
         android:textIsSelectable="true"
         android:textSize="11sp" />
 </LinearLayout>

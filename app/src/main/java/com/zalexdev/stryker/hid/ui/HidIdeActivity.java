@@ -286,7 +286,7 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
         int n = program.steps.size();
         statusPill.setText(getString(R.string.hid_editor_status_ready, n, n == 1 ? "" : "s"));
         statusPill.setBackgroundResource(R.drawable.chip_pill_ok);
-        statusPill.setTextColor(0xFF6CC79E);
+        statusPill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live));
         editor.setErrorLine(-1);
         updateRunButtonAlpha();
     }
@@ -298,7 +298,7 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
         parseErrorMessage = null;
         statusPill.setText(R.string.hid_editor_status_empty);
         statusPill.setBackgroundResource(R.drawable.chip_pill_warn);
-        statusPill.setTextColor(0xFF9E94C6);
+        statusPill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
         editor.setErrorLine(-1);
         updateRunButtonAlpha();
     }
@@ -310,7 +310,7 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
         parseErrorMessage = message;
         statusPill.setText(getString(R.string.hid_editor_status_error, line));
         statusPill.setBackgroundResource(R.drawable.chip_pill_err);
-        statusPill.setTextColor(0xFFE07A7A);
+        statusPill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
         editor.setErrorLine(line);
         updateRunButtonAlpha();
     }
@@ -336,12 +336,12 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
     }
 
     private void refreshCapability() {
-        capsVerdict.setText("PROBING…");
+        capsVerdict.setText("Probing…");
         capsVerdict.setBackgroundResource(R.drawable.chip_pill_warn);
-        capsVerdict.setTextColor(0xFF9E94C6);
+        capsVerdict.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
         capsPill.setText("…");
         capsPill.setBackgroundResource(R.drawable.chip_pill_warn);
-        capsPill.setTextColor(0xFF9E94C6);
+        capsPill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
         new Thread(() -> {
             HidCapabilities caps = new HidCapabilityProbe(this).probe();
             runOnUiThread(() -> bindCapability(caps));
@@ -357,14 +357,14 @@ public class HidIdeActivity extends AppCompatActivity implements LiveSyntaxValid
         int pillColor;
         boolean showArsenal = false;
         switch (caps.verdict) {
-            case READY:           fullText = "READY · KEYBOARD BOUND"; shortPill = "READY";   pillBg = R.drawable.chip_pill_ok;   pillColor = 0xFF6CC79E; break;
-            case ROOT_DENIED:     fullText = "NO ROOT";                shortPill = "NO ROOT"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
-            case KERNEL_TOO_OLD:  fullText = "KERNEL TOO OLD";         shortPill = "KERNEL";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
-            case CONFIGFS_MISSING:fullText = "CONFIGFS MISSING";       shortPill = "CFGFS";   pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
-            case UDC_MISSING:     fullText = "NO UDC";                 shortPill = "NO UDC";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
-            case HID_NODE_MISSING:fullText = "/dev/hidg0 MISSING";     shortPill = "ARSENAL"; pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFD9B66A; showArsenal = true; break;
-            case SELINUX_DENIES:  fullText = "SELINUX DENIES";         shortPill = "SELINUX"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFE07A7A; break;
-            default:              fullText = "?";                      shortPill = "?";       pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFD9B66A;
+            case READY:           fullText = "Ready · Keyboard bound"; shortPill = "Ready";   pillBg = R.drawable.chip_pill_ok;   pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live); break;
+            case ROOT_DENIED:     fullText = "No Root";                shortPill = "No Root"; pillBg = R.drawable.chip_pill_err;  pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert); break;
+            case KERNEL_TOO_OLD:  fullText = "Kernel too old";         shortPill = "Kernel";  pillBg = R.drawable.chip_pill_err;  pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert); break;
+            case CONFIGFS_MISSING:fullText = "configfs missing";       shortPill = "CFGFS";   pillBg = R.drawable.chip_pill_err;  pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert); break;
+            case UDC_MISSING:     fullText = "No UDC";                 shortPill = "No UDC";  pillBg = R.drawable.chip_pill_err;  pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert); break;
+            case HID_NODE_MISSING:fullText = "/dev/hidg0 missing";     shortPill = "Arsenal"; pillBg = R.drawable.chip_pill_warn; pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution); showArsenal = true; break;
+            case SELINUX_DENIES:  fullText = "SELinux denies";         shortPill = "SELinux"; pillBg = R.drawable.chip_pill_err;  pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert); break;
+            default:              fullText = "?";                      shortPill = "?";       pillBg = R.drawable.chip_pill_warn; pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution);
         }
         capsVerdict.setText(fullText);
         capsVerdict.setBackgroundResource(pillBg);

@@ -18,7 +18,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="monospace"
             android:text="@string/nmap_section_output"
             android:textColor="@color/ch_bone"
             android:textSize="12sp"
@@ -28,21 +27,20 @@
             android:id="@+id/nmap_full_metric"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
             android:text="0"
             android:textColor="@color/ch_bone_dim"
             android:textSize="11sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/nmap_full_close"
-            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            style="@style/Ios.IconButton.Tinted"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginStart="8dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:padding="0dp"
-            app:cornerRadius="2dp"
+            app:cornerRadius="@dimen/ios_corner_button"
             app:icon="@drawable/close"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
@@ -66,7 +64,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:text=""
-            android:textColor="@color/ch_bone"
+            android:textColor="@color/ch_console_text"
             android:textIsSelectable="true"
             android:textSize="12sp" />
     </ScrollView>

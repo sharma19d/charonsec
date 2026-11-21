@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    app:cardBackgroundColor="@color/light_contrast"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                     android:layout_height="22dp"
                     android:layout_gravity="center"
                     android:src="@drawable/lan"
-                    app:tint="@color/ch_signal" />
+                    app:tint="@android:color/white" />
             </FrameLayout>
 
             <LinearLayout
@@ -64,7 +64,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/scan_target_gateway_layout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            style="@style/Ios.TextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -78,14 +78,13 @@
                 android:id="@+id/scan_target_gateway"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
                 android:inputType="text"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/scan_target_cidr_layout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            style="@style/Ios.TextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -99,7 +98,6 @@
                 android:id="@+id/scan_target_cidr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
                 android:inputType="number"
                 android:maxLength="2"
                 android:maxLines="1" />
@@ -113,8 +111,7 @@
             android:backgroundTint="@color/ch_signal"
             android:maxLines="1"
             android:text="@string/local_scan_target_apply"
-            android:textColor="@color/light_contrast"
-            app:cornerRadius="2dp"
+            app:cornerRadius="@dimen/ios_corner_button"
             app:icon="@drawable/ic_renew"
             app:iconGravity="textStart"
             app:iconSize="16dp"
@@ -128,7 +125,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/scan_target_auto"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -138,7 +135,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/scan_target_cancel"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

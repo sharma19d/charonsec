@@ -45,10 +45,10 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -147,10 +147,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -210,7 +210,7 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nuclei_filter_all"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
@@ -218,21 +218,21 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nuclei_filter_running"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nuclei_filter_running" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nuclei_filter_done"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nuclei_filter_done" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nuclei_filter_failed"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nuclei_filter_failed" />
@@ -266,7 +266,7 @@
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:src="@drawable/webscan"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
                 </FrameLayout>
 
                 <com.google.android.material.textview.MaterialTextView

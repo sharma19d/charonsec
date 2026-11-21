@@ -32,9 +32,8 @@
                 android:id="@+id/log_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
                 android:text="00:00:00"
-                android:textColor="#607D8B"
+                android:textColor="@color/ch_bone_dim"
                 android:textSize="10sp" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -43,13 +42,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/log_tool_chip"
-                android:fontFamily="monospace"
                 android:paddingStart="6dp"
                 android:paddingTop="1dp"
                 android:paddingEnd="6dp"
                 android:paddingBottom="1dp"
                 android:text="tool"
-                android:textColor="#B39DDB"
+                android:textColor="@color/ios_purple"
                 android:textSize="9sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -60,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:fontFamily="monospace"
-            android:textColor="#E0E0E0"
+            android:textColor="@color/ch_bone"
             android:textIsSelectable="true"
             android:textSize="12sp" />
     </LinearLayout>

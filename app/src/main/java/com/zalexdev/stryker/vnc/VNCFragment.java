@@ -481,7 +481,7 @@ public class VNCFragment extends Fragment {
         textProgress.setVisibility(View.VISIBLE);
         progress.setVisibility(View.VISIBLE);
         progress.setIndeterminate(true);
-        setStatePill("INSTALL", 0xFF9E94C6, true);
+        setStatePill("INSTALL", com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal), true);
     }
 
     private void runInstallProcess() {
@@ -666,7 +666,7 @@ public class VNCFragment extends Fragment {
         connectionCard.setVisibility(View.GONE);
         sectionSettings.setVisibility(View.GONE);
         installed.setText("Not installed — tap install to fetch ~600 MB.");
-        setStatePill("OFF", 0xFFA5A1B4, false);
+        setStatePill("OFF", com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim), false);
     }
 
     private void checkVNCInstalled() {
@@ -706,7 +706,7 @@ public class VNCFragment extends Fragment {
         uninstall.setEnabled(false);
         changePasswd.setEnabled(false);
         passwdLayout.setEnabled(false);
-        setStatePill("RUN", 0xFF6CC79E, false);
+        setStatePill("RUN", com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live), false);
         installed.setText("Running · accept VNC connections on the port below");
     }
 
@@ -718,7 +718,7 @@ public class VNCFragment extends Fragment {
         uninstall.setEnabled(true);
         changePasswd.setEnabled(true);
         passwdLayout.setEnabled(true);
-        setStatePill("OFF", 0xFFD9B66A, false);
+        setStatePill("OFF", com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution), false);
         installed.setText("Stopped · tap Start to spin up xvfb + x11vnc");
     }
 
@@ -736,7 +736,10 @@ public class VNCFragment extends Fragment {
         }
         if (statusIcon != null) {
             statusIcon.setVisibility(spinning ? View.GONE : View.VISIBLE);
-            statusIcon.setColorFilter(color);
+            // iOS icon tile: the state colours the squircle, the glyph stays white.
+            statusIcon.setColorFilter(0xFFFFFFFF);
+            View tile = (View) statusIcon.getParent();
+            if (tile.getBackground() != null) tile.getBackground().mutate().setTint(color);
         }
     }
 

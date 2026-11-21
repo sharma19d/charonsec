@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tappable cards shrink slightly while held. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:state_pressed="true">
+        <set>
+            <objectAnimator android:duration="120" android:propertyName="scaleX" android:valueTo="0.97" android:valueType="floatType" android:interpolator="@anim/ios_ease" />
+            <objectAnimator android:duration="120" android:propertyName="scaleY" android:valueTo="0.97" android:valueType="floatType" android:interpolator="@anim/ios_ease" />
+        </set>
+    </item>
+    <item>
+        <set>
+            <objectAnimator android:duration="320" android:propertyName="scaleX" android:valueTo="1" android:valueType="floatType" android:interpolator="@anim/ios_ease" />
+            <objectAnimator android:duration="320" android:propertyName="scaleY" android:valueTo="1" android:valueType="floatType" android:interpolator="@anim/ios_ease" />
+        </set>
+    </item>
+</selector>

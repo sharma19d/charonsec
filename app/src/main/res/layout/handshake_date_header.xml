@@ -7,10 +7,8 @@
     android:paddingTop="18dp"
     android:paddingEnd="14dp"
     android:paddingBottom="6dp"
-    android:textAllCaps="true"
     android:textColor="@color/ch_bone_dim"
     android:textSize="12sp"
     android:textStyle="bold"
-    android:letterSpacing="0.08"
     tools:text="Today"
     xmlns:tools="http://schemas.android.com/tools" />

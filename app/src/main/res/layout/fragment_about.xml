@@ -30,15 +30,13 @@
             android:id="@+id/about_label_links"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="10dp"
-            android:letterSpacing="0.08"
             android:text="@string/about_section_links"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/about_link_site"
@@ -48,10 +46,10 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,7 +68,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/webscan"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -91,7 +89,6 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:text="@string/about_link_site_url"
                         android:textColor="@color/grey"
                         android:textSize="12sp" />
@@ -112,10 +109,10 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -134,7 +131,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/github"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -155,7 +152,6 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:text="@string/about_link_github_url"
                         android:textColor="@color/grey"
                         android:textSize="12sp" />
@@ -176,10 +172,10 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -198,7 +194,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/telegram"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -219,7 +215,6 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:text="@string/about_link_blog_url"
                         android:textColor="@color/grey"
                         android:textSize="12sp" />
@@ -240,10 +235,10 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -262,7 +257,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/chat"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -283,7 +278,6 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:text="@string/about_link_chat_url"
                         android:textColor="@color/grey"
                         android:textSize="12sp" />
@@ -301,15 +295,13 @@
             android:id="@+id/about_label_legal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="10dp"
-            android:letterSpacing="0.08"
             android:text="@string/about_section_legal"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/about_oss_licenses"
@@ -319,10 +311,10 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -341,7 +333,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/shield"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
                 </FrameLayout>
 
                 <com.google.android.material.textview.MaterialTextView
@@ -369,10 +361,10 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -391,7 +383,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/bolt"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -430,7 +422,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:fontFamily="monospace"
             android:gravity="center"
             android:lineSpacingExtra="3dp"
             android:text="@string/about_footer"

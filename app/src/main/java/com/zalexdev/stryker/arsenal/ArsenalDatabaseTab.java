@@ -218,8 +218,6 @@ public class ArsenalDatabaseTab extends Fragment {
             chip.setText(query);
             chip.setCheckable(false);
             chip.setClickable(true);
-            chip.setChipBackgroundColorResource(R.color.light_lite_contrast);
-            chip.setChipStrokeWidth(0f);
             chip.setOnClickListener(v -> {
                 queryInput.setText(query);
                 queryInput.setSelection(query.length());

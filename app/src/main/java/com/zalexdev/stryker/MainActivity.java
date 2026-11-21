@@ -25,6 +25,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -56,6 +57,14 @@ import com.zalexdev.stryker.vnc.VNCFragment;
 import com.zalexdev.stryker.wifi.Wifi;
 import com.zalexdev.stryker.wpair.WpairFragment;
 
+import com.zalexdev.stryker.ui.ios.IosNav;
+import com.zalexdev.stryker.ui.ios.IosNavBar;
+import com.zalexdev.stryker.ui.ios.IosSectionFragment;
+import com.zalexdev.stryker.ui.ios.IosTabBar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import java.lang.ref.WeakReference;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -68,29 +77,31 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IosSectionFragment.Host {
 
     public static final String EXTRA_OPEN_UPDATE = "open_update";
 
     private static TextView logo;
-    private static com.zalexdev.stryker.ui.nav.CharonNav nav;
-    private static ImageView menu;
-    private static ImageView settings;
+    private static IosNavBar navBar;
+    private static IosTabBar tabBar;
+    private static WeakReference<MainActivity> current = new WeakReference<>(null);
+    private static int currentTab = IosNav.TAB_HOME;
+    private static final ArrayList<CharSequence> titleStack = new ArrayList<>();
+    private static boolean toolbarEnabled = true;
     private static int lastSelectedItemId = 0;
+    private int lastDepth;
     private Core core;
     private static FragmentManager fragmentManager;
-    private TempFragment tempFragment;
     private static volatile boolean rootlessEngine;
     private static volatile boolean vmReady;
     private boolean engineWatchPending;
     private View engineStatusView;
-    private static final java.util.LinkedHashMap<Integer, DrawerSpec> DRAWER_SPECS = buildDrawerSpecs();
     private static final java.util.Set<Integer> ROOT_ONLY_IDS = new java.util.HashSet<>(java.util.Arrays.asList(
             R.id.hid_item, R.id.usb_arsenal_item, R.id.macchanger_item));
     private static final java.util.Set<Integer> VM_INDEPENDENT_IDS = new java.util.HashSet<>(java.util.Arrays.asList(
             R.id.dasboard_item, R.id.logs_item, R.id.about_item,
             R.id.wpair_item, R.id.geomac_item,
-            R.id.wordlists_item));
+            R.id.wordlists_item, R.id.settings_item));
     private MetasploitUtils metasploitUtils;
     private ArrayList<WiFINetwork> networks;
     private ArrayList<Device> devices = new ArrayList<>();
@@ -107,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        current = new WeakReference<>(this);
         core = new Core(this);
         com.zalexdev.stryker.logger.LogStore.from(getApplicationContext());
         setContentView(R.layout.activity_main);
@@ -119,21 +131,43 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         fragmentManager = getSupportFragmentManager();
-        com.zalexdev.stryker.ui.glass.GlassBarLayout glass = findViewById(R.id.nav_glass);
-        View contentHost = findViewById(R.id.flContent);
-        glass.setSource(contentHost);
-        new com.zalexdev.stryker.ui.glass.BottomInsetManager(contentHost, glass).attach(fragmentManager);
-        fragmentManager.beginTransaction().replace(R.id.flContent, new Initializing()).commit();
-        settings = findViewById(R.id.settings_icon);
-        settings.setOnClickListener(view -> {
-            Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.flContent);
-            if (currentFragment instanceof SettingsNew) {
-                if (((SettingsNew) currentFragment).popChild()) return;
-                closeSettings();
-            } else {
-                openSettings();
-            }
+
+        logo = findViewById(R.id.stryker_main_logo);
+        navBar = new IosNavBar(findViewById(R.id.nav_back), findViewById(R.id.nav_back_label), logo,
+                findViewById(R.id.nav_hairline), findViewById(R.id.engine_pill));
+        findViewById(R.id.nav_back).setOnClickListener(v -> onBackPressed());
+        tabBar = findViewById(R.id.tab_bar);
+        tabBar.setTabs(IosNav.TABS);
+        tabBar.setSelected(currentTab);
+        tabBar.setListener((index, again) -> {
+            if (again) popToRoot();
+            else switchTab(index);
         });
+        if (titleStack.isEmpty()) titleStack.add(IosNav.TABS[currentTab].title);
+
+        fragmentManager.addOnBackStackChangedListener(() -> {
+            // Pops slide the leaving screen away on top; pushes slide the new one in on top.
+            int depth = fragmentManager.getBackStackEntryCount();
+            container().setDrawDisappearingViewsLast(depth < lastDepth);
+            if (lastDepth == 0 && depth > 0) slideRoot(true);
+            else if (lastDepth > 0 && depth == 0) slideRoot(false);
+            lastDepth = depth;
+            syncNavBar();
+        });
+        fragmentManager.registerFragmentLifecycleCallbacks(new FragmentManager.FragmentLifecycleCallbacks() {
+            @Override
+            public void onFragmentViewCreated(@androidx.annotation.NonNull FragmentManager fm,
+                                              @androidx.annotation.NonNull Fragment f,
+                                              @androidx.annotation.NonNull View v, Bundle state) {
+                if (f.getId() != R.id.flContent && f.getId() != R.id.rootContent) return;
+                if (f instanceof Dashboard) navBar.installLargeTitle(v, IosNav.TABS[IosNav.TAB_HOME].title);
+                syncNavBar();
+            }
+        }, false);
+
+        if (savedInstanceState == null) {
+            fragmentManager.beginTransaction().replace(R.id.flContent, new Initializing()).commit();
+        }
 
         new Thread(this::copyAssets).start();
         if (core.getBoolean("clean_after_update")) {
@@ -143,24 +177,9 @@ public class MainActivity extends AppCompatActivity {
 
         runLaunchFlow();
 
-        logo = findViewById(R.id.stryker_main_logo);
-        menu = findViewById(R.id.menu_img);
+        engineStatusView = findViewById(R.id.main_header);
+        findViewById(R.id.engine_pill).setOnClickListener(v -> openTool(R.id.settings_item));
 
-        View header = findViewById(R.id.main_header);
-        engineStatusView = header;
-        header.findViewById(R.id.engine_pill).setOnClickListener(v -> {
-            Fragment cur = getSupportFragmentManager().findFragmentById(R.id.flContent);
-            if (cur instanceof SettingsNew) settings.setImageDrawable(
-                    ContextCompat.getDrawable(this, R.drawable.settings));
-            receiver.changeFragment(R.id.dasboard_item);
-        });
-
-        nav = new com.zalexdev.stryker.ui.nav.CharonNav(this, navHost,
-                findViewById(R.id.nav_dial),
-                findViewById(R.id.nav_strip_scroll),
-                findViewById(R.id.nav_strip),
-                findViewById(R.id.nav_crumb));
-        applySystemInsets();
         refreshNavLocks();
         refreshEngineStatus();
 
@@ -171,6 +190,238 @@ public class MainActivity extends AppCompatActivity {
         boolean openUpdate = getIntent() != null
                 && getIntent().getBooleanExtra(EXTRA_OPEN_UPDATE, false);
         UpdateManager.checkAndPrompt(this, openUpdate);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        applySystemInsets();
+    }
+
+    /**
+     * Edge to edge: the status bar sits over the navigation bar's background and the
+     * tab bar runs under the gesture area; the keyboard pushes content up instead.
+     */
+    private void applySystemInsets() {
+        View content = findViewById(android.R.id.content);
+        ViewCompat.setOnApplyWindowInsetsListener(content, (v, insets) -> {
+            Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars()
+                    | WindowInsetsCompat.Type.displayCutout());
+            Insets ime = insets.getInsets(WindowInsetsCompat.Type.ime());
+            boolean tabs = tabBar != null && tabBar.getVisibility() == View.VISIBLE;
+            int bottom = ime.bottom > 0 ? ime.bottom : (tabs ? 0 : bars.bottom);
+            v.setPadding(bars.left, bars.top, bars.right, bottom);
+            if (tabBar != null) tabBar.setPadding(0, 0, 0, ime.bottom > 0 ? 0 : bars.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
+        ViewCompat.requestApplyInsets(content);
+    }
+
+    // ------------------------------------------------------------------ navigation
+
+    private FragmentContainerView container() {
+        return findViewById(R.id.flContent);
+    }
+
+    /** Reflects the fragment on screen in the bars: splash, tab root, or pushed screen. */
+    private void syncNavBar() {
+        if (navBar == null || fragmentManager == null) return;
+        Fragment top = fragmentManager.findFragmentById(R.id.flContent);
+        Fragment cur = top != null ? top : rootFor(currentTab);
+        boolean splash = cur == null || cur instanceof Initializing;
+        boolean ownHeader = hasOwnHeader(cur);
+        View header = findViewById(R.id.main_header);
+        header.setVisibility(splash ? View.INVISIBLE : ownHeader ? View.GONE : View.VISIBLE);
+        findViewById(R.id.nav_hairline).setVisibility(ownHeader ? View.GONE : View.VISIBLE);
+        int tabsVis = splash || cur instanceof Error ? View.GONE : View.VISIBLE;
+        if (tabBar.getVisibility() != tabsVis) {
+            tabBar.setVisibility(tabsVis);
+            ViewCompat.requestApplyInsets(findViewById(android.R.id.content));
+        }
+        tabBar.setSelected(currentTab);
+        int depth = fragmentManager.getBackStackEntryCount();
+        if (titleStack.isEmpty()) titleStack.add(IosNav.TABS[currentTab].title);
+        titleStack.set(0, IosNav.TABS[currentTab].title);
+        while (titleStack.size() > depth + 1) titleStack.remove(titleStack.size() - 1);
+        while (titleStack.size() < depth + 1) titleStack.add(navBar.getTitle());
+        if (depth == 0) {
+            navBar.showRoot(titleStack.get(0), currentTab == IosNav.TAB_HOME);
+            if (cur != null && cur.getView() != null) navBar.refreshRoot(cur.getView());
+        } else {
+            navBar.showPushed(titleStack.get(depth), titleStack.get(depth - 1));
+            if (cur != null && cur.getView() != null) navBar.adoptContentTitle(cur.getView());
+        }
+    }
+
+    /** Consoles, reports and the log viewer draw their own bar with a back chevron. */
+    private static final int[] OWN_BACK_IDS = {R.id.back, R.id.terminal_back, R.id.wpair_terminal_back,
+            R.id.report_back, R.id.wpair_rec_back};
+
+    private static boolean hasOwnHeader(Fragment f) {
+        View v = f == null ? null : f.getView();
+        if (v == null) return false;
+        for (int id : OWN_BACK_IDS) {
+            View b = v.findViewById(id);
+            if (b != null && b.getVisibility() == View.VISIBLE) return true;
+        }
+        return false;
+    }
+
+    private void push(Fragment fragment, CharSequence title, String name) {
+        if (fragmentManager.isStateSaved()) return;
+        int depth = fragmentManager.getBackStackEntryCount();
+        while (titleStack.size() > depth + 1) titleStack.remove(titleStack.size() - 1);
+        while (titleStack.size() < depth + 1) titleStack.add(navBar.getTitle());
+        titleStack.add(title);
+        // The incoming screen slides over the outgoing one.
+        container().setDrawDisappearingViewsLast(false);
+        fragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.ios_push_enter, R.anim.ios_push_exit,
+                        R.anim.ios_pop_enter, R.anim.ios_pop_exit)
+                .replace(R.id.flContent, fragment)
+                .addToBackStack(name == null ? "push" : name)
+                .commit();
+    }
+
+    private void popOne() {
+        container().setDrawDisappearingViewsLast(true);
+        fragmentManager.popBackStack();
+    }
+
+    private void popToRoot() {
+        if (!toolbarEnabled || fragmentManager.getBackStackEntryCount() == 0) return;
+        container().setDrawDisappearingViewsLast(true);
+        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
+
+    private static final String ROOT_TAG = "ios_root_";
+
+    private Fragment rootFor(int tab) {
+        return fragmentManager == null ? null : fragmentManager.findFragmentByTag(ROOT_TAG + tab);
+    }
+
+    /** Shows one tab's root, creating it the first time; the others stay alive but hidden. */
+    private void showRoot(int tab) {
+        FragmentTransaction t = fragmentManager.beginTransaction();
+        for (int i = 0; i < IosNav.TABS.length; i++) {
+            Fragment f = rootFor(i);
+            if (f != null && i != tab && !f.isHidden()) t.hide(f);
+        }
+        Fragment r = rootFor(tab);
+        if (r == null) {
+            r = tab == IosNav.TAB_HOME ? new Dashboard() : IosSectionFragment.newInstance(tab);
+            t.add(R.id.rootContent, r, ROOT_TAG + tab);
+        } else if (r.isHidden()) {
+            t.show(r);
+        }
+        t.commitNowAllowingStateLoss();
+    }
+
+    /** Drops every pushed screen (and the splash / error page) without animating. */
+    private void clearPushed() {
+        if (fragmentManager.getBackStackEntryCount() > 0) {
+            fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+        Fragment top = fragmentManager.findFragmentById(R.id.flContent);
+        if (top != null) fragmentManager.beginTransaction().remove(top).commitNowAllowingStateLoss();
+        endTransitions();
+        lastDepth = 0;
+        View roots = findViewById(R.id.rootContent);
+        roots.animate().cancel();
+        roots.setTranslationX(0f);
+        roots.setVisibility(View.VISIBLE);
+    }
+
+    /** The tab root shifts left under a pushed screen (and back on pop), like UINavigationController. */
+    private void slideRoot(boolean away) {
+        View roots = findViewById(R.id.rootContent);
+        float shift = -0.3f * roots.getWidth();
+        roots.animate().cancel();
+        roots.setVisibility(View.VISIBLE);
+        android.view.animation.Interpolator ease =
+                android.view.animation.AnimationUtils.loadInterpolator(this, R.anim.ios_ease);
+        if (away) {
+            roots.setTranslationX(0f);
+            roots.animate().translationX(shift).setDuration(getResources().getInteger(R.integer.ios_push_duration))
+                    .setInterpolator(ease)
+                    .withEndAction(() -> {
+                        if (fragmentManager.getBackStackEntryCount() > 0) roots.setVisibility(View.INVISIBLE);
+                    }).start();
+        } else {
+            roots.setTranslationX(shift);
+            roots.animate().translationX(0f).setDuration(getResources().getInteger(R.integer.ios_push_duration))
+                    .setInterpolator(ease).withEndAction(null).start();
+        }
+    }
+
+    /** Tab switches are instant, like iOS: drop the pushed screens and show the tab's root. */
+    private void switchTab(int index) {
+        if (!toolbarEnabled || fragmentManager.isStateSaved()) {
+            tabBar.setSelected(currentTab);
+            return;
+        }
+        currentTab = index;
+        tabBar.setSelected(index);
+        clearPushed();
+        titleStack.clear();
+        titleStack.add(IosNav.TABS[index].title);
+        showRoot(index);
+        lastSelectedItemId = index == IosNav.TAB_HOME ? R.id.dasboard_item : 0;
+        syncNavBar();
+    }
+
+    /** Cut short any slide still running from the screens a tab switch just removed. */
+    private void endTransitions() {
+        FragmentContainerView c = container();
+        for (int i = c.getChildCount() - 1; i >= 0; i--) {
+            View child = c.getChildAt(i);
+            child.clearAnimation();
+            c.endViewTransition(child);
+        }
+    }
+
+    @Override
+    public void openTool(int itemId) {
+        if (!toolbarEnabled) return;
+        if (isItemLocked(itemId)) {
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(IosNav.titleOf(itemId) + " Unavailable")
+                    .setMessage(lockReasonFor(itemId))
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show();
+            return;
+        }
+        if (itemId == R.id.terminal_item) {
+            Intent terminal = new Intent(this, com.stryker.terminal.ui.term.NeoTermActivity.class);
+            terminal.putExtra(com.stryker.terminal.ui.term.NeoTermActivity.EXTRA_NEW_SESSION, true);
+            startActivity(terminal);
+            return;
+        }
+        if (itemId == R.id.dasboard_item) {
+            if (currentTab == IosNav.TAB_HOME) popToRoot();
+            else switchTab(IosNav.TAB_HOME);
+            return;
+        }
+        Fragment target = Receiver.fragmentFor(itemId);
+        if (target == null) return;
+        lastSelectedItemId = itemId;
+        push(target, IosNav.titleOf(itemId), "tool");
+    }
+
+    @Override
+    public boolean isToolLocked(int toolId) {
+        return isItemLocked(toolId);
+    }
+
+    @androidx.annotation.NonNull
+    @Override
+    public String lockReason(int toolId) {
+        return lockReasonFor(toolId);
+    }
+
+    @Override
+    public IosNavBar navBar() {
+        return navBar;
     }
 
     private void refreshEngineStatus() {
@@ -220,8 +471,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void refreshNavLocks() {
         rootlessEngine = core != null && core.isRootless();
-        if (nav != null) nav.refreshLocks();
-        if (lastSelectedItemId != 0) receiver.changeFragmentQuiet(lastSelectedItemId);
+        if (fragmentManager == null) return;
+        for (int i = 0; i < IosNav.TABS.length; i++) {
+            Fragment f = rootFor(i);
+            if (f instanceof IosSectionFragment && f.getView() != null) ((IosSectionFragment) f).refresh();
+        }
     }
 
     private static boolean isItemLocked(int itemId) {
@@ -231,56 +485,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private static String lockReasonFor(int itemId) {
-        DrawerSpec spec = DRAWER_SPECS.get(itemId);
-        String name = spec == null ? "This tool" : spec.title;
         return ROOT_ONLY_IDS.contains(itemId)
-                ? name + " needs root hardware — unavailable on the rootless VM"
-                : name + " needs the VM — start it from the dashboard first";
-    }
-
-    private final com.zalexdev.stryker.ui.nav.CharonNav.Host navHost =
-            new com.zalexdev.stryker.ui.nav.CharonNav.Host() {
-                @Override
-                public void open(int itemId, int direction) {
-                    Fragment cur = getSupportFragmentManager().findFragmentById(R.id.flContent);
-                    if (cur instanceof SettingsNew) settings.setImageDrawable(
-                            ContextCompat.getDrawable(MainActivity.this, R.drawable.settings));
-                    if (direction > 0) {
-                        receiver.changeFragment(itemId, R.anim.ch_in_right, R.anim.ch_out_left);
-                    } else if (direction < 0) {
-                        receiver.changeFragment(itemId, R.anim.ch_in_left, R.anim.ch_out_right);
-                    } else {
-                        receiver.changeFragment(itemId);
-                    }
-                }
-
-                @Override
-                public boolean isLocked(int itemId) {
-                    return isItemLocked(itemId);
-                }
-
-                @Override
-                public String lockReason(int itemId) {
-                    return lockReasonFor(itemId);
-                }
-
-                @Override
-                public String titleOf(int itemId) {
-                    DrawerSpec spec = DRAWER_SPECS.get(itemId);
-                    return spec == null ? getString(R.string.app_name) : spec.title;
-                }
-            };
-
-    /** Android 15+ draws edge-to-edge: keep the header below the status bar and the dial above the nav bar. */
-    private void applySystemInsets() {
-        View root = findViewById(R.id.main_root);
-        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
-            androidx.core.graphics.Insets bars = insets.getInsets(
-                    androidx.core.view.WindowInsetsCompat.Type.systemBars()
-                            | androidx.core.view.WindowInsetsCompat.Type.displayCutout());
-            v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
-            return insets;
-        });
+                ? "Needs root hardware, so it isn't available on the rootless engine."
+                : "Start the Linux engine from Home first.";
     }
 
     public MetasploitUtils getMetasploitUtils() {
@@ -566,7 +773,18 @@ public class MainActivity extends AppCompatActivity {
             if (isFinishing() || isDestroyed()) return;
             landed = true;
             launchRunning = false;
-            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commitAllowingStateLoss();
+            if (fragmentManager.isStateSaved()) return;
+            clearPushed();
+            titleStack.clear();
+            if (fragment instanceof Dashboard) {
+                currentTab = IosNav.TAB_HOME;
+                titleStack.add(IosNav.TABS[IosNav.TAB_HOME].title);
+                showRoot(IosNav.TAB_HOME);
+            } else {
+                titleStack.add(IosNav.TABS[currentTab].title);
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commitNowAllowingStateLoss();
+            }
+            syncNavBar();
         });
     }
 
@@ -649,55 +867,17 @@ public class MainActivity extends AppCompatActivity {
         }, 0, 300);
     }
 
-    private void openSettings() {
-        settings.setImageDrawable(getDrawable(R.drawable.close));
-        tempFragment = new TempFragment(getSupportFragmentManager().findFragmentById(R.id.flContent),
-                lastSelectedItemId != 0 ? lastSelectedItemId : R.id.dasboard_item);
-        getSupportFragmentManager().beginTransaction()
-                .setCustomAnimations(R.anim.settings_open_enter, R.anim.settings_open_exit)
-                .replace(R.id.flContent, new SettingsNew())
-                .commit();
-        logo.setText(R.string.settings_title);
-    }
-
-    private void closeSettings() {
-        settings.setImageDrawable(getDrawable(R.drawable.settings));
-        receiver.changeFragment(tempFragment != null ? tempFragment.getItemId() : R.id.dasboard_item,
-                R.anim.settings_close_enter, R.anim.settings_close_exit);
-    }
-
     @Override
     public void onBackPressed() {
         FragmentManager fm = getSupportFragmentManager();
         Fragment current = fm.findFragmentById(R.id.flContent);
-        if (current instanceof SettingsNew) {
-            if (((SettingsNew) current).popChild()) return;
-            closeSettings();
-            return;
-        }
+        if (current instanceof SettingsNew && ((SettingsNew) current).popChild()) return;
         if (fm.getBackStackEntryCount() > 0) {
-            fm.popBackStack();
-        } else if (nav == null || !nav.onBack()) {
+            popOne();
+        } else if (current == null && currentTab != IosNav.TAB_HOME) {
+            switchTab(IosNav.TAB_HOME);
+        } else {
             super.onBackPressed();
-        }
-    }
-
-    private static class TempFragment {
-
-        private final Fragment fragment;
-        private final int itemId;
-
-        public TempFragment(Fragment fragment, int itemId) {
-            this.fragment = fragment;
-            this.itemId = itemId;
-        }
-
-        public Fragment getFragment() {
-            return fragment;
-        }
-
-        public int getItemId() {
-            return itemId;
         }
     }
 
@@ -713,94 +893,52 @@ public class MainActivity extends AppCompatActivity {
         void changeFragment(int motherItemId, Fragment fragment, String backstackName);
     }
 
+    /** Navigation entry point used by every screen; routes into the iOS navigation stack. */
     public static class Receiver implements MainActivityReceiver {
 
         @Override
         public void setTitle(String title) {
-            logo.setText(title);
+            if (navBar == null) return;
+            navBar.setTitle(title);
+            if (!titleStack.isEmpty()) titleStack.set(titleStack.size() - 1, title);
         }
 
-        @SuppressLint("SetTextI18n")
         @Override
         public void restoreTitle() {
-            logo.setText(nav != null ? nav.currentTitle()
-                    : logo.getContext().getString(R.string.app_name));
+            if (navBar == null || titleStack.isEmpty()) return;
+            navBar.setTitle(titleStack.get(titleStack.size() - 1));
         }
 
         @Override
         public String getTitle() {
-            return logo.getText().toString();
+            return navBar == null ? "" : navBar.getTitle().toString();
         }
 
         @Override
         public void setToolBarMenuEnabled(boolean bool) {
-            menu.setEnabled(bool);
-            settings.setEnabled(bool);
-            settings.setAlpha(bool ? 1f : .5f);
-            if (nav != null) nav.setEnabled(bool);
+            toolbarEnabled = bool;
+            if (tabBar != null) tabBar.setEnabled(bool);
+            if (navBar != null) navBar.setBackEnabled(bool);
         }
 
         @Override
         public boolean isToolBarMenuEnabled() {
-            return (menu.isEnabled() && settings.isEnabled());
+            return toolbarEnabled;
         }
 
         @Override
         public void changeFragmentQuiet(int itemId) {
             lastSelectedItemId = itemId;
-            if (nav != null) {
-                nav.reflect(itemId);
-                if (logo != null && itemId != R.id.terminal_item) logo.setText(nav.currentTitle());
-            }
         }
 
         @Override
         public void changeFragment(int itemId) {
-            changeFragment(itemId, R.anim.nav_fade_enter, R.anim.nav_fade_exit);
+            MainActivity a = current.get();
+            if (a == null || a.isFinishing()) return;
+            a.runOnUiThread(() -> a.openTool(itemId));
         }
 
-        public void changeFragment(int itemId, int enterAnim, int exitAnim) {
-            if (rootlessEngine && settings != null) {
-                DrawerSpec spec = DRAWER_SPECS.get(itemId);
-                String name = spec == null ? "This tool" : spec.title;
-                if (ROOT_ONLY_IDS.contains(itemId)) {
-                    android.widget.Toast.makeText(settings.getContext(),
-                            name + " needs root hardware — unavailable on the rootless VM",
-                            android.widget.Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (!vmReady && !VM_INDEPENDENT_IDS.contains(itemId)) {
-                    android.widget.Toast.makeText(settings.getContext(),
-                            name + " needs the VM — start it from the dashboard first",
-                            android.widget.Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            }
-            if (settings != null) {
-                settings.setImageDrawable(settings.getContext().getDrawable(R.drawable.settings));
-            }
-            changeFragmentQuiet(itemId);
-            if (itemId == R.id.terminal_item) {
-                Intent terminal = new Intent(settings.getContext(),
-                        com.stryker.terminal.ui.term.NeoTermActivity.class);
-                terminal.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                terminal.putExtra(com.stryker.terminal.ui.term.NeoTermActivity.EXTRA_NEW_SESSION, true);
-                settings.getContext().startActivity(terminal);
-                return;
-            }
-            Fragment target = fragmentFor(itemId);
-            if (target != null) {
-                if (fragmentManager.getBackStackEntryCount() > 0) {
-                    fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                }
-                fragmentManager.beginTransaction()
-                        .setCustomAnimations(enterAnim, exitAnim)
-                        .replace(R.id.flContent, target)
-                        .commit();
-            }
-        }
-
-        private static Fragment fragmentFor(int itemId) {
+        static Fragment fragmentFor(int itemId) {
             if (itemId == R.id.wifi_item) return new Wifi();
             if (itemId == R.id.lan_item) return new LocalMain();
             if (itemId == R.id.macchanger_item) return new MACChangerFragment();
@@ -819,6 +957,7 @@ public class MainActivity extends AppCompatActivity {
             if (itemId == R.id.vnc_item) return new VNCFragment();
             if (itemId == R.id.hid_item) return new HidFragment();
             if (itemId == R.id.usb_arsenal_item) return new UsbArsenalFragment();
+            if (itemId == R.id.settings_item) return new SettingsNew();
             return null;
         }
 
@@ -829,51 +968,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void changeFragment(int motherItemId, Fragment fragment, String backstackName) {
-            changeFragmentQuiet(motherItemId);
-            FragmentTransaction transaction = fragmentManager.beginTransaction()
-                    .setCustomAnimations(R.anim.nav_fade_enter, R.anim.nav_fade_exit,
-                            R.anim.nav_fade_enter, R.anim.nav_fade_exit)
-                    .replace(R.id.flContent, fragment);
-            if (backstackName != null && !backstackName.isEmpty()) {
-                transaction.addToBackStack(backstackName);
-            }
-            transaction.commit();
+            MainActivity a = current.get();
+            if (a == null || a.isFinishing()) return;
+            lastSelectedItemId = motherItemId;
+            CharSequence title = IosNav.tabOf(motherItemId) >= 0 && motherItemId != R.id.dasboard_item
+                    ? IosNav.titleOf(motherItemId) : (navBar == null ? "" : navBar.getTitle());
+            a.runOnUiThread(() -> a.push(fragment, title, backstackName));
         }
-    }
-
-    private static final class DrawerSpec {
-        final String title;
-        final int iconRes;
-        final int activeTint;
-
-        DrawerSpec(String title, int iconRes, int activeTint) {
-            this.title = title;
-            this.iconRes = iconRes;
-            this.activeTint = activeTint;
-        }
-    }
-
-    private static java.util.LinkedHashMap<Integer, DrawerSpec> buildDrawerSpecs() {
-        java.util.LinkedHashMap<Integer, DrawerSpec> m = new java.util.LinkedHashMap<>();
-        m.put(R.id.dasboard_item,     new DrawerSpec("Dashboard",        R.drawable.home,        0xFF9E94C6));
-        m.put(R.id.terminal_item,     new DrawerSpec("Terminal",         R.drawable.terminal,    0xFF9E94C6));
-        m.put(R.id.logs_item,         new DrawerSpec("Logs",             R.drawable.bug_report,  0xFF9E94C6));
-        m.put(R.id.wifi_item,         new DrawerSpec("WiFi",             R.drawable.wifi,        0xFF9E94C6));
-        m.put(R.id.hs_item,           new DrawerSpec("Handshakes",       R.drawable.storage,     0xFF9E94C6));
-        m.put(R.id.macchanger_item,   new DrawerSpec("MAC changer",      R.drawable.password,    0xFF9E94C6));
-        m.put(R.id.wpair_item,        new DrawerSpec("WhisperPair", R.drawable.wpair,      0xFF9E94C6));
-        m.put(R.id.lan_item,          new DrawerSpec("Local network",    R.drawable.lan,         0xFF9E94C6));
-        m.put(R.id.nmap_item,         new DrawerSpec("Nmap",             R.drawable.scanner,     0xFF9E94C6));
-        m.put(R.id.nuclei_item,       new DrawerSpec("Web scanner",      R.drawable.webscan,     0xFF9E94C6));
-        m.put(R.id.arsenal_item,      new DrawerSpec("Arsenal",          R.drawable.motion_blur, 0xFF9E94C6));
-        m.put(R.id.hid_item,          new DrawerSpec("HID Attacks",      R.drawable.keyboard,    0xFF9E94C6));
-        m.put(R.id.metasploit_item,   new DrawerSpec("Metasploit",       R.drawable.shield,      0xFF9E94C6));
-        m.put(R.id.wordlists_item,    new DrawerSpec("Wordlists",        R.drawable.summarize,   0xFF9E94C6));
-        m.put(R.id.geomac_item,       new DrawerSpec("GeoMac",           R.drawable.map,         0xFF9E94C6));
-        m.put(R.id.vnc_item,          new DrawerSpec("VNC desktop",      R.drawable.vnc,         0xFF9E94C6));
-        m.put(R.id.usb_arsenal_item,  new DrawerSpec("USB Arsenal",      R.drawable.usb,         0xFF9E94C6));
-        m.put(R.id.manager_item,      new DrawerSpec("Core manager",     R.drawable.tune,        0xFF9E94C6));
-        m.put(R.id.about_item,        new DrawerSpec("About",            R.drawable.info_outlined, 0xFF9E94C6));
-        return m;
     }
 }

@@ -253,28 +253,28 @@ public class WpairDeviceAdapter extends RecyclerView.Adapter<WpairDeviceAdapter.
         String label;
         switch (d.getStatus()) {
             case VULNERABLE:
-                color = 0xFFE07A7A;
+                color = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert);
                 label = context.getString(R.string.wpair_status_vulnerable);
                 break;
             case PATCHED:
-                color = 0xFF6CC79E;
+                color = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live);
                 label = context.getString(R.string.wpair_status_patched);
                 break;
             case TESTING:
-                color = 0xFFD9B66A;
+                color = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution);
                 label = context.getString(R.string.wpair_status_testing);
                 break;
             case ERROR:
-                color = 0xFFE0956A;
+                color = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_orange);
                 label = context.getString(R.string.wpair_status_error);
                 break;
             case NOT_TESTED:
             default:
                 if (pairedAddresses.contains(d.getAddress())) {
-                    color = 0xFF6CC79E;
+                    color = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live);
                     label = context.getString(R.string.wpair_status_paired);
                 } else {
-                    color = 0xFFA5A1B4;
+                    color = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim);
                     label = context.getString(R.string.wpair_status_not_tested);
                 }
         }

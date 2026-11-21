@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="@color/light_contrast"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +38,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/chip_pill_bg"
-                android:fontFamily="monospace"
                 android:paddingStart="8dp"
                 android:paddingTop="3dp"
                 android:paddingEnd="8dp"
@@ -54,7 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:fontFamily="monospace"
             android:text="hid_keyboard · mass_storage"
             android:textColor="@color/grey"
             android:textSize="11sp" />
@@ -64,7 +62,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:fontFamily="monospace"
             android:text="0x046d:0xc31c — Logitech / USB Keyboard"
             android:textColor="@color/grey"
             android:textSize="11sp" />
@@ -77,14 +74,14 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/gp_edit_btn"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/arsenal_edit_profile" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/gp_delete_btn"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/arsenal_delete_profile"
@@ -101,8 +98,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/ch_signal"
                 android:text="@string/arsenal_apply"
-                android:textColor="@color/ch_on_signal"
-                app:cornerRadius="2dp" />
+                app:cornerRadius="@dimen/ios_corner_button" />
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

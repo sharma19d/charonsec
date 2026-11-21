@@ -104,7 +104,7 @@ public class LocalMain extends Fragment {
 
         refresh.setColorSchemeColors(
                 getResources().getColor(R.color.stryker_accent),
-                0xFF9E94C6);
+                com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
         refresh.setOnRefreshListener(this::triggerScan);
         rescanBtn.setOnClickListener(v -> triggerScan());
 
@@ -360,7 +360,7 @@ public class LocalMain extends Fragment {
         }
 
         String override = core.getString("local_scan_target");
-        int accent = 0xFF9E94C6;
+        int accent = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal);
         int defaultText = themeTextColor();
         if (override != null && !override.isEmpty() && override.contains("/")) {
             String[] parts = override.split("/");

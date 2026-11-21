@@ -249,7 +249,7 @@ public class Metasploit extends Fragment {
         switch (state) {
             case READY:
                 stateChip.setText(R.string.msf_status_pill_online);
-                stateChip.setTextColor(Color.parseColor("#6CC79E"));
+                stateChip.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live));
                 bootProgress.setVisibility(View.INVISIBLE);
                 subtitle.setText(R.string.msf_subtitle_ready);
                 initSubtitle.setText(getString(R.string.msf_version_label, metasploitUtils.version));
@@ -257,7 +257,7 @@ public class Metasploit extends Fragment {
                 break;
             case BOOTING:
                 stateChip.setText(R.string.msf_status_pill_loading);
-                stateChip.setTextColor(Color.parseColor("#9E94C6"));
+                stateChip.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
                 bootProgress.setVisibility(View.VISIBLE);
                 subtitle.setText(R.string.msf_subtitle_loading);
                 initSubtitle.setText(R.string.msf_subtitle_loading);
@@ -267,7 +267,7 @@ public class Metasploit extends Fragment {
             case IDLE:
             default:
                 stateChip.setText(R.string.msf_status_pill_offline);
-                stateChip.setTextColor(Color.parseColor("#E07A7A"));
+                stateChip.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
                 bootProgress.setVisibility(View.INVISIBLE);
                 subtitle.setText(R.string.msf_subtitle_offline);
                 initSubtitle.setText(reason == null ? getString(R.string.msf_subtitle_offline) : reason);

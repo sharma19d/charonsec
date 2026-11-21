@@ -19,13 +19,13 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/port_icon"
-            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            style="@style/Ios.IconButton.Tinted"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:padding="0dp"
-            app:cornerRadius="2dp"
+            app:cornerRadius="@dimen/ios_corner_button"
             app:icon="@drawable/webscan"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
@@ -43,7 +43,6 @@
                 android:id="@+id/port_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
                 android:text="0 (service)"
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp"
@@ -65,7 +64,7 @@
     <View
         android:id="@+id/border"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/ios_hairline"
         android:layout_marginStart="64dp"
-        android:background="@color/light_lite_contrast" />
+        android:background="@color/ch_line" />
 </LinearLayout>

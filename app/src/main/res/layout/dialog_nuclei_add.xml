@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
-    app:cardBackgroundColor="@color/light_contrast"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                     android:layout_height="22dp"
                     android:layout_gravity="center"
                     android:src="@drawable/webscan"
-                    app:tint="@color/ch_signal" />
+                    app:tint="@android:color/white" />
             </FrameLayout>
 
             <com.google.android.material.textview.MaterialTextView
@@ -71,9 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.06"
             android:text="@string/nuclei_dialog_severity"
-            android:textAllCaps="true"
             android:textColor="@color/grey"
             android:textSize="11sp"
             android:textStyle="bold" />
@@ -89,7 +87,7 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/nuclei_sev_info"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/Ios.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -97,21 +95,21 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/nuclei_sev_low"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/Ios.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Low+" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/nuclei_sev_medium"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/Ios.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Medium+" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/nuclei_sev_high"
-                style="@style/Widget.Material3.Chip.Filter"
+                style="@style/Ios.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="High+" />
@@ -126,7 +124,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/nuclei_cancel"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/nuclei_dialog_cancel"
@@ -139,8 +137,7 @@
                 android:layout_marginStart="8dp"
                 android:backgroundTint="@color/ch_signal"
                 android:text="@string/nuclei_dialog_start"
-                android:textColor="@color/light_contrast"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/scanner"
                 app:iconTint="@color/light_contrast" />
         </LinearLayout>

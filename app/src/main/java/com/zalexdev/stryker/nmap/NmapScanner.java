@@ -397,7 +397,7 @@ public class NmapScanner extends Fragment {
         startBtn.setVisibility(View.GONE);
         stopBtn.setVisibility(View.VISIBLE);
         metricStatus.setText(R.string.nmap_status_running);
-        metricStatus.setTextColor(Color.parseColor("#9E94C6"));
+        metricStatus.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
         scanStartedAt = System.currentTimeMillis();
         startElapsedTicker();
 
@@ -422,11 +422,11 @@ public class NmapScanner extends Fragment {
                     if (ok) {
                         subtitle.setText(R.string.nmap_subtitle_done);
                         metricStatus.setText(R.string.nmap_status_done);
-                        metricStatus.setTextColor(Color.parseColor("#6CC79E"));
+                        metricStatus.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live));
                     } else {
                         subtitle.setText(R.string.nmap_status_stopped);
                         metricStatus.setText(R.string.nmap_status_stopped);
-                        metricStatus.setTextColor(Color.parseColor("#E07A7A"));
+                        metricStatus.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
                     }
                     persistLastOutput();
                 });
@@ -535,7 +535,7 @@ public class NmapScanner extends Fragment {
         updateMetrics();
         metricTime.setText("0s");
         metricStatus.setText(R.string.nmap_status_idle);
-        metricStatus.setTextColor(Color.parseColor("#A5A1B4"));
+        metricStatus.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim));
         subtitle.setText(R.string.nmap_subtitle_idle);
         if (fullscreenOutput != null) {
             fullscreenOutput.setText("");
@@ -594,7 +594,7 @@ public class NmapScanner extends Fragment {
         fullscreenDialog.setContentView(R.layout.nmap_output_fullscreen);
         Window w = fullscreenDialog.getWindow();
         if (w != null) {
-            w.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0F0E13")));
+            w.setBackgroundDrawable(new ColorDrawable(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_ink_0)));
             w.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         }
         fullscreenOutput = fullscreenDialog.findViewById(R.id.nmap_full_output);

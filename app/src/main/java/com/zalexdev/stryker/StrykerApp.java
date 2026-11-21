@@ -19,9 +19,11 @@ public class StrykerApp extends com.stryker.terminal.App {
     @Override
     public void onCreate() {
         super.onCreate();
-        // CharonSec ships a single dark theme.
+        com.zalexdev.stryker.ui.ios.Ios.init(this);
+        com.zalexdev.stryker.utils.Core.warmUp(this);
+        // Light or dark follows the system, like an iOS app.
         androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(
-                androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES);
+                androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         LogStore store = LogStore.init(this);
         store.add(LogEntry.INFO, "session", "==== Stryker " + BuildConfig.VERSION_NAME
                 + " session start ====");

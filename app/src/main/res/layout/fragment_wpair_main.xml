@@ -45,10 +45,10 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/light_contrast"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -160,7 +160,7 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/wpair_filter_fastpair"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
@@ -168,21 +168,21 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/wpair_filter_all"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/wpair_filter_all_ble" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/wpair_filter_vulnerable"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/wpair_filter_vulnerable" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/wpair_filter_paired"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/wpair_filter_paired" />
@@ -200,16 +200,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:letterSpacing="0.06"
                     android:text="@string/wpair_section_devices"
-                    android:textAllCaps="true"
                     android:textColor="@color/stryker_accent"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/wpair_terminal_btn"
-                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    style="@style/Ios.IconButton.Tinted"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:layout_marginEnd="4dp"
@@ -221,7 +219,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/wpair_recordings_btn"
-                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    style="@style/Ios.IconButton.Tinted"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:layout_marginEnd="4dp"
@@ -233,7 +231,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/wpair_clear_btn"
-                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    style="@style/Ios.IconButton.Tinted"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:contentDescription="@string/wpair_clear"
@@ -270,7 +268,7 @@
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:src="@drawable/wpair"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
                 </FrameLayout>
 
                 <com.google.android.material.textview.MaterialTextView

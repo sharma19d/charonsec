@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Legacy colour names, all mapped onto the CharonSec palette (colors_charon.xml). -->
+<!-- Legacy colour names, mapped onto the iOS tokens in colors_charon.xml. -->
 <resources>
     <color name="dialog_background_color">@color/ch_ink_2</color>
     <color name="stryker_accent_contrast">@color/ch_signal_hi</color>
@@ -12,7 +12,7 @@
     <color name="welcome_line_1">@color/ch_line_strong</color>
     <color name="welcome_line_2">@color/ch_signal</color>
     <color name="welcome_line_3">@color/ch_bone</color>
-    <color name="welcome_logo_tile">@color/ch_ink_2</color>
+    <color name="welcome_logo_tile">@color/ch_ink_1</color>
     <color name="welcome_logo_stroke">@color/ch_line</color>
 
     <color name="intro_ink">@color/ch_signal</color>
@@ -22,7 +22,7 @@
 
     <color name="light_contrast">@color/ch_ink_0</color>
     <color name="night_contrast">@color/ch_bone</color>
-    <color name="night_contrast_2">#D9E7E4EF</color>
+    <color name="night_contrast_2">@color/ch_label_85</color>
     <color name="light_lite_contrast">@color/ch_ink_2</color>
     <color name="grey">@color/ch_bone_dim</color>
     <color name="local_circle">@color/ch_ink_3</color>
@@ -48,32 +48,32 @@
     <color name="status_booting">@color/ch_caution</color>
     <color name="status_offline">@color/ch_bone_faint</color>
 
-    <color name="row_locked">#61A5A1B4</color>
+    <color name="row_locked">@color/ch_row_locked</color>
 
-    <color name="icon_tile_neutral">@color/ch_ink_2</color>
-    <color name="tile_blue">@color/ch_ink_2</color>
-    <color name="tile_cyan">@color/ch_ink_2</color>
-    <color name="tile_green">@color/ch_ink_2</color>
-    <color name="tile_indigo">@color/ch_ink_2</color>
-    <color name="tile_orange">@color/ch_ink_2</color>
-    <color name="tile_pink">@color/ch_ink_2</color>
-    <color name="tile_purple">@color/ch_ink_2</color>
-    <color name="tile_red">@color/ch_ink_2</color>
-    <color name="tile_teal">@color/ch_ink_2</color>
+    <color name="icon_tile_neutral">@color/ios_gray</color>
+    <color name="tile_blue">@color/ios_blue</color>
+    <color name="tile_cyan">@color/ios_cyan</color>
+    <color name="tile_green">@color/ios_green</color>
+    <color name="tile_indigo">@color/ios_indigo</color>
+    <color name="tile_orange">@color/ios_orange</color>
+    <color name="tile_pink">@color/ios_pink</color>
+    <color name="tile_purple">@color/ios_purple</color>
+    <color name="tile_red">@color/ios_red</color>
+    <color name="tile_teal">@color/ios_teal</color>
 
     <color name="thanks_text">@color/ch_bone</color>
     <color name="thanks_text_dim">@color/ch_bone_dim</color>
-    <color name="thanks_chip_fill">#14E7E4EF</color>
+    <color name="thanks_chip_fill">@color/ch_fill</color>
     <color name="thanks_chip_stroke">@color/ch_line_strong</color>
 
     <color name="intro_text">@color/ch_bone</color>
     <color name="intro_text_dim">@color/ch_bone_dim</color>
-    <color name="intro_chip_bg">#14E7E4EF</color>
-    <color name="intro_dot">@color/ch_line_strong</color>
-    <color name="intro_dot_active">@color/ch_signal</color>
+    <color name="intro_chip_bg">@color/ch_fill</color>
+    <color name="intro_dot">@color/ch_bone_faint</color>
+    <color name="intro_dot_active">@color/ch_bone</color>
     <color name="intro_button_bg">@color/ch_signal</color>
     <color name="intro_button_text">@color/ch_on_signal</color>
-    <color name="intro_surface">#E616151C</color>
+    <color name="intro_surface">@color/ch_surface_95</color>
     <color name="intro_outline">@color/ch_line_strong</color>
 
     <color name="dash_surface">@color/ch_ink_1</color>

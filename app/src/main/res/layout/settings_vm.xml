@@ -38,10 +38,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                     android:background="@drawable/settings_icon_bg"
                     android:padding="10dp"
                     android:src="@drawable/ic_cpu"
-                    app:tint="@color/stryker_accent" />
+                    app:tint="@android:color/white" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -88,24 +88,22 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.08"
             android:text="@string/vm_section_resources"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -119,7 +117,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/storage"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -148,7 +146,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/devices"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -177,7 +175,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/ic_ram"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -202,24 +200,22 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.08"
             android:text="@string/vm_section_autotune"
-            android:textAllCaps="true"
-            android:textColor="@color/ch_signal"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -233,7 +229,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/bolt"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -263,7 +259,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/rocket_launch"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -288,15 +284,13 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.08"
             android:text="@string/vm_section_experiments"
-            android:textAllCaps="true"
-            android:textColor="@color/ch_signal"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
@@ -311,10 +305,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -328,7 +322,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/bolt"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -356,7 +350,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/tune"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -384,7 +378,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/ic_cpu"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -415,7 +409,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/ic_cpu"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -445,7 +439,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/tune"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -475,7 +469,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/storage"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -505,7 +499,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/ic_cpu"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -533,7 +527,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/storage"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -563,7 +557,7 @@
                     <ImageView
                         style="@style/VmRowIcon"
                         android:src="@drawable/bolt"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout style="@style/VmRowText">
 
@@ -594,7 +588,7 @@
             android:paddingTop="14dp"
             android:paddingBottom="14dp"
             android:text="@string/vm_apply_restart"
-            app:cornerRadius="2dp"
+            app:cornerRadius="@dimen/ios_corner_button"
             app:icon="@drawable/restart_alt"
             app:iconGravity="textStart" />
 

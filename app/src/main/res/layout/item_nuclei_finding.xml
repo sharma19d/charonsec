@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    app:cardBackgroundColor="@color/light_contrast"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,7 +73,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:ellipsize="middle"
-                android:fontFamily="monospace"
                 android:singleLine="true"
                 android:text="https://example.com/path"
                 android:textColor="@color/stryker_accent"
@@ -96,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:visibility="gone"
-                app:cardBackgroundColor="#0F9E94C6"
+                app:cardBackgroundColor="#0F007AFF"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
@@ -112,12 +111,10 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:letterSpacing="0.08"
                         android:text="EXTRACTED"
-                        android:textAllCaps="true"
-                        android:textColor="@color/stryker_accent"
-                        android:textSize="9sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/ch_bone_dim"
+                        android:textSize="13sp" 
+                        android:textAllCaps="true"/>
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/finding_extracted"
@@ -150,7 +147,6 @@
                 android:paddingTop="2dp"
                 android:paddingEnd="8dp"
                 android:paddingBottom="2dp"
-                android:fontFamily="monospace"
                 android:text="CVE-2024-0001"
                 android:textColor="@color/red"
                 android:textSize="10sp"

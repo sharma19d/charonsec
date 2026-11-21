@@ -128,11 +128,11 @@ public class TargetsAdapter extends RecyclerView.Adapter<TargetsAdapter.VH> {
 
     private void bindSeverityPills(VH h, Site s) {
         int[] counts = s.vulnsCount != null && s.vulnsCount.length >= 4 ? s.vulnsCount : new int[]{0,0,0,0};
-        applyPill(h.sevCritical, "C", counts.length > 4 ? counts[4] : 0, 0xFFE07A7A);
-        applyPill(h.sevHigh,     "H", counts[3], 0xFFE07A7A);
-        applyPill(h.sevMedium,   "M", counts[2], 0xFFE0956A);
-        applyPill(h.sevLow,      "L", counts[1], 0xFFD9B66A);
-        applyPill(h.sevInfo,     "I", counts[0], 0xFF9E94C6);
+        applyPill(h.sevCritical, "C", counts.length > 4 ? counts[4] : 0, com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
+        applyPill(h.sevHigh,     "H", counts[3], com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
+        applyPill(h.sevMedium,   "M", counts[2], com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_orange));
+        applyPill(h.sevLow,      "L", counts[1], com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution));
+        applyPill(h.sevInfo,     "I", counts[0], com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
     }
 
     private void applyPill(VH.Pill pill, String letter, int count, int color) {

@@ -146,7 +146,7 @@ public class Wifi extends Fragment {
 
         refresh.setColorSchemeColors(
                 getResources().getColor(R.color.stryker_accent),
-                0xFF9E94C6);
+                com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
         refresh.setOnRefreshListener(this::scan);
 
         View statusRow = view.findViewById(R.id.wifi_status_row);

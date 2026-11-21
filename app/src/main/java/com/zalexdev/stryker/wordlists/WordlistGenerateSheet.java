@@ -115,10 +115,6 @@ public final class WordlistGenerateSheet {
             chip.setCheckable(true);
             chip.setTextSize(11f);
             chip.setChipMinHeight(dp(context, 30));
-            chip.setChipStrokeWidth(1f);
-            chip.setChipStrokeColor(ColorStateList.valueOf(c.color));
-            chip.setChipBackgroundColorResource(R.color.light_contrast);
-            chip.setTextColor(c.color);
             chip.setChecked(c == WordlistCategory.PASSWORD);
             chip.setOnClickListener(v -> category[0] = c);
             categoryChips.addView(chip);
@@ -183,7 +179,7 @@ public final class WordlistGenerateSheet {
                         ? context.getString(R.string.wl_gen_estimate_unknown)
                         : context.getString(R.string.wl_gen_estimate, String.format(Locale.US, "%,d", n)));
                 boolean capped = n >= WordlistGenerator.DEFAULT_LIMIT;
-                estimate.setTextColor(capped ? 0xFFD9B66A : 0xFFA5A1B4);
+                estimate.setTextColor(capped ? com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution) : com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim));
                 if (capped) {
                     estimate.setText(context.getString(R.string.wl_gen_estimate_capped,
                             String.format(Locale.US, "%,d", WordlistGenerator.DEFAULT_LIMIT)));
@@ -282,7 +278,7 @@ public final class WordlistGenerateSheet {
                             return;
                         }
                         action.setImageResource(R.drawable.done);
-                        action.setColorFilter(0xFF6CC79E);
+                        action.setColorFilter(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live));
                         Toast.makeText(context,
                                 context.getString(R.string.wl_gen_written, made.getName()),
                                 Toast.LENGTH_SHORT).show();

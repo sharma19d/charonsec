@@ -16,12 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        app:cardBackgroundColor="@color/light_contrast"
+        app:cardBackgroundColor="@color/ch_ink_1"
         app:cardElevation="0dp"
         app:layout_anchor="@id/geomap"
         app:layout_anchorGravity="top|center_horizontal"
         app:strokeColor="@color/light_lite_contrast"
-        app:strokeWidth="1dp">
+        app:strokeWidth="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center"
                         android:src="@drawable/point"
-                        app:tint="@color/ch_signal" />
+                        app:tint="@android:color/white" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -99,7 +99,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/geomac_search_layout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Ios.TextField"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -116,7 +116,6 @@
                         android:id="@+id/geomac_search"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:imeOptions="actionSearch"
                         android:importantForAutofill="no"
                         android:inputType="textNoSuggestions|textCapCharacters"
@@ -144,7 +143,7 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/geomac_chip_all"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
@@ -152,28 +151,28 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/geomac_chip_lookup"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/geomac_chip_lookup" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/geomac_chip_scan"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/geomac_chip_scan" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/geomac_chip_cracked"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/geomac_chip_cracked" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/geomac_chip_manual"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/geomac_chip_manual" />
@@ -187,10 +186,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_margin="14dp"
-        app:cardBackgroundColor="@color/light_contrast"
+        app:cardBackgroundColor="@color/ch_ink_1"
         app:cardElevation="0dp"
         app:strokeColor="@color/light_lite_contrast"
-        app:strokeWidth="1dp">
+        app:strokeWidth="0dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -201,13 +200,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/geomac_btn_fit"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                style="@style/Ios.IconButton.Tinted"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:padding="8dp"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/expand_icon"
                 app:iconPadding="0dp"
                 app:iconSize="20dp"
@@ -222,13 +221,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/geomac_btn_import"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                style="@style/Ios.IconButton.Tinted"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:padding="8dp"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/download"
                 app:iconPadding="0dp"
                 app:iconSize="20dp"
@@ -236,14 +235,14 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/geomac_btn_export"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                style="@style/Ios.IconButton.Tinted"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_marginStart="4dp"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:padding="8dp"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/copy"
                 app:iconPadding="0dp"
                 app:iconSize="20dp"
@@ -251,14 +250,14 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/geomac_btn_clear"
-                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                style="@style/Ios.IconButton.Tinted"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_marginStart="4dp"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:padding="8dp"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/delete"
                 app:iconPadding="0dp"
                 app:iconSize="20dp"
@@ -273,14 +272,13 @@
         android:layout_gravity="bottom|start"
         android:layout_marginStart="14dp"
         android:layout_marginBottom="22dp"
-        app:cardBackgroundColor="@color/ch_ink_0"
+        app:cardBackgroundColor="@color/ch_ink_1"
         app:cardElevation="0dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/geomac_counter_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="monospace"
             android:paddingStart="10dp"
             android:paddingTop="6dp"
             android:paddingEnd="10dp"

@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  iOS look for CharonSec: Human Interface Guidelines type ramp (Inter standing in
+  for SF Pro), system colours, continuous-feeling corners, highlight/dim press
+  feedback instead of ripples.
+-->
+<resources>
+
+    <!-- ===== Type ramp (iOS Dynamic Type "Large", the default size) ===== -->
+    <style name="TextAppearance.Ios" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/charon_body</item>
+        <item name="fontFamily">@font/charon_body</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="textAllCaps">false</item>
+    </style>
+    <style name="TextAppearance.Ios.LargeTitle">
+        <item name="android:fontFamily">@font/charon_display</item>
+        <item name="fontFamily">@font/charon_display</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:letterSpacing">0.005</item>
+    </style>
+    <style name="TextAppearance.Ios.Title1" parent="TextAppearance.Ios.LargeTitle">
+        <item name="android:textSize">28sp</item>
+    </style>
+    <style name="TextAppearance.Ios.Title2" parent="TextAppearance.Ios.LargeTitle">
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="TextAppearance.Ios.Title3">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+    <style name="TextAppearance.Ios.Headline">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">-0.022</item>
+    </style>
+    <style name="TextAppearance.Ios.Body">
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">-0.022</item>
+    </style>
+    <style name="TextAppearance.Ios.Callout">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.019</item>
+    </style>
+    <style name="TextAppearance.Ios.Subhead">
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">-0.016</item>
+    </style>
+    <style name="TextAppearance.Ios.Subhead.Semibold">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TextAppearance.Ios.Footnote">
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">-0.006</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    <style name="TextAppearance.Ios.Caption1">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    <style name="TextAppearance.Ios.Caption2">
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">0.006</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    <style name="TextAppearance.Ios.Button">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.019</item>
+        <item name="android:textColor">@null</item>
+    </style>
+    <style name="TextAppearance.Ios.Button.Plain">
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="TextAppearance.Ios.Chip">
+        <item name="android:fontFamily">@font/charon_body</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">@color/ios_chip_text</item>
+    </style>
+    <style name="TextAppearance.Ios.TabLabel">
+        <item name="android:fontFamily">@font/charon_body</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+    <!-- Grouped-table section header: footnote, secondary label, upper case. -->
+    <style name="TextAppearance.Ios.SectionHeader" parent="TextAppearance.Ios.Footnote">
+        <item name="android:textAllCaps">true</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <!-- ===== Shapes ===== -->
+    <style name="ShapeAppearance.Ios.Button" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/ios_corner_button</item>
+    </style>
+    <style name="ShapeAppearance.Ios.Card" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/ios_corner_card</item>
+    </style>
+    <style name="ShapeAppearance.Ios.Field" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/ios_corner_field</item>
+    </style>
+    <style name="ShapeAppearance.Ios.Capsule" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="ShapeAppearance.Ios.Alert" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/ios_corner_alert</item>
+    </style>
+    <style name="ShapeAppearance.Ios.Sheet" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/ios_corner_sheet</item>
+        <item name="cornerSizeTopRight">@dimen/ios_corner_sheet</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <!-- ===== Buttons ===== -->
+    <!-- Filled ("borderedProminent"): tint fill, white label. -->
+    <style name="Ios.Button" parent="Widget.Material3.Button">
+        <item name="android:textAppearance">@style/TextAppearance.Ios.Button</item>
+        <item name="android:fontFamily">@font/charon_body</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.019</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">@color/ios_btn_filled_bg</item>
+        <item name="android:textColor">@color/ios_btn_filled_text</item>
+        <item name="iconTint">@color/ios_btn_filled_text</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Ios.Button</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="android:stateListAnimator">@animator/ios_press_dim</item>
+        <item name="elevation">0dp</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:insetTop">3dp</item>
+        <item name="android:insetBottom">3dp</item>
+        <item name="android:paddingStart">18dp</item>
+        <item name="android:paddingEnd">18dp</item>
+        <item name="iconPadding">6dp</item>
+        <item name="iconSize">18dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+    <!-- Tinted ("bordered" with tint): soft tint fill, tint label. -->
+    <style name="Ios.Button.Tinted">
+        <item name="backgroundTint">@color/ios_btn_tinted_bg</item>
+        <item name="android:textColor">@color/ios_btn_tinted_text</item>
+        <item name="iconTint">@color/ios_btn_tinted_text</item>
+    </style>
+    <style name="Ios.Button.Tinted.Destructive">
+        <item name="backgroundTint">@color/ch_alert_soft</item>
+        <item name="android:textColor">@color/ch_alert</item>
+        <item name="iconTint">@color/ch_alert</item>
+    </style>
+    <!-- Plain: label only. -->
+    <style name="Ios.Button.Plain">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:textColor">@color/ios_btn_plain_text</item>
+        <item name="iconTint">@color/ios_btn_plain_text</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ios.Button.Plain</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:minWidth">48dp</item>
+    </style>
+    <style name="Ios.Button.Destructive" parent="Ios.Button.Plain">
+        <item name="android:textColor">@color/ch_alert</item>
+        <item name="iconTint">@color/ch_alert</item>
+    </style>
+    <!-- Round icon buttons (toolbar glyphs and circular tinted buttons). -->
+    <style name="Ios.IconButton" parent="Widget.Material3.Button.IconButton">
+        <item name="iconTint">@color/ios_btn_plain_text</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="android:stateListAnimator">@animator/ios_press_dim</item>
+    </style>
+    <style name="Ios.IconButton.Tinted" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
+        <item name="backgroundTint">@color/ios_btn_tinted_bg</item>
+        <item name="iconTint">@color/ios_btn_tinted_text</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="android:stateListAnimator">@animator/ios_press_dim</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- ===== Cards (inset grouped cells) ===== -->
+    <style name="Ios.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/ch_ink_1</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="strokeColor">@android:color/transparent</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">@dimen/ios_corner_card</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Ios.Card</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="rippleColor">@color/ch_highlight</item>
+        <item name="android:stateListAnimator">@animator/ios_press_scale</item>
+    </style>
+
+    <!-- ===== Switch, check box, radio ===== -->
+    <style name="Ios.Switch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="android:thumb">@drawable/ios_switch_thumb</item>
+        <item name="track">@drawable/ios_switch_track</item>
+        <item name="thumbTint">@null</item>
+        <item name="trackTint">@null</item>
+        <item name="useMaterialThemeColors">false</item>
+        <item name="switchMinWidth">51dp</item>
+        <item name="switchPadding">12dp</item>
+        <item name="android:thumbTextPadding">0dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:minHeight">44dp</item>
+    </style>
+    <style name="Ios.MaterialSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="android:thumb">@drawable/ios_switch_thumb</item>
+        <item name="track">@drawable/ios_switch_track</item>
+        <item name="thumbTint">@null</item>
+        <item name="trackTint">@null</item>
+        <item name="trackDecorationTint">@android:color/transparent</item>
+        <item name="thumbIcon">@null</item>
+        <item name="android:background">@null</item>
+    </style>
+    <style name="Ios.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/ios_check</item>
+        <item name="buttonCompat">@drawable/ios_check</item>
+        <item name="buttonIcon">@null</item>
+        <item name="buttonTint">@null</item>
+        <item name="buttonIconTint">@null</item>
+        <item name="useMaterialThemeColors">false</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingStart">8dp</item>
+    </style>
+    <style name="Ios.Radio" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/ios_check</item>
+        <item name="buttonCompat">@drawable/ios_check</item>
+        <item name="buttonTint">@null</item>
+        <item name="useMaterialThemeColors">false</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingStart">8dp</item>
+    </style>
+
+    <!-- ===== Text fields: filled rounded box, no outline or underline ===== -->
+    <style name="Ios.TextField" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/ch_field</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxStrokeColor">@android:color/transparent</item>
+        <item name="boxCornerRadiusTopStart">@dimen/ios_corner_field</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/ios_corner_field</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/ios_corner_field</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/ios_corner_field</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Ios.Field</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="hintTextColor">@color/ch_signal</item>
+        <item name="android:textColorHint">@color/ch_bone_dim</item>
+        <item name="endIconTint">@color/ch_bone_dim</item>
+        <item name="startIconTint">@color/ch_bone_dim</item>
+        <item name="hintTextAppearance">@style/TextAppearance.Ios.Caption1</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Ios.TextField</item>
+    </style>
+    <style name="ThemeOverlay.Ios.TextField.Dense">
+        <item name="editTextStyle">@style/Widget.Material3.TextInputEditText.FilledBox.Dense</item>
+        <item name="autoCompleteTextViewStyle">@style/Widget.Material3.AutoCompleteTextView.FilledBox.Dense</item>
+    </style>
+    <style name="Ios.TextField.Dense" parent="Widget.Material3.TextInputLayout.FilledBox.Dense">
+        <item name="boxBackgroundColor">@color/ch_field</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxStrokeColor">@android:color/transparent</item>
+        <item name="boxCornerRadiusTopStart">@dimen/ios_corner_field</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/ios_corner_field</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/ios_corner_field</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/ios_corner_field</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Ios.Field</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="hintTextColor">@color/ch_signal</item>
+        <item name="android:textColorHint">@color/ch_bone_dim</item>
+        <item name="endIconTint">@color/ch_bone_dim</item>
+        <item name="startIconTint">@color/ch_bone_dim</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Ios.TextField.Dense</item>
+    </style>
+    <style name="Ios.TextField.Dropdown" parent="Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="boxBackgroundColor">@color/ch_field</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxStrokeColor">@android:color/transparent</item>
+        <item name="boxCornerRadiusTopStart">@dimen/ios_corner_field</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/ios_corner_field</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/ios_corner_field</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/ios_corner_field</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Ios.Field</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="hintTextColor">@color/ch_signal</item>
+        <item name="android:textColorHint">@color/ch_bone_dim</item>
+        <item name="endIconTint">@color/ch_bone_dim</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Ios.TextField</item>
+    </style>
+    <style name="ThemeOverlay.Ios.TextField" parent="">
+        <item name="colorPrimary">@color/ch_signal</item>
+        <item name="editTextStyle">@style/Widget.Material3.TextInputEditText.FilledBox</item>
+        <item name="autoCompleteTextViewStyle">@style/Widget.Material3.AutoCompleteTextView.FilledBox</item>
+        <item name="android:textCursorDrawable">@drawable/ios_cursor</item>
+    </style>
+
+    <!-- ===== Chips: capsules, filled tint when selected ===== -->
+    <style name="Ios.Chip" parent="Widget.Material3.Chip.Filter">
+        <item name="chipBackgroundColor">@color/ios_chip_bg</item>
+        <item name="android:textColor">@color/ios_chip_text</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ios.Chip</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="chipCornerRadius">50dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Ios.Capsule</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipIconTint">@color/ios_chip_text</item>
+        <item name="closeIconTint">@color/ios_chip_text</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="android:stateListAnimator">@animator/ios_press_dim</item>
+        <item name="chipMinHeight">32dp</item>
+        <item name="chipStartPadding">6dp</item>
+        <item name="chipEndPadding">6dp</item>
+        <item name="elevation">0dp</item>
+    </style>
+    <style name="Ios.Chip.Assist">
+        <item name="android:checkable">false</item>
+    </style>
+
+    <!-- ===== Floating buttons ===== -->
+    <style name="Ios.Fab" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="backgroundTint">@color/ch_signal</item>
+        <item name="tint">@color/ch_on_signal</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Ios.Capsule</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="elevation">4dp</item>
+        <item name="pressedTranslationZ">0dp</item>
+        <item name="hoveredFocusedTranslationZ">0dp</item>
+    </style>
+    <style name="Ios.ExtendedFab" parent="Widget.Material3.ExtendedFloatingActionButton.Icon.Primary">
+        <item name="backgroundTint">@color/ch_signal</item>
+        <item name="android:textColor">@color/ch_on_signal</item>
+        <item name="iconTint">@color/ch_on_signal</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ios.Button</item>
+        <item name="android:fontFamily">@font/charon_body</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">-0.019</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ios.Capsule</item>
+        <item name="rippleColor">@android:color/transparent</item>
+        <item name="android:stateListAnimator">@animator/ios_press_dim</item>
+        <item name="elevation">4dp</item>
+    </style>
+
+    <!-- ===== Progress ===== -->
+    <style name="Ios.LinearProgress" parent="Widget.Material3.LinearProgressIndicator">
+        <item name="trackThickness">4dp</item>
+        <item name="trackCornerRadius">2dp</item>
+        <item name="indicatorColor">@color/ch_signal</item>
+        <item name="trackColor">@color/ch_fill_strong</item>
+        <item name="indicatorTrackGapSize">0dp</item>
+        <item name="trackStopIndicatorSize">0dp</item>
+    </style>
+    <style name="Ios.CircularProgress" parent="Widget.Material3.CircularProgressIndicator">
+        <item name="indicatorColor">@color/ios_gray</item>
+        <item name="trackColor">@android:color/transparent</item>
+        <item name="indicatorTrackGapSize">0dp</item>
+    </style>
+    <style name="Ios.Spinner" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/ios_spinner</item>
+        <item name="android:indeterminateDuration">900</item>
+        <item name="android:indeterminateTint">@null</item>
+    </style>
+    <style name="Ios.Slider" parent="Widget.Material3.Slider">
+        <item name="trackHeight">4dp</item>
+        <item name="thumbRadius">14dp</item>
+        <item name="thumbWidth">28dp</item>
+        <item name="thumbHeight">28dp</item>
+        <item name="thumbColor">#FFFFFF</item>
+        <item name="thumbElevation">3dp</item>
+        <item name="thumbStrokeWidth">0dp</item>
+        <item name="thumbTrackGapSize">0dp</item>
+        <item name="haloRadius">0dp</item>
+        <item name="trackColorActive">@color/ch_signal</item>
+        <item name="trackColorInactive">@color/ch_fill_strong</item>
+        <item name="trackStopIndicatorSize">0dp</item>
+        <item name="trackInsideCornerSize">2dp</item>
+        <item name="tickVisible">false</item>
+        <item name="labelBehavior">gone</item>
+    </style>
+
+    <!-- ===== Alerts and sheets ===== -->
+    <style name="Ios.AlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
+        <item name="colorSurface">@color/ch_alert_bg</item>
+        <item name="colorSurfaceContainerHigh">@color/ch_alert_bg</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Ios.Alert</item>
+        <item name="backgroundInsetStart">36dp</item>
+        <item name="backgroundInsetEnd">36dp</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Ios.AlertTitle</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/Ios.AlertBody</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Ios.AlertButton.Preferred</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Ios.AlertButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Ios.AlertButton</item>
+        <item name="android:backgroundDimAmount">0.32</item>
+    </style>
+    <style name="Ios.AlertTitle" parent="MaterialAlertDialog.Material3.Title.Text.CenterStacked">
+        <item name="android:textAppearance">@style/TextAppearance.Ios.Headline</item>
+        <item name="android:fontFamily">@font/charon_body</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/ch_bone</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">-0.022</item>
+    </style>
+    <style name="Ios.AlertBody" parent="MaterialAlertDialog.Material3.Body.Text.CenterStacked">
+        <item name="android:textAppearance">@style/TextAppearance.Ios.Footnote</item>
+        <item name="android:fontFamily">@font/charon_body</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/ch_bone</item>
+    </style>
+    <style name="Ios.AlertButton" parent="Widget.Material3.Button.TextButton.Dialog">
+        <item name="android:fontFamily">@font/charon_body</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">-0.022</item>
+        <item name="android:textColor">@color/ios_btn_plain_text</item>
+        <item name="rippleColor">@color/ch_highlight</item>
+    </style>
+    <style name="Ios.AlertButton.Preferred">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Ios.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="backgroundTint">@color/ch_ink_1</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Ios.Sheet</item>
+        <item name="shapeAppearanceOverlay">@null</item>
+        <item name="shouldRemoveExpandedCorners">false</item>
+    </style>
+    <style name="ThemeOverlay.Ios.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Ios.BottomSheet</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.32</item>
+        <item name="android:navigationBarColor">@color/ch_ink_1</item>
+    </style>
+
+    <!-- ===== Toolbars ===== -->
+    <style name="Ios.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/ch_ink_0</item>
+        <item name="titleCentered">true</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Ios.Headline</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.Ios.Caption1</item>
+        <item name="navigationIconTint">@color/ch_signal</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+</resources>

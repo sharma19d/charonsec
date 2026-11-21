@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="14dp"
-    app:cardBackgroundColor="@color/light_contrast"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,7 +56,6 @@
                     android:id="@+id/geopin_bssid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="monospace"
                     android:textColor="@color/grey"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -77,10 +76,10 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/ios_hairline"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/light_lite_contrast" />
+            android:background="@color/ch_line" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,9 +95,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:letterSpacing="0.06"
                     android:text="LAT"
-                    android:textAllCaps="true"
                     android:textColor="@color/grey"
                     android:textSize="9sp" />
 
@@ -106,7 +103,6 @@
                     android:id="@+id/geopin_lat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="monospace"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -120,9 +116,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:letterSpacing="0.06"
                     android:text="LON"
-                    android:textAllCaps="true"
                     android:textColor="@color/grey"
                     android:textSize="9sp" />
 
@@ -130,7 +124,6 @@
                     android:id="@+id/geopin_lon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="monospace"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -152,25 +145,25 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/geopin_btn_copy"
-                style="@style/Widget.Material3.Button.TonalButton"
+                style="@style/Ios.Button.Tinted"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/geomac_pin_btn_copy"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/copy"
                 app:iconSize="16dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/geopin_btn_delete"
-                style="@style/Widget.Material3.Button.TonalButton"
+                style="@style/Ios.Button.Tinted.Destructive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:backgroundTint="@color/ch_ink_2"
                 android:text="@string/geomac_pin_btn_delete"
                 android:textColor="@color/ch_alert"
-                app:cornerRadius="2dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/delete"
                 app:iconSize="16dp"
                 app:iconTint="@color/ch_alert" />

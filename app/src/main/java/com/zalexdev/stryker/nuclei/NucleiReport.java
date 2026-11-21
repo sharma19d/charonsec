@@ -245,7 +245,7 @@ public class NucleiReport extends Fragment {
         emptySpinner.setVisibility(View.GONE);
         emptyIconWrap.setBackgroundResource(R.drawable.dashboard_tile_bg_indigo);
         emptyIcon.setImageResource(R.drawable.search);
-        emptyIcon.setColorFilter(0xFF9E94C6, PorterDuff.Mode.SRC_IN);
+        emptyIcon.setColorFilter(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal), PorterDuff.Mode.SRC_IN);
         emptyTitle.setText("No matches");
         emptySubtitle.setText("No findings match the current search/filter.");
     }
@@ -334,11 +334,11 @@ public class NucleiReport extends Fragment {
     private void bindSeverityPills(View view) {
         int[] counts = site.vulnsCount != null && site.vulnsCount.length >= 4
                 ? site.vulnsCount : new int[]{0, 0, 0, 0};
-        applyPill(view.findViewById(R.id.report_sev_critical), "C", counts.length > 4 ? counts[4] : 0, 0xFFE07A7A);
-        applyPill(view.findViewById(R.id.report_sev_high), "H", counts[3], 0xFFE07A7A);
-        applyPill(view.findViewById(R.id.report_sev_medium), "M", counts[2], 0xFFE0956A);
-        applyPill(view.findViewById(R.id.report_sev_low), "L", counts[1], 0xFFD9B66A);
-        applyPill(view.findViewById(R.id.report_sev_info), "I", counts[0], 0xFF9E94C6);
+        applyPill(view.findViewById(R.id.report_sev_critical), "C", counts.length > 4 ? counts[4] : 0, com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
+        applyPill(view.findViewById(R.id.report_sev_high), "H", counts[3], com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert));
+        applyPill(view.findViewById(R.id.report_sev_medium), "M", counts[2], com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_orange));
+        applyPill(view.findViewById(R.id.report_sev_low), "L", counts[1], com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution));
+        applyPill(view.findViewById(R.id.report_sev_info), "I", counts[0], com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
     }
 
     private void applyPill(View root, String letter, int count, int color) {
@@ -358,6 +358,8 @@ public class NucleiReport extends Fragment {
     private void openTerminal() {
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
+                .setCustomAnimations(R.anim.ios_push_enter, R.anim.ios_push_exit,
+                        R.anim.ios_pop_enter, R.anim.ios_pop_exit)
                 .replace(R.id.flContent, NucleiTerminal.forSite(siteIndex))
                 .addToBackStack(null)
                 .commit();

@@ -343,8 +343,8 @@ public class NucleiTerminal extends Fragment {
                     break;
                 case "OUT":
                 default:
-                    h.tag.setTextColor(0xFF6CC79E);
-                    h.body.setTextColor(0xFFE7E4EF);
+                    h.tag.setTextColor(0xFF30D158);
+                    h.body.setTextColor(0xFFE5E5EA);
                     break;
             }
             h.body.setText(l.body);
