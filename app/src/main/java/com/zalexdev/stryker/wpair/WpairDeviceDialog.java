@@ -30,6 +30,7 @@ public class WpairDeviceDialog extends BottomSheetDialogFragment {
     private static final String ARG_ADDRESS = "address";
     private static final String ARG_NAME = "name";
     private static final String ARG_STATUS = "status";
+    private static final String ARG_IS_FP = "is_fast_pair";
 
     public interface Listener {
         void onTest();
@@ -63,6 +64,7 @@ public class WpairDeviceDialog extends BottomSheetDialogFragment {
         b.putString(ARG_ADDRESS, device.getAddress());
         b.putString(ARG_NAME, device.displayName());
         b.putString(ARG_STATUS, device.getStatus().name());
+        b.putBoolean(ARG_IS_FP, device.isFastPair());
         d.setArguments(b);
         d.listener = listener;
         return d;
@@ -91,16 +93,32 @@ public class WpairDeviceDialog extends BottomSheetDialogFragment {
         MaterialButton liveBtn = view.findViewById(R.id.wpair_dlg_live);
         MaterialButton recordBtn = view.findViewById(R.id.wpair_dlg_record);
 
-        view.<MaterialButton>findViewById(R.id.wpair_dlg_test).setOnClickListener(v -> {
+        boolean isFp = args != null && args.getBoolean(ARG_IS_FP, false);
+
+        MaterialButton testBtn = view.findViewById(R.id.wpair_dlg_test);
+        MaterialButton magicBtn = view.findViewById(R.id.wpair_dlg_magic);
+        MaterialButton writeKeyBtn = view.findViewById(R.id.wpair_dlg_write_key);
+        MaterialButton floodBtn = view.findViewById(R.id.wpair_dlg_flood);
+
+        testBtn.setEnabled(isFp);
+        testBtn.setAlpha(isFp ? 1f : 0.35f);
+        magicBtn.setEnabled(isFp);
+        magicBtn.setAlpha(isFp ? 1f : 0.35f);
+        writeKeyBtn.setEnabled(isFp);
+        writeKeyBtn.setAlpha(isFp ? 1f : 0.35f);
+        floodBtn.setEnabled(isFp);
+        floodBtn.setAlpha(isFp ? 1f : 0.35f);
+
+        testBtn.setOnClickListener(v -> {
             if (listener != null) listener.onTest();
         });
-        view.<MaterialButton>findViewById(R.id.wpair_dlg_magic).setOnClickListener(v -> {
+        magicBtn.setOnClickListener(v -> {
             if (listener != null) listener.onMagic();
         });
-        view.<MaterialButton>findViewById(R.id.wpair_dlg_write_key).setOnClickListener(v -> {
+        writeKeyBtn.setOnClickListener(v -> {
             if (listener != null) listener.onWriteAccountKey();
         });
-        view.<MaterialButton>findViewById(R.id.wpair_dlg_flood).setOnClickListener(v -> {
+        floodBtn.setOnClickListener(v -> {
             if (listener != null) listener.onFloodKeys();
         });
         view.<MaterialButton>findViewById(R.id.wpair_dlg_hfp).setOnClickListener(v -> {
