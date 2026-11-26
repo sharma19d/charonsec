@@ -918,6 +918,9 @@
     <string name="wpair_perm_open_settings">打开设置</string>
     <string name="wpair_bt_disabled_title">蓝牙已禁用</string>
     <string name="wpair_bt_disabled_msg">启用蓝牙以扫描附近的 Fast Pair 设备。</string>
+    <string name="wpair_location_off_title">位置信息已关闭</string>
+    <string name="wpair_location_off_msg">在 Android 11 及更早版本上，位置信息关闭时蓝牙扫描找不到任何设备。请开启位置信息后重新扫描。</string>
+    <string name="wpair_location_open_settings">打开位置信息设置</string>
     <string name="wpair_bt_enable">启用</string>
     <string name="wpair_hfp_manual_title">需要手动 HFP 连接</string>
     <string name="wpair_hfp_manual_msg">Android 阻止以编程方式建立 HFP 连接。请在蓝牙设置中配对该设备，然后返回。</string>

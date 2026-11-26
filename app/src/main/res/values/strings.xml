@@ -1019,6 +1019,9 @@ manager</string>
     <string name="wpair_perm_open_settings">Open settings</string>
     <string name="wpair_bt_disabled_title">Bluetooth disabled</string>
     <string name="wpair_bt_disabled_msg">Enable Bluetooth to scan for nearby Fast Pair devices.</string>
+    <string name="wpair_location_off_title">Location Is Off</string>
+    <string name="wpair_location_off_msg">On Android 11 and earlier, Bluetooth scans find nothing while Location is off. Turn on Location, then scan again.</string>
+    <string name="wpair_location_open_settings">Open Location Settings</string>
     <string name="wpair_bt_enable">Enable</string>
     <string name="wpair_hfp_manual_title">Manual HFP connect needed</string>
     <string name="wpair_hfp_manual_msg">Android blocks programmatic HFP connect. Pair the device in Bluetooth settings, then come back.</string>
