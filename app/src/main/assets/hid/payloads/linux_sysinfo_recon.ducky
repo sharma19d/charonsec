@@ -1,0 +1,14 @@
+REM ============================================================
+REM  Linux · System Reconnaissance
+REM ============================================================
+REM  Collects hostname, kernel, network interfaces, open ports,
+REM  sudo privileges, cron jobs, SUID binaries, and running
+REM  services. Writes report to /tmp/.recon_report.txt.
+
+DEFAULTDELAY 80
+
+CTRL ALT t
+DELAY 1500
+STRINGLN (echo "=== HOSTNAME ===" && hostname && echo && echo "=== KERNEL ===" && uname -a && echo && echo "=== NETWORK ===" && ip addr 2>/dev/null || ifconfig && echo && echo "=== OPEN PORTS ===" && ss -tlnp 2>/dev/null || netstat -tlnp && echo && echo "=== SUDO ===" && sudo -l 2>/dev/null && echo && echo "=== SUID ===" && find / -perm -4000 -type f 2>/dev/null && echo && echo "=== CRON ===" && crontab -l 2>/dev/null && ls -la /etc/cron* 2>/dev/null) > /tmp/.recon_report.txt 2>&1
+DELAY 2000
+STRINGLN exit

