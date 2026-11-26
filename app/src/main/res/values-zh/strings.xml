@@ -889,6 +889,7 @@
     <string name="wpair_empty_title">暂无设备</string>
     <string name="wpair_empty_subtitle">点击扫描发现附近的 Fast Pair / BLE 设备</string>
     <string name="wpair_badge_pairing">配对中</string>
+    <string name="wpair_ble_only">仅BLE · 未检测到Fast Pair</string>
     <string name="wpair_btn_test">测试</string>
     <string name="wpair_btn_magic">魔法</string>
     <string name="wpair_btn_more">更多</string>

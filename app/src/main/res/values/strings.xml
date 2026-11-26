@@ -990,6 +990,7 @@ manager</string>
     <string name="wpair_empty_title">No devices yet</string>
     <string name="wpair_empty_subtitle">Tap Scan to discover Fast Pair / BLE devices nearby</string>
     <string name="wpair_badge_pairing">Pairing</string>
+    <string name="wpair_ble_only">BLE only · Fast Pair not detected</string>
     <string name="wpair_btn_test">Test</string>
     <string name="wpair_btn_magic">Magic</string>
     <string name="wpair_btn_more">More</string>

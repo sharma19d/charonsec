@@ -30,7 +30,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.zalexdev.stryker.R;
 import com.zalexdev.stryker.utils.Core;
 
@@ -64,7 +63,7 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
     private View emptyState;
     private TextView statTotal, statVulnerable, statPaired;
     private ChipGroup filterGroup;
-    private ExtendedFloatingActionButton fab;
+    private MaterialButton fab;
 
     private boolean scanning = false;
     private boolean showAllBle = false;

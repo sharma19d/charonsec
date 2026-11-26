@@ -6,6 +6,7 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -233,10 +234,21 @@ public class WpairDeviceAdapter extends RecyclerView.Adapter<WpairDeviceAdapter.
     }
 
     private void bindButtons(VH h, FastPairDevice d) {
-        boolean isFp = d.isFastPair();
+        h.itemView.setOnClickListener(v -> listener.onOpenActions(d));
+        h.more.setOnClickListener(v -> listener.onOpenActions(d));
+
+        if (!d.isFastPair()) {
+            h.btnRow.setVisibility(View.GONE);
+            h.bleOnly.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        h.bleOnly.setVisibility(View.GONE);
+        h.btnRow.setVisibility(View.VISIBLE);
+
         boolean inFlight = d.getStatus() == FastPairDevice.Status.TESTING;
-        boolean canTest = isFp && !inFlight;
-        boolean canMagic = isFp && !inFlight && d.getStatus() != FastPairDevice.Status.PATCHED;
+        boolean canTest = !inFlight;
+        boolean canMagic = !inFlight && d.getStatus() != FastPairDevice.Status.PATCHED;
 
         h.test.setEnabled(canTest);
         h.test.setAlpha(canTest ? 1f : 0.45f);
@@ -244,8 +256,6 @@ public class WpairDeviceAdapter extends RecyclerView.Adapter<WpairDeviceAdapter.
         h.magic.setAlpha(canMagic ? 1f : 0.45f);
         h.test.setOnClickListener(v -> listener.onTest(d));
         h.magic.setOnClickListener(v -> listener.onMagic(d));
-        h.more.setOnClickListener(v -> listener.onOpenActions(d));
-        h.itemView.setOnClickListener(v -> listener.onOpenActions(d));
     }
 
     private void bindStatus(VH h, FastPairDevice d) {
@@ -293,7 +303,8 @@ public class WpairDeviceAdapter extends RecyclerView.Adapter<WpairDeviceAdapter.
 
     static final class VH extends RecyclerView.ViewHolder {
         final TextView name, address, rssi, model, status, progress;
-        final TextView pairingBadge;
+        final TextView pairingBadge, bleOnly;
+        final LinearLayout btnRow;
         final MaterialButton test, magic, more;
 
         VH(@NonNull View v) {
@@ -305,6 +316,8 @@ public class WpairDeviceAdapter extends RecyclerView.Adapter<WpairDeviceAdapter.
             status = v.findViewById(R.id.wpair_dev_status);
             progress = v.findViewById(R.id.wpair_dev_progress);
             pairingBadge = v.findViewById(R.id.wpair_dev_badge_pairing);
+            bleOnly = v.findViewById(R.id.wpair_dev_ble_only);
+            btnRow = v.findViewById(R.id.wpair_btn_row);
             test = v.findViewById(R.id.wpair_btn_test);
             magic = v.findViewById(R.id.wpair_btn_magic);
             more = v.findViewById(R.id.wpair_btn_more);

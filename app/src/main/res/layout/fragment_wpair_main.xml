@@ -294,16 +294,35 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/wpair_fab"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="20dp"
-        android:contentDescription="@string/wpair_fab_scan"
-        android:text="@string/wpair_fab_scan"
-        android:textColor="@color/light_contrast"
-        app:backgroundTint="@color/ch_signal"
-        app:icon="@drawable/scanner"
-        app:iconTint="@color/light_contrast" />
+        android:layout_gravity="bottom"
+        android:background="@color/ch_ink_0"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ios_hairline"
+            android:background="@color/ch_bar_line" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/wpair_fab"
+            style="@style/Ios.Button"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/wpair_fab_scan"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:minHeight="0dp"
+            android:text="@string/wpair_fab_scan"
+            android:textColor="@color/light_contrast"
+            app:backgroundTint="@color/ch_signal"
+            app:icon="@drawable/scanner"
+            app:iconTint="@color/light_contrast" />
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

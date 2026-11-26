@@ -152,7 +152,19 @@
             android:textSize="11sp"
             android:visibility="gone" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/wpair_dev_ble_only"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:gravity="center"
+            android:text="@string/wpair_ble_only"
+            android:textColor="@color/grey"
+            android:textSize="11sp"
+            android:visibility="gone" />
+
         <LinearLayout
+            android:id="@+id/wpair_btn_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
