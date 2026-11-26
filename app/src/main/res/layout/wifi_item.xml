@@ -32,7 +32,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:src="@drawable/wifi"
-                app:tint="@color/stryker_accent" />
+                app:tint="@android:color/white" />
         </FrameLayout>
 
         <LinearLayout
@@ -66,14 +66,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:background="@drawable/chip_pill_bg"
-                    android:backgroundTint="#D2F1E7"
-                    android:letterSpacing="0.04"
+                    android:backgroundTint="#2634C759"
                     android:paddingStart="5dp"
                     android:paddingTop="1dp"
                     android:paddingEnd="5dp"
                     android:paddingBottom="1dp"
                     android:text="@string/wifi_chip_wps"
-                    android:textColor="#00695C"
+                    android:textColor="@color/ch_live"
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:visibility="gone" />
@@ -84,14 +83,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:background="@drawable/chip_pill_bg"
-                    android:backgroundTint="#FFD7DA"
-                    android:letterSpacing="0.04"
+                    android:backgroundTint="#26FF3B30"
                     android:paddingStart="5dp"
                     android:paddingTop="1dp"
                     android:paddingEnd="5dp"
                     android:paddingBottom="1dp"
                     android:text="@string/wifi_chip_lock"
-                    android:textColor="#B71C1C"
+                    android:textColor="@color/ch_alert"
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:visibility="gone" />
@@ -102,14 +100,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:background="@drawable/chip_pill_bg"
-                    android:backgroundTint="#FFE0B2"
-                    android:letterSpacing="0.04"
+                    android:backgroundTint="#26FF9500"
                     android:paddingStart="5dp"
                     android:paddingTop="1dp"
                     android:paddingEnd="5dp"
                     android:paddingBottom="1dp"
                     android:text="@string/wifi_chip_pixie"
-                    android:textColor="#E65100"
+                    android:textColor="@color/ch_signal"
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:visibility="gone" />
@@ -120,14 +117,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:background="@drawable/chip_pill_bg"
-                    android:backgroundTint="#D7EFD9"
-                    android:letterSpacing="0.04"
+                    android:backgroundTint="#2634C759"
                     android:paddingStart="5dp"
                     android:paddingTop="1dp"
                     android:paddingEnd="5dp"
                     android:paddingBottom="1dp"
                     android:text="@string/wifi_chip_key"
-                    android:textColor="#1B5E20"
+                    android:textColor="@color/ch_live"
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:visibility="gone" />
@@ -139,7 +135,6 @@
                     android:layout_marginStart="4dp"
                     android:background="@drawable/chip_pill_bg"
                     android:backgroundTint="@color/light_lite_contrast"
-                    android:letterSpacing="0.04"
                     android:paddingStart="5dp"
                     android:paddingTop="1dp"
                     android:paddingEnd="5dp"
@@ -157,7 +152,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:ellipsize="end"
-                android:fontFamily="monospace"
                 android:singleLine="true"
                 android:text="00:00:00:00:00:00"
                 android:textColor="@color/grey"
@@ -213,7 +207,7 @@
     <View
         android:id="@+id/wifi_item_divider"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/ios_hairline"
         android:layout_marginStart="68dp"
-        android:background="@color/light_lite_contrast" />
+        android:background="@color/ch_line" />
 </LinearLayout>

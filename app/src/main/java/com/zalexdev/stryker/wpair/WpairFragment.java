@@ -30,7 +30,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.chip.ChipGroup;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.zalexdev.stryker.R;
 import com.zalexdev.stryker.utils.Core;
 
@@ -64,7 +63,7 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
     private View emptyState;
     private TextView statTotal, statVulnerable, statPaired;
     private ChipGroup filterGroup;
-    private ExtendedFloatingActionButton fab;
+    private MaterialButton fab;
 
     private boolean scanning = false;
     private boolean showAllBle = false;
@@ -237,8 +236,43 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
         startScan();
     }
 
+    /**
+     * Until Android 12, BLE scans silently return nothing while system Location is off
+     * (from 12 on, BLUETOOTH_SCAN with neverForLocation lifts that requirement).
+     */
+    private boolean locationRequiredButOff() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) return false;
+        android.location.LocationManager lm = (android.location.LocationManager)
+                requireContext().getSystemService(Context.LOCATION_SERVICE);
+        return lm != null && !androidx.core.location.LocationManagerCompat.isLocationEnabled(lm);
+    }
+
+    private void promptEnableLocation() {
+        new MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.wpair_location_off_title)
+                .setMessage(R.string.wpair_location_off_msg)
+                .setPositiveButton(R.string.wpair_location_open_settings, (d, w) ->
+                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)))
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
+    /**
+     * Connecting while a low-latency scan runs makes many controllers (Qualcomm included)
+     * fail the connection with GATT error 133, so every GATT action stops the scan first.
+     */
+    private void pauseScanForConnection() {
+        if (!scanning) return;
+        stopScan();
+        WpairLog.info(requireContext(), null, "scan paused for a connection");
+    }
+
     private void startScan() {
         if (scanner == null) return;
+        if (locationRequiredButOff()) {
+            promptEnableLocation();
+            return;
+        }
         boolean ok = scanner.start(showAllBle);
         if (!ok) {
             String why = scanner.lastError();
@@ -287,6 +321,7 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
     @Override
     public void onTest(FastPairDevice device) {
         if (tester == null) return;
+        pauseScanForConnection();
         adapter.updateStatus(device.getAddress(), FastPairDevice.Status.TESTING);
         setProgress(device.getAddress(), "Testing for CVE-2025-36911...");
         tester.testDevice(device.getAddress(), status -> {
@@ -305,6 +340,7 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
     @Override
     public void onMagic(FastPairDevice device) {
         if (exploit == null) return;
+        pauseScanForConnection();
         setProgress(device.getAddress(), "Initializing exploit...");
         exploit.exploit(device.getAddress(),
                 progress -> {
@@ -346,6 +382,7 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
 
     private void writeAccountKey(FastPairDevice device) {
         setProgress(device.getAddress(), "Writing account key...");
+        pauseScanForConnection();
         exploit.writeAccountKeyDirect(device.getAddress(), result -> {
             if (!canTouchUi()) return;
             Activity a = getActivity();
@@ -363,6 +400,7 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
 
     private void floodKeys(FastPairDevice device) {
         setProgress(device.getAddress(), "Flooding: 0/10...");
+        pauseScanForConnection();
         exploit.floodAccountKeys(device.getAddress(), 10, (current, total, done) -> {
             if (!canTouchUi()) return;
             Activity a = getActivity();
@@ -509,6 +547,8 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
     private void openTerminal(String hostFilter) {
         WpairTerminal t = hostFilter == null ? WpairTerminal.newInstance() : WpairTerminal.forHost(hostFilter);
         requireActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.ios_push_enter, R.anim.ios_push_exit,
+                        R.anim.ios_pop_enter, R.anim.ios_pop_exit)
                 .replace(R.id.flContent, t)
                 .addToBackStack("wpair_terminal")
                 .commit();
@@ -516,6 +556,8 @@ public class WpairFragment extends Fragment implements WpairDeviceAdapter.Listen
 
     private void openRecordings() {
         requireActivity().getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.ios_push_enter, R.anim.ios_push_exit,
+                        R.anim.ios_pop_enter, R.anim.ios_pop_exit)
                 .replace(R.id.flContent, new WpairRecordingsFragment())
                 .addToBackStack("wpair_recordings")
                 .commit();

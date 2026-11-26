@@ -32,7 +32,7 @@ public class ThanksBackgroundView extends View {
     private static final int DAY_TOP = 0xFFD8EAFB;
     private static final int DAY_BOTTOM = 0xFFFFFFFF;
     private static final int DAY_ICE = 0xFF2E7BB8;
-    private static final int DAY_SKY = 0xFF1565C0;
+    private static final int DAY_SKY = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal);
 
     private boolean dark;
     private int skyTop, skyBottom, ice, sky;

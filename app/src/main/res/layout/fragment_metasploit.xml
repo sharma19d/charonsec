@@ -49,7 +49,7 @@
                     android:paddingEnd="10dp"
                     android:paddingBottom="4dp"
                     android:text="@string/msf_status_pill_loading"
-                    android:textColor="#AB47BC"
+                    android:textColor="@color/ch_signal"
                     android:textSize="10sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -68,11 +68,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="18dp"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,13 +137,13 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/msf_action_restart"
-                            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                            style="@style/Ios.IconButton.Tinted"
                             android:layout_width="38dp"
                             android:layout_height="38dp"
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
                             android:padding="0dp"
-                            app:cornerRadius="12dp"
+                            app:cornerRadius="@dimen/ios_corner_button"
                             app:icon="@drawable/ic_renew"
                             app:iconGravity="textStart"
                             app:iconPadding="0dp"
@@ -153,19 +152,19 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/msf_action_payload"
-                            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                            style="@style/Ios.IconButton.Tinted"
                             android:layout_width="38dp"
                             android:layout_height="38dp"
                             android:layout_marginStart="6dp"
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
                             android:padding="0dp"
-                            app:cornerRadius="12dp"
+                            app:cornerRadius="@dimen/ios_corner_button"
                             app:icon="@drawable/rocket_launch"
                             app:iconGravity="textStart"
                             app:iconPadding="0dp"
                             app:iconSize="18dp"
-                            app:iconTint="#AB47BC" />
+                            app:iconTint="@color/ch_signal" />
                     </LinearLayout>
 
                     <com.google.android.material.progressindicator.LinearProgressIndicator
@@ -175,17 +174,17 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginEnd="12dp"
                         android:indeterminate="true"
-                        app:indicatorColor="#E53935"
+                        app:indicatorColor="@color/ch_signal"
                         app:trackColor="@color/light_lite_contrast"
                         app:trackCornerRadius="2dp" />
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/ios_hairline"
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="12dp"
-                        android:background="@color/light_lite_contrast" />
+                        android:background="@color/ch_line" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -207,9 +206,7 @@
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:letterSpacing="0.06"
                                 android:text="@string/msf_metric_exploits"
-                                android:textAllCaps="true"
                                 android:textColor="@color/grey"
                                 android:textSize="9sp"
                                 android:textStyle="bold" />
@@ -224,7 +221,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
-                                    android:fontFamily="monospace"
                                     android:text="—"
                                     android:textColor="?android:attr/textColorPrimary"
                                     android:textSize="13sp" />
@@ -247,9 +243,7 @@
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:letterSpacing="0.06"
                                 android:text="@string/msf_metric_aux"
-                                android:textAllCaps="true"
                                 android:textColor="@color/grey"
                                 android:textSize="9sp"
                                 android:textStyle="bold" />
@@ -264,7 +258,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
-                                    android:fontFamily="monospace"
                                     android:text="—"
                                     android:textColor="?android:attr/textColorPrimary"
                                     android:textSize="13sp" />
@@ -287,9 +280,7 @@
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:letterSpacing="0.06"
                                 android:text="@string/msf_metric_sessions"
-                                android:textAllCaps="true"
                                 android:textColor="@color/grey"
                                 android:textSize="9sp"
                                 android:textStyle="bold" />
@@ -304,7 +295,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
-                                    android:fontFamily="monospace"
                                     android:text="0"
                                     android:textColor="?android:attr/textColorPrimary"
                                     android:textSize="13sp" />
@@ -316,7 +306,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/msf_search_layout"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                style="@style/Ios.TextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -328,7 +318,7 @@
                 app:endIconDrawable="@drawable/close"
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/grey"
-                app:startIconDrawable="@drawable/search"
+                app:startIconDrawable="@drawable/ios_search"
                 app:startIconTint="@color/stryker_accent">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -352,7 +342,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/msf_filter_all"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -360,14 +350,14 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/msf_filter_exploits"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/msf_filter_exploits" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/msf_filter_aux"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/msf_filter_aux" />
@@ -387,11 +377,10 @@
                 android:id="@+id/msf_list_card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -418,11 +407,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:visibility="gone"
-                app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

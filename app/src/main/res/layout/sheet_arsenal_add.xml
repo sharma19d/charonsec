@@ -72,12 +72,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="6dp"
-            android:letterSpacing="0.08"
             android:text="@string/arsenal_add_step_file"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/add_sheet_file_card"
@@ -86,11 +84,10 @@
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -145,7 +142,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_sheet_title_layout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            style="@style/Ios.TextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -167,7 +164,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_sheet_args_layout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            style="@style/Ios.TextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -183,7 +180,6 @@
                 android:id="@+id/add_sheet_args_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:maxLines="2"
@@ -192,7 +188,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/add_sheet_success_layout"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            style="@style/Ios.TextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -223,7 +219,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/add_sheet_cancel"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
@@ -237,7 +233,7 @@
                 android:backgroundTint="@color/stryker_accent"
                 android:text="@string/save"
                 android:textColor="@android:color/white"
-                app:cornerRadius="14dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/save"
                 app:iconTint="@android:color/white" />
         </LinearLayout>

@@ -28,6 +28,8 @@ public class WpairScanner {
     private final OnDeviceFound callback;
 
     private boolean scanning = false;
+    /** Addresses already written to the log during the current scan. */
+    private final java.util.Set<String> logged = java.util.concurrent.ConcurrentHashMap.newKeySet();
     private boolean scanAll = false;
     private String lastError;
 
@@ -86,6 +88,13 @@ public class WpairScanner {
         } else {
             return;
         }
+        if (logged.add(addr)) {
+            WpairLog.info(appContext, addr, "found " + (serviceData != null ? "Fast Pair" : "BLE")
+                    + " name=" + (name == null ? "-" : name)
+                    + " rssi=" + result.getRssi()
+                    + (serviceData != null ? " model=" + (fpDevice.getModelId() == null ? "-" : fpDevice.getModelId())
+                    + " pairingMode=" + fpDevice.isPairingMode() : ""));
+        }
         if (callback != null) callback.onFound(fpDevice);
     }
 
@@ -136,6 +145,7 @@ public class WpairScanner {
         }
 
         this.scanAll = scanAll;
+        logged.clear();
 
         ScanSettings settings = new ScanSettings.Builder()
                 .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)

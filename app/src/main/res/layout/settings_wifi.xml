@@ -29,11 +29,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,7 +60,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/wifi"
-                        app:tint="#1565C0" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -106,9 +105,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/hs_interface_view"
@@ -131,7 +130,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/handshake_interface"
-                        app:tint="#283593" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -176,9 +175,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/deauth_interface_view"
@@ -201,7 +200,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/deauth"
-                        app:tint="#AD1457" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -246,9 +245,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/wps_interface_view"
@@ -271,7 +270,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/autopixie"
-                        app:tint="#1E88E5" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"

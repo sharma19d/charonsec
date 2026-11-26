@@ -129,7 +129,13 @@ public class CoreManager extends Fragment {
 
         mRecyclerView = view.findViewById(R.id.package_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
-        mRecyclerView.setItemViewCacheSize(255);
+        View scroller = view instanceof androidx.core.widget.NestedScrollView ? view
+                : view.findViewById(R.id.cm_scroll);
+        if (scroller instanceof androidx.core.widget.NestedScrollView) {
+            ((androidx.core.widget.NestedScrollView) scroller).setOnScrollChangeListener(
+                    (androidx.core.widget.NestedScrollView.OnScrollChangeListener) (v, x, y, ox, oy) ->
+                            showMoreIfNearEnd(v));
+        }
 
         searchLayout = view.findViewById(R.id.search_layout);
         search = view.findViewById(R.id.search);
@@ -356,11 +362,28 @@ public class CoreManager extends Fragment {
             out.add(p);
         }
         visiblePackages = out;
+        shownLimit = PAGE;
         showResults(out);
     }
 
-    private void showResults(ArrayList<Package> list) {
-        countChip.setText(String.valueOf(list.size()));
+    /** The list sits inside a scroll view, so every bound row is laid out: bind a page at a time. */
+    private static final int PAGE = 60;
+    private int shownLimit = PAGE;
+
+    private void showMoreIfNearEnd(androidx.core.widget.NestedScrollView sv) {
+        if (visiblePackages == null || shownLimit >= visiblePackages.size() || sv.getChildCount() == 0) return;
+        int remaining = sv.getChildAt(0).getHeight() - (sv.getScrollY() + sv.getHeight());
+        if (remaining > sv.getHeight()) return;
+        shownLimit += PAGE;
+        if (mAdapter != null) {
+            mAdapter.submit(new ArrayList<>(visiblePackages.subList(0, Math.min(shownLimit, visiblePackages.size()))));
+        }
+    }
+
+    private void showResults(ArrayList<Package> all) {
+        countChip.setText(String.valueOf(all.size()));
+        ArrayList<Package> list = all.size() > shownLimit
+                ? new ArrayList<>(all.subList(0, shownLimit)) : all;
         if (list.isEmpty()) {
             listCard.setVisibility(View.GONE);
             emptyCard.setVisibility(View.VISIBLE);

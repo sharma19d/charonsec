@@ -213,10 +213,10 @@ public final class UsbDialogRenderer {
     private int colorFor(UsbChain.State s) {
         switch (s) {
             case DONE:    return ContextCompat.getColor(context, R.color.green);
-            case WARN:    return 0xFFEF6C00;
+            case WARN:    return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution);
             case FAIL:    return ContextCompat.getColor(context, R.color.red);
             case RUNNING: return ContextCompat.getColor(context, R.color.stryker_accent);
-            default:      return 0xFF9E9E9E;
+            default:      return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim);
         }
     }
 

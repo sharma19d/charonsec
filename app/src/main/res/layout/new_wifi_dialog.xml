@@ -4,11 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="24dp"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +27,7 @@
                 android:layout_height="56dp"
                 android:layout_gravity="center"
                 android:src="@drawable/wifi"
-                app:tint="@color/stryker_accent" />
+                app:tint="@android:color/white" />
         </FrameLayout>
 
         <com.google.android.material.textview.MaterialTextView
@@ -50,9 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:fontFamily="monospace"
             android:gravity="center"
-            android:text="MAC ADDRESS"
+            android:text="MAC Address"
             android:textColor="@color/grey"
             android:textIsSelectable="true"
             android:textSize="12sp" />
@@ -77,7 +75,6 @@
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/itemcolor"
             android:checkable="true"
-            app:cardCornerRadius="14dp"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
 
@@ -130,10 +127,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:text="WPS Attacks"
-                android:textAllCaps="true"
                 android:textColor="@color/grey"
-                android:textSize="11sp"
-                android:letterSpacing="0.06" />
+                android:textSize="11sp" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="0dp"
@@ -148,12 +143,11 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:backgroundTint="#FFEBEE"
+            android:backgroundTint="@color/ch_ink_2"
             android:checkable="true"
-            app:cardCornerRadius="14dp"
             app:cardElevation="0dp"
-            app:strokeColor="#EF5350"
-            app:strokeWidth="1dp">
+            app:strokeColor="@color/ch_alert"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -169,14 +163,14 @@
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:src="@drawable/warning"
-                    app:tint="#C62828" />
+                    app:tint="@color/ch_alert" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="WPS LOCKED"
-                    android:textColor="#B71C1C"
+                    android:text="WPS Locked"
+                    android:textColor="@color/ch_alert"
                     android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -207,7 +201,6 @@
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
                         android:checkable="true"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -245,7 +238,6 @@
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -289,7 +281,6 @@
                         android:layout_marginEnd="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -327,7 +318,6 @@
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -365,7 +355,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="@color/itemcolor"
-                    app:cardCornerRadius="14dp"
                     app:cardElevation="0dp"
                     app:strokeWidth="0dp">
 
@@ -422,10 +411,8 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
                         android:text="WPA / WPA2 / WPA3"
-                        android:textAllCaps="true"
                         android:textColor="@color/grey"
-                        android:textSize="11sp"
-                        android:letterSpacing="0.06" />
+                        android:textSize="11sp" />
 
                     <com.google.android.material.divider.MaterialDivider
                         android:layout_width="0dp"
@@ -445,7 +432,6 @@
                         android:layout_marginEnd="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -483,7 +469,6 @@
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -528,7 +513,6 @@
                         android:layout_marginEnd="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -566,7 +550,6 @@
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/itemcolor"
-                        app:cardCornerRadius="14dp"
                         app:cardElevation="0dp"
                         app:strokeWidth="0dp">
 
@@ -584,7 +567,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:src="@drawable/deauth"
-                                app:tint="#C62828" />
+                                app:tint="@color/ch_alert" />
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:layout_width="wrap_content"

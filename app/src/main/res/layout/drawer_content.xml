@@ -34,7 +34,7 @@
                     android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_white"
-                    app:tint="@color/stryker_logo_accent" />
+                    app:tint="@android:color/white" />
             </FrameLayout>
 
             <LinearLayout
@@ -47,8 +47,8 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/lato"
-                    android:text="StrykerOSS"
+                    android:fontFamily="@font/charon_body"
+                    android:text="@string/app_name"
                     android:textColor="?android:attr/textColorPrimary"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -58,7 +58,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-2dp"
-                    android:fontFamily="monospace"
                     android:text="v6.0"
                     android:textColor="@color/grey"
                     android:textSize="11sp" />
@@ -78,8 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="#1A2E7D32"
-            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="#1A34C759"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
 
@@ -116,7 +114,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/settings_value_chip_bg"
-                    android:fontFamily="monospace"
                     android:paddingStart="6dp"
                     android:paddingTop="2dp"
                     android:paddingEnd="6dp"
@@ -131,15 +128,13 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="6dp"
-            android:letterSpacing="0.08"
             android:text="ESSENTIALS"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <include
             android:id="@+id/dasboard_item"
@@ -156,15 +151,13 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="6dp"
-            android:letterSpacing="0.08"
             android:text="WIRELESS"
-            android:textAllCaps="true"
-            android:textColor="#3949AB"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <include
             android:id="@+id/wifi_item"
@@ -181,15 +174,13 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="6dp"
-            android:letterSpacing="0.08"
             android:text="NETWORK"
-            android:textAllCaps="true"
-            android:textColor="#AB47BC"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <include
             android:id="@+id/lan_item"
@@ -202,15 +193,13 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="6dp"
-            android:letterSpacing="0.08"
             android:text="OFFENSIVE"
-            android:textAllCaps="true"
-            android:textColor="#C62828"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <include
             android:id="@+id/nuclei_item"
@@ -227,15 +216,13 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="6dp"
-            android:letterSpacing="0.08"
             android:text="TOOLS"
-            android:textAllCaps="true"
-            android:textColor="#5E35B1"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <include
             android:id="@+id/wordlists_item"
@@ -264,9 +251,7 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="6dp"
-            android:letterSpacing="0.08"
             android:text="ROOT"
-            android:textAllCaps="true"
             android:textColor="@color/red"
             android:textSize="11sp"
             android:textStyle="bold" />
@@ -296,16 +281,15 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/ios_hairline"
             android:layout_marginTop="22dp"
             android:layout_marginBottom="14dp"
-            android:background="@color/light_lite_contrast" />
+            android:background="@color/ch_line" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:fontFamily="monospace"
             android:text="Open-source · authorized testing only"
             android:textColor="@color/grey"
             android:textSize="10sp" />

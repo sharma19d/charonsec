@@ -164,7 +164,9 @@ public class LocalAdapter extends RecyclerView.Adapter<LocalAdapter.ViewHolder> 
             adapter.local_img.setImageDrawable(context.getDrawable(R.drawable.router));
         }
         int tint = iconTintForDevice(device, gateway);
-        adapter.local_img.setColorFilter(tint);
+        adapter.local_img.setColorFilter(0xFFFFFFFF);
+        View tile = (View) adapter.local_img.getParent();
+        if (tile.getBackground() != null) tile.getBackground().mutate().setTint(tint);
 
         adapter.local_ports.setText(String.valueOf(portStrings.size()));
 
@@ -183,21 +185,16 @@ public class LocalAdapter extends RecyclerView.Adapter<LocalAdapter.ViewHolder> 
     }
 
     private int iconTintForDevice(Device device, String gateway) {
-        if (device.isIscutted()) {
-            return ContextCompat.getColor(context, R.color.red);
-        }
-        if (device.getIp().equals(gateway)) {
-            return Color.parseColor("#AB47BC");
-        }
+        if (device.isIscutted()) return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_red);
+        if (device.getIp().equals(gateway)) return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_blue);
         String os = device.getOs() == null ? "" : device.getOs().toLowerCase(Locale.ROOT);
-        if (os.contains("windows")) return Color.parseColor("#1565C0");
-        if (os.contains("linux")) return Color.parseColor("#EF6C00");
-        if (os.contains("mac") || os.contains("ios") || os.contains("apple"))
-            return Color.parseColor("#5E35B1");
-        if (os.contains("android")) return Color.parseColor("#2E7D32");
-        if (os.contains("camera")) return Color.parseColor("#00897B");
-        if (os.contains("printer")) return Color.parseColor("#3949AB");
-        return ContextCompat.getColor(context, R.color.grey);
+        if (os.contains("windows")) return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_cyan);
+        if (os.contains("linux")) return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_orange);
+        if (os.contains("mac") || os.contains("ios") || os.contains("apple")) return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_gray);
+        if (os.contains("android")) return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_green);
+        if (os.contains("camera")) return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_pink);
+        if (os.contains("printer")) return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_indigo);
+        return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_gray);
     }
 
     public void netcutdialog(Device d, int pos) {

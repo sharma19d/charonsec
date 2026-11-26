@@ -44,25 +44,22 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:letterSpacing="0.08"
                 android:text="@string/settings_section_engine"
-                android:textAllCaps="true"
-                android:textColor="@color/stryker_accent"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textColor="@color/ch_bone_dim"
+                android:textSize="13sp" 
+                android:textAllCaps="true"/>
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="18dp"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:id="@+id/vm_settings_row"
@@ -85,7 +82,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/tune"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -125,11 +122,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:visibility="gone"
-                app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="18dp"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:id="@+id/wifi_engine_row"
@@ -152,7 +148,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/wifi"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -190,25 +186,22 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="@string/settings_section_wifi"
-            android:textColor="@color/stryker_accent"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:letterSpacing="0.08" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -236,7 +229,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/wifi"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -272,9 +265,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/save_aps_row"
@@ -297,7 +290,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/save_outlined"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -333,9 +326,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/pixie_iface_down_row"
@@ -358,7 +351,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/wifi_tethering"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -394,9 +387,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/internal_deauth_row"
@@ -419,7 +412,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/deauth"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -456,9 +449,9 @@
                 <View
                     android:id="@+id/internal_deauth_divider"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/change_interfaces"
@@ -481,7 +474,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/wifi_tethering"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -516,9 +509,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/change_commands"
@@ -541,7 +534,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/terminal"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -579,25 +572,22 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/settings_section_local"
-            android:textColor="#AB47BC"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:letterSpacing="0.08" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -625,7 +615,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/screen_search_desktop"
-                        app:tint="#AB47BC" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -661,9 +651,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/banner_row"
@@ -686,7 +676,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/analytics"
-                        app:tint="#AB47BC" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -722,9 +712,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/max_par"
@@ -747,7 +737,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/devices"
-                        app:tint="#AB47BC" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -795,25 +785,22 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.08"
             android:text="@string/settings_section_geo"
-            android:textAllCaps="true"
-            android:textColor="#7E57C2"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -841,7 +828,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/wifi"
-                        app:tint="#7E57C2" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -877,9 +864,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/geo_satellite_row"
@@ -902,7 +889,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/expand_icon"
-                        app:tint="#7E57C2" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -941,25 +928,22 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.08"
             android:text="@string/settings_section_msf"
-            android:textAllCaps="true"
-            android:textColor="#E53935"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -987,7 +971,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/shield"
-                        app:tint="#E53935" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -1023,9 +1007,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/msf_stop_row"
@@ -1048,7 +1032,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/restart_alt"
-                        app:tint="#E53935" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -1080,25 +1064,22 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/settings_section_privacy"
-            android:textColor="#00897B"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:letterSpacing="0.08" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:id="@+id/hide_row"
@@ -1121,7 +1102,7 @@
                     android:background="@drawable/settings_icon_bg"
                     android:padding="10dp"
                     android:src="@drawable/visibility_off"
-                    app:tint="#00897B" />
+                    app:tint="@android:color/white" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -1159,25 +1140,22 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:text="@string/settings_section_system"
-            android:textColor="#5E35B1"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:letterSpacing="0.08" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1205,7 +1183,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/info_outlined"
-                        app:tint="@color/stryker_accent" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -1241,9 +1219,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/debug_view"
@@ -1266,7 +1244,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/bug_report"
-                        app:tint="#5E35B1" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -1301,9 +1279,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/unmount_view"
@@ -1326,7 +1304,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/logout"
-                        app:tint="#5E35B1" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -1361,9 +1339,9 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="72dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/delete_view"
@@ -1386,7 +1364,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="10dp"
                         android:src="@drawable/delete"
-                        app:tint="@color/red" />
+                        app:tint="@android:color/white" />
 
                     <LinearLayout
                         android:layout_width="0dp"

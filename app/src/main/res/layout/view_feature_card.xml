@@ -5,11 +5,10 @@
     android:layout_height="330dp"
     android:layout_gravity="top"
     app:cardBackgroundColor="@android:color/transparent"
-    app:cardCornerRadius="22dp"
-    app:cardElevation="6dp"
+    app:cardElevation="0dp"
     app:cardPreventCornerOverlap="true"
     app:strokeColor="#33FFFFFF"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <FrameLayout
         android:id="@+id/feature_bg"
@@ -30,9 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.85"
-                android:fontFamily="monospace"
                 android:gravity="end"
-                android:letterSpacing="0.12"
                 android:text="01 / 07"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
@@ -65,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
                     android:ellipsize="end"
-                    android:fontFamily="@font/lato"
+                    android:fontFamily="@font/charon_body"
                     android:gravity="center"
                     android:maxLines="1"
                     android:text="WiFi Toolkit"
@@ -100,9 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.85"
-                    android:letterSpacing="0.06"
                     android:text="@string/about_feature_swipe_hint"
-                    android:textAllCaps="true"
                     android:textColor="#FFFFFF"
                     android:textSize="10sp"
                     android:textStyle="bold" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">StrykerOSS</string>
+    <string name="app_name">CharonSec</string>
     <string name="install">安装</string>
     <string name="install2">核心加载中</string>
     <string name="install3">正在安装核心</string>
@@ -889,6 +889,7 @@
     <string name="wpair_empty_title">暂无设备</string>
     <string name="wpair_empty_subtitle">点击扫描发现附近的 Fast Pair / BLE 设备</string>
     <string name="wpair_badge_pairing">配对中</string>
+    <string name="wpair_ble_only">仅BLE · 未检测到Fast Pair</string>
     <string name="wpair_btn_test">测试</string>
     <string name="wpair_btn_magic">魔法</string>
     <string name="wpair_btn_more">更多</string>
@@ -918,6 +919,9 @@
     <string name="wpair_perm_open_settings">打开设置</string>
     <string name="wpair_bt_disabled_title">蓝牙已禁用</string>
     <string name="wpair_bt_disabled_msg">启用蓝牙以扫描附近的 Fast Pair 设备。</string>
+    <string name="wpair_location_off_title">位置信息已关闭</string>
+    <string name="wpair_location_off_msg">在 Android 11 及更早版本上，位置信息关闭时蓝牙扫描找不到任何设备。请开启位置信息后重新扫描。</string>
+    <string name="wpair_location_open_settings">打开位置信息设置</string>
     <string name="wpair_bt_enable">启用</string>
     <string name="wpair_hfp_manual_title">需要手动 HFP 连接</string>
     <string name="wpair_hfp_manual_msg">Android 阻止以编程方式建立 HFP 连接。请在蓝牙设置中配对该设备，然后返回。</string>
@@ -928,7 +932,7 @@
     <string name="wpair_status_patched">已修补</string>
     <string name="wpair_status_error">错误</string>
     <string name="wpair_status_paired">已配对</string>
-    <string name="about_title_label" translatable="false">StrykerOSS</string>
+    <string name="about_title_label" translatable="false">CharonSec</string>
     <string name="about_tagline">一个免费且开源的移动渗透测试套件，仅供授权测试。</string>
     <string name="about_pill_oss">开源</string>
     <string name="about_pill_root">Root 驱动</string>
@@ -954,7 +958,7 @@
     <string name="about_link_github_url" translatable="false">github.com/zalexdev/strykerapp</string>
     <string name="about_oss_licenses_label">开源许可证</string>
     <string name="license_subtitle">基于这些开源项目构建。点按任一条目查看其源码。</string>
-    <string name="about_footer">StrykerOSS — 自由软件 (GNU GPL v3.0) — 仅限授权测试</string>
+    <string name="about_footer">CharonSec (基于 StrykerOSS) — 自由软件 (GNU GPL v3.0) — 仅限授权测试</string>
     <string name="shortcut_terminal_short">终端</string>
     <string name="shortcut_terminal_long">打开 Stryker 终端</string>
     <string name="terminal_launcher_label" translatable="false">Stryker 终端</string>
@@ -1118,6 +1122,8 @@
     <string name="arsenal_mass_inquiry">查询字符串 (28个 ASCII)</string>
     <string name="arsenal_apply_ok">配置文件已应用 — 小工具已绑定到 %s</string>
     <string name="arsenal_apply_failed">应用配置文件失败 (请检查 logcat)</string>
+    <string name="arsenal_apply_failed_reason">应用配置文件失败: %s</string>
+    <string name="arsenal_apply_substituted">内核缺少部分功能，已替换: %s</string>
     <string name="arsenal_restore_ok">供应商小工具已恢复</string>
     <string name="arsenal_save">保存</string>
     <string name="arsenal_cancel">取消</string>
@@ -1302,7 +1308,7 @@
     <string name="vm_usb_pick_title">USB 设备</string>
     <string name="welcome_cta">开始使用</string>
     <string name="welcome_subtitle">用手机做渗透测试。</string>
-    <string name="welcome_title">StrykerOSS</string>
+    <string name="welcome_title">CharonSec</string>
     <string name="wifi_pin_source">PIN 码从哪里来？</string>
     <string name="wifi_pin_source_generated">为此 BSSID 生成</string>
     <string name="wifi_pin_source_wordlist">来自 PIN 码字典</string>
@@ -1431,4 +1437,6 @@
     <string name="wl_title">字典</string>
     <string name="settings_promo_title">偶尔的提示</string>
     <string name="settings_promo_subtitle">关于 GitHub 和博客的一次性提示。关闭后不再出现。</string>
+    <string name="init_title">正在启动 CharonSec…</string>
+    <string name="init_subtitle">正在唤醒引擎</string>
 </resources>

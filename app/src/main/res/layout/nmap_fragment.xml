@@ -42,24 +42,21 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="10dp"
-            android:letterSpacing="0.08"
             android:text="@string/nmap_section_target"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -86,7 +83,7 @@
                             android:layout_height="22dp"
                             android:layout_gravity="center"
                             android:src="@drawable/scanner"
-                            app:tint="#AB47BC" />
+                            app:tint="@android:color/white" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -116,13 +113,13 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/nmap_history_btn"
-                        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                        style="@style/Ios.IconButton.Tinted"
                         android:layout_width="44dp"
                         android:layout_height="44dp"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
                         android:padding="0dp"
-                        app:cornerRadius="22dp"
+                        app:cornerRadius="@dimen/ios_corner_button"
                         app:icon="@drawable/folder"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
@@ -132,7 +129,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/search_layout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Ios.TextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
@@ -151,7 +148,6 @@
                         android:id="@+id/search"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:importantForAutofill="no"
                         android:inputType="textNoSuggestions"
                         android:maxLines="1" />
@@ -159,11 +155,11 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginStart="14dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="14dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -185,9 +181,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:letterSpacing="0.06"
                             android:text="@string/nmap_status_idle"
-                            android:textAllCaps="true"
                             android:textColor="@color/grey"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -197,7 +191,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:fontFamily="monospace"
                             android:text="—"
                             android:textColor="?android:attr/textColorPrimary"
                             android:textSize="14sp" />
@@ -219,9 +212,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:letterSpacing="0.06"
                             android:text="@string/nmap_metric_ports"
-                            android:textAllCaps="true"
                             android:textColor="@color/grey"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -231,7 +222,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:fontFamily="monospace"
                             android:text="0"
                             android:textColor="?android:attr/textColorPrimary"
                             android:textSize="14sp" />
@@ -253,9 +243,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:letterSpacing="0.06"
                             android:text="@string/nmap_metric_hosts"
-                            android:textAllCaps="true"
                             android:textColor="@color/grey"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -265,7 +253,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:fontFamily="monospace"
                             android:text="0"
                             android:textColor="?android:attr/textColorPrimary"
                             android:textSize="14sp" />
@@ -287,9 +274,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:letterSpacing="0.06"
                             android:text="@string/nmap_metric_time"
-                            android:textAllCaps="true"
                             android:textColor="@color/grey"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -299,7 +284,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:fontFamily="monospace"
                             android:text="0s"
                             android:textColor="?android:attr/textColorPrimary"
                             android:textSize="14sp" />
@@ -315,7 +299,7 @@
                     android:layout_marginBottom="12dp"
                     android:indeterminate="true"
                     android:visibility="invisible"
-                    app:indicatorColor="#AB47BC"
+                    app:indicatorColor="@color/ch_signal"
                     app:trackColor="@color/light_lite_contrast"
                     app:trackCornerRadius="2dp" />
             </LinearLayout>
@@ -324,24 +308,21 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
             android:layout_marginBottom="10dp"
-            android:letterSpacing="0.08"
             android:text="@string/nmap_section_profile"
-            android:textAllCaps="true"
-            android:textColor="#AB47BC"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -363,7 +344,7 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_profile_default"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
@@ -371,28 +352,28 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_profile_fast"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_profile_fast" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_profile_full"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_profile_full" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_profile_intense"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_profile_intense" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_profile_custom"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_profile_custom" />
@@ -400,18 +381,16 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginTop="12dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="8dp"
-                    android:letterSpacing="0.06"
                     android:text="@string/nmap_section_options"
-                    android:textAllCaps="true"
                     android:textColor="@color/grey"
                     android:textSize="10sp"
                     android:textStyle="bold" />
@@ -426,56 +405,56 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_chip_os"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_chip_os" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_chip_services"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_chip_services" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_chip_fast"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_chip_fast" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_chip_pn"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_chip_pn" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_chip_scripts"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_chip_scripts" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_chip_aggressive"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_chip_aggressive" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_chip_udp"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_chip_udp" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/nmap_chip_verbose"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nmap_chip_verbose" />
@@ -486,11 +465,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:backgroundTint="#AB47BC"
+                    android:backgroundTint="@color/ch_signal"
                     android:maxLines="1"
                     android:text="@string/nmap_btn_start"
-                    android:textColor="@color/light_contrast"
-                    app:cornerRadius="14dp"
+                    app:cornerRadius="@dimen/ios_corner_button"
                     app:icon="@drawable/scanner"
                     app:iconGravity="textStart"
                     app:iconSize="18dp"
@@ -498,43 +476,40 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/nmap_stop_btn"
-                    style="@style/Widget.Material3.Button.TonalButton"
+                    style="@style/Ios.Button.Tinted.Destructive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:maxLines="1"
                     android:text="@string/nmap_btn_stop"
-                    android:textColor="#D32F2F"
+                    android:textColor="@color/ch_alert"
                     android:visibility="gone"
-                    app:cornerRadius="14dp"
+                    app:cornerRadius="@dimen/ios_corner_button"
                     app:icon="@drawable/stop"
                     app:iconGravity="textStart"
                     app:iconSize="18dp"
-                    app:iconTint="#D32F2F" />
+                    app:iconTint="@color/ch_alert" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
             android:layout_marginBottom="10dp"
-            android:letterSpacing="0.08"
             android:text="@string/nmap_section_output"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -556,7 +531,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/nmap_metric_lines"
-                        android:textAllCaps="true"
                         android:textColor="@color/grey"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -566,7 +540,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/settings_value_chip_bg"
-                        android:fontFamily="monospace"
                         android:minWidth="40dp"
                         android:paddingStart="10dp"
                         android:paddingTop="4dp"
@@ -579,14 +552,14 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/nmap_expand_btn"
-                        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                        style="@style/Ios.IconButton.Tinted"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="8dp"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
                         android:padding="0dp"
-                        app:cornerRadius="10dp"
+                        app:cornerRadius="@dimen/ios_corner_button"
                         app:icon="@drawable/expand_icon"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
@@ -615,7 +588,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="monospace"
                             android:text="@string/nmap_output_placeholder"
-                            android:textColor="#D4D4D4"
+                            android:textColor="@color/ch_console_text"
                             android:textIsSelectable="true"
                             android:textSize="11sp" />
                     </com.zalexdev.stryker.utils.NoNestedScrollView>
@@ -630,13 +603,13 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/nmap_copy_btn"
-                        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                        style="@style/Ios.IconButton.Tinted"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        app:cornerRadius="14dp"
+                        app:cornerRadius="@dimen/ios_corner_button"
                         app:icon="@drawable/copy"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
@@ -645,14 +618,14 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/nmap_save_btn"
-                        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                        style="@style/Ios.IconButton.Tinted"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        app:cornerRadius="14dp"
+                        app:cornerRadius="@dimen/ios_corner_button"
                         app:icon="@drawable/save_outlined"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
@@ -661,14 +634,14 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/nmap_share_btn"
-                        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                        style="@style/Ios.IconButton.Tinted"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        app:cornerRadius="14dp"
+                        app:cornerRadius="@dimen/ios_corner_button"
                         app:icon="@drawable/share"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
@@ -677,14 +650,14 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/nmap_clear_btn"
-                        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                        style="@style/Ios.IconButton.Tinted"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="6dp"
                         android:layout_weight="1"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        app:cornerRadius="14dp"
+                        app:cornerRadius="@dimen/ios_corner_button"
                         app:icon="@drawable/delete"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"

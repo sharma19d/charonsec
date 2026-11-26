@@ -31,7 +31,7 @@
                 android:layout_height="22dp"
                 android:layout_gravity="center"
                 android:src="@drawable/storage"
-                app:tint="@color/grey" />
+                app:tint="@android:color/white" />
         </FrameLayout>
 
         <LinearLayout
@@ -71,7 +71,7 @@
                     android:paddingEnd="6dp"
                     android:paddingBottom="2dp"
                     android:text="@string/core_mgr_chip_apk"
-                    android:textColor="#1E88E5"
+                    android:textColor="@color/ch_signal"
                     android:textSize="9sp"
                     android:textStyle="bold" />
 
@@ -87,7 +87,7 @@
                     android:paddingEnd="6dp"
                     android:paddingBottom="2dp"
                     android:text="@string/core_mgr_chip_installed"
-                    android:textColor="#388E3C"
+                    android:textColor="@color/ch_live"
                     android:textSize="9sp"
                     android:textStyle="bold"
                     android:visibility="gone" />
@@ -99,7 +99,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:ellipsize="end"
-                android:fontFamily="monospace"
                 android:singleLine="true"
                 android:text="0.0.0"
                 android:textColor="@color/grey"
@@ -133,7 +132,7 @@
     <View
         android:id="@+id/pkg_item_divider"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/ios_hairline"
         android:layout_marginStart="72dp"
-        android:background="@color/light_lite_contrast" />
+        android:background="@color/ch_line" />
 </LinearLayout>

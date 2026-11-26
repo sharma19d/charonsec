@@ -4,11 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="14dp"
-    app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="22dp"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,8 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="14dp"
-            app:cardBackgroundColor="#0F0F0F"
-            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="@color/ch_ink_2"
             app:cardElevation="0dp">
 
             <ScrollView
@@ -86,7 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
-                    android:textColor="#DDDDDD"
+                    android:textColor="@color/ch_bone"
                     android:textIsSelectable="true"
                     android:textSize="11sp" />
             </ScrollView>
@@ -114,21 +112,21 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wlprev_btn_count"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wl_menu_count" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wlprev_btn_normalize"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wl_menu_normalize" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wlprev_btn_close"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wl_close" />

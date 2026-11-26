@@ -100,7 +100,7 @@ public class HandshakeStorage extends Fragment {
         shareAllBtn.setOnClickListener(v -> shareAll());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-        recyclerView.setItemViewCacheSize(255);
+        recyclerView.setItemViewCacheSize(12);
 
         refresh.setOnRefreshListener(this::reload);
         refreshBtn.setOnClickListener(v -> reload());

@@ -21,7 +21,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="18dp"
             android:background="@drawable/rectangle"
-            android:backgroundTint="#33919191" />
+            android:backgroundTint="@color/ch_fill_strong" />
 
         <LinearLayout
             android:id="@+id/usb_empty_state"
@@ -79,7 +79,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:fontFamily="monospace"
                 android:maxLines="1"
                 android:textColor="@color/grey"
                 android:textSize="12sp" />
@@ -98,7 +97,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:visibility="gone"
-                app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="0dp">
 
@@ -166,14 +164,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/usb_refresh_btn"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            style="@style/Ios.Button"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="22dp"
             android:text="@string/usb_rescan"
             android:textAllCaps="false"
             android:textSize="15sp"
-            app:cornerRadius="16dp"
+            app:cornerRadius="@dimen/ios_corner_button"
             app:icon="@drawable/repeat"
             app:iconGravity="textStart" />
     </LinearLayout>

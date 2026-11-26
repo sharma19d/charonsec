@@ -4,11 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="14dp"
-    app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="22dp"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +34,7 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:src="@drawable/summarize"
-                    app:tint="#3949AB" />
+                    app:tint="@android:color/white" />
             </FrameLayout>
 
             <LinearLayout
@@ -66,12 +65,12 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/wlpick_search_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            style="@style/Ios.TextField.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:startIconDrawable="@drawable/search">
+            app:startIconDrawable="@drawable/ios_search">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/wlpick_search"
@@ -151,7 +150,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wlpick_btn_manage"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wl_pick_manage"
@@ -160,7 +159,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wlpick_btn_close"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wl_close" />

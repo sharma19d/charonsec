@@ -26,7 +26,7 @@
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:src="@drawable/home"
-            app:tint="@color/grey" />
+            app:tint="@android:color/white" />
     </FrameLayout>
 
     <com.google.android.material.textview.MaterialTextView
@@ -46,7 +46,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/settings_value_chip_bg"
-        android:fontFamily="monospace"
         android:paddingStart="6dp"
         android:paddingTop="1dp"
         android:paddingEnd="6dp"

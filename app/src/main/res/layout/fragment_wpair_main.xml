@@ -45,11 +45,10 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/light_contrast"
-                app:cardCornerRadius="20dp"
+                app:cardBackgroundColor="@color/ch_ink_1"
                 app:cardElevation="0dp"
                 app:strokeColor="@color/light_lite_contrast"
-                app:strokeWidth="1dp">
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -99,7 +98,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-                            android:textColor="#C62828"
+                            android:textColor="@color/ch_alert"
                             android:textSize="22sp"
                             android:textStyle="bold" />
 
@@ -129,7 +128,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
-                            android:textColor="#2E7D32"
+                            android:textColor="@color/ch_live"
                             android:textSize="22sp"
                             android:textStyle="bold" />
 
@@ -161,7 +160,7 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/wpair_filter_fastpair"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
@@ -169,21 +168,21 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/wpair_filter_all"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/wpair_filter_all_ble" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/wpair_filter_vulnerable"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/wpair_filter_vulnerable" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/wpair_filter_paired"
-                        style="@style/Widget.Material3.Chip.Filter"
+                        style="@style/Ios.Chip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/wpair_filter_paired" />
@@ -201,16 +200,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:letterSpacing="0.06"
                     android:text="@string/wpair_section_devices"
-                    android:textAllCaps="true"
                     android:textColor="@color/stryker_accent"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/wpair_terminal_btn"
-                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    style="@style/Ios.IconButton.Tinted"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:layout_marginEnd="4dp"
@@ -222,7 +219,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/wpair_recordings_btn"
-                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    style="@style/Ios.IconButton.Tinted"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:layout_marginEnd="4dp"
@@ -234,7 +231,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/wpair_clear_btn"
-                    style="@style/Widget.Material3.Button.IconButton.Outlined"
+                    style="@style/Ios.IconButton.Tinted"
                     android:layout_width="wrap_content"
                     android:layout_height="36dp"
                     android:contentDescription="@string/wpair_clear"
@@ -271,7 +268,7 @@
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:src="@drawable/wpair"
-                        app:tint="#3949AB" />
+                        app:tint="@android:color/white" />
                 </FrameLayout>
 
                 <com.google.android.material.textview.MaterialTextView
@@ -297,16 +294,35 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/wpair_fab"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="20dp"
-        android:contentDescription="@string/wpair_fab_scan"
-        android:text="@string/wpair_fab_scan"
-        android:textColor="@color/light_contrast"
-        app:backgroundTint="#3949AB"
-        app:icon="@drawable/scanner"
-        app:iconTint="@color/light_contrast" />
+        android:layout_gravity="bottom"
+        android:background="@color/ch_ink_0"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ios_hairline"
+            android:background="@color/ch_bar_line" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/wpair_fab"
+            style="@style/Ios.Button"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/wpair_fab_scan"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:minHeight="0dp"
+            android:text="@string/wpair_fab_scan"
+            android:textColor="@color/light_contrast"
+            app:backgroundTint="@color/ch_signal"
+            app:icon="@drawable/scanner"
+            app:iconTint="@color/light_contrast" />
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

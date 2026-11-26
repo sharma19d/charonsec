@@ -4,11 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="22dp"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -246,7 +245,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
                     android:padding="10dp"
-                    android:textColor="#D7DAE0"
+                    android:textColor="@color/ch_console_text"
                     android:textIsSelectable="true"
                     android:textSize="10sp" />
             </ScrollView>
@@ -264,12 +263,12 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/attack_secondary"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/stryker_accent_contrast"
                 android:visibility="gone"
-                app:cornerRadius="14dp" />
+                app:cornerRadius="@dimen/ios_corner_button" />
 
             <View
                 android:layout_width="0dp"
@@ -282,9 +281,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="@color/green"
-                android:textColor="@color/light_contrast"
                 android:visibility="gone"
-                app:cornerRadius="14dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:iconGravity="textStart"
                 app:iconSize="18dp"
                 app:iconTint="@color/light_contrast" />
@@ -295,8 +293,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
                 android:text="@string/stop"
-                android:textColor="@color/light_contrast"
-                app:cornerRadius="14dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/stop"
                 app:iconGravity="textStart"
                 app:iconSize="18dp"

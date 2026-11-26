@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="18dp"
-    app:cardBackgroundColor="@color/light_contrast"
-    app:cardCornerRadius="22dp"
+    app:cardBackgroundColor="@color/ch_ink_1"
     app:cardElevation="0dp"
     app:strokeColor="@color/light_lite_contrast"
-    app:strokeWidth="1dp">
+    app:strokeWidth="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -98,21 +97,21 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wifi_guest_log"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/intro_show_details" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wifi_guest_cancel"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wifi_guest_cancel" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wifi_guest_primary"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/wifi_guest_start" />

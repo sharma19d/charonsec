@@ -30,8 +30,10 @@ public class SettingsNew extends Fragment {
     }
 
     public void openChild(Fragment fragment, String tag) {
+        drawPopOnTop(false);
         getChildFragmentManager().beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .setCustomAnimations(R.anim.ios_push_enter, R.anim.ios_push_exit,
+                        R.anim.ios_pop_enter, R.anim.ios_pop_exit)
                 .replace(R.id.settings_nav_host, fragment, tag)
                 .addToBackStack(tag)
                 .commit();
@@ -39,9 +41,18 @@ public class SettingsNew extends Fragment {
 
     public boolean popChild() {
         if (getChildFragmentManager().getBackStackEntryCount() > 0) {
+            drawPopOnTop(true);
             getChildFragmentManager().popBackStack();
             return true;
         }
         return false;
+    }
+
+    /** A pushed page slides over its parent; a popped page slides away on top of it. */
+    private void drawPopOnTop(boolean pop) {
+        View v = getView();
+        if (v instanceof androidx.fragment.app.FragmentContainerView) {
+            ((androidx.fragment.app.FragmentContainerView) v).setDrawDisappearingViewsLast(pop);
+        }
     }
 }

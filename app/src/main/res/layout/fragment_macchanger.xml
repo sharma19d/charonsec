@@ -38,11 +38,10 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,7 +65,7 @@
                             android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/wifi"
-                            app:tint="#1565C0" />
+                            app:tint="@android:color/white" />
                     </FrameLayout>
 
                     <LinearLayout
@@ -81,7 +80,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
-                            android:fontFamily="monospace"
                             android:singleLine="true"
                             android:text="—"
                             android:textColor="?android:attr/textColorPrimary"
@@ -103,7 +101,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/chip_pill_bg"
-                        android:fontFamily="monospace"
                         android:paddingStart="10dp"
                         android:paddingTop="4dp"
                         android:paddingEnd="10dp"
@@ -116,10 +113,10 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginTop="14dp"
                     android:layout_marginBottom="14dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -136,9 +133,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:letterSpacing="0.06"
                             android:text="@string/mac_current_label"
-                            android:textAllCaps="true"
                             android:textColor="@color/grey"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -148,7 +143,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:fontFamily="monospace"
                             android:text="00:00:00:00:00:00"
                             android:textColor="?android:attr/textColorPrimary"
                             android:textIsSelectable="true"
@@ -175,14 +169,14 @@
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:stateListAnimator="@null"
-                        app:cornerRadius="10dp"
+                        app:cornerRadius="@dimen/ios_corner_button"
                         app:elevation="0dp"
                         app:icon="@drawable/copy"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
                         app:iconSize="18dp"
                         app:iconTint="@color/grey"
-                        app:rippleColor="#1A3949AB"
+                        app:rippleColor="@color/ch_highlight"
                         app:strokeColor="@color/light_lite_contrast"
                         app:strokeWidth="1dp" />
                 </LinearLayout>
@@ -205,9 +199,7 @@
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:letterSpacing="0.06"
                             android:text="@string/mac_permanent_label"
-                            android:textAllCaps="true"
                             android:textColor="@color/grey"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -217,7 +209,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:fontFamily="monospace"
                             android:text="—"
                             android:textColor="?android:attr/textColorPrimary"
                             android:textIsSelectable="true"
@@ -235,14 +226,14 @@
                         android:minHeight="0dp"
                         android:minWidth="0dp"
                         android:stateListAnimator="@null"
-                        app:cornerRadius="10dp"
+                        app:cornerRadius="@dimen/ios_corner_button"
                         app:elevation="0dp"
                         app:icon="@drawable/copy"
                         app:iconGravity="textStart"
                         app:iconPadding="0dp"
                         app:iconSize="18dp"
                         app:iconTint="@color/grey"
-                        app:rippleColor="#1A3949AB"
+                        app:rippleColor="@color/ch_highlight"
                         app:strokeColor="@color/light_lite_contrast"
                         app:strokeWidth="1dp" />
                 </LinearLayout>
@@ -252,24 +243,21 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.08"
             android:text="@string/mac_section_form"
-            android:textAllCaps="true"
-            android:textColor="@color/stryker_accent"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -279,7 +267,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/iface_layout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    style="@style/Ios.TextField.Dropdown"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/mac_iface_hint"
@@ -294,14 +282,13 @@
                         android:id="@+id/iface"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:inputType="none"
                         android:singleLine="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/macaddress_layout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    style="@style/Ios.TextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -322,7 +309,6 @@
                         android:id="@+id/macaddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
                         android:importantForAutofill="no"
                         android:inputType="textNoSuggestions"
                         android:maxLength="17"
@@ -345,7 +331,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip_random"
-                            style="@style/Widget.Material3.Chip.Assist"
+                            style="@style/Ios.Chip.Assist"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/mac_chip_random"
@@ -356,7 +342,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip_apple"
-                            style="@style/Widget.Material3.Chip.Assist"
+                            style="@style/Ios.Chip.Assist"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/mac_chip_apple"
@@ -364,7 +350,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip_intel"
-                            style="@style/Widget.Material3.Chip.Assist"
+                            style="@style/Ios.Chip.Assist"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/mac_chip_intel"
@@ -372,7 +358,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip_samsung"
-                            style="@style/Widget.Material3.Chip.Assist"
+                            style="@style/Ios.Chip.Assist"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/mac_chip_samsung"
@@ -380,7 +366,7 @@
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip_huawei"
-                            style="@style/Widget.Material3.Chip.Assist"
+                            style="@style/Ios.Chip.Assist"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/mac_chip_huawei"
@@ -399,9 +385,8 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="@string/mac_btn_change"
-            android:textColor="@color/light_contrast"
             android:textSize="14sp"
-            app:cornerRadius="14dp"
+            app:cornerRadius="@dimen/ios_corner_button"
             app:icon="@drawable/done"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
@@ -421,14 +406,14 @@
             android:text="@string/mac_btn_reset"
             android:textColor="@color/stryker_accent"
             android:textSize="14sp"
-            app:cornerRadius="14dp"
+            app:cornerRadius="@dimen/ios_corner_button"
             app:elevation="0dp"
             app:icon="@drawable/ic_renew"
             app:iconGravity="textStart"
             app:iconPadding="8dp"
             app:iconSize="18dp"
             app:iconTint="@color/stryker_accent"
-            app:rippleColor="#1A3949AB"
+            app:rippleColor="@color/ch_highlight"
             app:strokeColor="@color/light_lite_contrast"
             app:strokeWidth="1dp" />
 
@@ -436,11 +421,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="#1A1565C0"
-            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="#1A007AFF"
             app:cardElevation="0dp"
-            app:strokeColor="#331565C0"
-            app:strokeWidth="1dp">
+            app:strokeColor="#33007AFF"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -453,7 +437,7 @@
                     android:layout_height="20dp"
                     android:layout_marginTop="1dp"
                     android:src="@drawable/info_outlined"
-                    app:tint="#1565C0" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -471,11 +455,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:visibility="gone"
-            app:cardBackgroundColor="#1AEF6C00"
-            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="#1A007AFF"
             app:cardElevation="0dp"
-            app:strokeColor="#33EF6C00"
-            app:strokeWidth="1dp">
+            app:strokeColor="#33007AFF"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -488,7 +471,7 @@
                     android:layout_height="20dp"
                     android:layout_marginTop="1dp"
                     android:src="@drawable/warning"
-                    app:tint="#EF6C00" />
+                    app:tint="@color/ch_signal" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"

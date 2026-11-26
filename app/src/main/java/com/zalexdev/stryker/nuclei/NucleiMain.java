@@ -260,6 +260,8 @@ public class NucleiMain extends Fragment implements TargetsAdapter.Listener {
     public void onOpen(int siteIndex, Site site) {
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
+                .setCustomAnimations(R.anim.ios_push_enter, R.anim.ios_push_exit,
+                        R.anim.ios_pop_enter, R.anim.ios_pop_exit)
                 .replace(R.id.flContent, NucleiReport.forSite(siteIndex))
                 .addToBackStack(null)
                 .commit();
@@ -317,6 +319,8 @@ public class NucleiMain extends Fragment implements TargetsAdapter.Listener {
     private void openTerminal(int siteIndex) {
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
+                .setCustomAnimations(R.anim.ios_push_enter, R.anim.ios_push_exit,
+                        R.anim.ios_pop_enter, R.anim.ios_pop_exit)
                 .replace(R.id.flContent, NucleiTerminal.forSite(siteIndex))
                 .addToBackStack(null)
                 .commit();

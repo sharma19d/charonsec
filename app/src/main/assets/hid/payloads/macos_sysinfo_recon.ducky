@@ -1,0 +1,18 @@
+REM ============================================================
+REM  macOS · System Reconnaissance
+REM ============================================================
+REM  Collects hostname, macOS version, hardware info, network
+REM  config, running processes, installed apps, and user list.
+REM  Output: ~/Desktop/recon_report.txt
+
+DEFAULTDELAY 80
+
+GUI SPACE
+DELAY 500
+STRING terminal
+DELAY 400
+ENTER
+DELAY 1500
+STRINGLN (echo "=== HOSTNAME ===" && hostname && echo && echo "=== macOS ===" && sw_vers && echo && echo "=== HARDWARE ===" && system_profiler SPHardwareDataType && echo && echo "=== NETWORK ===" && ifconfig && echo && echo "=== USERS ===" && dscl . list /Users | grep -v '^_' && echo && echo "=== INSTALLED APPS ===" && ls /Applications && echo && echo "=== FIREWALL ===" && /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate) > ~/Desktop/recon_report.txt 2>&1
+DELAY 2000
+STRINGLN exit

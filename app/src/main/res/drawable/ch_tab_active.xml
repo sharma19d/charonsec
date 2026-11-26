@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Active sub-tool: a short saffron bar under the label. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:gravity="bottom|center_horizontal" android:width="18dp" android:height="2dp" android:bottom="6dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/ch_signal" />
+        </shape>
+    </item>
+</layer-list>

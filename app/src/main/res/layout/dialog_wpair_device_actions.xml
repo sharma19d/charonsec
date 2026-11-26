@@ -41,7 +41,7 @@
                     android:layout_gravity="center"
                     android:scaleType="fitCenter"
                     android:src="@drawable/wpair"
-                    app:tint="#3949AB" />
+                    app:tint="@android:color/white" />
             </FrameLayout>
 
             <LinearLayout
@@ -67,7 +67,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:fontFamily="monospace"
                     android:text="00:00:00:00:00:00"
                     android:textColor="@color/grey"
                     android:textSize="11sp" />
@@ -84,7 +83,7 @@
             android:paddingTop="6dp"
             android:paddingEnd="10dp"
             android:paddingBottom="6dp"
-            android:text="UNKNOWN"
+            android:text="Unknown"
             android:textColor="@color/grey"
             android:textSize="10sp"
             android:textStyle="bold" />
@@ -93,8 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            app:cardBackgroundColor="#0E1117"
-            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
 
@@ -102,10 +100,9 @@
                 android:id="@+id/wpair_dlg_progress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
                 android:padding="12dp"
                 android:text="@string/wpair_dlg_idle"
-                android:textColor="#7EE787"
+                android:textColor="@color/ch_live"
                 android:textSize="10sp" />
         </com.google.android.material.card.MaterialCardView>
 
@@ -114,10 +111,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.08"
             android:text="@string/wpair_dlg_section_exploit"
-            android:textAllCaps="true"
-            android:textColor="#C62828"
+            android:textColor="@color/ch_alert"
             android:textSize="10sp"
             android:textStyle="bold" />
 
@@ -128,7 +123,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wpair_dlg_test"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Ios.Button.Tinted"
                 android:layout_width="0dp"
                 android:layout_height="44dp"
                 android:layout_weight="1"
@@ -138,7 +133,7 @@
                 android:text="@string/wpair_btn_test"
                 android:textColor="@color/stryker_accent"
                 android:textSize="13sp"
-                app:cornerRadius="14dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/done"
                 app:iconGravity="textStart"
                 app:iconPadding="6dp"
@@ -152,14 +147,13 @@
                 android:layout_height="44dp"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="#3949AB"
+                android:backgroundTint="@color/ch_signal"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minHeight="0dp"
                 android:text="@string/wpair_btn_magic"
-                android:textColor="@color/light_contrast"
                 android:textSize="13sp"
-                app:cornerRadius="14dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/bolt"
                 app:iconGravity="textStart"
                 app:iconPadding="6dp"
@@ -175,7 +169,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wpair_dlg_write_key"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Ios.Button.Tinted.Destructive"
                 android:layout_width="0dp"
                 android:layout_height="42dp"
                 android:layout_weight="1"
@@ -185,19 +179,19 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:text="@string/wpair_btn_write_key"
-                android:textColor="#C62828"
+                android:textColor="@color/ch_alert"
                 android:textSize="11sp"
-                app:cornerRadius="12dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/key"
                 app:iconGravity="textStart"
                 app:iconPadding="4dp"
                 app:iconSize="14dp"
-                app:iconTint="#C62828"
+                app:iconTint="@color/ch_alert"
                 app:strokeColor="@color/light_lite_contrast" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wpair_dlg_flood"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Ios.Button.Tinted"
                 android:layout_width="0dp"
                 android:layout_height="42dp"
                 android:layout_marginStart="8dp"
@@ -208,14 +202,14 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:text="@string/wpair_btn_flood"
-                android:textColor="#EF6C00"
+                android:textColor="@color/ch_signal"
                 android:textSize="11sp"
-                app:cornerRadius="12dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/repeat"
                 app:iconGravity="textStart"
                 app:iconPadding="4dp"
                 app:iconSize="14dp"
-                app:iconTint="#EF6C00"
+                app:iconTint="@color/ch_signal"
                 app:strokeColor="@color/light_lite_contrast" />
         </LinearLayout>
 
@@ -224,30 +218,28 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="8dp"
-            android:letterSpacing="0.08"
             android:text="@string/wpair_dlg_section_audio"
-            android:textAllCaps="true"
-            android:textColor="#00897B"
-            android:textSize="10sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/wpair_dlg_hfp"
-            style="@style/Widget.Material3.Button.OutlinedButton"
+            style="@style/Ios.Button.Tinted"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:minHeight="0dp"
             android:text="@string/wpair_btn_hfp"
-            android:textColor="#00897B"
+            android:textColor="@color/ch_signal"
             android:textSize="13sp"
-            app:cornerRadius="14dp"
+            app:cornerRadius="@dimen/ios_corner_button"
             app:icon="@drawable/wpair"
             app:iconGravity="textStart"
             app:iconPadding="6dp"
             app:iconSize="16dp"
-            app:iconTint="#00897B"
+            app:iconTint="@color/ch_signal"
             app:strokeColor="@color/light_lite_contrast" />
 
         <LinearLayout
@@ -258,7 +250,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wpair_dlg_live"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Ios.Button.Tinted"
                 android:layout_width="0dp"
                 android:layout_height="44dp"
                 android:layout_weight="1"
@@ -270,7 +262,7 @@
                 android:text="@string/wpair_btn_live"
                 android:textColor="@color/stryker_accent"
                 android:textSize="12sp"
-                app:cornerRadius="12dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/run"
                 app:iconGravity="textStart"
                 app:iconPadding="4dp"
@@ -280,7 +272,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wpair_dlg_record"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Ios.Button.Tinted.Destructive"
                 android:layout_width="0dp"
                 android:layout_height="44dp"
                 android:layout_marginStart="8dp"
@@ -291,14 +283,14 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:text="@string/wpair_btn_record"
-                android:textColor="#C62828"
+                android:textColor="@color/ch_alert"
                 android:textSize="12sp"
-                app:cornerRadius="12dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/save_outlined"
                 app:iconGravity="textStart"
                 app:iconPadding="4dp"
                 app:iconSize="14dp"
-                app:iconTint="#C62828"
+                app:iconTint="@color/ch_alert"
                 app:strokeColor="@color/light_lite_contrast" />
         </LinearLayout>
 
@@ -310,7 +302,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wpair_dlg_terminal"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/Ios.Button.Tinted"
                 android:layout_width="0dp"
                 android:layout_height="42dp"
                 android:layout_weight="1"
@@ -320,19 +312,19 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:text="@string/wpair_btn_terminal_filtered"
-                android:textColor="#5E35B1"
+                android:textColor="@color/ch_signal"
                 android:textSize="12sp"
-                app:cornerRadius="12dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/terminal"
                 app:iconGravity="textStart"
                 app:iconPadding="6dp"
                 app:iconSize="14dp"
-                app:iconTint="#5E35B1"
+                app:iconTint="@color/ch_signal"
                 app:strokeColor="@color/light_lite_contrast" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/wpair_dlg_close"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="42dp"
                 android:layout_marginStart="8dp"
@@ -344,7 +336,7 @@
                 android:text="@string/wpair_btn_close"
                 android:textColor="@color/grey"
                 android:textSize="12sp"
-                app:cornerRadius="12dp" />
+                app:cornerRadius="@dimen/ios_corner_button" />
         </LinearLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

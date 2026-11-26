@@ -72,7 +72,7 @@ public final class WordlistDownloadSheet {
             boolean have = store.exists(entry.fileName);
             if (have) {
                 action.setImageResource(R.drawable.done);
-                action.setColorFilter(0xFF2E7D32);
+                action.setColorFilter(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live));
             }
 
             row.setOnClickListener(v -> {
@@ -128,7 +128,7 @@ public final class WordlistDownloadSheet {
                             return;
                         }
                         action.setImageResource(R.drawable.done);
-                        action.setColorFilter(0xFF2E7D32);
+                        action.setColorFilter(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live));
                         size.setText(result.describeSize());
                         status.setText(context.getString(R.string.wl_dl_done, result.getName()));
                         if (onChanged != null) onChanged.run();

@@ -45,7 +45,6 @@
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackground"
                     android:ellipsize="middle"
-                    android:fontFamily="monospace"
                     android:padding="4dp"
                     android:singleLine="true"
                     android:text="untitled.ducky"
@@ -55,7 +54,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/ide_save_btn"
-                    style="@style/Widget.Material3.Button.IconButton"
+                    style="@style/Ios.IconButton"
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     android:contentDescription="@string/hid_save_to_library"
@@ -81,13 +80,12 @@
                     android:background="@drawable/chip_pill_warn"
                     android:clickable="true"
                     android:focusable="true"
-                    android:fontFamily="monospace"
                     android:paddingStart="10dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="5dp"
                     android:text="EMPTY"
-                    android:textColor="#EF6C00"
+                    android:textColor="@color/ch_signal"
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
@@ -99,7 +97,6 @@
                     android:background="@drawable/chip_pill_bg"
                     android:clickable="true"
                     android:focusable="true"
-                    android:fontFamily="monospace"
                     android:paddingStart="10dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="10dp"
@@ -121,7 +118,6 @@
                     android:background="@drawable/chip_pill_bg"
                     android:clickable="true"
                     android:focusable="true"
-                    android:fontFamily="monospace"
                     android:paddingStart="10dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="10dp"
@@ -134,8 +130,8 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/light_lite_contrast" />
+                android:layout_height="@dimen/ios_hairline"
+                android:background="@color/ch_line" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -182,14 +178,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="monospace"
                 android:text="1 line · col 1"
                 android:textColor="@color/grey"
                 android:textSize="11sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/ide_console_btn"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="0dp"
@@ -200,13 +195,13 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/ide_stop_btn"
-                style="@style/Widget.Material3.Button.TextButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:minWidth="0dp"
                 android:text="@string/hid_stop"
-                android:textColor="#C62828"
+                android:textColor="@color/ch_alert"
                 android:textSize="12sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -214,16 +209,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:backgroundTint="#C62828"
+                android:backgroundTint="@color/ch_signal"
                 android:minWidth="0dp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:text="@string/hid_run"
-                android:textColor="@android:color/white"
-                app:cornerRadius="14dp"
+                app:cornerRadius="@dimen/ios_corner_button"
                 app:icon="@drawable/play"
                 app:iconGravity="textStart"
-                app:iconTint="@android:color/white" />
+                app:iconTint="@color/ch_on_signal" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -235,11 +229,10 @@
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="56dp"
             android:visibility="gone"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
+            app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -257,16 +250,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:letterSpacing="0.06"
                         android:text="@string/hid_log_header"
-                        android:textAllCaps="true"
                         android:textColor="@color/grey"
                         android:textSize="10sp"
                         android:textStyle="bold" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/ide_console_clear_btn"
-                        style="@style/Widget.Material3.Button.TextButton"
+                        style="@style/Ios.Button.Plain"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="0dp"
@@ -275,7 +266,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/ide_console_close_btn"
-                        style="@style/Widget.Material3.Button.IconButton"
+                        style="@style/Ios.IconButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:icon="@drawable/close"
@@ -289,7 +280,7 @@
                     android:layout_marginTop="6dp"
                     android:max="100"
                     android:progress="0"
-                    app:indicatorColor="#C62828"
+                    app:indicatorColor="@color/ch_signal"
                     app:trackColor="@color/light_lite_contrast"
                     app:trackCornerRadius="2dp" />
 
@@ -318,11 +309,11 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:visibility="gone"
-        app:cardBackgroundColor="@color/light_contrast"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="12dp"
+        app:cardBackgroundColor="@color/ch_ink_1"
+        app:cardCornerRadius="@dimen/ios_corner_card"
+        app:cardElevation="0dp"
         app:strokeColor="@color/light_lite_contrast"
-        app:strokeWidth="1dp">
+        app:strokeWidth="0dp">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -352,7 +343,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/ide_caps_close_btn"
-                        style="@style/Widget.Material3.Button.IconButton"
+                        style="@style/Ios.IconButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:icon="@drawable/close"
@@ -365,13 +356,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:background="@drawable/chip_pill_warn"
-                    android:fontFamily="monospace"
                     android:paddingStart="12dp"
                     android:paddingTop="6dp"
                     android:paddingEnd="12dp"
                     android:paddingBottom="6dp"
                     android:text="PROBING…"
-                    android:textColor="#EF6C00"
+                    android:textColor="@color/ch_signal"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
@@ -380,7 +370,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
-                    android:fontFamily="monospace"
                     android:lineSpacingExtra="4dp"
                     android:text=""
                     android:textColor="@color/grey"
@@ -391,23 +380,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:backgroundTint="#1565C0"
+                    android:backgroundTint="@color/ch_signal"
                     android:text="@string/ide_caps_open_arsenal"
-                    android:textColor="@android:color/white"
                     android:visibility="gone"
-                    app:cornerRadius="14dp"
+                    app:cornerRadius="@dimen/ios_corner_button"
                     app:icon="@drawable/usb"
                     app:iconGravity="textStart"
-                    app:iconTint="@android:color/white" />
+                    app:iconTint="@color/ch_on_signal" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/ide_caps_refresh_btn"
-                    style="@style/Widget.Material3.Button.TonalButton"
+                    style="@style/Ios.Button.Tinted"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/ide_caps_recheck"
-                    app:cornerRadius="14dp" />
+                    app:cornerRadius="@dimen/ios_corner_button" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </com.google.android.material.card.MaterialCardView>

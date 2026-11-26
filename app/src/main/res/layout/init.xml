@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_contrast"
+    android:background="@color/ch_ink_0"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="48dp">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/nothing_img"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/hello" />
+    <ProgressBar
+        android:id="@+id/init_spinner"
+        style="@style/Ios.Spinner"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:indeterminate="true" />
 
     <TextView
         android:id="@+id/nothing_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:text="Initializing..."
-        android:textSize="30dp" />
-
-
+        android:layout_marginTop="14dp"
+        android:text="@string/init_title"
+        android:textAppearance="@style/TextAppearance.Ios.Subhead"
+        android:textColor="@color/ch_bone_dim" />
 </LinearLayout>

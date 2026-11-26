@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StrykerOSS</string>
+    <string name="app_name">CharonSec</string>
     <string name="install">Install</string>
     <string name="install2">Core loading</string>
     <string name="install3">Installing the Core</string>
@@ -105,7 +105,7 @@
     <string name="q">Enter a request</string>
     <string name="enter_pin">Enter pin</string>
     <string name="cancel">Cancel</string>
-    <string name="auto_connect">AUTO-CONNECT</string>
+    <string name="auto_connect">Auto-Connect</string>
     <string name="not_vuln_local">Target not vulnerable</string>
     <string name="vuln_for">Target vulnerable for:</string>
     <string name="choose_opt">Choose option</string>
@@ -331,7 +331,7 @@ manager</string>
     <string name="arsenal_db_no_results_title">No results</string>
     <string name="arsenal_db_no_results_body">No exploits matched \"%1$s\".</string>
     <string name="arsenal_db_status_title">Offline mirror ready</string>
-    <string name="arsenal_db_status_ready">READY</string>
+    <string name="arsenal_db_status_ready">Ready</string>
     <string name="arsenal_db_status_count">%1$s exploits</string>
     <string name="arsenal_db_suggestions_title">Popular searches</string>
     <string name="arsenal_db_tips_title">Search tips</string>
@@ -469,13 +469,13 @@ manager</string>
     <string name="wifi_empty_body">Pull down to scan again. Monitor mode gives the best results.</string>
     <string name="wifi_retry">Try again</string>
     <string name="wifi_chip_wps">WPS</string>
-    <string name="wifi_chip_lock">LOCK</string>
-    <string name="wifi_chip_pixie">PIXIE</string>
-    <string name="wifi_chip_pixie_verified">PIXIE ✓</string>
-    <string name="wifi_chip_key">KEY</string>
+    <string name="wifi_chip_lock">Locked</string>
+    <string name="wifi_chip_pixie">Pixie</string>
+    <string name="wifi_chip_pixie_verified">Pixie ✓</string>
+    <string name="wifi_chip_key">Key</string>
     <string name="wifi_chip_5g">5 GHz</string>
     <string name="wifi_signal_label">%1$d%%</string>
-    <string name="wifi_signal_chip_label">SIG</string>
+    <string name="wifi_signal_chip_label">Signal</string>
     <string name="wifi_card_model">Model: %1$s</string>
     <string name="wifi_card_unknown_vendor">Unknown vendor</string>
     <string name="wifi_fab_pixie">Auto Pixie Dust</string>
@@ -550,9 +550,9 @@ manager</string>
     <string name="hs_open_capture">Open Wi-Fi scanner</string>
     <string name="hs_refresh">Refresh</string>
     <string name="hs_action_brute">Crack with wordlist</string>
-    <string name="hs_kind_handshake">HANDSHAKE</string>
+    <string name="hs_kind_handshake">Handshake</string>
     <string name="hs_kind_pmkid">PMKID</string>
-    <string name="hs_kind_empty">EMPTY</string>
+    <string name="hs_kind_empty">Empty</string>
     <string name="hs_group_today">Today</string>
     <string name="hs_group_yesterday">Yesterday</string>
     <string name="hs_group_unknown">No date</string>
@@ -562,10 +562,10 @@ manager</string>
     <string name="hs_action_delete">Delete</string>
     <string name="hs_action_stop">Stop cracking</string>
     <string name="hs_action_open_folder">Open folder</string>
-    <string name="hs_state_cracked">CRACKED</string>
-    <string name="hs_state_brute">CRACKING</string>
-    <string name="hs_state_upload">UPLOADING</string>
-    <string name="hs_state_idle">READY</string>
+    <string name="hs_state_cracked">Cracked</string>
+    <string name="hs_state_brute">Cracking</string>
+    <string name="hs_state_upload">Uploading</string>
+    <string name="hs_state_idle">Ready</string>
     <string name="hs_progress_starting">Starting…</string>
     <string name="hs_progress_label">Progress</string>
     <string name="hs_eta_label">ETA</string>
@@ -618,7 +618,7 @@ manager</string>
     <string name="core_mgr_update_index">apt update</string>
     <string name="core_mgr_action_install">Install</string>
     <string name="core_mgr_action_uninstall">Uninstall</string>
-    <string name="core_mgr_chip_installed">INSTALLED</string>
+    <string name="core_mgr_chip_installed">Installed</string>
     <string name="core_mgr_chip_python">PIP</string>
     <string name="core_mgr_chip_apk">APT</string>
     <string name="core_mgr_filter_all">All</string>
@@ -653,9 +653,9 @@ manager</string>
     <string name="msf_section_status">Status</string>
     <string name="msf_section_modules">Modules</string>
     <string name="msf_section_quick">Quick actions</string>
-    <string name="msf_status_pill_online">ONLINE</string>
-    <string name="msf_status_pill_loading">BOOT</string>
-    <string name="msf_status_pill_offline">DOWN</string>
+    <string name="msf_status_pill_online">Online</string>
+    <string name="msf_status_pill_loading">Booting</string>
+    <string name="msf_status_pill_offline">Offline</string>
     <string name="msf_metric_exploits">Exploits</string>
     <string name="msf_metric_aux">Auxiliary</string>
     <string name="msf_metric_sessions">Sessions</string>
@@ -668,10 +668,10 @@ manager</string>
     <string name="msf_action_payload">Generate payload</string>
     <string name="msf_action_sessions">Open sessions</string>
     <string name="msf_action_console">Raw console</string>
-    <string name="msf_chip_exploit">EXPLOIT</string>
-    <string name="msf_chip_aux">AUX</string>
-    <string name="msf_chip_post">POST</string>
-    <string name="msf_chip_payload">PAYLOAD</string>
+    <string name="msf_chip_exploit">Exploit</string>
+    <string name="msf_chip_aux">Aux</string>
+    <string name="msf_chip_post">Post</string>
+    <string name="msf_chip_payload">Payload</string>
     <string name="msf_rank_excellent">Excellent</string>
     <string name="msf_rank_great">Great</string>
     <string name="msf_rank_good">Good</string>
@@ -717,7 +717,7 @@ manager</string>
     <string name="msf_values_section_required">Required</string>
     <string name="msf_values_section_optional">Optional</string>
     <string name="msf_values_section_safety">Safety overrides</string>
-    <string name="msf_values_required_chip">REQUIRED</string>
+    <string name="msf_values_required_chip">Required</string>
     <string name="msf_values_missing_required">Fill all required fields first</string>
     <string name="msf_values_back">Back</string>
     <string name="msf_values_launch">Launch</string>
@@ -862,7 +862,7 @@ manager</string>
     <string name="geomac_not_installed">GeoMac module not installed — go to Manager to download it</string>
     <string name="geomac_no_pins_to_fit">No pins match the current filter</string>
     <string name="geomac_copied">Coordinates copied</string>
-    <string name="geomac_bg_active">BG SCAN</string>
+    <string name="geomac_bg_active">Background Scan</string>
 
     <string name="geomac_export_title">Export pins</string>
     <string name="geomac_export_json">JSON (round-trip)</string>
@@ -989,7 +989,8 @@ manager</string>
     <string name="wpair_fab_stop">Stop scan</string>
     <string name="wpair_empty_title">No devices yet</string>
     <string name="wpair_empty_subtitle">Tap Scan to discover Fast Pair / BLE devices nearby</string>
-    <string name="wpair_badge_pairing">PAIRING</string>
+    <string name="wpair_badge_pairing">Pairing</string>
+    <string name="wpair_ble_only">BLE only · Fast Pair not detected</string>
     <string name="wpair_btn_test">Test</string>
     <string name="wpair_btn_magic">Magic</string>
     <string name="wpair_btn_more">More</string>
@@ -1019,18 +1020,21 @@ manager</string>
     <string name="wpair_perm_open_settings">Open settings</string>
     <string name="wpair_bt_disabled_title">Bluetooth disabled</string>
     <string name="wpair_bt_disabled_msg">Enable Bluetooth to scan for nearby Fast Pair devices.</string>
+    <string name="wpair_location_off_title">Location Is Off</string>
+    <string name="wpair_location_off_msg">On Android 11 and earlier, Bluetooth scans find nothing while Location is off. Turn on Location, then scan again.</string>
+    <string name="wpair_location_open_settings">Open Location Settings</string>
     <string name="wpair_bt_enable">Enable</string>
     <string name="wpair_hfp_manual_title">Manual HFP connect needed</string>
     <string name="wpair_hfp_manual_msg">Android blocks programmatic HFP connect. Pair the device in Bluetooth settings, then come back.</string>
     <string name="wpair_hfp_open_bt_settings">Open Bluetooth settings</string>
-    <string name="wpair_status_not_tested">NOT TESTED</string>
-    <string name="wpair_status_testing">TESTING…</string>
-    <string name="wpair_status_vulnerable">VULNERABLE</string>
-    <string name="wpair_status_patched">PATCHED</string>
-    <string name="wpair_status_error">ERROR</string>
-    <string name="wpair_status_paired">PAIRED</string>
+    <string name="wpair_status_not_tested">Not Tested</string>
+    <string name="wpair_status_testing">Testing…</string>
+    <string name="wpair_status_vulnerable">Vulnerable</string>
+    <string name="wpair_status_patched">Patched</string>
+    <string name="wpair_status_error">Error</string>
+    <string name="wpair_status_paired">Paired</string>
 
-    <string name="about_title_label" translatable="false">StrykerOSS</string>
+    <string name="about_title_label" translatable="false">CharonSec</string>
     <string name="about_tagline">A free and open-source mobile pentest suite for authorized testing.</string>
     <string name="about_pill_oss">Open-Source</string>
     <string name="about_pill_root">Root Powered</string>
@@ -1061,7 +1065,7 @@ manager</string>
     <string name="about_link_chat_url" translatable="false">t.me/strykerchat</string>
     <string name="about_oss_licenses_label">Open-source licenses</string>
     <string name="license_subtitle">Built on these open-source projects. Tap any entry for its source.</string>
-    <string name="about_footer">StrykerOSS — free software (GNU GPL v3.0) — authorized testing only</string>
+    <string name="about_footer">CharonSec (based on StrykerOSS) — free software (GNU GPL v3.0) — authorized testing only</string>
 
     <string name="shortcut_terminal_short">Terminal</string>
     <string name="shortcut_terminal_long">Open Stryker terminal</string>
@@ -1075,12 +1079,12 @@ manager</string>
     <string name="mac_section_form">Spoof</string>
     <string name="mac_current_label">Current MAC</string>
     <string name="mac_permanent_label">Permanent MAC</string>
-    <string name="mac_pill_idle">IDLE</string>
-    <string name="mac_pill_changing">CHANGING…</string>
-    <string name="mac_pill_changed">CHANGED</string>
-    <string name="mac_pill_reset">RESTORED</string>
-    <string name="mac_pill_error">ERROR</string>
-    <string name="mac_pill_waiting_net">WAITING FOR NET</string>
+    <string name="mac_pill_idle">Idle</string>
+    <string name="mac_pill_changing">Changing…</string>
+    <string name="mac_pill_changed">Changed</string>
+    <string name="mac_pill_reset">Restored</string>
+    <string name="mac_pill_error">Error</string>
+    <string name="mac_pill_waiting_net">Waiting for Network</string>
     <string name="mac_copy_desc">Copy MAC to clipboard</string>
     <string name="mac_copied_toast">MAC copied to clipboard</string>
     <string name="mac_chip_random">Random</string>
@@ -1231,6 +1235,8 @@ manager</string>
     <string name="arsenal_mass_inquiry">Inquiry string (28 ASCII)</string>
     <string name="arsenal_apply_ok">Profile applied — gadget bound to %s</string>
     <string name="arsenal_apply_failed">Failed to apply profile (check logcat)</string>
+    <string name="arsenal_apply_failed_reason">Failed to apply profile: %s</string>
+    <string name="arsenal_apply_substituted">Kernel lacks some functions, substituted: %s</string>
     <string name="arsenal_restore_ok">Vendor gadget restored</string>
     <string name="arsenal_save">Save</string>
     <string name="arsenal_cancel">Cancel</string>
@@ -1337,7 +1343,7 @@ manager</string>
     <string name="vm_boot_cpu">CPU</string>
     <string name="vm_boot_ram">RAM</string>
     <string name="vm_boot_dash">—</string>
-    <string name="vm_boot_log_header">BOOT LOG</string>
+    <string name="vm_boot_log_header">Boot Log</string>
     <string name="vm_boot_retry">Retry</string>
     <string name="vm_boot_continue">Continue anyway</string>
     <string name="vm_boot_back_blocked">The engine is still booting…</string>
@@ -1386,7 +1392,7 @@ manager</string>
     <string name="vm_stat_ram">Memory</string>
     <string name="vm_stat_placeholder">—</string>
 
-    <string name="welcome_title">StrykerOSS</string>
+    <string name="welcome_title">CharonSec</string>
     <string name="welcome_subtitle">Pentest from your phone.</string>
     <string name="welcome_cta">Get started</string>
     <string name="wl_title">Wordlists</string>
@@ -1561,4 +1567,6 @@ manager</string>
     <string name="engine_uml_note">Needs arm64.</string>
     <string name="settings_promo_title">Occasional prompts</string>
     <string name="settings_promo_subtitle">The one-off GitHub and blog notes. Off means never.</string>
+    <string name="init_title">Starting CharonSec…</string>
+    <string name="init_subtitle">Waking the engine</string>
 </resources>

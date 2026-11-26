@@ -27,15 +27,15 @@ import java.util.Locale;
 
 public class LoggerAdapter extends RecyclerView.Adapter<LoggerAdapter.ViewHolder> {
 
-    private static final int C_CMD = Color.parseColor("#4FC3F7");
-    private static final int C_OUT = Color.parseColor("#CFD8DC");
-    private static final int C_ERR = Color.parseColor("#EF5350");
-    private static final int C_WARN = Color.parseColor("#FFB74D");
-    private static final int C_OK = Color.parseColor("#81C784");
-    private static final int C_INFO = Color.parseColor("#90A4AE");
-    private static final int C_TIME = Color.parseColor("#607D8B");
-    private static final int C_TOOL = Color.parseColor("#B39DDB");
-    private static final int C_HIGHLIGHT = Color.parseColor("#664FC3F7");
+    private static final int C_CMD = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal);
+    private static final int C_OUT = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone);
+    private static final int C_ERR = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert);
+    private static final int C_WARN = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution);
+    private static final int C_OK = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live);
+    private static final int C_INFO = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim);
+    private static final int C_TIME = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim);
+    private static final int C_TOOL = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ios_purple);
+    private static final int C_HIGHLIGHT = (com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal) & 0x00FFFFFF) | 0x40000000;
 
     private final Context context;
     private final List<LogEntry> items;

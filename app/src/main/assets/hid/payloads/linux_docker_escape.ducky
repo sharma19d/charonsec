@@ -1,0 +1,16 @@
+REM ============================================================
+REM  Linux · Docker Socket Enumeration
+REM ============================================================
+REM  Checks if the Docker socket is accessible and lists
+REM  running containers, images, and networks. If Docker runs
+REM  as root, this is a privilege escalation vector.
+REM
+REM  Useful for container security audits.
+
+DEFAULTDELAY 80
+
+CTRL ALT t
+DELAY 1500
+STRINGLN echo "=== DOCKER SOCKET ===" && ls -la /var/run/docker.sock 2>/dev/null && echo && echo "=== CONTAINERS ===" && docker ps -a 2>/dev/null && echo && echo "=== IMAGES ===" && docker images 2>/dev/null && echo && echo "=== DOCKER INFO ===" && docker info 2>/dev/null | head -30
+DELAY 2000
+STRINGLN exit

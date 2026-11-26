@@ -253,9 +253,9 @@ public class HidFragment extends Fragment implements PayloadCardAdapter.OnPayloa
     }
 
     private void refreshCapability() {
-        statePill.setText("PROBING");
+        statePill.setText("Probing");
         statePill.setBackgroundResource(R.drawable.chip_pill_warn);
-        statePill.setTextColor(0xFFEF6C00);
+        statePill.setTextColor(com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal));
         stateText.setText(R.string.hid_state_unknown);
         capProbeAlive.set(true);
         new Thread(() -> {
@@ -278,14 +278,14 @@ public class HidFragment extends Fragment implements PayloadCardAdapter.OnPayloa
         int pillColor;
         boolean showArsenalCta = false;
         switch (caps.verdict) {
-            case READY:           textResource = R.string.hid_state_ready;        pill = "READY";   pillBg = R.drawable.chip_pill_ok;   pillColor = 0xFF2E7D32; break;
-            case ROOT_DENIED:     textResource = R.string.hid_state_root_denied;  pill = "NO ROOT"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case KERNEL_TOO_OLD:  textResource = R.string.hid_state_kernel_old;   pill = "KERNEL";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case CONFIGFS_MISSING:textResource = R.string.hid_state_no_configfs;  pill = "CFGFS";   pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case UDC_MISSING:     textResource = R.string.hid_state_no_udc;       pill = "NO UDC";  pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            case HID_NODE_MISSING:textResource = R.string.hid_state_no_node;      pill = "ARSENAL"; pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFEF6C00; showArsenalCta = true; break;
-            case SELINUX_DENIES:  textResource = R.string.hid_state_selinux;      pill = "SELINUX"; pillBg = R.drawable.chip_pill_err;  pillColor = 0xFFC62828; break;
-            default:              textResource = R.string.hid_state_unknown;      pill = "?";       pillBg = R.drawable.chip_pill_warn; pillColor = 0xFFEF6C00;
+            case READY:           textResource = R.string.hid_state_ready;        pill = "Ready";   pillBg = R.drawable.chip_pill_ok;   pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_live); break;
+            case ROOT_DENIED:     textResource = R.string.hid_state_root_denied;  pill = "No Root"; pillBg = R.drawable.chip_pill_err;  pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert); break;
+            case KERNEL_TOO_OLD:  textResource = R.string.hid_state_kernel_old;   pill = "Kernel";  pillBg = R.drawable.chip_pill_err;  pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert); break;
+            case CONFIGFS_MISSING:textResource = R.string.hid_state_no_configfs;  pill = "CFGFS";   pillBg = R.drawable.chip_pill_err;  pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert); break;
+            case UDC_MISSING:     textResource = R.string.hid_state_no_udc;       pill = "No UDC";  pillBg = R.drawable.chip_pill_err;  pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert); break;
+            case HID_NODE_MISSING:textResource = R.string.hid_state_no_node;      pill = "Arsenal"; pillBg = R.drawable.chip_pill_warn; pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution); showArsenalCta = true; break;
+            case SELINUX_DENIES:  textResource = R.string.hid_state_selinux;      pill = "SELinux"; pillBg = R.drawable.chip_pill_err;  pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_alert); break;
+            default:              textResource = R.string.hid_state_unknown;      pill = "?";       pillBg = R.drawable.chip_pill_warn; pillColor = com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_caution);
         }
         stateText.setText(textResource);
         statePill.setText(pill);

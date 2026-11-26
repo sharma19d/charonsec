@@ -24,8 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
             android:visibility="gone"
-            app:cardBackgroundColor="@color/dash_surface"
-            app:cardCornerRadius="28dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeWidth="0dp">
 
@@ -50,7 +49,7 @@
                         android:background="@drawable/settings_icon_bg"
                         android:padding="7dp"
                         android:src="@drawable/magisk"
-                        app:tint="#F57C00" />
+                        app:tint="@android:color/white" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="0dp"
@@ -72,7 +71,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/magisk_no"
-                        style="@style/Widget.Material3.Button.TextButton"
+                        style="@style/Ios.Button.Plain"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="6dp"
@@ -83,10 +82,9 @@
                         android:id="@+id/magisk_yes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="#F57C00"
+                        android:backgroundTint="@color/ch_signal"
                         android:text="@string/dashboard_magisk_silence"
-                        android:textColor="@color/light_contrast"
-                        app:cornerRadius="14dp" />
+                        app:cornerRadius="@dimen/ios_corner_button" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -97,11 +95,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
             android:visibility="gone"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <com.zalexdev.stryker.utils.AuroraView
                 android:id="@+id/vm_aurora"
@@ -192,33 +189,33 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/vm_btn_start"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            style="@style/Ios.Button.Tinted"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="6dp"
                             android:layout_weight="1"
                             android:text="Start"
                             android:textSize="12sp"
-                            app:cornerRadius="12dp" />
+                            app:cornerRadius="@dimen/ios_corner_button" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/vm_btn_stop"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            style="@style/Ios.Button.Tinted"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Stop"
                             android:textSize="12sp"
-                            app:cornerRadius="12dp" />
+                            app:cornerRadius="@dimen/ios_corner_button" />
                     </LinearLayout>
                 </net.cachapa.expandablelayout.ExpandableLayout>
 
                 <View
                     android:id="@+id/vm_console_divider"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/ios_hairline"
                     android:layout_marginTop="14dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/vm_stats_header"
@@ -294,9 +291,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:letterSpacing="0.06"
                                 android:text="@string/vm_stat_cpu"
-                                android:textAllCaps="true"
                                 android:textColor="@color/grey"
                                 android:textSize="11sp" />
 
@@ -327,9 +322,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:letterSpacing="0.06"
                                 android:text="@string/vm_stat_ram"
-                                android:textAllCaps="true"
                                 android:textColor="@color/grey"
                                 android:textSize="11sp" />
 
@@ -355,8 +348,8 @@
                 <View
                     android:id="@+id/vm_divider_usb"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:layout_height="@dimen/ios_hairline"
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/vm_usb_header"
@@ -431,7 +424,7 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/vm_usb_manage"
-                            style="@style/Widget.Material3.Button.TextButton"
+                            style="@style/Ios.Button.Plain"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -448,8 +441,8 @@
                 <View
                     android:id="@+id/vm_divider_logs"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/light_lite_contrast" />
+                    android:layout_height="@dimen/ios_hairline"
+                    android:background="@color/ch_line" />
 
                 <LinearLayout
                     android:id="@+id/vm_logs_header"
@@ -525,7 +518,7 @@
                                     android:focusableInTouchMode="false"
                                     android:fontFamily="monospace"
                                     android:padding="12dp"
-                                    android:textColor="#D7DAE0"
+                                    android:textColor="@color/ch_console_text"
                                     android:textSize="11sp" />
                             </ScrollView>
                         </LinearLayout>
@@ -538,24 +531,24 @@
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/vm_btn_refresh_log"
-                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                style="@style/Ios.Button.Tinted"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="6dp"
                                 android:layout_weight="1"
                                 android:text="Refresh"
                                 android:textSize="12sp"
-                                app:cornerRadius="12dp" />
+                                app:cornerRadius="@dimen/ios_corner_button" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/vm_btn_copy_log"
-                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                style="@style/Ios.Button.Tinted"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/vm_log_copy"
                                 android:textSize="12sp"
-                                app:cornerRadius="12dp" />
+                                app:cornerRadius="@dimen/ios_corner_button" />
                         </LinearLayout>
                     </LinearLayout>
                 </net.cachapa.expandablelayout.ExpandableLayout>
@@ -579,14 +572,14 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/wifi"
-                app:tint="@android:color/white" />
+                app:tint="@color/ch_on_signal" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="@string/dashboard_hero_scan"
-                android:textColor="@android:color/white"
+                android:textColor="@color/ch_on_signal"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -622,7 +615,7 @@
                 <ImageView
                     style="@style/DashboardRowIcon"
                     android:src="@drawable/latest_wifi"
-                    app:tint="@color/stryker_accent" />
+                    app:tint="@android:color/white" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/DashboardRowTitle"
@@ -641,7 +634,7 @@
                 <ImageView
                     style="@style/DashboardRowIcon"
                     android:src="@drawable/latest_local"
-                    app:tint="#AB47BC" />
+                    app:tint="@android:color/white" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/DashboardRowTitle"
@@ -673,7 +666,7 @@
                 <ImageView
                     style="@style/DashboardRowIcon"
                     android:src="@drawable/terminal"
-                    app:tint="#5E35B1" />
+                    app:tint="@android:color/white" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/DashboardRowTitle"
@@ -691,7 +684,7 @@
                 <ImageView
                     style="@style/DashboardRowIcon"
                     android:src="@drawable/tune"
-                    app:tint="#00897B" />
+                    app:tint="@android:color/white" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/DashboardRowTitle"
@@ -709,7 +702,7 @@
                 <ImageView
                     style="@style/DashboardRowIcon"
                     android:src="@drawable/notification"
-                    app:tint="#EF6C00" />
+                    app:tint="@android:color/white" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/DashboardRowTitle"
@@ -727,7 +720,7 @@
                 <ImageView
                     style="@style/DashboardRowIcon"
                     android:src="@drawable/bug_report"
-                    app:tint="#C62828" />
+                    app:tint="@android:color/white" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/DashboardRowTitle"

@@ -1,0 +1,23 @@
+REM ============================================================
+REM  macOS · Wi-Fi Saved Password Extractor
+REM ============================================================
+REM  Lists known Wi-Fi networks. Extracting passwords requires
+REM  the keychain password or Touch ID approval per network.
+REM
+REM  Output: ~/Desktop/wifi_audit.txt
+
+DEFAULTDELAY 80
+
+GUI SPACE
+DELAY 500
+STRING terminal
+DELAY 400
+ENTER
+DELAY 1500
+STRINGLN echo "=== Known Wi-Fi Networks ===" > ~/Desktop/wifi_audit.txt
+STRINGLN networksetup -listpreferredwirelessnetworks en0 >> ~/Desktop/wifi_audit.txt 2>&1
+STRINGLN echo "" >> ~/Desktop/wifi_audit.txt
+STRINGLN echo "=== Current Connection ===" >> ~/Desktop/wifi_audit.txt
+STRINGLN system_profiler SPAirPortDataType >> ~/Desktop/wifi_audit.txt 2>&1
+DELAY 1000
+STRINGLN exit

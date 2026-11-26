@@ -7,8 +7,8 @@
     <View
         android:id="@+id/row_divider"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/light_lite_contrast" />
+        android:layout_height="@dimen/ios_hairline"
+        android:background="@color/ch_line" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +34,6 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:ellipsize="start"
-            android:fontFamily="monospace"
             android:gravity="end"
             android:maxLines="1"
             android:textColor="@color/grey"

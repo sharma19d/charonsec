@@ -41,7 +41,7 @@
         android:backgroundTint="@color/night_contrast"
         android:contentDescription="@string/add"
         android:textColor="@android:color/white"
-        app:cornerRadius="50dp"
+        app:cornerRadius="@dimen/ios_corner_button"
         app:icon="@drawable/close"
         app:iconTint="@android:color/white" />
 

@@ -25,12 +25,16 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/report_back"
-                style="@style/Widget.Material3.Button.IconButton"
+                style="@style/Ios.Button.Plain"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:icon="@drawable/arrow_right"
-                app:iconSize="20dp"
-                app:iconTint="?android:attr/textColorPrimary" />
+                app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            android:minWidth="0dp"
+            android:padding="0dp"
+            app:icon="@drawable/ios_chevron_back"
+                app:iconSize="21dp"
+                app:iconTint="@color/ch_signal" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/report_url"
@@ -47,7 +51,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/report_share"
-                style="@style/Widget.Material3.Button.IconButton"
+                style="@style/Ios.IconButton"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 app:icon="@drawable/share"
@@ -97,13 +101,13 @@
             android:layout_marginTop="10dp"
             android:max="100"
             android:visibility="gone"
-            app:indicatorColor="#3949AB"
+            app:indicatorColor="@color/ch_signal"
             app:trackColor="@color/light_lite_contrast"
             app:trackCornerRadius="2dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/report_terminal"
-            style="@style/Widget.Material3.Button.TextButton"
+            style="@style/Ios.Button.Plain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -118,11 +122,10 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="18dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -155,25 +158,22 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="22dp"
             android:layout_marginBottom="10dp"
-            android:letterSpacing="0.08"
             android:text="FINDINGS"
-            android:textAllCaps="true"
-            android:textColor="#3949AB"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textColor="@color/ch_bone_dim"
+            android:textSize="13sp" 
+            android:textAllCaps="true"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            app:cardBackgroundColor="@color/light_contrast"
-            app:cardCornerRadius="14dp"
+            app:cardBackgroundColor="@color/ch_ink_1"
             app:cardElevation="0dp"
             app:strokeColor="@color/light_lite_contrast"
-            app:strokeWidth="1dp">
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -233,7 +233,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/report_filter_all"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
@@ -241,35 +241,35 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/report_filter_critical"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Critical" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/report_filter_high"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="High" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/report_filter_medium"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Medium" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/report_filter_low"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Low" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/report_filter_info"
-                    style="@style/Widget.Material3.Chip.Filter"
+                    style="@style/Ios.Chip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Info" />
@@ -303,14 +303,14 @@
                     android:layout_height="32dp"
                     android:layout_gravity="center"
                     android:src="@drawable/done"
-                    app:tint="@color/green" />
+                    app:tint="@android:color/white" />
 
                 <ProgressBar
                     android:id="@+id/report_empty_spinner"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_gravity="center"
-                    android:indeterminateTint="#3949AB"
+                    android:indeterminateTint="@color/ch_signal"
                     android:visibility="gone" />
             </FrameLayout>
 

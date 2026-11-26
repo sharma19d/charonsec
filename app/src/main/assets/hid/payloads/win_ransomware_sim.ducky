@@ -1,0 +1,18 @@
+REM ============================================================
+REM  Windows · Ransomware Simulation (Safe)
+REM ============================================================
+REM  Creates a fake ransomware note on the Desktop and changes
+REM  the wallpaper to a warning message. Does NOT encrypt any
+REM  files — purely for testing endpoint detection and response.
+REM
+REM  Tests: Does your EDR alert on suspicious file creation
+REM  patterns and wallpaper manipulation?
+
+DEFAULTDELAY 60
+
+GUI r
+DELAY 700
+STRING powershell -w hidden -ep bypass
+ENTER
+DELAY 1500
+STRINGLN $note="YOUR FILES HAVE BEEN ENCRYPTED (SIMULATION)`n`nThis is a security test by your IT department.`nNo files were actually encrypted.`nIf you see this, please report it to security@company.com`n`nTest ID: CS-$(Get-Date -Format 'yyyyMMdd-HHmmss')";$note|Out-File "$env:USERPROFILE\Desktop\SECURITY_TEST_README.txt";Add-Type -AssemblyName System.Windows.Forms;[System.Windows.Forms.MessageBox]::Show("SECURITY DRILL: This is a ransomware simulation test.`nNo files were harmed. Please report this to your security team.","CharonSec Security Test","OK","Warning");exit

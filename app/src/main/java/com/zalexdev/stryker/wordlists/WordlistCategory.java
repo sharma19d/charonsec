@@ -6,12 +6,12 @@ import java.util.Locale;
 
 public enum WordlistCategory {
 
-    PASSWORD("password", "Passwords",  R.drawable.password,  0xFF1565C0),
-    WIFI    ("wifi",     "Wi-Fi PSK",  R.drawable.wifi,      0xFF00897B),
-    PIN     ("pin",      "PIN codes",  R.drawable.fiber_pin, 0xFFEF6C00),
-    USERNAME("username", "Usernames",  R.drawable.name,      0xFFAB47BC),
-    WEB     ("web",      "Web paths",  R.drawable.web,       0xFF3949AB),
-    OTHER   ("other",    "Other",      R.drawable.file,      0xFF757575);
+    PASSWORD("password", "Passwords",  R.drawable.password,  com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal)),
+    WIFI    ("wifi",     "Wi-Fi PSK",  R.drawable.wifi,      com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal)),
+    PIN     ("pin",      "PIN codes",  R.drawable.fiber_pin, com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal)),
+    USERNAME("username", "Usernames",  R.drawable.name,      com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal)),
+    WEB     ("web",      "Web paths",  R.drawable.web,       com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_signal)),
+    OTHER   ("other",    "Other",      R.drawable.file,      com.zalexdev.stryker.ui.ios.Ios.color(com.zalexdev.stryker.R.color.ch_bone_dim));
 
     public final String id;
     public final String title;
